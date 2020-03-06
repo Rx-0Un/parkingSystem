@@ -19,20 +19,33 @@ public class LoginController {
 
     private StaffService staffService;
 
+    /**
+     * 登录验证
+     * @param name
+     * @param pwd
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/login", method = POST)
     public String login(@RequestParam("name") String name, @RequestParam("pwd") String pwd, Model model) {
-
-        System.out.println(name + "  " +
-                pwd);
         int Count = 0;
-        String loginInfo ="登录成功";
-        Count = staffService.SelectForLogin(name, pwd);
-        if (Count == 1) {
-            model.addAttribute("loginInfo","!!!!!!");
-            System.out.println(model.getAttribute("loginInfo"));
-            return "index";
+        if (staffService.SelectByStaffName(name)==0){
+            model.addAttribute("loginInfo","用户不存在,请联系管理员");
+            return "authentication-login";
         }
-        return "error";
+        if (staffService.SelectByStaffName(name)!=0) {
+            Count = staffService.SelectForLogin(name, pwd);
+            if (Count == 1) {
+                model.addAttribute("loginInfo", "登录成功");
+                return "index3";
+            }
+            else {
+                model.addAttribute("loginInfo", "密码错误");
+                return "authentication-login";
+            }
+        }
+        model.addAttribute("loginInfo", "用户名或者密码错误");
+        return "index";
     }
 
     @Autowired
