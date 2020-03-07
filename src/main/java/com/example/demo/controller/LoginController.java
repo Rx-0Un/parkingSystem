@@ -36,7 +36,7 @@ public class LoginController {
         if (staffService.SelectByStaffName(name)!=0) {
             Count = staffService.SelectForLogin(name, pwd);
             if (Count == 1) {
-                model.addAttribute("loginInfo", "登录成功");
+                doLogin(model);
                 return "index3";
             }
             else {
@@ -48,6 +48,15 @@ public class LoginController {
         return "index";
     }
 
+    /**
+     * 登录成功后将信息放入model中
+     */
+    public void doLogin(Model model){
+        /**
+         * 第一步获取个人提示卡中的内容
+         */
+        
+    }
     @Autowired
     public void setStaffService(StaffService staffService) {
         this.staffService = staffService;
