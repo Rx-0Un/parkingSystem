@@ -225,4 +225,16 @@ public class TbStaffTask {
     public void setEndingTime(Date endingTime) {
         this.endingTime = endingTime;
     }
+
+    @Override
+    public String toString() {
+        return "TbStaffTask{" +
+                "staffTaskId=" + staffTaskId +
+                ", staffId=" + staffId +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", startingTime=" + startingTime +
+                ", endingTime=" + endingTime +
+                '}';
+    }
 }

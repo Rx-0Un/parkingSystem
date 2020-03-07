@@ -291,7 +291,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title m-b-0">Tony,你好</h4>
+                            <h4 class="card-title m-b-0" th:text="${session.staffName}+',你好'"></h4>
                         </div>
                         <ul class="list-style-none">
                             <li class="card-body border-top">
@@ -319,7 +319,7 @@
                                     <div class="d-flex no-block">
                                         <i class="fa fa-gift w-30px m-t-5"></i>
                                         <div>
-                                            <span class="font-bold">当前任务:</span>        10
+                                            <span class="font-bold" th:text="'当前任务:'+${currentTask}"></span>
                                         </div>
                                     </div>
                                 </a>
@@ -359,33 +359,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>打卡上班</td>
+                            <tr th:each="stat:${AllTask}">
+                                <td th:text="${stat.staffTaskId}">打卡上班</td>
                                 <td class="text-success">未开始</td>
-                                <td>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
-                                        <i class="mdi mdi-check"></i>
-                                    </a>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        </i><i class="mdi mdi-close"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>修改假期折扣</td>
-                                <td class="text-warning">已完成</td>
-                                <td>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
-                                        <i class="mdi mdi-check"></i>
-                                    </a>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        </i><i class="mdi mdi-close"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>查看系统报表</td>
-                                <td class="text-danger">未完成</td>
                                 <td>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
                                         <i class="mdi mdi-check"></i>

@@ -13,12 +13,12 @@ public class StaffTaskService {
     @Autowired
     TbStaffTaskMapper tbStaffTaskMapper;
 
-    int selectCountByStaffId(String staff_id){
+    public int selectCountByStaffId(String staff_id){
         return tbStaffTaskMapper.selectCountByStaffId(staff_id);
     }
 
 
-    List<TbStaffTask> selectUnfinishedTask(String staff_id){
+    public List<TbStaffTask> selectUnfinishedTask(String staff_id){
         return tbStaffTaskMapper.selectUnfinishedTask(staff_id);
     }
 }
