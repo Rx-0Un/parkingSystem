@@ -225,4 +225,16 @@ public class TbStaff {
     public void setLastTimeLogin(Date lastTimeLogin) {
         this.lastTimeLogin = lastTimeLogin;
     }
+
+    @Override
+    public String toString() {
+        return "TbStaff{" +
+                "staffId=" + staffId +
+                ", staffName='" + staffName + '\'' +
+                ", staffPhone='" + staffPhone + '\'' +
+                ", staffLoginPwd='" + staffLoginPwd + '\'' +
+                ", staffType=" + staffType +
+                ", lastTimeLogin=" + lastTimeLogin +
+                '}';
+    }
 }

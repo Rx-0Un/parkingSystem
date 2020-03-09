@@ -237,108 +237,109 @@
                         <div class="card-body">
                             <h5 class="card-title">员工管理界面</h5>
                             <div class="row">
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="row mb-3">
-                                                <div class="col-lg-1">
-                                                    <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1"
-                                                            aria-hidden="true">
-                                                        <option data-select2-id="3"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">选择</font></font>
-                                                        </option>
-                                                        <optgroup label="Alaskan/Hawaiian Time Zone"
-                                                                  data-select2-id="93">
-                                                            <option value="AK" data-select2-id="94"><font
-                                                                    style="vertical-align: inherit;"><font
-                                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                                            </option>
-                                                            <option value="HI" data-select2-id="95"><font
-                                                                    style="vertical-align: inherit;"><font
-                                                                    style="vertical-align: inherit;">夏威夷</font></font>
-                                                            </option>
-                                                        </optgroup>
-                                                    </select><span
-                                                        class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
-                                                        dir="ltr" data-select2-id="2" style="width: 100%;"><span
-                                                        class="selection"><span
-                                                        class="select2-selection select2-selection--single"
-                                                        role="combobox" aria-haspopup="true"
-                                                        aria-expanded="false" tabindex="0"
-                                                        aria-labelledby="select2-t9d6-container"><span
-                                                        class="select2-selection__rendered"
-                                                        id="select2-t9d6-container"
-                                                        role="textbox" aria-readonly="true" title="选择"><font
-                                                        style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"></font></font></span><span
-                                                        class="select2-selection__arrow" role="presentation"><b
-                                                        role="presentation"></b></span></span></span><span
-                                                        class="dropdown-wrapper"
-                                                        aria-hidden="true"></span></span>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <input type="text" class="form-control" placeholder="">
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="row mb-3">
-                                                <div class="col-lg-1">
+                                <form action="/selectStaffByCondition" method="post">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1"
+                                                        aria-hidden="true" name="select" id="select">
+                                                    <option data-select2-id="3"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">全体</font></font>
+                                                    </option>
+                                                    <option value="编号" data-select2-id="94"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">编号</font></font>
+                                                    </option>
+                                                    <option value="姓名" data-select2-id="95"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">姓名</font></font>
+                                                    </option>
+                                                    <option value="电话" data-select2-id="95"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">电话</font></font>
+                                                    </option>
+                                                </select><span
+                                                    class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                                    dir="ltr" data-select2-id="2" style="width: 100%;"><span
+                                                    class="selection"><span
+                                                    class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true"
+                                                    aria-expanded="false" tabindex="0"
+                                                    aria-labelledby="select2-t9d6-container"><span
+                                                    class="select2-selection__rendered"
+                                                    id="select2-t9d6-container"
+                                                    role="textbox" aria-readonly="true" title="选择"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;"></font></font></span><span
+                                                    class="select2-selection__arrow" role="presentation"><b
+                                                    role="presentation"></b></span></span></span><span
+                                                    class="dropdown-wrapper"
+                                                    aria-hidden="true"></span></span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="" name="Keyword">
+                                            </td>
+                                            <td>
+                                                <input type="submit" class="btn btn-primary" value="查询"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                                    <input type="checkbox" class="custom-control-input" id="checkbox1" name="checkbox1">
-                                                    <label class="custom-control-label" for="checkbox1">员工生成权限</label>
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="checkbox1" name="checkbox1" th:checked="*{checkbox1}">
+                                                    <label class="custom-control-label"
+                                                           for="checkbox1">员工生成权限</label>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="checkbox2" name="checkbox2" th:checked="*{checkbox2}">
+                                                    <label class="custom-control-label"
+                                                           for="checkbox2">员工管理权限</label>
                                                 </div>
-                                                <div class="col-lg-1">
-                                                    <div class="custom-control custom-checkbox mr-sm-2">
-                                                        <input type="checkbox" class="custom-control-input" id="checkbox2">
-                                                        <label class="custom-control-label" for="checkbox2">员工管理权限</label>
-                                                    </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="checkbox3" name="checkbox3" th:checked="*{checkbox3}">
+                                                    <label class="custom-control-label"
+                                                           for="checkbox3">信息查看权限</label>
                                                 </div>
-                                                <div class="col-lg-1">
-                                                    <div class="custom-control custom-checkbox mr-sm-2">
-                                                        <input type="checkbox" class="custom-control-input" id="checkbox3">
-                                                        <label class="custom-control-label" for="checkbox3">信息查看权限</label>
-                                                    </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="checkbox4" name="checkbox4" th:checked="*{checkbox4}">
+                                                    <label class="custom-control-label"
+                                                           for="checkbox4">车场管理权限</label>
                                                 </div>
-                                                <div class="col-lg-1">
-                                                    <div class="custom-control custom-checkbox mr-sm-2">
-                                                        <input type="checkbox" class="custom-control-input" id="checkbox4">
-                                                        <label class="custom-control-label" for="checkbox4">车场管理权限</label>
-                                                    </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="checkbox5" name="checkbox5" th:checked="*{checkbox5}">
+                                                    <label class="custom-control-label"
+                                                           for="checkbox5">缴费管理权限</label>
                                                 </div>
-                                                <div class="col-lg-1">
-                                                    <div class="custom-control custom-checkbox mr-sm-2">
-                                                        <input type="checkbox" class="custom-control-input" id="checkbox5">
-                                                        <label class="custom-control-label" for="checkbox5">缴费管理权限</label>
-                                                    </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="checkbox6" name="checkbox6" th:checked="*{checkbox6}">
+                                                    <label class="custom-control-label"
+                                                           for="checkbox6">app管理权限</label>
                                                 </div>
-                                                <div class="col-lg-1">
-                                                    <div class="custom-control custom-checkbox mr-sm-2">
-                                                        <input type="checkbox" class="custom-control-input" id="checkbox6">
-                                                        <label class="custom-control-label" for="checkbox6">app管理权限</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <a href="/selectStaffByCondition">
-                                                    <button type="button" class="btn btn-primary">查询</button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
                             </div>
                             <div class="row">
                                 <div class="table-responsive">

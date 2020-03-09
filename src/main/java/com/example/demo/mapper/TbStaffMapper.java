@@ -49,5 +49,33 @@ public interface TbStaffMapper {
      */
     int selectIdByName(@Param("staff_name") String name);
 
+    /**
+     * 模糊查询
+     * @param string
+     * @return
+     */
+    List<TbStaff> selectByFuzzyStr(@Param("string") String string);
+
+    /**
+     * 根据姓名模糊查询
+     * @param string
+     * @return
+     */
+    List<TbStaff> selectByFuzzyName(@Param("string") String string);
+
+    /**
+     * 根据编号进行模糊查询
+     * @param string
+     * @return
+     */
+    List<TbStaff> selectByFuzzyId(@Param("string") String string);
+
+    /**
+     * 根据电话进行模糊查询
+     * @param string
+     * @return
+     */
+    List<TbStaff> selectByFuzzyPhone(@Param("string") String string);
+
     List<TbStaff> selectAll();
 }
