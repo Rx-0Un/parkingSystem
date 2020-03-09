@@ -36,7 +36,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/login", method = POST)
-    public String login(@RequestParam("name") String name, @RequestParam("pwd") String pwd, Model model,HttpSession session) {
+    public String login(@RequestParam("name") String name, @RequestParam("pwd") String pwd, Model model, HttpSession session) {
         int Count = 0;
         if (staffService.selectByStaffName(name) == 0) {
             model.addAttribute("loginInfo", "用户不存在,请联系管理员");
@@ -45,7 +45,7 @@ public class LoginController {
         if (staffService.selectByStaffName(name) != 0) {
             Count = staffService.selectForLogin(name, pwd);
             if (Count == 1) {
-                doLogin(name,model,session);
+                doLogin(name, model, session);
                 model.addAttribute("staffName", name);
                 return "index3";
             } else {
@@ -58,21 +58,29 @@ public class LoginController {
     }
 
     /**
-     * 登录成功后将信息放入model中
+     * 登录成功后将信息放入model或者session中
      */
-    public void doLogin(String name,Model model,HttpSession session) {
+    public void doLogin(String name, Model model, HttpSession session) {
 
         int StaffId = staffService.selectByStaffName(name);
-        int CurrentTaskNum = staffTaskService.selectCountByStaffId(StaffId+"");
+        int CurrentTaskNum = staffTaskService.selectCountByStaffId(StaffId + "");
 
         //第一步获取个人提示卡中的内容
-        session.setAttribute("staffId",StaffId);
-        session.setAttribute("staffName",name);
-        model.addAttribute("currentTask",CurrentTaskNum);
+        session.setAttribute("staffId", StaffId);
+        session.setAttribute("staffName", name);
+        model.addAttribute("currentTask", CurrentTaskNum);
         //获取未完成任务内容
-        List<TbStaffTask> list = staffTaskService.selectUnfinishedTask(StaffId+"");
+        List<TbStaffTask> list = staffTaskService.selectUnfinishedTask(StaffId + "");
 //        System.out.println(list.get(0).toString());
-        model.addAttribute("AllTask",list);
+        model.addAttribute("AllTask", list);
+    }
+
+    @RequestMapping(value = "/mainPager")
+    public String gotoMainPager(Model model, HttpSession session) {
+        String staffName = String.valueOf(session.getAttribute("staffName"));
+        String staffId = String.valueOf(session.getAttribute("staffId"));
+        doLogin(staffName,model,session);
+        return "index3";
     }
 
     @Autowired

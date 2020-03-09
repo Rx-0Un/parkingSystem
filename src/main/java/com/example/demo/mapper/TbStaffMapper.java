@@ -4,6 +4,8 @@ import com.example.demo.entity.TbStaff;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface TbStaffMapper {
     /**
@@ -46,4 +48,6 @@ public interface TbStaffMapper {
      * @return
      */
     int selectIdByName(@Param("staff_name") String name);
+
+    List<TbStaff> selectAll();
 }

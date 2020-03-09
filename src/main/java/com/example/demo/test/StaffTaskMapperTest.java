@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class StaffTaskTest extends BaseMapperTest {
+public class StaffTaskMapperTest extends BaseMapperTest {
     @Autowired
     TbStaffTaskMapper tbStaffTaskMapper;
 
