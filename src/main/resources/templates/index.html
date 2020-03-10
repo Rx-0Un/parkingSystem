@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="modal fade none-border show" id="add-new-event" style="display: none; padding-right: 17px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Add</strong> a category</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Category Name</label>
+                            <input class="form-control form-white" placeholder="Enter name" type="text"
+                                   name="category-name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Choose Category Color</label>
+                            <select class="form-control form-white" data-placeholder="Choose a color..."
+                                    name="category-color">
+                                <option value="success">Success</option>
+                                <option value="danger">Danger</option>
+                                <option value="info">Info</option>
+                                <option value="primary">Primary</option>
+                                <option value="warning">Warning</option>
+                                <option value="inverse">Inverse</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger waves-effect waves-light save-category"
+                        data-dismiss="modal">Save
+                </button>
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal" id="close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    var btn = document.getElementById('open_btn');
+    var div = document.getElementById('add-new-event');
+    var close = document.getElementById('close');
+    btn.onclick = function () {
+        div.style.display = "block";
+    }
+    close.onclick = function () {
+        div.style.display ="none";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 设置日志输出为LOG4J -->
+        <setting name="logImpl" value="LOG4J" />
+        <!--将以下画线方式命名的数据库列映射到 Java 对象的驼峰式命名属性中-->
+        <setting name= "mapUnderscoreToCamelCase" value="true" />
+    </settings>
+    <!--简化类命名空间 -->
+    <typeAliases>
+        <package name="com.example.demo.entity" />
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url"
+                          value="jdbc:mysql://218.244.153.72:3306/test?serverTimezone=UTC" />
+                <property name="username" value="root" />
+                <property name="password" value="MaiDaMi" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/example/demo/mapper/mappers/TbStaffTaskMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbStaffDutyMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbUserMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbCarMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbCouponMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbMonthlyCardMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbOrderMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbParkingRecordMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbRuleMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbStaffMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbUserAmountMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbCouponMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/TbUserMonthlyCardMapper.xml"/>
+        <mapper resource="com/example/demo/mapper/mappers/testMapper.xml"/>
+        <!--常规做法-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/CountryMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/PrivilegeMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/RoleMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/RolePrivilegeMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/UserMapper.xml" />-->
+        <!--<mapper resource="tk/mybatis/simple/mapper/UserRoleMapper.xml" />-->
+        <!--第二种做法 //亲测失败了-->
+<!--    <package name="com.example.demo.mapper.mappers"/>-->
+    </mappers>
+</configuration>
