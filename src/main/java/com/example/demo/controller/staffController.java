@@ -104,11 +104,13 @@ public class staffController {
     }
 
     @RequestMapping(value = "/deleteStaffById")
-    public String deleteStaffById(Integer id,Model  model){
-        System.out.println("controller:"+id);
-        model.addAttribute("!","!!!");
-        return "index-staff::table";
+    public String deleteStaffById(Integer id, Model model) {
+        System.out.println("controller:" + id);
+        model.addAttribute("!", "!!!");
+        model.addAttribute("allStaff",staffService.selectByFuzzyStr("17798567311"));
+        return "index-staff::result";
     }
+
     @Autowired
     public void setStaffService(StaffService staffService) {
         this.staffService = staffService;
