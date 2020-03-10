@@ -44,6 +44,7 @@ public interface TbStaffMapper {
 
     /**
      * 根据用户名查找id
+     *
      * @param name
      * @return
      */
@@ -51,6 +52,7 @@ public interface TbStaffMapper {
 
     /**
      * 模糊查询
+     *
      * @param string
      * @return
      */
@@ -58,6 +60,7 @@ public interface TbStaffMapper {
 
     /**
      * 根据姓名模糊查询
+     *
      * @param string
      * @return
      */
@@ -65,6 +68,7 @@ public interface TbStaffMapper {
 
     /**
      * 根据编号进行模糊查询
+     *
      * @param string
      * @return
      */
@@ -72,10 +76,20 @@ public interface TbStaffMapper {
 
     /**
      * 根据电话进行模糊查询
+     *
      * @param string
      * @return
      */
     List<TbStaff> selectByFuzzyPhone(@Param("string") String string);
+
+    List<TbStaff> selectByFuzzyStrAndType(@Param("string") String string, @Param("type") String type);
+
+    List<TbStaff> selectByFuzzyNameAndType(@Param("string") String string, @Param("type") String type);
+
+    List<TbStaff> selectByFuzzyPhoneAndType(@Param("string") String string, @Param("type") String type);
+
+    List<TbStaff> selectByFuzzyIdAndType(@Param("string") String string, @Param("type") String type);
+
 
     List<TbStaff> selectAll();
 }

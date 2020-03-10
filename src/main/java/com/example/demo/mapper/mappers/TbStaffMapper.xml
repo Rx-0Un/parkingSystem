@@ -96,7 +96,7 @@
         select *
         from tb_staff
   </select>
-  <select id="selectByFuzzyStr" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="selectByFuzzyStr" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from tb_staff
         where
@@ -105,22 +105,52 @@
         staff_phone like CONCAT('%',#{string},'%') or
         staff_type like CONCAT('%',#{string},'%')
   </select>
-  <select id="selectByFuzzyName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="selectByFuzzyName" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from tb_staff
         where
         staff_name like CONCAT('%',#{string},'%')
   </select>
-  <select id="selectByFuzzyId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="selectByFuzzyId" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from tb_staff
         where
         staff_id like CONCAT('%',#{string},'%')
   </select>
-  <select id="selectByFuzzyPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="selectByFuzzyPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from tb_staff
         where
         staff_phone like CONCAT('%',#{string},'%')
   </select>
+    <select id="selectByFuzzyStrAndType" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_staff
+        where
+        staff_type = #{type,jdbcType=VARCHAR} and
+        (staff_id like CONCAT('%',#{string},'%') or
+        staff_name like CONCAT('%',#{string},'%')or
+        staff_phone like CONCAT('%',#{string},'%'))
+    </select>
+    <select id="selectByFuzzyNameAndType" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_staff
+        where
+        staff_type = #{type,jdbcType=VARCHAR} and
+        staff_name like CONCAT('%',#{string},'%')
+    </select>
+    <select id="selectByFuzzyPhoneAndType" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_staff
+        where
+        staff_type = #{type,jdbcType=VARCHAR} and
+        staff_phone like CONCAT('%',#{string},'%')
+    </select>
+    <select id="selectByFuzzyIdAndType" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_staff
+        where
+        staff_type = #{type,jdbcType=VARCHAR} and
+        (staff_id like CONCAT('%',#{string},'%')
+    </select>
 </mapper>
