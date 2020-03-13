@@ -26,6 +26,7 @@ public class staffController {
 
     /**
      * 条件查询
+     *
      * @param model
      * @param select
      * @param Keyword
@@ -47,13 +48,13 @@ public class staffController {
         type += processType(checkbox5);
         type += processType(checkbox6);
 
-        System.out.println("Keyword:" + Keyword);
-        System.out.println("select:" + select);
-        System.out.println("type:" + type);
+//        System.out.println("Keyword:" + Keyword);
+//        System.out.println("select:" + select);
+//        System.out.println("type:" + type);
 
         List<TbStaff> list = prossType(select, Keyword, type);
         model.addAttribute("allStaff", list);
-        model.addAttribute("searchInfo", prossSearchInFo(select,Keyword)+list.size()+"条数据");
+        model.addAttribute("searchInfo", prossSearchInFo(select, Keyword) + list.size() + "条数据");
         return "index-staff";
     }
 
@@ -65,7 +66,7 @@ public class staffController {
     }
 
     public List<TbStaff> prossType(String select, String Keyword, String type) {
-        if (Keyword != null&&type.equals("000000")) {
+        if (Keyword != null && type.equals("000000")) {
             switch (select) {
                 case "全体":
                     return staffService.selectByFuzzyStr(Keyword);
@@ -77,49 +78,63 @@ public class staffController {
                     return staffService.selectByFuzzyPhone(Keyword);
             }
         }
-        if (Keyword!=null&&!type.equals("000000")){
+        if (Keyword != null && !type.equals("000000")) {
             switch (select) {
                 case "全体":
-                    return staffService.selectByFuzzyStrAndType(Keyword,type);
+                    return staffService.selectByFuzzyStrAndType(Keyword, type);
                 case "编号":
-                    return staffService.selectByFuzzyIdAndType(Keyword,type);
+                    return staffService.selectByFuzzyIdAndType(Keyword, type);
                 case "姓名":
-                    return staffService.selectByFuzzyNameAndType(Keyword,type);
+                    return staffService.selectByFuzzyNameAndType(Keyword, type);
                 case "电话":
-                    return staffService.selectByFuzzyPhoneAndType(Keyword,type);
-                default:break;
+                    return staffService.selectByFuzzyPhoneAndType(Keyword, type);
+                default:
+                    break;
             }
         }
         return staffService.selectAll();
     }
 
-    public String prossSearchInFo(String select,String keyword){
+    public String prossSearchInFo(String select, String keyword) {
         String str = "查找目标:";
-        str+=select;
-        if (keyword==null||keyword.isEmpty()){
-            str+="    关键字:  无　";
-        }else {
-            str+="    关键字:"+keyword;
+        str += select;
+        if (keyword == null || keyword.isEmpty()) {
+            str += "    关键字:  无　";
+        } else {
+            str += "    关键字:" + keyword;
         }
-        str+="    查找结果:";
+        str += "    查找结果:";
         return str;
     }
 
     @RequestMapping(value = "/deleteStaffById")
     public String deleteStaffById(Integer id, Model model) {
         System.out.println("controller:" + id);
-        model.addAttribute("!", "!!!");
-        model.addAttribute("allStaff",staffService.selectByFuzzyStr("17798567311"));
+        staffService.deleteStaffById(id);
+
+        model.addAttribute("allStaff", staffService.selectAll());
         return "index-staff::result";
     }
 
-//    @RequestMapping(value = "/addStaff")
-//    public String addStaff(Model model,@RequestBody Map<String, String> map){
-//        System.out.println(map.get("staffName"));
-//
-//        model.addAttribute("allStaff",staffService.selectAll());
-//        return "index-staff::result";
-//    }
+    @RequestMapping(value = "/addStaff")
+    public String addStaff(Model model, @RequestBody Map<String, String> map) {
+        String staffName=map.get("staffName");
+        String staffPhone=map.get("staffPhone");
+        String type = new String();
+        for (int i = 0; i < 6; i++) {
+            if (map.get("rightCheck" + i)=="false") {
+                type += "0";
+            }
+            else {
+                type +="1";
+            }
+        }
+        System.out.println("新员工姓名:"+staffName+"电话:"+staffPhone+"类型:"+type);
+        int count=staffService.insertStaff(staffName,staffPhone,type);
+
+        model.addAttribute("allStaff", staffService.selectAll());
+        return "index-staff::result";
+    }
 
     @Autowired
     public void setStaffService(StaffService staffService) {

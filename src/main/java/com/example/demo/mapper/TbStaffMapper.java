@@ -92,4 +92,8 @@ public interface TbStaffMapper {
 
 
     List<TbStaff> selectAll();
+
+    int insertStaff(@Param("staffName") String staffName,@Param("staffPhone") String staffPhone,@Param("staffType") String staffType);
+
+    int deleteStaffById(@Param("staffId") Integer id);
 }

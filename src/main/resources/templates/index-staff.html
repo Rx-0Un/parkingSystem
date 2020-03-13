@@ -255,7 +255,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="control-label">选择权限</label>
-                                <table class="table">
+                                <table>
                                     <tbody class="customtable">
                                     <tr>
                                         <th>
@@ -544,12 +544,6 @@
 <script src="/assets/libs/chart/turning-series.js"></script>
 <script src="/dist/js/pages/chart/chart-page-init.js"></script>
 <script language="javascript" type="text/javascript">
-    // $(function(){
-    //     $("#delete").on('click',function (event) {
-    //         const id = $("delete").attr("value");
-    //         alert(id);
-    //     })
-    // })
     function deleteStaffById(obj, id) {
         //id为取到的行id
         var r = confirm("是否确认删除？");
@@ -585,7 +579,7 @@
         const rightCheck4 = $("input[type='checkbox'][id='rightCheck4']").is(":checked")
         const rightCheck5 = $("input[type='checkbox'][id='rightCheck5']").is(":checked")
         const rightCheck6 = $("input[type='checkbox'][id='rightCheck6']").is(":checked")
-        const data = {
+        const insertData = {
             "staffName": staffName,
             "staffPhone": staffPhone,
             "rightCheck1": rightCheck1,
@@ -599,11 +593,14 @@
                 type: "post",
                 url: "/addStaff",
                 contentType: 'application/json;charset=utf-8',
-                data: JSON.stringify(data),
+                data: JSON.stringify(insertData),
                 dataType: "text",
-                success: function (date) {
-                    alert("成功")
+                success: function (htmlData) {
+                    alert("添加新员工成功,初始密码为123456")
                     div.style.display = "none";
+                    alert(htmlData)
+                    $(".table").html(htmlData);
+                    window.location.reload();
                 },
                 error: function (date) {
                     alert("失败")

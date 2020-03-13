@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StaffService {
+public class StaffService{
 
     @Autowired
     private TbStaffMapper tbStaffMapper;
+
 
     /**
      * 判断用户名密码是否匹配
@@ -106,5 +107,29 @@ public class StaffService {
 
     public List<TbStaff> selectAll() {
         return tbStaffMapper.selectAll();
+    }
+
+    /**
+     * 新增一名新员工
+     * @param name
+     * @param phone
+     * @param type
+     * @return
+     */
+    public int insertStaff(String name, String phone, String type) {
+
+        int count=tbStaffMapper.insertStaff(name, phone, type);
+
+        return count;
+    }
+
+    /**
+     * 删除一名员工
+     * @param id
+     * @return
+     */
+    public int deleteStaffById(Integer id){
+        int count = tbStaffMapper.deleteStaffById(id);
+        return count;
     }
 }

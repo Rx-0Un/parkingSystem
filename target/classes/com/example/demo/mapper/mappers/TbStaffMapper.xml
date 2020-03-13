@@ -153,4 +153,11 @@
         staff_type = #{type,jdbcType=VARCHAR} and
         (staff_id like CONCAT('%',#{string},'%')
     </select>
+    <insert id="insertStaff" parameterType="java.lang.String">
+        INSERT INTO test.tb_staff (staff_name, staff_phone, staff_login_pwd, staff_type, last_time_login)
+        VALUES (#{staffName,jdbcType=VARCHAR}, #{staffPhone,jdbcType=VARCHAR}, '123456', #{staffType,jdbcType=VARCHAR}, curdate())
+    </insert>
+    <delete id="deleteStaffById" parameterType="java.lang.Integer">
+        DELETE FROM test.tb_staff WHERE staff_id = #{staffId}
+    </delete>
 </mapper>
