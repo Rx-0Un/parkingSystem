@@ -160,4 +160,8 @@
     <delete id="deleteStaffById" parameterType="java.lang.Integer">
         DELETE FROM test.tb_staff WHERE staff_id = #{staffId}
     </delete>
+    <select id="selectAllIdAndName" parameterType="java.lang.String" resultType="Map">
+        select staff_id,staff_name
+        from tb_staff
+    </select>
 </mapper>

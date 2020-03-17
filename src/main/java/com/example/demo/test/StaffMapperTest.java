@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 public class StaffMapperTest extends BaseMapperTest {
     @Test
@@ -92,6 +93,19 @@ public class StaffMapperTest extends BaseMapperTest {
             int count = tbStaffMapper.deleteStaffById(22);
             System.out.println(count);
             sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void selectAllIdAndNameTest(){
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbStaffMapper tbStaffMapper = sqlSession.getMapper(TbStaffMapper.class);
+            List<Map<String,Object>> list = tbStaffMapper.selectAllIdAndName();
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i).toString());
+            }
         } finally {
             sqlSession.close();
         }

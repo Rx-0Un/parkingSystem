@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StaffService{
@@ -108,6 +109,8 @@ public class StaffService{
     public List<TbStaff> selectAll() {
         return tbStaffMapper.selectAll();
     }
+
+    public List<Map<String,Object>> selectAllIdAndName(){return tbStaffMapper.selectAllIdAndName();}
 
     /**
      * 新增一名新员工

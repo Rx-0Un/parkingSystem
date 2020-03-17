@@ -14,15 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class staffController {
+@RequestMapping(value = "/index-staff")
+public class StaffController {
 
     StaffService staffService;
-
-    @RequestMapping(value = "/index-staff")
-    public String getAll(Model model) {
-        model.addAttribute("allStaff", staffService.selectAll());
-        return "index-staff";
-    }
 
     /**
      * 条件查询
@@ -118,23 +113,23 @@ public class staffController {
 
     @RequestMapping(value = "/addStaff")
     public String addStaff(Model model, @RequestBody Map<String, String> map) {
-        String staffName=map.get("staffName");
-        String staffPhone=map.get("staffPhone");
+        String staffName = map.get("staffName");
+        String staffPhone = map.get("staffPhone");
         String type = new String();
         for (int i = 0; i < 6; i++) {
-            if (map.get("rightCheck" + i)=="false") {
+            if (map.get("rightCheck" + i) == "false") {
                 type += "0";
-            }
-            else {
-                type +="1";
+            } else {
+                type += "1";
             }
         }
-        System.out.println("新员工姓名:"+staffName+"电话:"+staffPhone+"类型:"+type);
-        int count=staffService.insertStaff(staffName,staffPhone,type);
+        System.out.println("新员工姓名:" + staffName + "电话:" + staffPhone + "类型:" + type);
+        int count = staffService.insertStaff(staffName, staffPhone, type);
 
         model.addAttribute("allStaff", staffService.selectAll());
         return "index-staff::result";
     }
+
 
     @Autowired
     public void setStaffService(StaffService staffService) {

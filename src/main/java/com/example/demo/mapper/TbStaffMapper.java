@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface TbStaffMapper {
@@ -93,7 +94,11 @@ public interface TbStaffMapper {
 
     List<TbStaff> selectAll();
 
+    List<Map<String,Object>> selectAllIdAndName();
+
     int insertStaff(@Param("staffName") String staffName,@Param("staffPhone") String staffPhone,@Param("staffType") String staffType);
 
     int deleteStaffById(@Param("staffId") Integer id);
+
+
 }

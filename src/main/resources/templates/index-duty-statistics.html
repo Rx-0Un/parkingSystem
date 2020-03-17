@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- Favicon icon -->
+    <link href="/assets/images/favicon.png" rel="icon" sizes="16x16" type="/image/png">
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet"/>
+    <link href="/assets/extra-libs/calendar/calendar.css" rel="stylesheet"/>
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+
+<div id="main-wrapper">
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+                <a class="navbar-brand" href="index.html">
+                    <b class="logo-icon p-l-10">
+                        <img alt="homepage" class="light-logo" src="assets/images/logo-icon.png"/>
+                    </b>
+                    <span class="logo-text">
+                            <img alt="homepage" class="light-logo" src="assets/images/logo-text.png"/>
+                        </span>
+                </a>
+                <a aria-controls="navbarSupportedContent" aria-expanded="false"
+                   aria-label="Toggle navigation" class="topbartoggler d-block d-md-none waves-effect waves-light"
+                   data-target="#navbarSupportedContent"
+                   data-toggle="collapse" href="javascript:void(0)"><i class="ti-more"></i></a>
+            </div>
+            <div class="navbar-collapse collapse" data-navbarbg="skin5" id="navbarSupportedContent">
+                <ul class="navbar-nav float-left mr-auto">
+                    <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light"
+                                                              data-sidebartype="mini-sidebar" href="javascript:void(0)"><i
+                            class="mdi mdi-menu font-24"></i></a></li>
+                </ul>
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true"
+                           class="nav-link dropdown-toggle waves-effect waves-dark"
+                           data-toggle="dropdown" href=""> <i class="mdi mdi-bell font-24"></i>
+                        </a>
+                        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true"
+                           class="nav-link dropdown-toggle waves-effect waves-dark"
+                           data-toggle="dropdown" href="" id="2"> <i
+                                class="font-24 mdi mdi-comment-processing"></i>
+                        </a>
+                        <div aria-labelledby="2"
+                             class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="">
+                                        <a class="link border-top" href="javascript:void(0)">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-success btn-circle"><i
+                                                        class="ti-calendar"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Event today</h5>
+                                                    <span class="mail-desc">Just a reminder that event</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="link border-top" href="javascript:void(0)">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Settings</h5>
+                                                    <span class="mail-desc">You can customize this template</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="link border-top" href="javascript:void(0)">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Pavan kumar</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="link border-top" href="javascript:void(0)">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-danger btn-circle"><i
+                                                        class="fa fa-link"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Luanch Admin</h5>
+                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true"
+                           class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+                           data-toggle="dropdown" href=""><img
+                                alt="user" class="rounded-circle" src="assets/images/users/1.jpg" width="31"></a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
+                                Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My
+                                Balance</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
+                                Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>
+                                Account Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i
+                                    class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="p-l-30 p-10"><a class="btn btn-sm btn-success btn-rounded"
+                                                        href="javascript:void(0)">View Profile</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="p-t-30" id="sidebarnav">
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/mainPager"><i class="mdi mdi-view-dashboard"></i><span
+                            class="hide-menu"> 首页</span></a></li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="mainpager.html"><i
+                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场管理</span></a></li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">缴费管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">收费规则 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">月卡管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">车场数据设置 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">车辆管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">车主管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">车位管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">月卡管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">出入记录</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">员工管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a class="sidebar-link" href="/index-staff"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">员工信息</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href=""><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">当班统计 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">任务详情</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">app管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">消息推送 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">用户管理 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表 </span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">
+                                    系统设置 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">停车场设置 </span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="1"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">系统日志查看 </span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a aria-expanded="false"
+                                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="index-database.html"><i
+                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 数据库查询</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Calendar</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li aria-current="page" class="breadcrumb-item active">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-lg-3 border-right p-r-0">
+                                    <div class="card-body border-bottom">
+                                        <h4 class="card-title m-t-10">员工列表</h4>
+                                    </div>
+                                    <div class="card-body border-bottom">
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <select aria-hidden="true"
+                                                        class="select2 form-control custom-select select2-hidden-accessible"
+                                                        data-select2-id="1"
+                                                        id="select" name="select" style="width: 100%;" tabindex="-1">
+                                                    <option data-select2-id="3"
+                                                    >全体
+                                                    </option>
+                                                    <option data-select2-id="94" value="编号"
+                                                    ><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">编号</font></font>
+                                                    </option>
+                                                    <option data-select2-id="95" value="姓名"
+                                                    ><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">姓名</font></font>
+                                                    </option>
+                                                </select><span
+                                                    class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                                    data-select2-id="2" dir="ltr"><span
+                                                    class="selection"><span
+                                                    aria-expanded="false"
+                                                    aria-haspopup="true" aria-labelledby="select2-t9d6-container"
+                                                    class="select2-selection select2-selection--single" role="combobox"
+                                                    tabindex="0"><span
+                                                    aria-readonly="true"
+                                                    class="select2-selection__rendered"
+                                                    id="select2-t9d6-container" role="textbox" title="选择"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;"></font></font></span><span
+                                                    class="select2-selection__arrow" role="presentation"><b
+                                                    role="presentation"></b></span></span></span><span
+                                                    aria-hidden="true"
+                                                    class="dropdown-wrapper"></span></span>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       th:value="${Keyword}" id="Keyword"
+                                                       type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="staffSearch" th:fragment="staffSearch">
+                                                    <ul class="list-style-none" th:each="blogId,blogIdStat:${allStaff}">
+                                                        <li class="card-body border-bottom">
+                                                            <a href="#" class="m-b-0 p-0">
+                                                                <div class="d-flex no-block">
+                                                                    <i class="fa fa-user w-30px m-t-5"></i>
+                                                                    <div>
+                                                                    <span class="font-bold"
+                                                                          th:text="${blogIdStat.current.value}"> </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                <span class="font-bold"
+                                                                      th:text="${blogIdStat.current.value}"> </span>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <button class="btn m-t-20 btn-info btn-block waves-effect waves-light"
+                                                            id="selectStaff">查询员工
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="fc-toolbar fc-header-toolbar">
+                                        <div class="fc-left">
+                                            <div class="fc-button-group">
+                                                <button type="button"
+                                                        class="fc-prev-button fc-button fc-state-default fc-corner-left"
+                                                        aria-label="prev"><span
+                                                        class="fc-icon fc-icon-left-single-arrow"></span></button>
+                                                <button type="button"
+                                                        class="fc-next-button fc-button fc-state-default fc-corner-right"
+                                                        aria-label="next"><span
+                                                        class="fc-icon fc-icon-right-single-arrow"></span></button>
+                                            </div>
+                                            <button type="button"
+                                                    class="fc-today-button fc-button fc-state-default fc-corner-left fc-corner-right fc-state-disabled"
+                                                    disabled="">today
+                                            </button>
+                                        </div>
+                                        <div class="fc-right">
+                                            <div class="fc-button-group">
+                                                <button type="button"
+                                                        class="fc-month-button fc-button fc-state-default fc-corner-left fc-state-active">
+                                                    month
+                                                </button>
+                                                <button type="button"
+                                                        class="fc-agendaWeek-button fc-button fc-state-default">week
+                                                </button>
+                                                <button type="button"
+                                                        class="fc-agendaDay-button fc-button fc-state-default fc-corner-right">
+                                                    day
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="fc-center"><h2>March 2020</h2></div>
+                                        <div class="fc-clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center">
+            All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">zhichao</a>.
+        </footer>
+    </div>
+</div>
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/dist/js/jquery.ui.touch-punch-improved.js"></script>
+<script src="/dist/js/jquery-ui.min.js"></script>
+<!-- Bootstra/p tether Core JavaScript -->
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- slimscro/llbar scrollbar JavaScript -->
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effe/cts -->
+<script src="/dist/js/waves.js"></script>
+<!--Menu side/bar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom Ja/vaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!-- this pag/e js -->
+<script src="/assets/libs/moment/min/moment.min.js"></script>
+<script src="/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="/dist/js/pages/calendar/cal-init.js"></script>
+<script language="javascript" type="text/javascript">
+    var selectStaff = document.getElementById('selectStaff');
+    const select = $("#select").val();
+    const Keyword = $("#Keyword").val();
+    const Data = {
+        "select": select,
+        "Keyword": Keyword
+    }
+    selectStaff.onclick = function () {
+        $.ajax({
+                type: "post",
+                url: "/index-duty-statistics/selectStaff",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    alert("成功");
+                    $(".staffSearch").html(data);
+                },
+                error: function (date) {
+                    alert("失败")
+                }
+            }
+        )
+    }
+</script>
+</body>
+</html>
