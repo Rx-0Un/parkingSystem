@@ -14,7 +14,7 @@ public class StaffTaskMapperTest extends BaseMapperTest {
     TbStaffTaskMapper tbStaffTaskMapper;
 
     @Test
-    public void selectCountByStaffId() {
+    public void selectCountByStaffIdTest() {
         String name = "tony";
         int count = 0;
         SqlSession sqlSession = getSqlSession();
@@ -28,15 +28,29 @@ public class StaffTaskMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+
     @Test
-    public void selectAll(){
+    public void selectAllTest() {
         SqlSession sqlSession = getSqlSession();
         try {
             tbStaffTaskMapper = sqlSession.getMapper(TbStaffTaskMapper.class);
-            List<TbStaffTask>list=tbStaffTaskMapper.selectAll();
-            for (int i=0;i<list.size();i++){
+            List<TbStaffTask> list = tbStaffTaskMapper.selectAll();
+            for (int i = 0; i < list.size(); i++) {
                 System.out.println(list.get(i).toString());
             }
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void addTaskTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            tbStaffTaskMapper = sqlSession.getMapper(TbStaffTaskMapper.class);
+            int count = tbStaffTaskMapper.addTask("1", "2020-03-18","中午呢");
+            System.out.println(count);
+            sqlSession.commit();
         } finally {
             sqlSession.close();
         }

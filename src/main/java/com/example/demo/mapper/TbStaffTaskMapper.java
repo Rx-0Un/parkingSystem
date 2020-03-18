@@ -44,4 +44,13 @@ public interface TbStaffTaskMapper {
      * @return
      */
     List<TbStaffTask> selectAll();
+
+    /**
+     * 新增一条任务
+     * @param staffId
+     * @param starting_time
+     * @param description
+     * @return
+     */
+    int addTask(@Param("staff_id") String staffId,@Param("starting_time") String starting_time,@Param("description") String description);
 }

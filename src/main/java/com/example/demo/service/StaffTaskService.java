@@ -13,16 +13,21 @@ public class StaffTaskService {
     @Autowired
     TbStaffTaskMapper tbStaffTaskMapper;
 
-    public int selectCountByStaffId(String staff_id){
+    public int selectCountByStaffId(String staff_id) {
         return tbStaffTaskMapper.selectCountByStaffId(staff_id);
     }
 
 
-    public List<TbStaffTask> selectUnfinishedTask(String staff_id){
+    public List<TbStaffTask> selectUnfinishedTask(String staff_id) {
         return tbStaffTaskMapper.selectUnfinishedTask(staff_id);
     }
 
-    public List<TbStaffTask> selectAll(){
+    public List<TbStaffTask> selectAll() {
         return tbStaffTaskMapper.selectAll();
+    }
+
+    public int addTask(String staffId, String starting_time, String description)
+    {
+        return tbStaffTaskMapper.addTask(staffId, starting_time,description);
     }
 }
