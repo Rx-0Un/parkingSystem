@@ -38,4 +38,10 @@ public interface TbStaffTaskMapper {
      * @return
      */
     List<TbStaffTask> selectUnfinishedTask(@Param("staff_id") String staff_id);
+
+    /**
+     * 查询所有任务
+     * @return
+     */
+    List<TbStaffTask> selectAll();
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.StaffService;
+import com.example.demo.service.StaffTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import java.util.Map;
 @Controller
 public class StartController {
     StaffService staffService;
+    StaffTaskService staffTaskService;
 
     @GetMapping("/index")
     public String test() {
@@ -31,7 +33,13 @@ public class StartController {
     @RequestMapping(value = "/index-duty-statistics")
     public String dutyManage(Model model) {
         model.addAttribute("allStaff", staffService.selectAllIdAndName());
+        model.addAttribute("allTask", staffTaskService.selectAll());
         return "index-duty-statistics";
+    }
+
+    @Autowired
+    public void setStaffTaskService(StaffTaskService staffTaskService) {
+        this.staffTaskService = staffTaskService;
     }
 
     @Autowired

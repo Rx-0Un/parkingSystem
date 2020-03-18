@@ -87,4 +87,8 @@
         from tb_staff_task
         where staff_id=#{staff_id}
   </select>
+  <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_staff_task
+  </select>
 </mapper>

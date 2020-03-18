@@ -21,4 +21,8 @@ public class StaffTaskService {
     public List<TbStaffTask> selectUnfinishedTask(String staff_id){
         return tbStaffTaskMapper.selectUnfinishedTask(staff_id);
     }
+
+    public List<TbStaffTask> selectAll(){
+        return tbStaffTaskMapper.selectAll();
+    }
 }

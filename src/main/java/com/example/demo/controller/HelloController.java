@@ -14,7 +14,7 @@ public class HelloController {
     @GetMapping("/test")
     public ModelAndView test() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("index-duty-statistics");
+        mv.setViewName("test");
         return mv;
     }
 }
