@@ -48,10 +48,10 @@
                         class="ti-menu ti-close"></i></a>
                 <a class="navbar-brand" href="index.html">
                     <b class="logo-icon p-l-10">
-                        <img alt="homepage" class="light-logo" src="assets/images/logo-icon.png"/>
+                        <img alt="homepage" class="light-logo" src="/assets/images/logo-icon.png"/>
                     </b>
                     <span class="logo-text">
-                            <img alt="homepage" class="light-logo" src="assets/images/logo-text.png"/>
+                            <img alt="homepage" class="light-logo" src="/assets/images/logo-text.png"/>
                         </span>
                 </a>
                 <a aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -136,7 +136,7 @@
                         <a aria-expanded="false" aria-haspopup="true"
                            class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
                            data-toggle="dropdown" href=""><img
-                                alt="user" class="rounded-circle" src="assets/images/users/1.jpg" width="31"></a>
+                                alt="user" class="rounded-circle" src="/assets/images/users/1.jpg" width="31"></a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated">
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
                                 Profile</a>
@@ -382,16 +382,33 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-9">
+                                <div class="col-lg-9" th:fragment="result">
                                     <div class="card-body border-bottom">
                                         <h4 class="card-title m-t-10">任务列表</h4>
                                     </div>
                                     <div class="card-body border-bottom">
-                                        <input type="text" class="demo-input" placeholder="请选择日期" id="test1">
+                                        <div class="row mb-3">
+                                            <label>显示<select name="zero_config_length" aria-controls="zero_config"
+                                                             class="form-control form-control-sm" id="searchNum">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>条数据</label>
+                                            <div id="zero_config_filter" class="dataTables_filter">
+                                                <label>关键字:<input type="search"
+                                                                  class="form-control form-control-sm"
+                                                                  placeholder=""
+                                                                  aria-controls="zero_config" id="search"></label></div>
+                                            <div class="dataTables_filter">
+                                                <label>时间:<input type="text" class="form-control form-control-sm"
+                                                                 placeholder="请选择日期" id="searchDate">
+                                                </label></div>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <table id="zero_config" class="table table-striped table-bordered dataTable"
-                                               role="grid" aria-describedby="zero_config_info" th:fragment="result">
+                                               role="grid" aria-describedby="zero_config_info">
                                             <thead>
                                             <tr role="row">
                                                 <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
@@ -435,6 +452,72 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="card-body border-top">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="dataTables_info" id="zero_config_info" role="status"
+                                                     aria-live="polite">Showing 1 to 57 of 57 entries
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="dataTables_paginate paging_simple_numbers"
+                                                     id="zero_config_paginate">
+                                                    <ul class="pagination">
+                                                        <li class="paginate_button page-item previous"
+                                                            id="zero_config_previous"><a href="#"
+                                                                                         aria-controls="zero_config"
+                                                                                         data-dt-idx="0" tabindex="0"
+                                                                                         class="page-link">上一页</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item previous"><a th:href="@{'/index-duty-statistics/page?page=1'}"
+                                                                                         aria-controls="zero_config"
+                                                                                         data-dt-idx="0" tabindex="0"
+                                                                                         class="page-link">首页</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage-3 >=1}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link" th:text="${nowPage-3}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage-2 >=1}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link" th:text="${nowPage-2}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage-1 >=1}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link" th:text="${nowPage-1}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item active">
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="1" tabindex="0" class="page-link"th:text="${nowPage}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage+1 <=totalPage}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link" th:text="${nowPage+1}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage+2 <=totalPage}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link" th:text="${nowPage+2}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage+3 <=totalPage}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link" th:text="${nowPage+3}">
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item" th:if="${nowPage-3 >=1}" >
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link">尾页
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item next">
+                                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link">尾页</a></li>
+                                                        <li class="paginate_button page-item next"
+                                                            id="zero_config_next"><a href="#"
+                                                                                     aria-controls="zero_config"
+                                                                                     data-dt-idx="2" tabindex="0"
+                                                                                     class="page-link">下一页</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -461,6 +544,7 @@
 <script src="/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="/dist/js/pages/calendar/cal-init.js"></script>
 <script language="javascript" type="text/javascript">
+    //查找员工
     function selectStaff() {
         const options = document.getElementById("select")
         const index = options.selectedIndex
@@ -544,18 +628,42 @@
         }
     }
 </script>
+<script language="javascript" type="text/javascript">
+    const searchNum = $("#searchNum").val()
+    const search = $("#search").val()
+    const searchDate = $("#searchDate").val()
+    $("#search").bind("input propertychange", function (event) {
+        console.log($("#searchNum").val())
+        const Data = {
+            "searchStartNum":   0,
+            "searchNum   ": searchNum,
+            "search      ": search,
+            "searchDate  ": searchDate
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-duty-statistics/",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                alert("成功")
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+</script>
 <script src="laydate/laydate.js"></script>
 <script>
     lay('#version').html('-v' + laydate.v);
-
-    //执行一个laydate实例
     laydate.render({
-        elem: '#test1'
+        elem: '#searchDate'
     });
 </script>
 <script>
     lay('#version').html('-v' + laydate.v);
-
     //执行一个laydate实例
     laydate.render({
         elem: '#starting_time'

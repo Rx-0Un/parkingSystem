@@ -53,4 +53,23 @@ public interface TbStaffTaskMapper {
      * @return
      */
     int addTask(@Param("staff_id") String staffId,@Param("starting_time") String starting_time,@Param("description") String description);
+
+    /**
+     * 根据数量
+     * @param searchNum
+     * @param search
+     * @param searchDate
+     * @return
+     */
+
+    List<TbStaffTask> selectTaskByFuzzStr(String searchNum,String search,String searchDate);
+
+    /**
+     * pageNum表示查找几条记录
+     * page表示从第几条记录开始
+     * @param pageNum
+     * @param page
+     * @return
+     */
+    List<TbStaffTask> selectAllPage(@Param("pageNum") int pageNum,@Param("page") int page);
 }

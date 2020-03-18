@@ -26,6 +26,13 @@ public class StaffTaskService {
         return tbStaffTaskMapper.selectAll();
     }
 
+    public List<TbStaffTask> selectTaskByFuzzStr(String searchNum,String search,String searchDate){
+        return null;
+    }
+
+
+    public List<TbStaffTask> selectAllPage(int pageNum,int page){return  tbStaffTaskMapper.selectAllPage(pageNum,page);};
+
     public int addTask(String staffId, String starting_time, String description)
     {
         return tbStaffTaskMapper.addTask(staffId, starting_time,description);

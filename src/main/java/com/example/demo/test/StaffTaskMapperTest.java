@@ -55,4 +55,17 @@ public class StaffTaskMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void selectAllPageTest(){
+        SqlSession sqlSession = getSqlSession();
+        try {
+            tbStaffTaskMapper = sqlSession.getMapper(TbStaffTaskMapper.class);
+            List<TbStaffTask> list = tbStaffTaskMapper.selectAllPage(25,0);
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i).toString());
+            }
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

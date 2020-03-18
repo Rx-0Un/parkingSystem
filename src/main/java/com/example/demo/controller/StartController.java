@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.TbStaffTask;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StaffTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,15 @@ public class StartController {
 
     @RequestMapping(value = "/index-duty-statistics")
     public String dutyManage(Model model) {
+        int pageNum = 10;
         model.addAttribute("allStaff", staffService.selectAllIdAndName());
-        model.addAttribute("allTask", staffTaskService.selectAll());
+        List<TbStaffTask> list = staffTaskService.selectAllPage(pageNum, 0);
+        //总页面数等于任务记录总数对pageNum取余数
+        int totalPage = staffTaskService.selectAll().size() / pageNum;
+        model.addAttribute("allTask", list);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("nowPage", 1);
+        model.addAttribute("totalPage", totalPage);
         return "index-duty-statistics";
     }
 

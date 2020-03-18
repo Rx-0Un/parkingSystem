@@ -95,4 +95,9 @@
     INSERT INTO test.tb_staff_task (staff_id, description, status, starting_time, ending_time)
     VALUES (#{staff_id}, #{description,jdbcType=VARCHAR}, '01', #{starting_time}, null)
   </insert>
+    <select id="selectAllPage" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select *
+        from tb_staff_task
+        limit #{pageNum} offset #{page}
+    </select>
 </mapper>

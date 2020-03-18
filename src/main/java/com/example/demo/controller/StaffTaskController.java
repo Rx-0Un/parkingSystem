@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.TbStaff;
+import com.example.demo.entity.TbStaffTask;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StaffTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/index-duty-statistics")
-public class StaffDutyController {
+public class StaffTaskController {
     StaffService staffService;
     StaffTaskService staffTaskService;
 
@@ -54,11 +56,33 @@ public class StaffDutyController {
             int count = staffTaskService.addTask(staffId, starting_time, description);
             System.out.println(count == 1 ? "成功" : "失败");
         }
-        model.addAttribute("allTask",staffTaskService.selectAll());
+        model.addAttribute("allTask", staffTaskService.selectAll());
         return "index-duty-statistics::result";
     }
 
-    
+    @RequestMapping(value = "/selectByFuzzyStr", method = RequestMethod.POST)
+    public String selectByFuzzyStr(Model model, @RequestBody Map<String, String> map) {
+        String searchNum = map.get("searchNum");
+        String search       = map.get("search");
+        String searchDate = map.get("searchDate");
+        staffTaskService.selectTaskByFuzzStr(searchNum,search, searchDate);
+        return "index-duty-statistics::result";
+    }
+
+    /**
+     * pageNum代表一个页面显示几条数据,page代表第几页
+     * @param model
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    public String selectAllByPage(Model model,String select,@RequestParam(value = "page") String page){
+        System.out.println(select);
+
+        model.addAttribute("nowPage",Integer.parseInt(page));
+        return "index-duty-statistics";
+    }
+
     @Autowired
     public void setStaffTaskService(StaffTaskService staffTaskService) {
         this.staffTaskService = staffTaskService;
