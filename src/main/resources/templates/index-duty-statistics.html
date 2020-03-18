@@ -247,7 +247,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Calendar</h4>
+                    <h4 class="page-title">员工管理>当班统计</h4>
                     <div class="ml-auto text-right">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -272,45 +272,17 @@
                                     <div class="card-body border-bottom">
                                         <div class="row mb-3">
                                             <div class="col-md-3">
-                                                <select aria-hidden="true"
-                                                        class="select2 form-control custom-select select2-hidden-accessible"
-                                                        data-select2-id="1"
-                                                        id="select" name="select" style="width: 100%;" tabindex="-1">
-                                                    <option data-select2-id="3"
-                                                    >全体
-                                                    </option>
-                                                    <option data-select2-id="94" value="编号"
-                                                    ><font
-                                                            style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">编号</font></font>
-                                                    </option>
-                                                    <option data-select2-id="95" value="姓名"
-                                                    ><font
-                                                            style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">姓名</font></font>
-                                                    </option>
-                                                </select><span
-                                                    class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
-                                                    data-select2-id="2" dir="ltr"><span
-                                                    class="selection"><span
-                                                    aria-expanded="false"
-                                                    aria-haspopup="true" aria-labelledby="select2-t9d6-container"
-                                                    class="select2-selection select2-selection--single" role="combobox"
-                                                    tabindex="0"><span
-                                                    aria-readonly="true"
-                                                    class="select2-selection__rendered"
-                                                    id="select2-t9d6-container" role="textbox" title="选择"><font
-                                                    style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;"></font></font></span><span
-                                                    class="select2-selection__arrow" role="presentation"><b
-                                                    role="presentation"></b></span></span></span><span
-                                                    aria-hidden="true"
-                                                    class="dropdown-wrapper"></span></span>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" name="select" id="select">
+                                                    <option>全体</option>
+                                                    <option>编号</option>
+                                                    <option>姓名</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-9">
                                                 <input class="form-control" name="Keyword" placeholder=""
-                                                       th:value="${Keyword}" id="Keyword"
-                                                       type="text">
+                                                       th:value="${Keyword}" id="Keyword" type="text">
                                             </div>
                                         </div>
                                     </div>
@@ -325,18 +297,18 @@
                                                                     <i class="fa fa-user w-30px m-t-5"></i>
                                                                     <div>
                                                                     <span class="font-bold"
-                                                                          th:text="${blogIdStat.current.value}"> </span>
+                                                                          th:text="${blogIdStat.current.staff_name}"> </span>
                                                                     </div>
                                                                 </div>
                                                                 <div>
                                                                 <span class="font-bold"
-                                                                      th:text="${blogIdStat.current.value}"> </span>
+                                                                      th:text="${blogIdStat.current.staff_id}"> </span>
                                                                 </div>
                                                             </a>
                                                         </li>
                                                     </ul>
                                                     <button class="btn m-t-20 btn-info btn-block waves-effect waves-light"
-                                                            id="selectStaff">查询员工
+                                                            id="selectStaff" th:onclick="selectStaff()">查询员工
                                                     </button>
                                                 </div>
                                             </div>
@@ -344,97 +316,78 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-9">
-                                    <div class="fc-toolbar fc-header-toolbar">
-                                        <div class="fc-left">
-                                            <div class="fc-button-group">
-                                                <button type="button"
-                                                        class="fc-prev-button fc-button fc-state-default fc-corner-left"
-                                                        aria-label="prev"><span
-                                                        class="fc-icon fc-icon-left-single-arrow"></span></button>
-                                                <button type="button"
-                                                        class="fc-next-button fc-button fc-state-default fc-corner-right"
-                                                        aria-label="next"><span
-                                                        class="fc-icon fc-icon-right-single-arrow"></span></button>
+                                    <div class="card-body border-bottom">
+                                        <h4 class="card-title m-t-10">任务列表</h4>
+                                    </div>
+                                    <div class="card-body border-bottom">
+                                        <div class="form-group">
+                                            <label for="dtp_input1" class="col-md-2 control-label">DateTime Picking</label>
+                                            <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                                <input class="form-control" size="16" type="text" value="" readonly>
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                             </div>
-                                            <button type="button"
-                                                    class="fc-today-button fc-button fc-state-default fc-corner-left fc-corner-right fc-state-disabled"
-                                                    disabled="">today
-                                            </button>
+                                            <input type="hidden" id="dtp_input1" value="" /><br/>
                                         </div>
-                                        <div class="fc-right">
-                                            <div class="fc-button-group">
-                                                <button type="button"
-                                                        class="fc-month-button fc-button fc-state-default fc-corner-left fc-state-active">
-                                                    month
-                                                </button>
-                                                <button type="button"
-                                                        class="fc-agendaWeek-button fc-button fc-state-default">week
-                                                </button>
-                                                <button type="button"
-                                                        class="fc-agendaDay-button fc-button fc-state-default fc-corner-right">
-                                                    day
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="fc-center"><h2>March 2020</h2></div>
-                                        <div class="fc-clear"></div>
+                                    </div>
+                                    <div class="card-body">
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <footer class="footer text-center">
+                    All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">zhichao</a>.
+                </footer>
             </div>
         </div>
-        <footer class="footer text-center">
-            All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">zhichao</a>.
-        </footer>
-    </div>
-</div>
-<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="/dist/js/jquery.ui.touch-punch-improved.js"></script>
-<script src="/dist/js/jquery-ui.min.js"></script>
-<!-- Bootstra/p tether Core JavaScript -->
-<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- slimscro/llbar scrollbar JavaScript -->
-<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
-<!--Wave Effe/cts -->
-<script src="/dist/js/waves.js"></script>
-<!--Menu side/bar -->
-<script src="/dist/js/sidebarmenu.js"></script>
-<!--Custom Ja/vaScript -->
-<script src="/dist/js/custom.min.js"></script>
-<!-- this pag/e js -->
-<script src="/assets/libs/moment/min/moment.min.js"></script>
-<script src="/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="/dist/js/pages/calendar/cal-init.js"></script>
-<script language="javascript" type="text/javascript">
-    var selectStaff = document.getElementById('selectStaff');
-    const select = $("#select").val();
-    const Keyword = $("#Keyword").val();
-    const Data = {
-        "select": select,
-        "Keyword": Keyword
-    }
-    selectStaff.onclick = function () {
-        $.ajax({
-                type: "post",
-                url: "/index-duty-statistics/selectStaff",
-                contentType: 'application/json;charset=utf-8',
-                data: JSON.stringify(Data),
-                dataType: "text",
-                success: function (data) {
-                    alert("成功");
-                    $(".staffSearch").html(data);
-                },
-                error: function (date) {
-                    alert("失败")
+        <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="/dist/js/jquery.ui.touch-punch-improved.js"></script>
+        <script src="/dist/js/jquery-ui.min.js"></script>
+        <!-- Bootstra/p tether Core JavaScript -->
+        <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- slimscro/llbar scrollbar JavaScript -->
+        <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+        <!--Wave Effe/cts -->
+        <script src="/dist/js/waves.js"></script>
+        <!--Menu side/bar -->
+        <script src="/dist/js/sidebarmenu.js"></script>
+        <!--Custom Ja/vaScript -->
+        <script src="/dist/js/custom.min.js"></script>
+        <!-- this pag/e js -->
+        <script src="/assets/libs/moment/min/moment.min.js"></script>
+        <script src="/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+        <script src="/dist/js/pages/calendar/cal-init.js"></script>
+        <script language="javascript" type="text/javascript">
+            function selectStaff() {
+                const options = document.getElementById("select")
+                const index = options.selectedIndex
+                const select = options.options[index].value
+                const Keyword = document.getElementById('Keyword').value
+                const Data = {
+                    "select": select,
+                    "Keyword": Keyword,
+                    "random": new Date()
                 }
+                $.ajax({
+                        type: "post",
+                        url: "/index-duty-statistics/selectStaff",
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify(Data),
+                        dataType: "text",
+                        success: function (data) {
+                            $(".staffSearch").html(data);
+                        },
+                        error: function (date) {
+                            alert("失败")
+                        }
+                    }
+                )
             }
-        )
-    }
-</script>
+        </script>
 </body>
 </html>

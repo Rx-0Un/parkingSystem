@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 此controller用于完成界面跳转
  */
@@ -27,6 +30,7 @@ public class StartController {
 
     @RequestMapping(value = "/index-duty-statistics")
     public String dutyManage(Model model) {
+        model.addAttribute("allStaff", staffService.selectAllIdAndName());
         return "index-duty-statistics";
     }
 

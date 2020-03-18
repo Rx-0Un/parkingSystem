@@ -1,36 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="版本1.18 编写index-staff.html页面中的修改功能,开始编写员工当班页面&#10;全新问题:&#10;1.分页查询&#10;2.实现动态数据源添加和切换&#10;尚未解决:&#10;1.mysql无法插入中文的问题;&#10;2.表格数据展示">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DutyManageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/images/background/enter.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/images/background/outer.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index-duty-statistics.html" afterDir="false" />
+    <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DutyManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DutyManageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/staffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StaffController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/test/StaffMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/StaffMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/libs/fullcalendar/dist/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/libs/fullcalendar/dist/fullcalendar.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/dist/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dist/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-duty-statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-duty-statistics.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-staff.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-staff.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/HelloController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/staffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/staffController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/test/StaffMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/test/StaffMapperTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/libs/fullcalendar/dist/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assets/libs/fullcalendar/dist/fullcalendar.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/dist/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/dist/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index-staff.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index-staff.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +215,9 @@
       <workItem from="1584441944109" duration="3534000" />
       <workItem from="1584445714351" duration="1517000" />
       <workItem from="1584460069535" duration="1585000" />
-      <workItem from="1584461659190" duration="829000" />
+      <workItem from="1584461659190" duration="1223000" />
+      <workItem from="1584505344540" duration="3236000" />
+      <workItem from="1584508585919" duration="3724000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -311,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584074707973</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="版本1.18 编写员工当班页面&#10;全新问题:&#10;1.thymeleaf便利map出现问题&#10;尚未解决:&#10;1.mysql无法插入中文的问题;&#10;2.表格数据展示&#10;3.分页查询&#10;4.实现动态数据源添加和切换">
+      <created>1584462843102</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1584462843102</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +334,8 @@
     <MESSAGE value="版本1.16 开始编写index-staff.html页面中的新增，修改功能,删除功能页面写完,开始写后端代码&#10;全新问题:&#10;1.学习点击按钮弹出窗口功能&#10;尚未解决:&#10;1.mysql无法插入中文的问题;" />
     <MESSAGE value="版本1.17 开始编写index-staff.html页面中的新增，修改功能,删除功能页面写完,开始写后端代码&#10;全新问题:&#10;1.表格数据展示&#10;尚未解决:&#10;1.mysql无法插入中文的问题;" />
     <MESSAGE value="版本1.17 编写index-staff.html页面中的修改功能,开始编写员工当班页面&#10;全新问题:&#10;1.分页查询&#10;&#10;尚未解决:&#10;1.mysql无法插入中文的问题;&#10;2.表格数据展示" />
-    <option name="LAST_COMMIT_MESSAGE" value="版本1.17 编写index-staff.html页面中的修改功能,开始编写员工当班页面&#10;全新问题:&#10;1.分页查询&#10;&#10;尚未解决:&#10;1.mysql无法插入中文的问题;&#10;2.表格数据展示" />
+    <MESSAGE value="版本1.18 编写员工当班页面&#10;全新问题:&#10;1.thymeleaf便利map出现问题&#10;尚未解决:&#10;1.mysql无法插入中文的问题;&#10;2.表格数据展示&#10;3.分页查询&#10;4.实现动态数据源添加和切换" />
+    <option name="LAST_COMMIT_MESSAGE" value="版本1.18 编写员工当班页面&#10;全新问题:&#10;1.thymeleaf便利map出现问题&#10;尚未解决:&#10;1.mysql无法插入中文的问题;&#10;2.表格数据展示&#10;3.分页查询&#10;4.实现动态数据源添加和切换" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#HTML" timestamp="1583486616247">
@@ -369,10 +362,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583572120061" />
-    <state x="560" y="40" key="CommitChangelistDialog2" timestamp="1584154150542">
+    <state x="560" y="40" key="CommitChangelistDialog2" timestamp="1584462841625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="40" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584154150542" />
+    <state x="560" y="40" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584462841625" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1584155445779">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -381,38 +374,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="835" y="410" width="273" height="292" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583471720240" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1584462539848">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1584515019708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539848" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1584462539848">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019708" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1584515019708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539848" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1584462539848">
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019708" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1584515019708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539848" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1584462539848">
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019708" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1584515019708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539848" />
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1584462539849">
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019708" />
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1584515019709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539849" />
-    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1584462539849">
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019709" />
+    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1584515019709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539849" />
-    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1584462539849">
+    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019709" />
+    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1584515019708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539849" />
-    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1584462539849">
+    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019708" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1584515019709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584462539849" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584515019709" />
     <state x="600" y="217" key="NewModule_or_Project.wizard" timestamp="1584155447602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -449,6 +442,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbStaffTask.java</url>
           <line>230</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/DutyManageController.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/index4.html</url>

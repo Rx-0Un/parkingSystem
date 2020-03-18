@@ -164,4 +164,20 @@
         select staff_id,staff_name
         from tb_staff
     </select>
+    <select id="selectFuzzyAllIdAndName" parameterType="java.lang.String" resultType="Map">
+        select staff_id,staff_name
+        from tb_staff
+        where staff_id like CONCAT('%',#{string},'%') or
+        staff_name like CONCAT('%',#{string},'%')
+    </select>
+    <select id="selectFuzzyAllId" parameterType="java.lang.String" resultType="Map">
+        select staff_id,staff_name
+        from tb_staff
+        where staff_id like CONCAT('%',#{string},'%')
+    </select>
+    <select id="selectFuzzyAllName" parameterType="java.lang.String" resultType="Map">
+        select staff_id,staff_name
+        from tb_staff
+        where staff_name like CONCAT('%',#{string},'%')
+    </select>
 </mapper>

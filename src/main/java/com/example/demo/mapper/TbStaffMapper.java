@@ -91,12 +91,17 @@ public interface TbStaffMapper {
 
     List<TbStaff> selectByFuzzyIdAndType(@Param("string") String string, @Param("type") String type);
 
+    public List<Map<String, Object>> selectFuzzyAllIdAndName(@Param("string") String string);
+
+    public List<Map<String, Object>> selectFuzzyAllId(@Param("string") String string);
+
+    public List<Map<String, Object>> selectFuzzyAllName(@Param("string") String string);
 
     List<TbStaff> selectAll();
 
-    List<Map<String,Object>> selectAllIdAndName();
+    List<Map<String, Object>> selectAllIdAndName();
 
-    int insertStaff(@Param("staffName") String staffName,@Param("staffPhone") String staffPhone,@Param("staffType") String staffType);
+    int insertStaff(@Param("staffName") String staffName, @Param("staffPhone") String staffPhone, @Param("staffType") String staffType);
 
     int deleteStaffById(@Param("staffId") Integer id);
 

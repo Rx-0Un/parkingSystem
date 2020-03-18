@@ -21,25 +21,29 @@ public class DutyManageController {
     public String selectStaff(Model model, @RequestBody Map<String, String> map) {
         String select = map.get("select");
         String Keyword = map.get("Keyword");
-        List<Map<String,Object>> list = staffService.selectAllIdAndName();
-        for (int i=0;i<list.size();i++){
+        System.out.println(select+""+Keyword);
+        List<Map<String, Object>> list = processSelectAndKeyword(select, Keyword);
+        for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).toString());
         }
+        System.out.println("!!!");
         model.addAttribute("allStaff", list);
 
         return "index-duty-statistics::staffSearch";
     }
 
-    public List<TbStaff> processSelectAndKeyword(String select, String Keyword) {
-        switch (select) {
-            case "全体":
-                staffService.selectAll();
-            case "编号":
-                staffService.selectByFuzzyId(Keyword);
-            case "姓名":
-                staffService.selectByStaffName(Keyword);
+    public List<Map<String, Object>> processSelectAndKeyword(String select, String Keyword) {
+        if (Keyword != null&&!Keyword.isEmpty()) {
+            switch (select) {
+                case "全体":
+                    return staffService.selectFuzzyAllIdAndName(Keyword);
+                case "编号":
+                    return staffService.selectFuzzyAllId(Keyword);
+                case "姓名":
+                    return staffService.selectFuzzyAllName(Keyword);
+            }
         }
-        return staffService.selectAll();
+        return staffService.selectAllIdAndName();
     }
 
     @Autowired

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class StaffService{
+public class StaffService {
 
     @Autowired
     private TbStaffMapper tbStaffMapper;
@@ -110,10 +110,29 @@ public class StaffService{
         return tbStaffMapper.selectAll();
     }
 
-    public List<Map<String,Object>> selectAllIdAndName(){return tbStaffMapper.selectAllIdAndName();}
+    /**
+     * 模糊查询姓名和id
+     * @return
+     */
+    public List<Map<String, Object>> selectAllIdAndName() {
+        return tbStaffMapper.selectAllIdAndName();
+    }
+
+    public List<Map<String, Object>> selectFuzzyAllIdAndName(String string) {
+        return tbStaffMapper.selectFuzzyAllIdAndName(string);
+    }
+
+    public List<Map<String, Object>> selectFuzzyAllId(String string) {
+        return tbStaffMapper.selectFuzzyAllId(string);
+    }
+
+    public List<Map<String, Object>> selectFuzzyAllName(String string) {
+        return tbStaffMapper.selectFuzzyAllName(string);
+    }
 
     /**
      * 新增一名新员工
+     *
      * @param name
      * @param phone
      * @param type
@@ -121,17 +140,18 @@ public class StaffService{
      */
     public int insertStaff(String name, String phone, String type) {
 
-        int count=tbStaffMapper.insertStaff(name, phone, type);
+        int count = tbStaffMapper.insertStaff(name, phone, type);
 
         return count;
     }
 
     /**
      * 删除一名员工
+     *
      * @param id
      * @return
      */
-    public int deleteStaffById(Integer id){
+    public int deleteStaffById(Integer id) {
         int count = tbStaffMapper.deleteStaffById(id);
         return count;
     }
