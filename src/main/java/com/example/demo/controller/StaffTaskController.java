@@ -62,25 +62,67 @@ public class StaffTaskController {
 
     @RequestMapping(value = "/selectByFuzzyStr", method = RequestMethod.POST)
     public String selectByFuzzyStr(Model model, @RequestBody Map<String, String> map) {
+        //显示几条数据
         String searchNum = map.get("searchNum");
-        String search       = map.get("search");
+        //查找关键字
+        String search = map.get("search");
+        //开始时间
         String searchDate = map.get("searchDate");
-        staffTaskService.selectTaskByFuzzStr(searchNum,search, searchDate);
+        //结束时间
+        String searchDate1 = map.get("searchDate1");
+        int pageNum = Integer.parseInt(searchNum);
+        new Thread() {
+            @Override
+            public void run() {
+                System.out.println("关键字:" + search + "开始时间:" + searchDate + "结束时间:" + searchDate1 + "条数:" + pageNum + "页数:" + 1);
+                //需要进行两次查询,第一遍查询第一页上面的内容
+                List<TbStaffTask> list = processFuzzyStr(search, searchDate, searchDate1, pageNum, 0);
+                //第二次查询对总查询结果进行统计
+                List<TbStaffTask> list2 = processFuzzyStr(search, searchDate, searchDate1, 0, 0);
+                int totalPage = list2.size() / pageNum;
+                System.out.println("找到" + list2.size() + "条数据" + "一共" + totalPage + "页");
+                model.addAttribute("nowPage", 1);
+                model.addAttribute("totalPage", totalPage);
+                model.addAttribute("allTask", list);
+            }
+        }.run();
         return "index-duty-statistics::result";
     }
 
     /**
-     * pageNum代表一个页面显示几条数据,page代表第几页
-     * @param model
-     * @param page
+     * @param search      代表查找的关键字
+     * @param searchDate  任务开始日期
+     * @param searchDate1 　任务结束日期
+     * @param pageNum     　显示条数
+     * @param page        　页数
      * @return
      */
-    @RequestMapping(value = "/page",method = RequestMethod.GET)
-    public String selectAllByPage(Model model,String select,@RequestParam(value = "page") String page){
-        System.out.println(select);
+    public List<TbStaffTask> processFuzzyStr(String search, String searchDate, String searchDate1, Integer pageNum, Integer page) {
+        if (search == null && search.isEmpty() && search.equals("")) {
+            return staffTaskService.selectAllPage(pageNum, 0);
+        }
+        return staffTaskService.selectTaskByFuzzStr(search, searchDate, searchDate1, pageNum, page);
+    }
 
-        model.addAttribute("nowPage",Integer.parseInt(page));
-        return "index-duty-statistics";
+    /**
+     * pageNum代表一个页面显示几条数据,page代表第几页
+     */
+    @RequestMapping(value = "/page", method = RequestMethod.POST)
+    public String selectAllByPage(Model model, @RequestBody Map<String, String> map) {
+        String search = map.get("search");
+        String searchDate = map.get("searchDate");
+        String searchDate1 = map.get("searchDate1");
+        int pageNum = Integer.parseInt(map.get("pageNum"));
+        int page = Integer.parseInt(map.get("page"));
+        System.out.println("关键字:" + search + "开始时间:" + searchDate + "结束时间:" + searchDate1 + "条数:" + pageNum + "页数:" + page);
+        List<TbStaffTask> list = processFuzzyStr(search, searchDate, searchDate1, pageNum, (page - 1) * pageNum);
+        List<TbStaffTask> list2 = processFuzzyStr(search, searchDate, searchDate1, 0, (page - 1) * pageNum);
+        int totalPage = list2.size() / pageNum;
+        System.out.println("找到" + list2.size() + "条数据" + "一共" + totalPage + "页");
+        model.addAttribute("allTask", list);
+        model.addAttribute("nowPage", page);
+        model.addAttribute("totalPage", totalPage);
+        return "index-duty-statistics::result";
     }
 
     @Autowired

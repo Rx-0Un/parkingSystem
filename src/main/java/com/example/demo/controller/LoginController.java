@@ -70,7 +70,10 @@ public class LoginController {
         session.setAttribute("staffName", name);
         model.addAttribute("currentTask", CurrentTaskNum);
         //获取未完成任务内容
-        List<TbStaffTask> list = staffTaskService.selectUnfinishedTask(StaffId + "");
+        List<TbStaffTask> list = staffTaskService.selectUnfinishedTask(""+StaffId ,10,0);
+        int totalPage=staffTaskService.selectUnfinishedTask(""+StaffId ,0,0).size();
+        model.addAttribute("nowPage",1);
+        model.addAttribute("totalPage",totalPage);
 //        System.out.println(list.get(0).toString());
         model.addAttribute("AllTask", list);
     }
@@ -83,7 +86,17 @@ public class LoginController {
         return "index3";
     }
 
-
+    @RequestMapping(value = "/page")
+    public String page(Model model,@RequestParam(value = "page") String page,HttpSession session){
+        String staffId=session.getAttribute("staffId").toString();
+        System.out.println(page +"!"+staffId);
+        List<TbStaffTask> list = staffTaskService.selectUnfinishedTask(""+staffId ,10,(Integer.parseInt(page)-1)*10);
+        model.addAttribute("AllTask",list);
+        model.addAttribute("totalPage",list.size());
+        model.addAttribute("nowPage",Integer.parseInt(page));
+        session.setAttribute("staffId",staffId);
+        return "index3::result";
+    }
 
     @Autowired
     public void setStaffService(StaffService staffService) {

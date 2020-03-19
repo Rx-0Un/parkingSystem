@@ -18,16 +18,16 @@ public class StaffTaskService {
     }
 
 
-    public List<TbStaffTask> selectUnfinishedTask(String staff_id) {
-        return tbStaffTaskMapper.selectUnfinishedTask(staff_id);
+    public List<TbStaffTask> selectUnfinishedTask(String staff_id,int pageNum,int page) {
+        return tbStaffTaskMapper.selectUnfinishedTask(staff_id,pageNum,page);
     }
 
     public List<TbStaffTask> selectAll() {
         return tbStaffTaskMapper.selectAll();
     }
 
-    public List<TbStaffTask> selectTaskByFuzzStr(String searchNum,String search,String searchDate){
-        return null;
+    public List<TbStaffTask> selectTaskByFuzzStr(String search,String searchData,String searchDate1,int pageNum,int page){
+        return tbStaffTaskMapper.selectTaskByFuzzStr(search,searchData,searchDate1,pageNum,page);
     }
 
 

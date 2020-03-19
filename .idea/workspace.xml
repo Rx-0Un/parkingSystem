@@ -2,19 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/images/background/count.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StaffDutyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StaffTaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StaffTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StaffTaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffTaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffTaskMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffTaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/test/StaffTaskMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/StaffTaskMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-duty-statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-duty-statistics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffTaskMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffTaskMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffTaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffTaskService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/test/StaffTaskMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/test/StaffTaskMapperTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +57,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="E:/sdk/android-sdk_r24.4.1-windows/android-sdk-windows" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/assets/images/background" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -61,37 +66,21 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\background" />
       <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.demo.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\background" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
-    <configuration name="StaffMapperTest.insertStaffTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.test" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.StaffMapperTest" />
-      <option name="METHOD_NAME" value="insertStaffTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="StaffMapperTest.selectAllIdAndNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -156,6 +145,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StaffTaskMapperTest.selectTaskByFuzzStr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.StaffTaskMapperTest" />
+      <option name="METHOD_NAME" value="selectTaskByFuzzStr" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
@@ -165,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StaffTaskMapperTest.selectTaskByFuzzStr" />
         <item itemvalue="JUnit.StaffTaskMapperTest.selectAllPageTest" />
         <item itemvalue="JUnit.StaffTaskMapperTest.addTaskTest" />
         <item itemvalue="JUnit.StaffTaskMapperTest.selectAll" />
         <item itemvalue="JUnit.StaffMapperTest.selectAllIdAndNameTest" />
-        <item itemvalue="JUnit.StaffMapperTest.insertStaffTest" />
       </list>
     </recent_temporary>
   </component>
@@ -222,6 +227,12 @@
       <workItem from="1584515265311" duration="3706000" />
       <workItem from="1584518980520" duration="19894000" />
       <workItem from="1584548349638" duration="6240000" />
+      <workItem from="1584587526884" duration="846000" />
+      <workItem from="1584588375531" duration="1230000" />
+      <workItem from="1584589639495" duration="1366000" />
+      <workItem from="1584591008920" duration="21228000" />
+      <workItem from="1584616257596" duration="2996000" />
+      <workItem from="1584619638168" duration="1476000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -390,10 +401,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583572120061" />
-    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1584536923285">
+    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1584554810037">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584536923285" />
+    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584554810037" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1584155445779">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -402,38 +413,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="835" y="410" width="273" height="292" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583471720240" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1584621973788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973788" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1584621973788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973788" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1584621973788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973788" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1584621973788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1584554662395">
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973788" />
+    <state width="1877" height="281" key="GridCell.Tab.1.bottom" timestamp="1584621973789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662395" />
-    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973789" />
+    <state width="1877" height="281" key="GridCell.Tab.1.center" timestamp="1584621973789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
-    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973789" />
+    <state width="1877" height="281" key="GridCell.Tab.1.left" timestamp="1584621973789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
-    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1584554662394">
+    <state width="1877" height="281" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973789" />
+    <state width="1877" height="281" key="GridCell.Tab.1.right" timestamp="1584621973789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584554662394" />
+    <state width="1877" height="281" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584621973789" />
     <state x="600" y="217" key="NewModule_or_Project.wizard" timestamp="1584155447602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -474,6 +485,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbStaffTask.java</url>
           <line>230</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/index4.html</url>

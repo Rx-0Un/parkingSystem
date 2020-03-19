@@ -68,4 +68,17 @@ public class StaffTaskMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void selectTaskByFuzzStr(){
+        SqlSession sqlSession = getSqlSession();
+        try {
+            tbStaffTaskMapper = sqlSession.getMapper(TbStaffTaskMapper.class);
+            List<TbStaffTask> list = tbStaffTaskMapper.selectTaskByFuzzStr("1","","",10,1);
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i).toString());
+            }
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

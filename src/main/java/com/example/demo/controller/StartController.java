@@ -39,7 +39,6 @@ public class StartController {
         //总页面数等于任务记录总数对pageNum取余数
         int totalPage = staffTaskService.selectAll().size() / pageNum;
         model.addAttribute("allTask", list);
-        model.addAttribute("pageNum", pageNum);
         model.addAttribute("nowPage", 1);
         model.addAttribute("totalPage", totalPage);
         return "index-duty-statistics";

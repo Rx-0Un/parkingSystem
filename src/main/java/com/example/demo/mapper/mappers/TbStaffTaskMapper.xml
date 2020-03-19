@@ -86,12 +86,15 @@
         select *
         from tb_staff_task
         where staff_id=#{staff_id}
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
   </select>
     <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from tb_staff_task
   </select>
-  <insert id="addTask" parameterType="java.lang.String">
+    <insert id="addTask" parameterType="java.lang.String">
     INSERT INTO test.tb_staff_task (staff_id, description, status, starting_time, ending_time)
     VALUES (#{staff_id}, #{description,jdbcType=VARCHAR}, '01', #{starting_time}, null)
   </insert>
@@ -99,5 +102,24 @@
         select *
         from tb_staff_task
         limit #{pageNum} offset #{page}
+    </select>
+    <select id="selectTaskByFuzzStr" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_staff_task
+        where
+            staff_task_id like CONCAT('%',#{search},'%')
+            or staff_id like CONCAT('%',#{search},'%')
+            or description like CONCAT('%',#{search},'%')
+            or status like CONCAT('%',#{search},'%')
+        <if test="searchDate!=null and searchDate!=''">
+            and starting_time like CONCAT('%',#{searchDate},'%')
+        </if>
+        <if test="searchDate1!=null and searchDate1!=''">
+            and ending_time like CONCAT('%',#{searchDate1},'%')
+        </if>
+        order by staff_task_id
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
     </select>
 </mapper>

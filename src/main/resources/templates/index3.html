@@ -509,29 +509,128 @@
                         <div class="card-body">
                             <h5 class="card-title m-b-0">当前任务</h5>
                         </div>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">描述</th>
-                                <th scope="col">状态</th>
-                                <th scope="col">动作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="stat:${AllTask}">
-                                <td th:text="${stat.staffTaskId}">打卡上班</td>
-                                <td class="text-success">未开始</td>
-                                <td>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
-                                        <i class="mdi mdi-check"></i>
-                                    </a>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        </i><i class="mdi mdi-close"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="result" th:fragment="result">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">描述</th>
+                                    <th scope="col">状态</th>
+                                    <th scope="col">开始日期</th>
+                                    <th scope="col">动作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="stat:${AllTask}">
+                                    <td th:text="${stat.description}">打卡上班</td>
+                                    <td class="text-success" th:text="${stat.status}">未开始</td>
+                                    <td th:text="${#dates.format(stat.startingTime, 'yyyy-MM-dd')}">打卡上班</td>
+                                    <td>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="card-body border-top">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="zero_config_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item previous"
+                                                th:if="${nowPage-1 >=1}"
+                                                id="zero_config_previous"><a
+                                                                             aria-controls="zero_config"
+                                                                             data-dt-idx="0"
+                                                                             tabindex="0"
+                                                                             class="page-link"
+                                                                             th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|">上一页</a>
+                                            </li>
+                                            <li class="paginate_button page-item previous"><a
+                                                    aria-controls="zero_config"
+                                                    data-dt-idx="0"
+                                                    tabindex="0"
+                                                    class="page-link"
+                                                    th:onclick="|javascript : selectPage( '1' )|"
+                                            >首页</a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${nowPage-3 >=1}">
+                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link" th:text="${nowPage-3}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage-3}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${nowPage-2 >=1}">
+                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link" th:text="${nowPage-2}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage-2}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${nowPage-1 >=1}">
+                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link" th:text="${nowPage-1}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item active">
+                                                <a  aria-controls="zero_config" data-dt-idx="1"
+                                                   tabindex="0" class="page-link" th:text="${nowPage}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${nowPage+1 <=totalPage}">
+                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link" th:text="${nowPage+1}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${nowPage+2 <=totalPage}">
+                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link" th:text="${nowPage+2}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage+2}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${nowPage+3 <=totalPage}">
+                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link" th:text="${nowPage+3}"
+                                                   th:onclick="|javascript : selectPage( [[${nowPage+3}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item next">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:onclick="|javascript : selectPage([[${totalPage}]])|">尾页
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item next"
+                                                id="zero_config_next"
+                                                th:if="${nowPage<=totalPage&&totalPage!=1}"><a
+                                                                                               aria-controls="zero_config"
+                                                                                               data-dt-idx="2"
+                                                                                               tabindex="0"
+                                                                                               class="page-link"
+                                                                                               th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|">下一页</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -597,6 +696,8 @@
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down">出场流程</span></a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab"><span
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down">出场流程</span></a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#count" role="tab"><span
+                                    class="hidden-sm-up"></span> <span class="hidden-xs-down">计费流程</span></a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content tabcontent-border">
@@ -605,13 +706,15 @@
                                     <div class="card m-b-0">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
-                                                <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="">
+                                                <a data-toggle="collapse" data-target="#collapseOne"
+                                                   aria-expanded="true" aria-controls="collapseOne" class="">
                                                     <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
                                                     <span>公共停车场收费规则</span>
                                                 </a>
                                             </h5>
                                         </div>
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                             data-parent="#accordionExample" style="">
                                             <div class="card-body">
                                                 <p>公共停车场</p>
                                                 <p>公共停车场根据类型划分为:</p>
@@ -631,13 +734,15 @@
                                     <div class="card m-b-0 border-top">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="mb-0">
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                                   aria-expanded="false" aria-controls="collapseTwo">
                                                     <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
                                                     <span>私人停车场收费规则</span>
                                                 </a>
                                             </h5>
                                         </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="">
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                             data-parent="#accordionExample" style="">
                                             <div class="card-body">
                                                 <p>私人停车场</p>
                                                 <p>分为住宅区停车场和商业停车场两类</p>
@@ -655,13 +760,15 @@
                                     <div class="card m-b-0 border-top">
                                         <div class="card-header" id="headingThree">
                                             <h5 class="mb-0">
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                                   aria-expanded="false" aria-controls="collapseThree">
                                                     <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
                                                     <span>固定车位收费规则</span>
                                                 </a>
                                             </h5>
                                         </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="">
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                             data-parent="#accordionExample" style="">
                                             <div class="card-body">
                                                 <p>固定车位</p>
                                                 <p>固定车位是指根据用户需求,提前录入车牌车主信息，并缴纳一定的费用，</p>
@@ -675,6 +782,28 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="card m-b-0 border-top">
+                                        <div class="card-header" id="headingFour">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                                   aria-expanded="false" aria-controls="collapseThree">
+                                                    <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
+                                                    <span>月卡收费规则</span>
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingThree"
+                                             data-parent="#accordionExample" style="">
+                                            <div class="card-body">
+                                                <p>月卡</p>
+                                                <p>月卡是指根据用户需求,提前录入车牌信息，并缴纳一定的费用，</p>
+                                                <p>则可以在一定时期内任意进出或者停放指定停车场</p>
+                                                <p>在购买后具有一定的期限，到期后失效</p>
+                                                <p>经营者可以在上浮幅度为零，下浮幅度不限的范围内制定具体价格。</p>
+                                                <p>其按月停放收费标准可以在露天停车场收费标准的基础上上浮，但最高不超过20%。</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane  p-20" id="profile" role="tabpanel">
@@ -685,6 +814,11 @@
                             <div class="tab-pane p-20" id="messages" role="tabpanel">
                                 <div class="p-20">
                                     <img src="/assets/images/background/outer.PNG" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="tab-pane p-20" id="count" role="tabpanel">
+                                <div class="p-20">
+                                    <img src="/assets/images/background/count.PNG" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -723,6 +857,22 @@
 <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="assets/libs/chart/turning-series.js"></script>
 <script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script language="JavaScript" type="text/javascript">
+    function selectPage(page) {
+        $.ajax({
+            type: "get",
+            url: "/page",
+            data: "page=" + Number(page),
+            dataType: "text",
+            success: function (data) {
+                $(".result").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
+</script>
 </body>
 </body>
 </html>
