@@ -2,18 +2,15 @@ package com.example.demo.service;
 
 import com.example.demo.entity.TbStaff;
 import com.example.demo.mapper.TbStaffMapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service("StaffService")
 public class StaffService {
 
-    @Autowired
     private TbStaffMapper tbStaffMapper;
 
 
@@ -154,5 +151,9 @@ public class StaffService {
     public int deleteStaffById(Integer id) {
         int count = tbStaffMapper.deleteStaffById(id);
         return count;
+    }
+    @Autowired
+    public void setTbStaffMapper(TbStaffMapper tbStaffMapper) {
+        this.tbStaffMapper = tbStaffMapper;
     }
 }

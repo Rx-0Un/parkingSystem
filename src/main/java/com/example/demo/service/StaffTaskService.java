@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("StaffTaskService")
 public class StaffTaskService {
-    @Autowired
+
     TbStaffTaskMapper tbStaffTaskMapper;
 
     public int selectCountByStaffId(String staff_id) {
@@ -36,5 +36,10 @@ public class StaffTaskService {
     public int addTask(String staffId, String starting_time, String description)
     {
         return tbStaffTaskMapper.addTask(staffId, starting_time,description);
+    }
+
+    @Autowired
+    public void setTbStaffTaskMapper(TbStaffTaskMapper tbStaffTaskMapper) {
+        this.tbStaffTaskMapper = tbStaffTaskMapper;
     }
 }

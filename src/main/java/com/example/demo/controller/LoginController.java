@@ -5,6 +5,7 @@ import com.example.demo.entity.TbStaffTask;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StaffTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 /**
  * 职员操作相关
  */
-@Controller
+@Controller("LoginController")
 public class LoginController {
 
+
     private StaffService staffService;
+
     private StaffTaskService staffTaskService;
 
     /**

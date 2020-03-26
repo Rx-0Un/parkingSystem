@@ -4,6 +4,7 @@ import com.example.demo.entity.TbStaffTask;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StaffTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,9 @@ public class StartController {
     StaffService staffService;
     StaffTaskService staffTaskService;
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String test() {
+//        return "index3";
         return "authentication-login";
     }
 
