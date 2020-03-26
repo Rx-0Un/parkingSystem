@@ -21,7 +21,7 @@ public class StartController {
     StaffService staffService;
     StaffTaskService staffTaskService;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String test() {
 //        return "index3";
         return "authentication-login";
