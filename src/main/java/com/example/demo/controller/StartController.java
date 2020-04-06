@@ -46,6 +46,12 @@ public class StartController {
         return "index-duty-statistics";
     }
 
+    @RequestMapping(value = "/index-manage-parking")
+    public String parkingManage(Model model){
+
+        return "index-manage-parking";
+    }
+
     @Autowired
     public void setStaffTaskService(StaffTaskService staffTaskService) {
         this.staffTaskService = staffTaskService;

@@ -25,5 +25,8 @@ public interface TbUserMapper {
 
     TbUser[] selectAll();
 
-    int selectForLogin(@Param("user_name") String name, @Param("user_pwd") String pwd);
+    int selectForLogin(@Param("phone") String phone, @Param("user_pwd") String pwd);
+
+
+    int selectByUserPhone(@Param("phone") String phone);
 }

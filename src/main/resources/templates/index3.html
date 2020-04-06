@@ -148,10 +148,10 @@
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="mainpager.html" aria-expanded="false"><i
+                                                href="/index-manage-parking" aria-expanded="false"><i
                             class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场管理</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="javascript:void(0)" aria-expanded="false"><i
+                                                href="1" aria-expanded="false"><i
                             class="mdi mdi-receipt"></i><span class="hide-menu">缴费管理 </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="1" class="sidebar-link"><i
@@ -375,7 +375,6 @@
                                 <canvas class="flot-overlay" width="707" height="500"
                                         style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 566.2px; height: 400px;">
                                 </canvas>
-
                             </div>
                         </div>
                     </div>
@@ -542,11 +541,11 @@
                                             <li class="paginate_button page-item previous"
                                                 th:if="${nowPage-1 >=1}"
                                                 id="zero_config_previous"><a
-                                                                             aria-controls="zero_config"
-                                                                             data-dt-idx="0"
-                                                                             tabindex="0"
-                                                                             class="page-link"
-                                                                             th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|">上一页</a>
+                                                    aria-controls="zero_config"
+                                                    data-dt-idx="0"
+                                                    tabindex="0"
+                                                    class="page-link"
+                                                    th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|">上一页</a>
                                             </li>
                                             <li class="paginate_button page-item previous"><a
                                                     aria-controls="zero_config"
@@ -558,7 +557,7 @@
                                             </li>
                                             <li class="paginate_button page-item"
                                                 th:if="${nowPage-3 >=1}">
-                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage-3}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage-3}]] )|"
                                                 >
@@ -566,7 +565,7 @@
                                             </li>
                                             <li class="paginate_button page-item"
                                                 th:if="${nowPage-2 >=1}">
-                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage-2}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage-2}]] )|"
                                                 >
@@ -574,14 +573,14 @@
                                             </li>
                                             <li class="paginate_button page-item"
                                                 th:if="${nowPage-1 >=1}">
-                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage-1}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|"
                                                 >
                                                 </a>
                                             </li>
                                             <li class="paginate_button page-item active">
-                                                <a  aria-controls="zero_config" data-dt-idx="1"
+                                                <a aria-controls="zero_config" data-dt-idx="1"
                                                    tabindex="0" class="page-link" th:text="${nowPage}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage}]] )|"
                                                 >
@@ -589,7 +588,7 @@
                                             </li>
                                             <li class="paginate_button page-item"
                                                 th:if="${nowPage+1 <=totalPage}">
-                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage+1}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|"
                                                 >
@@ -597,7 +596,7 @@
                                             </li>
                                             <li class="paginate_button page-item"
                                                 th:if="${nowPage+2 <=totalPage}">
-                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage+2}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage+2}]] )|"
                                                 >
@@ -605,7 +604,7 @@
                                             </li>
                                             <li class="paginate_button page-item"
                                                 th:if="${nowPage+3 <=totalPage}">
-                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage+3}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage+3}]] )|"
                                                 >
@@ -620,11 +619,11 @@
                                             <li class="paginate_button page-item next"
                                                 id="zero_config_next"
                                                 th:if="${nowPage<=totalPage&&totalPage!=1}"><a
-                                                                                               aria-controls="zero_config"
-                                                                                               data-dt-idx="2"
-                                                                                               tabindex="0"
-                                                                                               class="page-link"
-                                                                                               th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|">下一页</a>
+                                                    aria-controls="zero_config"
+                                                    data-dt-idx="2"
+                                                    tabindex="0"
+                                                    class="page-link"
+                                                    th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|">下一页</a>
                                             </li>
                                         </ul>
                                     </div>

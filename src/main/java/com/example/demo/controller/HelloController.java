@@ -12,9 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class HelloController {
     @GetMapping("/test")
-    public ModelAndView test() {
+    public ModelAndView test(Model model) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("test");
+
         return mv;
     }
 }

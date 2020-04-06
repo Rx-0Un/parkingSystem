@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet"/>
+    <link href="assets/extra-libs/calendar/calendar.css" rel="stylesheet"/>
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<div id="main-wrapper">
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+                <a class="navbar-brand" href="index.html">
+                    <b class="logo-icon p-l-10">
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo"/>
+                    </b>
+                    <span class="logo-text">
+                            <img src="assets/images/logo-text.png" alt="homepage" class="light-logo"/>
+                        </span>
+                </a>
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                   data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                   aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <ul class="navbar-nav float-left mr-auto">
+                    <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light"
+                                                              href="javascript:void(0)" data-sidebartype="mini-sidebar"><i
+                            class="mdi mdi-menu font-24"></i></a></li>
+                </ul>
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                class="font-24 mdi mdi-comment-processing"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
+                             aria-labelledby="2">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="">
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-success btn-circle"><i
+                                                        class="ti-calendar"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Event today</h5>
+                                                    <span class="mail-desc">Just a reminder that event</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Settings</h5>
+                                                    <span class="mail-desc">You can customize this template</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Pavan kumar</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-danger btn-circle"><i
+                                                        class="fa fa-link"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Luanch Admin</h5>
+                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
+                                Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My
+                                Balance</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
+                                Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>
+                                Account Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i
+                                    class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="p-l-30 p-10"><a href="javascript:void(0)"
+                                                        class="btn btn-sm btn-success btn-rounded">View Profile</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav" class="p-t-30">
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="1"
+                                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                            class="hide-menu"> 首页</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="" aria-expanded="false"><i
+                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场管理</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">缴费管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">收费规则 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">月卡管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">车场数据设置 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">车辆管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">车主管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">车位管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">月卡管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">出入记录</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">员工管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="/index-staff" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">员工信息</span></a></li>
+                            <li class="sidebar-item"><a href="/index-duty-statistics" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">当班统计 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">任务详情</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">app管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">消息推送 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">用户管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表 </span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">
+                                    系统设置 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">停车场设置 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">系统日志查看 </span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="index-database.html" aria-expanded="false"><i
+                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 数据库查询</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                                    href="#real_time_info"
+                                                    role="tab"
+                                                    aria-selected="true"><span class="hidden-sm-up"></span> <span
+                                    class="hidden-xs-down"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">实时信息</font></font></span></a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#charge" role="tab"
+                                                    aria-selected="false"><span class="hidden-sm-up"></span> <span
+                                    class="hidden-xs-down"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">当班收费</font></font></span></a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#inside_info" role="tab"
+                                                    aria-selected="false"><span class="hidden-sm-up"></span> <span
+                                    class="hidden-xs-down"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">场内信息</font></font></span></a></li>
+                        </ul>
+                        <div class="tab-content tabcontent-border">
+                            <div class="tab-pane active show" id="real_time_info" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card border">
+                                            <div class="card-body">
+                                                <h5 class="card-title">场内停车数量变化</h5>
+                                                <div id="real-time" style="height: 250px; padding: 0px; position: relative;"><canvas class="flot-base" width="2016" height="800" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 18px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 113px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 212px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 310px; text-align: center;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 409px; text-align: center;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 507px; text-align: center;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 606px; text-align: center;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 704px; text-align: center;">70</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 803px; text-align: center;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 901px; text-align: center;">90</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 366px; left: 9px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 320px; left: 9px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 275px; left: 2px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 229px; left: 2px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 183px; left: 2px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 137px; left: 2px; text-align: right;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 92px; left: 2px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 46px; left: 2px; text-align: right;">35</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 2px; text-align: right;">40</div></div></div><canvas class="flot-overlay" width="2016" height="800" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas></div>
+                                                <p>Time between updates:
+                                                    <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="card">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title m-b-0">[[${#dates.format(new
+                                                        java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}]]</h4>
+                                                </div>
+                                                <ul class="list-style-none">
+                                                    <li class="card-body border-top">
+                                                        <a href="#" class="m-b-0 p-0">
+                                                            <div class="d-flex no-block">
+                                                                <i class="fa fa-user w-30px m-t-5"></i>
+                                                                <div>
+                                                                    <span class="font-bold">操作员</span>　　x
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="card-body border-top">
+                                                        <a href="#" class="m-b-0 p-0">
+                                                            <div class="d-flex no-block">
+                                                                <i class="fa fa-user w-30px m-t-5"></i>
+                                                                <div>
+                                                                    <span class="font-bold">上班时间</span>　x
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="card-body border-top">
+                                                        <a href="#" class="m-b-0 p-0">
+                                                            <div class="d-flex no-block">
+                                                                <i class="fa fa-user w-30px m-t-5"></i>
+                                                                <div>
+                                                                    <span class="font-bold">车位信息</span>　x
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="card-body border-top border-bottom">
+                                                        <a href="#" class="m-b-0 p-0">
+                                                            <div class="d-flex no-block">
+                                                                <i class="fa fa-user w-30px m-t-5"></i>
+                                                                <div>
+                                                                    <span class="font-bold">收费金额</span>　x
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="card-footer">
+                                                    <span class="text-muted float-right">April 14, 2016</span>
+                                                    <button type="button" class="btn btn-cyan btn-lg">手工录入</button>
+                                                    <button type="button" class="btn btn-success btn-lg">值班</button>
+                                                    <button type="button" class="btn btn-danger btn-lg">退出</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane p-20" id="charge" role="tabpanel">
+
+                            </div>
+                            <div class="tab-pane p-20" id="inside_info" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Turning-series chart</h5>
+                                                <div id="placeholder"
+                                                     style="height: 400px; padding: 0px; position: relative;">
+                                                    <canvas class="flot-base" width="1490" height="500"
+                                                            style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1192.4px; height: 400px;"></canvas>
+                                                    <div class="flot-text"
+                                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+                                                        <div class="flot-x-axis flot-x1-axis xAxis x1Axis"
+                                                             style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 35px; text-align: center;">
+                                                                1988
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 160px; text-align: center;">
+                                                                1990
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 286px; text-align: center;">
+                                                                1992
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 411px; text-align: center;">
+                                                                1994
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 537px; text-align: center;">
+                                                                1996
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 662px; text-align: center;">
+                                                                1998
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 788px; text-align: center;">
+                                                                2000
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 913px; text-align: center;">
+                                                                2002
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 1039px; text-align: center;">
+                                                                2004
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 119px; top: 381px; left: 1164px; text-align: center;">
+                                                                2006
+                                                            </div>
+                                                        </div>
+                                                        <div class="flot-y-axis flot-y1-axis yAxis y1Axis"
+                                                             style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 368px; left: 37px; text-align: right;">
+                                                                0
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 306px; left: 2px; text-align: right;">
+                                                                100000
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 245px; left: 2px; text-align: right;">
+                                                                200000
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 184px; left: 2px; text-align: right;">
+                                                                300000
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 123px; left: 2px; text-align: right;">
+                                                                400000
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 62px; left: 2px; text-align: right;">
+                                                                500000
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 1px; left: 2px; text-align: right;">
+                                                                600000
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <canvas class="flot-overlay" width="1490" height="500"
+                                                            style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1192.4px; height: 400px;"></canvas>
+                                                    <div class="legend">
+                                                        <div style="position: absolute; width: 65.6px; height: 128.8px; top: 14px; right: 19px; background-color: rgb(255, 255, 255); opacity: 0.85;"></div>
+                                                        <table style="position:absolute;top:14px;right:19px;;font-size:smaller;color:#545454">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(72,140,19);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">USA</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(27,85,192);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">Russia</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(218,75,15);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">UK</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(233,177,4);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">Germany</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(174,60,12);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">Denmark</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(57,112,15);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">Sweden</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="legendColorBox">
+                                                                    <div style="border:1px solid #ccc;padding:1px">
+                                                                        <div style="width:4px;height:0;border:5px solid rgb(21,68,153);overflow:hidden"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="legendLabel">Norway</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <p id="choices" class="m-t-20">
+                                                    <input type="checkbox" name="usa" checked="checked" id="idusa">
+                                                    <label for="idusa">USA</label>
+                                                    <input type="checkbox" name="russia" checked="checked" id="idrussia">
+                                                    <label for="idrussia">Russia</label>
+                                                    <input type="checkbox" name="uk" checked="checked" id="iduk">
+                                                    <label for="iduk">UK</label>
+                                                    <input type="checkbox" name="germany" checked="checked" id="idgermany">
+                                                    <label for="idgermany">Germany</label>
+                                                    <input type="checkbox" name="denmark" checked="checked" id="iddenmark">
+                                                    <label for="iddenmark">Denmark</label>
+                                                    <input type="checkbox" name="sweden" checked="checked" id="idsweden">
+                                                    <label for="idsweden">Sweden</label>
+                                                    <input type="checkbox" name="norway" checked="checked" id="idnorway">
+                                                    <label for="idnorway">Norway</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer text-center">
+        All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">zhichao</a>.
+    </footer>
+</div>
+</div>
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="dist/js/jquery.ui.touch-punch-improved.js"></script>
+<script src="dist/js/jquery-ui.min.js"></script>
+<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="dist/js/waves.js"></script>
+<script src="dist/js/sidebarmenu.js"></script>
+<script src="dist/js/custom.min.js"></script>
+<script src="assets/libs/moment/min/moment.min.js"></script>
+<script src="assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="dist/js/pages/calendar/cal-init.js"></script>
+<script src="assets/libs/chart/matrix.interface.js"></script>
+<script src="assets/libs/chart/excanvas.min.js"></script>
+<script src="assets/libs/flot/jquery.flot.js"></script>
+<script src="assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="assets/libs/flot/jquery.flot.time.js"></script>
+<script src="assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="assets/libs/chart/jquery.peity.min.js"></script>
+<script src="assets/libs/chart/matrix.charts.js"></script>
+<script src="assets/libs/chart/jquery.flot.pie.min.js"></script>
+<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<!--<script src="assets/libs/chart/turning-series.js"></script>-->
+<script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script src="js/index-manage-parking.js"></script>
+</body>
+</body>
+</html>
