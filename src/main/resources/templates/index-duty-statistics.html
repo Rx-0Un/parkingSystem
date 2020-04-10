@@ -421,40 +421,39 @@
                                                     <th class="sorting" tabindex="0" aria-controls="zero_config"
                                                         rowspan="1"
                                                         colspan="1" aria-label="Name: activate to sort column ascending"
-                                                        style="width: 100px;">任务编号
+                                                    >任务编号
                                                     </th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Position: activate to sort column descending"
-                                                        style="width: 100px;" aria-sort="ascending">员工id
+                                                        aria-sort="ascending">员工id
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="zero_config"
                                                         rowspan="1"
                                                         colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
-                                                        style="width: 500px;">任务描述
+                                                    >任务描述
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="zero_config"
                                                         rowspan="1"
                                                         colspan="1" aria-label="Age: activate to sort column ascending"
-                                                        style="width: 100px;">任务状态
+                                                    >任务状态
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="zero_config"
                                                         rowspan="1"
                                                         colspan="1"
                                                         aria-label="Start date: activate to sort column ascending"
-                                                        style="width: 125px;">发布时间
+                                                    >发布时间
                                                     </th>
                                                     <th class="sorting" tabindex="0" aria-controls="zero_config"
                                                         rowspan="1"
                                                         colspan="1"
                                                         aria-label="Salary: activate to sort column ascending"
-                                                        style="width: 125px;">完成时间
+                                                    >完成时间
                                                     </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                </tr>
                                                 <tr role="row" class="even" th:each="stat:${allTask}">
                                                     <td th:text="${stat.staffTaskId}">任务编号</td>
                                                     <td th:text="${stat.staffId}">员工id</td>
@@ -480,11 +479,11 @@
                                                             <li class="paginate_button page-item previous"
                                                                 th:if="${nowPage-1 >=1}"
                                                                 id="zero_config_previous"><a
-                                                                                             aria-controls="zero_config"
-                                                                                             data-dt-idx="0"
-                                                                                             tabindex="0"
-                                                                                             class="page-link"
-                                                                                             th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|">上一页</a>
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="0"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|">上一页</a>
                                                             </li>
                                                             <li class="paginate_button page-item previous"><a
                                                                     aria-controls="zero_config"
@@ -496,7 +495,7 @@
                                                             </li>
                                                             <li class="paginate_button page-item"
                                                                 th:if="${nowPage-3 >=1}">
-                                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                                    tabindex="0" class="page-link" th:text="${nowPage-3}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage-3}]] )|"
                                                                 >
@@ -504,7 +503,7 @@
                                                             </li>
                                                             <li class="paginate_button page-item"
                                                                 th:if="${nowPage-2 >=1}">
-                                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                                    tabindex="0" class="page-link" th:text="${nowPage-2}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage-2}]] )|"
                                                                 >
@@ -512,14 +511,14 @@
                                                             </li>
                                                             <li class="paginate_button page-item"
                                                                 th:if="${nowPage-1 >=1}">
-                                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                                    tabindex="0" class="page-link" th:text="${nowPage-1}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|"
                                                                 >
                                                                 </a>
                                                             </li>
                                                             <li class="paginate_button page-item active">
-                                                                <a  aria-controls="zero_config" data-dt-idx="1"
+                                                                <a aria-controls="zero_config" data-dt-idx="1"
                                                                    tabindex="0" class="page-link" th:text="${nowPage}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage}]] )|"
                                                                 >
@@ -527,7 +526,7 @@
                                                             </li>
                                                             <li class="paginate_button page-item"
                                                                 th:if="${nowPage+1 <=totalPage}">
-                                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                                    tabindex="0" class="page-link" th:text="${nowPage+1}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|"
                                                                 >
@@ -535,7 +534,7 @@
                                                             </li>
                                                             <li class="paginate_button page-item"
                                                                 th:if="${nowPage+2 <=totalPage}">
-                                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                                    tabindex="0" class="page-link" th:text="${nowPage+2}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage+2}]] )|"
                                                                 >
@@ -543,7 +542,7 @@
                                                             </li>
                                                             <li class="paginate_button page-item"
                                                                 th:if="${nowPage+3 <=totalPage}">
-                                                                <a  aria-controls="zero_config" data-dt-idx="2"
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
                                                                    tabindex="0" class="page-link" th:text="${nowPage+3}"
                                                                    th:onclick="|javascript : selectPage( [[${nowPage+3}]] )|"
                                                                 >
@@ -558,11 +557,11 @@
                                                             <li class="paginate_button page-item next"
                                                                 id="zero_config_next"
                                                                 th:if="${nowPage<=totalPage&&totalPage!=1}"><a
-                                                                                                               aria-controls="zero_config"
-                                                                                                               data-dt-idx="2"
-                                                                                                               tabindex="0"
-                                                                                                               class="page-link"
-                                                                                                               th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|">下一页</a>
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="2"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectPage( [[${nowPage+1}]] )|">下一页</a>
                                                             </li>
                                                         </ul>
                                                     </div>

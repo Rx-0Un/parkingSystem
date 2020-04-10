@@ -4,14 +4,12 @@ import com.example.demo.entity.TbStaffTask;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StaffTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 此controller用于完成界面跳转
@@ -47,9 +45,32 @@ public class StartController {
     }
 
     @RequestMapping(value = "/index-manage-parking")
-    public String parkingManage(Model model){
-
+    public String parkingManage(Model model) {
         return "index-manage-parking";
+    }
+
+    @RequestMapping(value = "/index_parking_lot_setting")
+    public String parkingLotSetting() {
+        return "index-parking-lot-setting";
+    }
+
+    @RequestMapping(value = "/index-charge-rule")
+    public String chargeRule() {
+        return "index-charge-rule";
+    }
+
+    @RequestMapping(value = "/index-order-search")
+    public String indexOrderSearch() {
+        return "index-order-search";
+    }
+
+    @RequestMapping(value = "/index-car-manage")
+    public String indexCarManage(){
+        return "index-car-manage";
+    }
+    @RequestMapping(value = "/index-app-user-manage")
+    public String appUserManage(){
+        return "index-app-user-manage";
     }
 
     @Autowired

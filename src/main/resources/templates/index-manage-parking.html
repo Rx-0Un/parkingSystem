@@ -252,18 +252,110 @@
                                         <div class="card border">
                                             <div class="card-body">
                                                 <h5 class="card-title">场内停车数量变化</h5>
-                                                <div id="real-time" style="height: 250px; padding: 0px; position: relative;"><canvas class="flot-base" width="2016" height="800" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 18px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 113px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 212px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 310px; text-align: center;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 409px; text-align: center;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 507px; text-align: center;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 606px; text-align: center;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 704px; text-align: center;">70</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 803px; text-align: center;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 91px; top: 380px; left: 901px; text-align: center;">90</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 366px; left: 9px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 320px; left: 9px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 275px; left: 2px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 229px; left: 2px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 183px; left: 2px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 137px; left: 2px; text-align: right;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 92px; left: 2px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 46px; left: 2px; text-align: right;">35</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 2px; text-align: right;">40</div></div></div><canvas class="flot-overlay" width="2016" height="800" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas></div>
+                                                <div id="real-time"
+                                                     style="height: 250px; padding: 0px; position: relative;">
+                                                    <canvas class="flot-base" width="2016" height="800"
+                                                            style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas>
+                                                    <div class="flot-text"
+                                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+                                                        <div class="flot-x-axis flot-x1-axis xAxis x1Axis"
+                                                             style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 18px; text-align: center;">
+                                                                0
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 113px; text-align: center;">
+                                                                10
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 212px; text-align: center;">
+                                                                20
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 310px; text-align: center;">
+                                                                30
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 409px; text-align: center;">
+                                                                40
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 507px; text-align: center;">
+                                                                50
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 606px; text-align: center;">
+                                                                60
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 704px; text-align: center;">
+                                                                70
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 803px; text-align: center;">
+                                                                80
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; max-width: 91px; top: 380px; left: 901px; text-align: center;">
+                                                                90
+                                                            </div>
+                                                        </div>
+                                                        <div class="flot-y-axis flot-y1-axis yAxis y1Axis"
+                                                             style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 366px; left: 9px; text-align: right;">
+                                                                0
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 320px; left: 9px; text-align: right;">
+                                                                5
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 275px; left: 2px; text-align: right;">
+                                                                10
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 229px; left: 2px; text-align: right;">
+                                                                15
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 183px; left: 2px; text-align: right;">
+                                                                20
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 137px; left: 2px; text-align: right;">
+                                                                25
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 92px; left: 2px; text-align: right;">
+                                                                30
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 46px; left: 2px; text-align: right;">
+                                                                35
+                                                            </div>
+                                                            <div class="flot-tick-label tickLabel"
+                                                                 style="position: absolute; top: 0px; left: 2px; text-align: right;">
+                                                                40
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <canvas class="flot-overlay" width="2016" height="800"
+                                                            style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas>
+                                                </div>
                                                 <p>Time between updates:
-                                                    <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds
+                                                    <input id="updateInterval" type="text" value=""
+                                                           style="text-align: right; width:5em"> milliseconds
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-
                                         <div class="card">
                                             <div class="card">
                                                 <div class="card-body">
+                                                     <h4 class="card-title m-b-0">当前时间  </h4>
                                                     <h4 class="card-title m-b-0">[[${#dates.format(new
                                                         java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}]]</h4>
                                                 </div>
@@ -310,16 +402,352 @@
                                                     </li>
                                                 </ul>
                                                 <div class="card-footer">
-                                                    <span class="text-muted float-right">April 14, 2016</span>
+                                                    <span class="text-muted float-right">
+                                                        <button type="button" class="btn btn-success btn-lg">值班</button>
+                                                        <button type="button" class="btn btn-danger btn-lg">下班</button>
+                                                    </span>
                                                     <button type="button" class="btn btn-cyan btn-lg">手工录入</button>
-                                                    <button type="button" class="btn btn-success btn-lg">值班</button>
-                                                    <button type="button" class="btn btn-danger btn-lg">退出</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">出场记录</h5>
+                                            </div>
+                                            <table class="table table-striped table-bordered dataTable"
+                                                   role="grid" aria-describedby="zero_config_info">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="名称：激活以对列降序排序" style="width: 100px;"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">出场时间</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="位置：激活以对列升序排序" style="width: 100px;">
+                                                        <font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">车牌</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="Office：激活以对列升序进行排序"
+                                                        style="width: 100px;">
+                                                        <font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">车类型</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="年龄：激活以对列升序排序" style="width: 100px;">
+                                                        <font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">车主</font></font></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">入场记录</h5>
+                                            </div>
+                                            <table id="zero_config" class="table table-striped table-bordered dataTable"
+                                                   role="grid" aria-describedby="zero_config_info">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="名称：激活以对列降序排序" style="width: 100px;"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">入场时间</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="位置：激活以对列升序排序" style="width: 100px;">
+                                                        <font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">车牌</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="Office：激活以对列升序进行排序"
+                                                        style="width: 100px;">
+                                                        <font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">车类型</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="年龄：激活以对列升序排序" style="width: 100px;">
+                                                        <font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">车主</font></font></th>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="开始日期：激活以对列升序进行排序" style="width: 100px;">
+                                                        <font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">收费</font></font></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2008/11/28</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2009/10/09</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2008/11/28</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2009/10/09</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2008/11/28</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2009/10/09</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2008/11/28</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2009/10/09</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">沙里爱里</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">会计</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">东京</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">33</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2008/11/28</font></font>
+                                                    </td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="sorting_1"><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">当归拉莫斯（Angelica
+                                                        Ramos）</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">首席执行官（CEO）</font></font>
+                                                    </td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">伦敦</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">47</font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">2009/10/09</font></font>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane p-20" id="charge" role="tabpanel">
 
@@ -480,17 +908,22 @@
                                                 <p id="choices" class="m-t-20">
                                                     <input type="checkbox" name="usa" checked="checked" id="idusa">
                                                     <label for="idusa">USA</label>
-                                                    <input type="checkbox" name="russia" checked="checked" id="idrussia">
+                                                    <input type="checkbox" name="russia" checked="checked"
+                                                           id="idrussia">
                                                     <label for="idrussia">Russia</label>
                                                     <input type="checkbox" name="uk" checked="checked" id="iduk">
                                                     <label for="iduk">UK</label>
-                                                    <input type="checkbox" name="germany" checked="checked" id="idgermany">
+                                                    <input type="checkbox" name="germany" checked="checked"
+                                                           id="idgermany">
                                                     <label for="idgermany">Germany</label>
-                                                    <input type="checkbox" name="denmark" checked="checked" id="iddenmark">
+                                                    <input type="checkbox" name="denmark" checked="checked"
+                                                           id="iddenmark">
                                                     <label for="iddenmark">Denmark</label>
-                                                    <input type="checkbox" name="sweden" checked="checked" id="idsweden">
+                                                    <input type="checkbox" name="sweden" checked="checked"
+                                                           id="idsweden">
                                                     <label for="idsweden">Sweden</label>
-                                                    <input type="checkbox" name="norway" checked="checked" id="idnorway">
+                                                    <input type="checkbox" name="norway" checked="checked"
+                                                           id="idnorway">
                                                     <label for="idnorway">Norway</label>
                                                 </p>
                                             </div>

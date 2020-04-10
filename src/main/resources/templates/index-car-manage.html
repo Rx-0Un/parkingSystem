@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet"/>
+    <link href="assets/extra-libs/calendar/calendar.css" rel="stylesheet"/>
+    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<div id="main-wrapper">
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+                <a class="navbar-brand" href="index.html">
+                    <b class="logo-icon p-l-10">
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo"/>
+                    </b>
+                    <span class="logo-text">
+                            <img src="assets/images/logo-text.png" alt="homepage" class="light-logo"/>
+                        </span>
+                </a>
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                   data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                   aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <ul class="navbar-nav float-left mr-auto">
+                    <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light"
+                                                              href="javascript:void(0)" data-sidebartype="mini-sidebar"><i
+                            class="mdi mdi-menu font-24"></i></a></li>
+                </ul>
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                class="font-24 mdi mdi-comment-processing"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
+                             aria-labelledby="2">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="">
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-success btn-circle"><i
+                                                        class="ti-calendar"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Event today</h5>
+                                                    <span class="mail-desc">Just a reminder that event</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Settings</h5>
+                                                    <span class="mail-desc">You can customize this template</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Pavan kumar</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10">
+                                                <span class="btn btn-danger btn-circle"><i
+                                                        class="fa fa-link"></i></span>
+                                                <div class="m-l-10">
+                                                    <h5 class="m-b-0">Luanch Admin</h5>
+                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
+                                Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My
+                                Balance</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
+                                Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>
+                                Account Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i
+                                    class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="p-l-30 p-10"><a href="javascript:void(0)"
+                                                        class="btn btn-sm btn-success btn-rounded">View Profile</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav" class="p-t-30">
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                            class="hide-menu"> 首页</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/index-manage-parking" aria-expanded="false"><i
+                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场管理</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="1" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">缴费管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="/index-charge-rule" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">收费规则 </span></a></li>
+                            <li class="sidebar-item"><a href="#" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
+                            <li class="sidebar-item"><a href="#" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">车场数据设置 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">车辆管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">车主管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">车位管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">月卡管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">出入记录</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">员工管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="/index-staff" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">员工信息</span></a></li>
+                            <li class="sidebar-item"><a href="/index-duty-statistics" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">当班统计 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">任务详情</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">app管理 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">消息推送 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">用户管理 </span></a></li>
+                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表 </span></a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                            class="mdi mdi-receipt"></i><span class="hide-menu">
+                                    系统设置 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="/index_parking_lot_setting" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">停车场设置 </span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">车场数据>车辆管理</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-1">
+                            <label>数量</label>
+                            <select class="select2 form-control custom-select select2-hidden-accessible"
+                                    style="width: 100%; height:33px;" data-select2-id="1"
+                                    tabindex="-1" aria-hidden="true">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <label>车辆类型</label>
+                            <select class="select2 form-control custom-select select2-hidden-accessible"
+                                    style="width: 100%; height:33px;" data-select2-id="1"
+                                    tabindex="-1" aria-hidden="true">
+                                <option>全体</option>
+                                <option>固定车</option>
+                                <option>临时车</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <label><font color="white">关键字</font></label>
+                            <select class="select2 form-control custom-select select2-hidden-accessible"
+                                    style="width: 100%; height:33px;" data-select2-id="1"
+                                    tabindex="-1" aria-hidden="true">
+                                <option>全体</option>
+                                <option>车牌号</option>
+                                <option>车辆颜色</option>
+                                <option>汽车品牌</option>
+                                <option>车主</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <label>关键字</label>
+                            <input class="form-control" name="Keyword" placeholder="" value=""
+                                   type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="result">
+                        <div class="card-body">
+                            <table class="table table-striped table-bordered dataTable" role="grid"
+                                   aria-describedby="zero_config_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                        aria-label="Name: activate to sort column ascending">汽车编号
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                        aria-label="Salary: activate to sort column ascending">汽车类型
+                                    </th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                        colspan="1"
+                                        aria-label="Position: activate to sort column descending" aria-sort="ascending">
+                                        车牌号码
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                        aria-label="Start date: activate to sort column ascending">车主
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                        aria-label="Office: activate to sort column ascending">汽车颜色
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                        aria-label="Age: activate to sort column ascending">汽车品牌
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr role="row" class="even">
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>中午呢</td>
+                                    <td>未完成</td>
+                                    <td>Thu Mar 19 04:39:42 GMT+08:00 2020</td>
+                                    <td></td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td>3</td>
+                                    <td>1</td>
+                                    <td>中午呢</td>
+                                    <td>01</td>
+                                    <td>Wed Mar 18 08:00:00 GMT+08:00 2020</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr role="row" class="even">
+                                    <td>11</td>
+                                    <td>1</td>
+                                    <td>中午</td>
+                                    <td>01</td>
+                                    <td>Thu Mar 19 07:53:27 GMT+08:00 2020</td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-body border-top">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_info" id="zero_config_info" role="status" aria-live="polite">
+                                        Showing 1 to 57 of 57 entries
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="zero_config_paginate">
+                                        <ul class="pagination">
+
+                                            <li class="paginate_button page-item previous"><a
+                                                    aria-controls="zero_config"
+                                                    data-dt-idx="0" tabindex="0"
+                                                    class="page-link"
+                                                    onclick="javascript : selectPage( '1' )">首页</a>
+                                            </li>
+
+
+                                            <li class="paginate_button page-item active">
+                                                <a aria-controls="zero_config" data-dt-idx="1" tabindex="0"
+                                                   class="page-link" onclick="javascript : selectPage( [[1]] )">1</a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                   class="page-link" onclick="javascript : selectPage( [[2]] )">2</a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                   class="page-link" onclick="javascript : selectPage( [[3]] )">3</a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                   class="page-link" onclick="javascript : selectPage( [[4]] )">4</a>
+                                            </li>
+                                            <li class="paginate_button page-item next">
+                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                   class="page-link" onclick="javascript : selectPage([[12]])">尾页
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item next" id="zero_config_next"><a
+                                                    aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                    class="page-link" onclick="javascript : selectPage( [[2]] )">下一页</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center">
+            All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">zhichao</a>.
+        </footer>
+    </div>
+</div>
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="dist/js/jquery.ui.touch-punch-improved.js"></script>
+<script src="dist/js/jquery-ui.min.js"></script>
+<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="dist/js/waves.js"></script>
+<script src="dist/js/sidebarmenu.js"></script>
+<script src="dist/js/custom.min.js"></script>
+<script src="assets/libs/moment/min/moment.min.js"></script>
+<script src="assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="dist/js/pages/calendar/cal-init.js"></script>
+<script src="assets/libs/chart/matrix.interface.js"></script>
+<script src="assets/libs/chart/excanvas.min.js"></script>
+<script src="assets/libs/flot/jquery.flot.js"></script>
+<script src="assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="assets/libs/flot/jquery.flot.time.js"></script>
+<script src="assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="assets/libs/chart/jquery.peity.min.js"></script>
+<script src="assets/libs/chart/matrix.charts.js"></script>
+<script src="assets/libs/chart/jquery.flot.pie.min.js"></script>
+<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="assets/libs/chart/turning-series.js"></script>
+<script src="dist/js/pages/chart/chart-page-init.js"></script>
+</body>
+</body>
+</html>
