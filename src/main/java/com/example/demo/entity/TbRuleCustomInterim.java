@@ -193,4 +193,15 @@ public class TbRuleCustomInterim {
     public void setUseDate(Date useDate) {
         this.useDate = useDate;
     }
+
+    @Override
+    public String toString() {
+        return "TbRuleCustomInterim{" +
+                "interimRuleId=" + interimRuleId +
+                ", ruleType='" + ruleType + '\'' +
+                ", money=" + money +
+                ", carType='" + carType + '\'' +
+                ", useDate=" + useDate +
+                '}';
+    }
 }

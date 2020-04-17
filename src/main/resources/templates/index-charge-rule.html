@@ -232,7 +232,7 @@
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"><span
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down"><font
                                     style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">私人停车场规则</font></font></span></a>
+                                    style="vertical-align: inherit;" id="personRule">私人停车场规则</font></font></span></a>
                             </li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab"><span
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down"><font
@@ -241,9 +241,11 @@
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#fixedParking"
                                                     role="tab"><span
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down"><font
-                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>固定车位规则</font></span></a>
+                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;"
+                                                                           id="fixedRule">固定车位规则</font></font></span></a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#interimParking" role="tab"><span
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#interimParking"
+                                                    role="tab"><span
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down"><font
                                     style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>临时规则</font></span></a>
                             </li>
@@ -556,69 +558,221 @@
                                 </div>
                             </div>
                             <div class="tab-pane  p-20" id="profile" role="tabpanel">
-                                <div class="p-20">
-                                    <img src="assets/images/background/img4.jpg" class="img-fluid">
-                                    <p class="m-t-10">And is full of waffle to It has multiple paragraphs and is full of
-                                        waffle to pad out the comment. Usually, you just wish these sorts of comments
-                                        would come to an end.multiple paragraphs and is full of waffle to pad out the
-                                        comment..</p>
-                                    <div class="col-1">
-                                        <input type="text" value="小车"
-                                               style="border-width: 0; background-color: transparent;">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label>车辆类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="person_car_type">
+                                                    <option>小车</option>
+                                                    <option>大型车</option>
+                                                    <option>超大型车</option>
+                                                    <option>其他</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>规则类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true">
+                                                    <option>全天</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="person_car_money">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label><font color="white">描述</font></label>
+                                                <button type="button" class="btn btn-info" id="add1">添加</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="PersonResult" th:fragment="PersonResult">
+                                        <div class="card-body">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>
+                                                        编号
+                                                    </th>
+                                                    <th>
+                                                        车辆类型
+                                                    </th>
+                                                    <th>金额
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody th:each="stat1:${PersonResult}">
+                                                <tr>
+                                                    <th th:text="${stat1.personRuleId}"></th>
+                                                    <th th:text="${stat1.carType}"></th>
+                                                    <th th:text="${stat1.money}"></th>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane p-20" id="messages" role="tabpanel">
-                                <div class="p-20">
-                                    <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad
-                                        out the comment. Usually, you just wish these sorts of comments would come to an
-                                        end.multiple paragraphs and is full of waffle to pad out the comment..</p>
-                                    <img src="assets/images/background/img4.jpg" class="img-fluid">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label>类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="custom_car_type">
+                                                    <option value="小车">小车</option>
+                                                    <option value="大型车">大型车</option>
+                                                    <option value="超大型车">超大型车</option>
+                                                    <option value="其他">其他</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>按规则类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="custom_rule_type">
+                                                    <option>全天</option>
+                                                    <option>高峰前一个小时</option>
+                                                    <option>高峰普通时段</option>
+                                                    <option>非高峰时段</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="custom_money">
+                                            </div>
+                                            <div class="col-md-３">
+                                                <label>描述</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="custom_description">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label><font color="white">描述</font></label>
+                                                <button type="button" class="btn btn-info" id="add4">添加
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body border-top">
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label>按车辆类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="custom_search_car_type">
+                                                    <option>全体</option>
+                                                    <option>小车</option>
+                                                    <option>大型车</option>
+                                                    <option>超大型车</option>
+                                                    <option>其他</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>按规则类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="custom_search_rule_type">
+                                                    <option>全体</option>
+                                                    <option>全天</option>
+                                                    <option>高峰前一个小时</option>
+                                                    <option>高峰普通时段</option>
+                                                    <option>非高峰时段</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div th:fragment="CustomResult" class="CustomResult">
+                                        <div class="card-body">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 50px">
+                                                        编号
+                                                    </th>
+                                                    <th style="width: 50px">
+                                                        车辆类型
+                                                    </th>
+                                                    <th style="width: 50px">
+                                                        规则类型
+                                                    </th>
+                                                    <th style="width: 100px">金额
+                                                    </th>
+                                                    <th style="width: 150px">描述
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody th:each="stat4:${CustomResult}">
+                                                <tr>
+                                                    <th th:text="${stat4.ruleId}"></th>
+                                                    <th th:text="${stat4.carType}"></th>
+                                                    <th th:text="${stat4.ruleType}"></th>
+                                                    <th th:text="${stat4.money}"></th>
+                                                    <th th:text="${stat4.zoneType}"></th>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane p-20" id="fixedParking" role="tabpanel">
                                 <div class="card">
-                                    <div th:fragment="" class="">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-md-3">
-                                                    <label>类型</label>
-                                                    <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
-                                                        <option>小车</option>
-                                                        <option>大型车</option>
-                                                        <option>超大型车</option>
-                                                        <option>其他</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>周期</label>
-                                                    <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
-                                                        <option>一个月</option>
-                                                        <option>半年</option>
-                                                        <option>全年</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>金额</label>
-                                                    <input class="form-control" name="Keyword" placeholder="" value=""
-                                                           type="text">
-                                                </div>
-                                                <div class="col-md-３">
-                                                    <label>描述</label>
-                                                    <input class="form-control" name="Keyword" placeholder="" value=""
-                                                           type="text">
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <label><font color="white">描述</font></label>
-                                                    <button type="button" class="btn btn-info btn-md">添加</button>
-                                                </div>
-
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label>类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="fixed_car_type">
+                                                    <option value="小车">小车</option>
+                                                    <option value="大型车">大型车</option>
+                                                    <option value="超大型车">超大型车</option>
+                                                    <option value="其他">其他</option>
+                                                </select>
                                             </div>
+                                            <div class="col-md-3">
+                                                <label>周期</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="fixed_charge_cycle">
+                                                    <option value="一个月">一个月</option>
+                                                    <option value="半年">半年</option>
+                                                    <option value="全年">全年</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="fixed_money">
+                                            </div>
+                                            <div class="col-md-３">
+                                                <label>描述</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="fixed_description">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label><font color="white">描述</font></label>
+                                                <button type="button" class="btn btn-info" id="add2">添加
+                                                </button>
+                                            </div>
+
                                         </div>
+                                    </div>
+                                    <div th:fragment="FixedResult" class="FixedResult">
                                         <div class="card-body">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
@@ -638,9 +792,15 @@
                                                     </th>
                                                 </tr>
                                                 </thead>
-
-                                                <tfoot>
-                                                </tfoot>
+                                                <tbody th:each="stat2:${FixedResult}">
+                                                <tr>
+                                                    <th th:text="${stat2.fixedRuleId}"></th>
+                                                    <th th:text="${stat2.carType}"></th>
+                                                    <th th:text="${stat2.chargeCycle}"></th>
+                                                    <th th:text="${stat2.money}"></th>
+                                                    <th th:text="${stat2. description}"></th>
+                                                </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -648,41 +808,99 @@
                             </div>
                             <div class="tab-pane p-20" id="interimParking" role="tabpanel">
                                 <div class="card">
-                                    <div th:fragment="" class="">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-md-2">
-                                                    <label>类型</label>
-                                                    <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
-                                                        <option>小车</option>
-                                                        <option>大型车</option>
-                                                        <option>超大型车</option>
-                                                        <option>其他</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>时间</label>
-                                                    <input type="text" class="form-control form-control" id="interimDate"
-                                                           　placeholder="请选择开始日期">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>金额</label>
-                                                    <input class="form-control" name="Keyword" placeholder="" value=""
-                                                           type="text">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>描述</label>
-                                                    <input class="form-control" name="Keyword" placeholder="" value=""
-                                                           type="text">
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <label><font color="white">描述</font></label>
-                                                    <button type="button" class="btn btn-info btn-md">添加</button>
-                                                </div>
+                                    <div class="card-body border-bottom">
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label>车辆类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="interim_car_type">
+                                                    <option>小车</option>
+                                                    <option>大型车</option>
+                                                    <option>超大型车</option>
+                                                    <option>其他</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>规则类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="interim_rule_type">
+                                                    <option>全天</option>
+                                                    <option>高峰前一个小时</option>
+                                                    <option>高峰普通时段</option>
+                                                    <option>非高峰时段</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>时间</label>
+                                                <input type="text" class="form-control form-control"
+                                                       　placeholder="请选择开始日期" id="interim_use_date">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="interim_money">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label><font color="white">描述</font></label>
+                                                <button type="button" class="btn btn-info btn-md" id="add3">添加
+                                                </button>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label>展示数量</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="interim_search_number">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>按车辆类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="interim_search_car_type">
+                                                    <option>全体</option>
+                                                    <option>小车</option>
+                                                    <option>大型车</option>
+                                                    <option>超大型车</option>
+                                                    <option>其他</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>按规则类型</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="interim_search_rule_type">
+                                                    <option>全体</option>
+                                                    <option>全天</option>
+                                                    <option>高峰前一个小时</option>
+                                                    <option>高峰普通时段</option>
+                                                    <option>非高峰时段</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>时间</label>
+                                                <input type="text" class="form-control form-control"
+                                                       　placeholder="请选择开始日期" id="interim_search_date">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder=""
+                                                       value=""
+                                                       type="text" id="interim_search_money">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div th:fragment="InterimResult" class="InterimResult">
                                         <div class="card-body">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
@@ -690,21 +908,135 @@
                                                     <th style="width: 50px">
                                                         编号
                                                     </th>
-                                                    <th style="width: 50px">
+                                                    <th style="width: 75px">
                                                         车辆类型
                                                     </th>
-                                                    <th style="width: 50px">
+                                                    <th style="width: 75px">规则类型
+                                                    </th>
+                                                    <th style="width: 50px">金额
+                                                    </th>
+                                                    <th style="width: 75px">
                                                         使用时间
-                                                    </th>
-                                                    <th style="width: 100px">金额
-                                                    </th>
-                                                    <th style="width: 150px">描述
                                                     </th>
                                                 </tr>
                                                 </thead>
-                                                <tfoot>
-                                                </tfoot>
+                                                <tbody th:each="stat3:${InterimResult}">
+                                                <tr>
+                                                    <th th:text="${stat3.interimRuleId}"></th>
+                                                    <th th:text="${stat3.carType}"></th>
+                                                    <th th:text="${stat3.ruleType}"></th>
+                                                    <th th:text="${stat3.money}"></th>
+                                                    <th th:text="${#dates.format(stat3.useDate, 'yyyy-MM-dd')}"></th>
+                                                </tr>
+                                                </tbody>
                                             </table>
+                                        </div>
+                                        <div class="card-body border-top">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <ul class="pagination">
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage-1 >=1}"
+                                                            id="zero_config_previous"><a
+                                                                aria-controls="zero_config"
+                                                                data-dt-idx="0"
+                                                                tabindex="0"
+                                                                class="page-link"
+                                                                th:onclick="|javascript : selectPage( [[${InterimNowPage-1}]] )|"
+                                                        >上一页</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item">
+                                                            <a
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="0"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectPage( '1' )|"
+                                                            >首页</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage-3>=1}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage-3}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage-3}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage-2>=1}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage-2}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage-2}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage-1>=1}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage-1}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage-1}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item active">
+                                                            <a aria-controls="zero_config" data-dt-idx="1"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage+1 <=InterimTotalPage}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage+1}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage+1}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage+2 <=InterimTotalPage}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage+2}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage+2}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${InterimNowPage+3 <=InterimTotalPage}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${InterimNowPage+3}"
+                                                               th:onclick="|javascript : selectPage( [[${InterimNowPage+3}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:onclick="|javascript : selectPage( [[${InterimTotalPage}]] )|"
+                                                            >尾页
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            id="zero_config_next"
+                                                            th:if="${InterimNowPage<InterimTotalPage&&InterimTotalPage!=1}">
+                                                            <a
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="2"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectPage( [[${InterimNowPage+1}]] )|"
+                                                            >下一页</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -712,7 +1044,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
@@ -756,6 +1087,18 @@
                                             aria-hidden="true" id="plate_type">
                                         <option>临时车</option>
                                         <option>固定车</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 m-t-15 text-center">选择区域:</label>
+                                <div class="col-md-9">
+                                    <select class="select2 form-control m-t-15"
+                                            style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
+                                            aria-hidden="true" id="zone_type">
+                                        <option>一类地区</option>
+                                        <option>二类地区</option>
+                                        <option>三类地区</option>
                                     </select>
                                 </div>
                             </div>
@@ -819,10 +1162,24 @@
                                 </tr>
                                 </thead>
                                 <tbody class="TestResult" th:fragment="TestResult">
-                                <tr th:each="stat:${TestResult}">
-                                    <td th:text="${#dates.format(stat.date, 'yyyy年M月d日H时m分s秒')}+'到'+${#dates.format(stat.date1, 'yyyy年M月d日H时m分s秒')}"></td>
-                                    <td th:text="${stat.total}"></td>
-                                </tr>
+                                <div th:if="${time_type=='按小时'}">
+                                    <tr th:each="stat:${TestResult}">
+                                        <td th:text="${#dates.format(stat.date, 'yyyy年M月d日H时m分s秒')}+'到'+${#dates.format(stat.date1, 'yyyy年M月d日H时m分s秒')}"></td>
+                                        <td th:text="${stat.total}"></td>
+                                    </tr>
+                                </div>
+                                <div th:if="${time_type=='按天'}">
+                                    <tr th:each="stat:${TestResult}">
+                                        <td th:text="${stat.month}"></td>
+                                        <td th:text="${stat.total}"></td>
+                                    </tr>
+                                </div>
+                                <div th:if="${time_type=='按月'}">
+                                    <tr th:each="stat:${TestResult}">
+                                        <td th:text="${stat.year}"></td>
+                                        <td th:text="${stat.total}"></td>
+                                    </tr>
+                                </div>
                                 </tbody>
                             </table>
                         </div>
@@ -881,36 +1238,412 @@
         , format: 'yyyy年M月d日H时m分s秒'
     });
 </script>
-<!--<script language="JavaScript">-->
-<!--    var index = 0;-->
-<!--    var word = "                                <tr>\n" +-->
-<!--        "                                    <td><a href=\"#\" class=\"link\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">Themeforest.com</font></font></a></td>\n" +-->
-<!--        "                                    <td><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">1240</font></font></td>\n" +-->
-<!--        "                                </tr>\n" +-->
-<!--        "                                <tr>\n" +-->
-<!--        "                                    <td><a href=\"#\" class=\"link\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">Themedesigner.in</font></font></a></td>\n" +-->
-<!--        "                                    <td><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">1200</font></font></td>\n" +-->
-<!--        "                                </tr>\n" +-->
-<!--        "                                <tr>\n" +-->
-<!--        "                                    <td><a href=\"#\" class=\"link\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">Themedesigner.in</font></font></a></td>\n" +-->
-<!--        "                                    <td><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">1542</font></font></td>\n" +-->
-<!--        "                                </tr>\n" +-->
-<!--        "                                <tr>\n" +-->
-<!--        "                                    <td><a href=\"#\" class=\"link\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">Themedesigner.in</font></font></a></td>\n" +-->
-<!--        "                                    <td><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">1230</font></font></td>\n" +-->
-<!--        "                                </tr>\n" +-->
-<!--        "                                <tr>\n" +-->
-<!--        "                                    <td><a href=\"#\" class=\"link\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">Themedesigner.in</font></font></a></td>\n" +-->
-<!--        "                                    <td><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">1542</font></font></td>\n" +-->
-<!--        "                                </tr>"-->
+<script>
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#interim_search_date',
+        done: function () {
+            const interim_search_car_type = $('#interim_search_car_type').val()
+            const interim_search_rule_type = $('#interim_search_rule_type').val()
+            const interim_search_money = $('#interim_search_money').val()
+            const interim_search_date = $('#interim_search_date').val()
+            const interim_search_number = $('#interim_search_number').val()
+            const Data = {
+                "interim_search_car_type": interim_search_car_type,
+                "interim_search_rule_type": interim_search_rule_type,
+                "interim_search_money": interim_search_money,
+                "interim_search_date": interim_search_date,
+                "interim_search_number": interim_search_number,
+                "page": 0,
+                "random": new Date()
+            }
+            if (!isNaN(interim_search_money)) {
+                $.ajax({
+                    type: "post",
+                    url: "/index-charge-rule/selectInterimRule",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        $(".InterimResult").html(data);
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                return false;
+            }
+        }
+    });
+</script>
+<script>
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#interim_use_date'
+    });
+</script>
+<script language="JavaScript">
+    //私人规则
+    $('#add1').bind('click', function () {
+        const person_car_type = $('#person_car_type').val()
+        const person_car_money = $('#person_car_money').val()
+        const r = confirm("是否确认添加？");
+        if (r == true) {
+            if (!isNaN(person_car_money)) {
+                const Data = {
+                    "person_car_type": person_car_type,
+                    "person_car_money": person_car_money,
+                    "random": new Date()
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/index-charge-rule/addPersonRule",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        $(".PersonResult").html(data);
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                alert("请输入正确的数字")
+                return false;
+            }
+        } else {
+            return false;
+        }
+    });
+    //固定车位规则
+    $('#add2').bind('click', function () {
+        console.log("!!!!")
+        const fixed_car_type = $('#fixed_car_type').val()
+        const fixed_charge_cycle = $('#fixed_charge_cycle').val()
+        const fixed_money = $('#fixed_money').val()
+        const fixed_description = $('#fixed_description').val()
+        const t = confirm("是否确认添加？");
+        if (t == true) {
+            if (!isNaN(fixed_money)) {
+                const Data = {
+                    "fixed_car_type": fixed_car_type,
+                    "fixed_charge_cycle": fixed_charge_cycle,
+                    "fixed_money": fixed_money,
+                    "fixed_description": fixed_description,
+                    "random": new Date()
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/index-charge-rule/addFixedRule",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        $(".FixedResult").html(data);
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                alert("请输入正确的数字")
+                return false;
+            }
+        } else {
+            return false;
+        }
+    });
 
-<!--    function type() {-->
-<!--        document.getElementById("language_one").innerHTML = word.substring(0, index++);-->
-<!--    }-->
+    //临时规则
+    $('#add3').bind('click', function () {
+        const interim_car_type = $('#interim_car_type').val()
+        const interim_rule_type = $('#interim_rule_type').val()
+        const interim_money = $('#interim_money').val()
+        const interim_use_date = $('#interim_use_date').val()
+        const t = confirm("是否确认添加？");
+        if (t == true) {
+            if (!isNaN(interim_money)) {
+                const Data = {
+                    "interim_car_type": interim_car_type,
+                    "interim_rule_type": interim_rule_type,
+                    "interim_money": interim_money,
+                    "interim_use_date": interim_use_date,
+                    "random": new Date()
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/index-charge-rule/addInterimRule",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        $(".InterimResult").html(data);
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                alert("请输入正确的数字")
+                return false;
+            }
+        } else {
+            return false;
+        }
+    });
+    $("#interim_search_money").bind("input propertychange", function (event) {
+        const interim_search_car_type = $('#interim_search_car_type').val()
+        const interim_search_rule_type = $('#interim_search_rule_type').val()
+        const interim_search_money = $('#interim_search_money').val()
+        const interim_search_date = $('#interim_search_date').val()
+        const interim_search_number = $('#interim_search_number').val()
+        const Data = {
+            "interim_search_car_type": interim_search_car_type,
+            "interim_search_rule_type": interim_search_rule_type,
+            "interim_search_money": interim_search_money,
+            "interim_search_date": interim_search_date,
+            "interim_search_number": interim_search_number,
+            "page": 1,
+            "random": new Date()
+        }
+        if (!isNaN(interim_search_money)) {
+            $.ajax({
+                type: "post",
+                url: "/index-charge-rule/selectInterimRule",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    $(".InterimResult").html(data);
+                },
+                error: function (date) {
+                    alert("失败")
+                }
+            })
+        } else {
+            return false;
+        }
+    });
+    $("#interim_search_car_type").bind("input propertychange", function (event) {
+        const interim_search_car_type = $('#interim_search_car_type').val()
+        const interim_search_rule_type = $('#interim_search_rule_type').val()
+        const interim_search_money = $('#interim_search_money').val()
+        const interim_search_date = $('#interim_search_date').val()
+        const interim_search_number = $('#interim_search_number').val()
+        const Data = {
+            "interim_search_car_type": interim_search_car_type,
+            "interim_search_rule_type": interim_search_rule_type,
+            "interim_search_money": interim_search_money,
+            "interim_search_date": interim_search_date,
+            "interim_search_number": interim_search_number,
+            "page": 1,
+            "random": new Date()
+        }
+        if (!isNaN(interim_search_money)) {
+            $.ajax({
+                type: "post",
+                url: "/index-charge-rule/selectInterimRule",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    $(".InterimResult").html(data);
+                },
+                error: function (date) {
+                    alert("失败")
+                }
+            })
+        } else {
+            return false;
+        }
+    });
+    $("#interim_search_rule_type").bind("input propertychange", function (event) {
+        const interim_search_car_type = $('#interim_search_car_type').val()
+        const interim_search_rule_type = $('#interim_search_rule_type').val()
+        const interim_search_money = $('#interim_search_money').val()
+        const interim_search_date = $('#interim_search_date').val()
+        const interim_search_number = $('#interim_search_number').val()
+        const Data = {
+            "interim_search_car_type": interim_search_car_type,
+            "interim_search_rule_type": interim_search_rule_type,
+            "interim_search_money": interim_search_money,
+            "interim_search_date": interim_search_date,
+            "interim_search_number": interim_search_number,
+            "page": 1,
+            "random": new Date()
+        }
+        if (!isNaN(interim_search_money)) {
+            $.ajax({
+                type: "post",
+                url: "/index-charge-rule/selectInterimRule",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    $(".InterimResult").html(data);
+                },
+                error: function (date) {
+                    alert("失败")
+                }
+            })
+        } else {
+            return false;
+        }
+    });
+    $("#interim_search_number").bind("input propertychange", function (event) {
+        const interim_search_car_type = $('#interim_search_car_type').val()
+        const interim_search_rule_type = $('#interim_search_rule_type').val()
+        const interim_search_money = $('#interim_search_money').val()
+        const interim_search_date = $('#interim_search_date').val()
+        const interim_search_number = $('#interim_search_number').val()
+        const Data = {
+            "interim_search_car_type": interim_search_car_type,
+            "interim_search_rule_type": interim_search_rule_type,
+            "interim_search_money": interim_search_money,
+            "interim_search_date": interim_search_date,
+            "interim_search_number": interim_search_number,
+            "page": 1,
+            "random": new Date()
+        }
+        if (!isNaN(interim_search_money)) {
+            $.ajax({
+                type: "post",
+                url: "/index-charge-rule/selectInterimRule",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    $(".InterimResult").html(data);
+                },
+                error: function (date) {
+                    alert("失败")
+                }
+            })
+        } else {
+            return false;
+        }
+    });
 
-<!--    var interval = setInterval(type, 5);-->
-<!--    console(interval);-->
-<!--</script>-->
+    //自定义规则
+    $('#add4').bind('click', function () {
+        const custom_car_type = $('#custom_car_type').val()
+        const custom_rule_type = $('#custom_rule_type').val()
+        const custom_money = $('#custom_money').val()
+        const custom_description = $('#custom_description').val()
+        const t = confirm("是否确认添加？");
+        if (t == true) {
+            if (!isNaN(custom_money)) {
+                const Data = {
+                    "custom_car_type": custom_car_type,
+                    "custom_rule_type": custom_rule_type,
+                    "custom_money": custom_money,
+                    "custom_description": custom_description,
+                    "random": new Date()
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/index-charge-rule/addCustomRule",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        $(".CustomResult").html(data);
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                alert("请输入正确的数字")
+                return false;
+            }
+        } else {
+            return false;
+        }
+    });
+    $("#custom_search_car_type").bind("input propertychange", function (event) {
+        const custom_search_car_type = $('#custom_search_car_type').val()
+        const custom_search_rule_type = $('#custom_search_rule_type').val()
+
+        const Data = {
+            "custom_search_car_type": custom_search_car_type,
+            "custom_search_rule_type": custom_search_rule_type,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-charge-rule/selectCustomRule",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CustomResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#custom_search_rule_type").bind("input propertychange", function (event) {
+        const custom_search_car_type = $('#custom_search_car_type').val()
+        const custom_search_rule_type = $('#custom_search_rule_type').val()
+
+        const Data = {
+            "custom_search_car_type": custom_search_car_type,
+            "custom_search_rule_type": custom_search_rule_type,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-charge-rule/selectCustomRule",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CustomResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+</script>
+<script language="JavaScript" type="text/javascript">
+    function selectPage(page) {
+        page = Number(page)
+        const interim_search_car_type = $('#interim_search_car_type').val()
+        const interim_search_rule_type = $('#interim_search_rule_type').val()
+        const interim_search_money = $('#interim_search_money').val()
+        const interim_search_date = $('#interim_search_date').val()
+        const interim_search_number = $('#interim_search_number').val()
+        const Data = {
+            "interim_search_car_type": interim_search_car_type,
+            "interim_search_rule_type": interim_search_rule_type,
+            "interim_search_money": interim_search_money,
+            "interim_search_date": interim_search_date,
+            "interim_search_number": interim_search_number,
+            "page": page,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-charge-rule/selectInterimRule",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".InterimResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
+</script>
 </body>
 </body>
 </html>

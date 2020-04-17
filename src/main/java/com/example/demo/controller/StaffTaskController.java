@@ -83,7 +83,7 @@ public class StaffTaskController {
                 int totalPage = list2.size() / pageNum;
                 System.out.println("找到" + list2.size() + "条数据" + "一共" + totalPage + "页");
                 model.addAttribute("nowPage", 1);
-                model.addAttribute("totalPage", totalPage);
+                model.addAttribute("totalPage", totalPage+1);
                 model.addAttribute("allTask", list);
             }
         }.run();
@@ -122,7 +122,7 @@ public class StaffTaskController {
         System.out.println("找到" + list2.size() + "条数据" + "一共" + totalPage + "页");
         model.addAttribute("allTask", list);
         model.addAttribute("nowPage", page);
-        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("totalPage", totalPage+1);
         return "index-duty-statistics::result";
     }
 

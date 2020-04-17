@@ -3,20 +3,16 @@ package com.example.demo.rule;
 import com.example.demo.bean.CommonCharge;
 import com.example.demo.bean.ResultBean;
 import com.example.demo.util.DateUtil;
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
 
 import java.util.*;
 
 public class Rule extends BasicRule {
-    public Date STARTING_TIME;//开始时间
-    public Date ENDING_TIME;//结束时间
     public Date FIST_HOUR_TIME;//开始一个小时的时间
     CommonCharge basicCharge;//基本规则
 
     public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge) {
-        this.STARTING_TIME = STARTING_TIME;
+        super(STARTING_TIME, ENDING_TIME);
         this.FIST_HOUR_TIME = DateUtil.getNextHourDate(STARTING_TIME);
-        this.ENDING_TIME = ENDING_TIME;
         this.basicCharge = basicCharge;
         if (DateUtil.countHour(this.STARTING_TIME, this.ENDING_TIME) == 0) {
             countTotal(this.STARTING_TIME);
@@ -26,7 +22,7 @@ public class Rule extends BasicRule {
     }
 
     private void initDailyMap(Date date) {
-        if (date.getTime() <= ENDING_TIME.getTime()) {
+        if (date.getTime() < ENDING_TIME.getTime()) {
             countTotal(date);
             initDailyMap(DateUtil.getNextHourDate(date));
         }
@@ -60,6 +56,9 @@ public class Rule extends BasicRule {
                 dailyMap.add(new ResultBean(date, addDate1(date), total));
             }
         }
+        initMonthMap(new ResultBean(total, DateUtil.dateFormatMonth(date), ""));
+
+        initYearMap(new ResultBean(total, "", DateUtil.dateFormatYear(date)));
     }
 
     public Date addDate1(Date date) {
@@ -67,6 +66,28 @@ public class Rule extends BasicRule {
             return this.ENDING_TIME;
         }
         return DateUtil.getNextHourDate(date);
+    }
+
+    public void initMonthMap(ResultBean resultBean) {
+        if (MonthMapContains(resultBean) == -1) {
+            monthMap.add(resultBean);
+        } else {
+            monthMap.set(MonthMapContains(resultBean), resultBean);
+        }
+        if (MonthMapContains(resultBean) > 0) {
+            resultBean.setTotal(resultBean.getTotal() - monthMap.get(MonthMapContains(resultBean) - 1).getTotal());
+        }
+    }
+
+    public void initYearMap(ResultBean resultBean) {
+        if (YearMapContains(resultBean) == -1) {
+            yearLMap.add(resultBean);
+        } else {
+            yearLMap.set(YearMapContains(resultBean), resultBean);
+        }
+        if (YearMapContains(resultBean) > 0) {
+            resultBean.setTotal(resultBean.getTotal() - yearLMap.get(YearMapContains(resultBean) - 1).getTotal());
+        }
     }
 }
 

@@ -35,7 +35,27 @@ public class DateUtil {
         } catch (Exception e) {
 
         }
-        System.out.println("将" + string + "转化为" + date);
+        return date;
+    }
+
+    public static Date processStringToDate(String string) {
+        Date date = new Date();
+        StringBuilder stringBuilder = new StringBuilder(string);
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        for (int i = 0; i < stringBuilder.length(); i++) {
+            if (stringBuilder.charAt(i) == '年' || stringBuilder.charAt(i) == '月') {
+                stringBuilder.setCharAt(i, '-');
+            }
+            if (stringBuilder.charAt(i) == '日') {
+                stringBuilder.deleteCharAt(i);
+            }
+        }
+        try {
+            System.out.println(stringBuilder);
+            date = fmt.parse(new String(stringBuilder));
+        } catch (Exception e) {
+
+        }
         return date;
     }
 
@@ -126,11 +146,21 @@ public class DateUtil {
         Calendar ca = Calendar.getInstance();
         ca.setTime(date);
         ca.add(Calendar.HOUR_OF_DAY, 1);
-        if (ca.getTime().getTime()<date.getTime()){
-            ca.add(Calendar.DAY_OF_WEEK,1);
+        if (ca.getTime().getTime() < date.getTime()) {
+            ca.add(Calendar.DAY_OF_WEEK, 1);
         }
         return ca.getTime();
     }
+    /**
+     * 当前时间加一天
+     */
+    public static Date getNextDayDate(Date date){
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(date);
+        ca.add(Calendar.DAY_OF_WEEK, 1);
+        return ca.getTime();
+    }
+
 
     /**
      * 判断当前日期是否为周末
@@ -144,4 +174,37 @@ public class DateUtil {
         return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
     }
 
+    /**
+     * 将日期格式化为XXXX年X月X日
+     *
+     * @param date
+     * @return
+     */
+    public static String dateFormatMonth(Date date) {
+        DateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+        String dateStr = "";
+        try {
+            dateStr = sdf.format(date);
+        } catch (Exception e) {
+
+        }
+        return dateStr;
+    }
+
+    /**
+     * 将日期格式化为XXXX年X月
+     *
+     * @param date
+     * @return
+     */
+    public static String dateFormatYear(Date date) {
+        DateFormat sdf = new SimpleDateFormat("yyyy年MM月");
+        String dateStr = "";
+        try {
+            dateStr = sdf.format(date);
+        } catch (Exception e) {
+
+        }
+        return dateStr;
+    }
 }

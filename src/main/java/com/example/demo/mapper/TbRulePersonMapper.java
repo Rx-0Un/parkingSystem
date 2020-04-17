@@ -2,6 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.TbRulePerson;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface TbRulePersonMapper {
@@ -20,4 +23,13 @@ public interface TbRulePersonMapper {
      * @mbg.generated Wed Apr 08 08:16:45 GMT+08:00 2020
      */
     int insertSelective(TbRulePerson record);
+
+
+    int selectRowByCarType(@Param(value = "car_type") String car_type);
+
+    int addRowByCarType(@Param(value = "car_type") String car_type, @Param(value = "money") float money);
+
+    int updateRowByCarType(@Param(value = "car_type") String car_type, @Param(value = "money") float money);
+
+    List<TbRulePerson> selectAll();
 }

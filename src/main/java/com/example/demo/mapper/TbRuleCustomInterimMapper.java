@@ -3,6 +3,9 @@ package com.example.demo.mapper;
 import com.example.demo.entity.TbRuleCustomInterim;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
+import java.util.List;
+
 @Mapper
 public interface TbRuleCustomInterimMapper {
     /**
@@ -20,4 +23,14 @@ public interface TbRuleCustomInterimMapper {
      * @mbg.generated Wed Apr 08 08:16:45 GMT+08:00 2020
      */
     int insertSelective(TbRuleCustomInterim record);
+
+    List<TbRuleCustomInterim> selectAll(int pageNum,int page);
+
+    int selectRowByInfo(String rule_type, String car_type, Date use_date);
+
+    int addRowByCarType(String rule_type, float money, String car_type, Date use_date);
+
+    int updateRowByCarType(String rule_type, float money, String car_type, Date use_date);
+
+    List<TbRuleCustomInterim> selectRowByPage(String rule_type, String car_type, String use_date, String money,int pageNum,int page);
 }

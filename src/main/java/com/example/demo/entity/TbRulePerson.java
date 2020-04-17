@@ -121,4 +121,13 @@ public class TbRulePerson {
     public void setCarType(String carType) {
         this.carType = carType == null ? null : carType.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TbRulePerson{" +
+                "personRuleId=" + personRuleId +
+                ", money=" + money +
+                ", carType='" + carType + '\'' +
+                '}';
+    }
 }

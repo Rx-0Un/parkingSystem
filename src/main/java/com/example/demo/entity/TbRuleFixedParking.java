@@ -189,4 +189,15 @@ public class TbRuleFixedParking {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TbRuleFixedParking{" +
+                "fixedRuleId=" + fixedRuleId +
+                ", carType='" + carType + '\'' +
+                ", chargeCycle='" + chargeCycle + '\'' +
+                ", money=" + money +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
