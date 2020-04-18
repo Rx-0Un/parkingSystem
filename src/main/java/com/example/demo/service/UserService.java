@@ -1,8 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.TbUser;
 import com.example.demo.mapper.TbUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("UserService")
 public class UserService {
@@ -14,6 +17,10 @@ public class UserService {
 
     public int selectForLogin(String phone, String password) {
         return tbUserMapper.selectForLogin(phone, password);
+    }
+
+    public List<TbUser> selectAll() {
+        return tbUserMapper.selectAll();
     }
 
     @Autowired

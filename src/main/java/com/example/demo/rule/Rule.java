@@ -9,6 +9,14 @@ import java.util.*;
 public class Rule extends BasicRule {
     public Date FIST_HOUR_TIME;//开始一个小时的时间
     CommonCharge basicCharge;//基本规则
+    List<InterimRule> interimRuleList;
+
+    public Rule(Date STARTING_TIME, Date ENDING_TIME, Date FIST_HOUR_TIME, CommonCharge basicCharge, List<InterimRule> interimRuleList) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.FIST_HOUR_TIME = FIST_HOUR_TIME;
+        this.basicCharge = basicCharge;
+        this.interimRuleList = interimRuleList;
+    }
 
     public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge) {
         super(STARTING_TIME, ENDING_TIME);

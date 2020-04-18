@@ -32,4 +32,6 @@ public interface TbRulePersonMapper {
     int updateRowByCarType(@Param(value = "car_type") String car_type, @Param(value = "money") float money);
 
     List<TbRulePerson> selectAll();
+
+    float selectMoneyByCarType(@Param(value = "car_type") String car_typr);
 }

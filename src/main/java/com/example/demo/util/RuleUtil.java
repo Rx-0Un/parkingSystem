@@ -31,31 +31,5 @@ public class RuleUtil {
     public static final String TYPE_RESULT_LIST_TWO = "按天";
     public static final String TYPE_RESULT_LIST_THREE = "按月";
 
-//    public static int processCarType(String car_type) {
-//        switch (car_type) {
-//            case "小车":
-//                return CAR_TYPE_ONE;
-//            case "大车":
-//                return CAR_TYPE_TWO;
-//            case "超大型车":
-//                return CAR_TYPE_THREE;
-//            case "其他车":
-//                return CAR_TYPE_FOUR;
-//        }
-//        return 0;
-//    }
-//
-//    public static String processCarType(int car_type) {
-//        switch (car_type) {
-//            case CAR_TYPE_ONE:
-//                return "小车";
-//            case CAR_TYPE_TWO:
-//                return "大车";
-//            case CAR_TYPE_THREE:
-//                return "超大型车";
-//            case CAR_TYPE_FOUR:
-//                return "其他车";
-//        }
-//        return "";
-//    }
+
 }

@@ -230,124 +230,141 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="col-lg-4">
-                            <form class="form-horizontal" 　id="result" action="##" method="post">
-                                <div class="card-body">
-                                    <h4 class="card-title"><font style="vertical-align: inherit;"><font
-                                            style="vertical-align: inherit;">停车场信息</font></font></h4>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 text-left control-label col-form-label"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">停车场名称</font></font></label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 text-left control-label col-form-label"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">停车场区域设置</font></font></label>
-                                        <div class="col-sm-3">
-                                            <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                    style="width: 100%; height:33px;" data-select2-id="1" tabindex="-1"
-                                                    aria-hidden="true" name="select" id="select">
-                                                <option value="一级区域">一级区域</option>
-                                                <option value="二级区域">二级区域</option>
-                                                <option value="三级区域">三级区域</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 text-left control-label col-form-label"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">车位总数量</font></font></label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 text-left control-label col-form-label"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">固定车位总数</font></font></label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 text-left control-label col-form-label"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">临时车位总数</font></font></label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control">
-                                        </div>
+                            <div class="card-body">
+                                <h4 class="card-title"><font style="vertical-align: inherit;"><font
+                                        style="vertical-align: inherit;">停车场信息</font></font></h4>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-left control-label col-form-label"><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">停车场名称</font></font></label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="parking_lot_name"
+                                               th:value="${parking_lot_name}">
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><font style="vertical-align: inherit;"><font
-                                            style="vertical-align: inherit;">支付设置</font></font></h4>
-                                    <p class="m-t-20">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="checkbox" checked="checked"><label>启用收费功能</label>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="checkbox" checked="checked"><label>启用打折功能</label>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-left control-label col-form-label"><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">停车场区域设置</font></font></label>
+                                    <div class="col-sm-3">
+                                        <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                style="width: 100%; height:33px;" data-select2-id="1" tabindex="-1"
+                                                aria-hidden="true" name="select" id="zone_type">
+                                            <option value="一类地区">一类地区</option>
+                                            <option value="二类地区">二类地区</option>
+                                            <option value="三类地区">三类地区</option>
+                                        </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="checkbox" checked="checked"><label>启用优惠卷功能</label>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="checkbox" checked="checked"><label>车牌过期后临时收费</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <input type="checkbox" checked="checked"><label>无人值守时</label>
-                                            <input type="checkbox"><label>禁止出场</label>
-                                            <input type="checkbox" checked="checked"><label>保存出场数据</label>
-                                        </div>
-                                    </div>
-                                    </p>
                                 </div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><font style="vertical-align: inherit;"><font
-                                            style="vertical-align: inherit;">打印设置</font></font></h4>
-                                    <p class="m-t-20">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="checkbox" checked="checked"><label>启用打印功能</label>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-left control-label col-form-label"><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">车位总数量</font></font></label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="parking_space_number"
+                                               th:value="${parking_space_number}">
                                     </div>
-                                    </p>
                                 </div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><font style="vertical-align: inherit;"><font
-                                            style="vertical-align: inherit;">收费规则设置</font></font></h4>
-                                    <p class="m-t-20">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="checkbox"><label>默认公共停车场规则设置</label>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="checkbox" checked="checked"><label>自定义规则设置</label>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-left control-label col-form-label"><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">固定车位总数</font></font></label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="fixed_space_number"
+                                               th:text="${fixed_space_number}">
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="checkbox"><label>启用临时规则</label>
-                                        </div>
-                                    </div>
-                                    </p>
                                 </div>
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-danger">恢复默认设置</button>
-                                    <button type="button" class="btn btn-secondary">重置</button>
-                                    <span class="text-muted float-right">
-                                        <button type="submit" class="btn btn-primary" th:onclick="save()">保存</button>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-left control-label col-form-label"><font
+                                            style="vertical-align: inherit;"><font
+                                            style="vertical-align: inherit;">临时车位总数</font></font></label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title"><font style="vertical-align: inherit;"><font
+                                        style="vertical-align: inherit;">支付设置</font></font></h4>
+                                <p class="m-t-20">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked" id="charge_open"
+                                               th:attr ="checked=${charge_open}eq '1'"><label>启用收费功能</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked" id="account_open"
+                                               th:attr ="checked=${account_open}eq '1'"><label>启用打折功能</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked" id="coupon_open"
+                                               th:attr ="checked=${coupon_open}eq '1'"><label>启用优惠卷功能</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked"
+                                               id="fixed_past"
+                                               th:attr ="checked=${fixed_past}eq '1'"><label>车牌过期后临时收费</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" checked="checked" id="nobody"
+                                               th:attr ="checked=${nobody}eq '1'"><label>无人值守时</label>
+                                        <input type="checkbox" id="forbid_out"
+                                               th:attr ="checked=${forbid_out}eq '1'"><label>禁止出场</label>
+                                        <input type="checkbox" checked="checked" id="save_data"
+                                               th:attr ="checked=${save_data}eq '1'"><label>保存出场数据</label>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title"><font style="vertical-align: inherit;"><font
+                                        style="vertical-align: inherit;">打印设置</font></font></h4>
+                                <p class="m-t-20">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked" id="print_open"
+                                               th:attr ="checked=${print_open}eq '1'"><label>启用打印功能</label>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title"><font style="vertical-align: inherit;"><font
+                                        style="vertical-align: inherit;">收费规则设置</font></font></h4>
+                                <p class="m-t-20">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" id="commonRule"
+                                               th:attr ="checked=${commonRule}eq '1'"><label>默认公共停车场规则</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked" id="customRule"
+                                               th:attr ="checked=${customRule}eq '1'"><label>自定义规则</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" checked="checked" id="personRule"
+                                               th:attr ="checked=${personRule}eq '1'"><label>私人规则</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" id="interimRule"
+                                               th:attr ="checked=${interimRule}eq '1'"><label>启用临时规则</label>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-danger" id="restart">恢复默认设置</button>
+                                <button type="button" class="btn btn-secondary" id="reset">重置</button>
+                                <span class="text-muted float-right">
+                                        <button type="button" class="btn btn-primary" id="save">保存</button>
                                     </span>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -385,6 +402,68 @@
 <script src="assets/libs/chart/turning-series.js"></script>
 <script src="dist/js/pages/chart/chart-page-init.js"></script>
 <script src="js/index-parking-lot-setting.js"></script>
+<script language="JavaScript" type="text/javascript">
+    $('#save').bind('click', function () {
+        console.log("!!!!")
+        const parking_lot_name      = $('#parking_lot_name').val()
+        const zone_type             = $('#zone_type').val()
+        const parking_space_number  = $('#parking_space_number').val()
+        const charge_open           = $('#charge_open').is(':checked')
+        const account_open          = $('#account_open').is(':checked')
+        const coupon_open           = $('#coupon_open').is(':checked')
+        const fixed_past            = $('#fixed_past').is(':checked')
+        const nobody                = $('#nobody').is(':checked')
+        const forbid_out            = $('#forbid_out').is(':checked')
+        const save_data             = $('#save_data').is(':checked')
+        const print_open            = $('#print_open').is(':checked')
+        const commonRule            = $('#commonRule').is(':checked')
+        const customRule            = $('#customRule').is(':checked')
+        const interimRule           = $('#interimRule').is(':checked')
+        const personRule            = $('#personRule').is(':checked')
+        const t = confirm("是否确认添加？");
+        if (t == true) {
+            if (!isNaN(parking_space_number)) {
+                const Data = {
+                    "parking_lot_name": parking_lot_name,
+                    "zone_type": zone_type,
+                    "parking_space_number": parking_space_number,
+                    "charge_open": charge_open,
+                    "account_open": account_open,
+                    "coupon_open": coupon_open,
+                    "fixed_past": fixed_past,
+                    "nobody": nobody,
+                    "forbid_out": forbid_out,
+                    "save_data": save_data,
+                    "print_open": print_open,
+                    "commonRule": commonRule,
+                    "customRule": customRule,
+                    "interimRule": interimRule,
+                    "personRule": personRule,
+                    "random": new Date()
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/index-parking-lot-setting/addParkingSetting",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        location.reload()
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                alert("请输入正确的数字")
+                return false;
+            }
+        } else {
+            return false;
+        }
+    });
+
+</script>
 </body>
 </body>
 </html>

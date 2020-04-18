@@ -34,6 +34,11 @@ public class RuleCustomInterimService {
         return tbRuleCustomInterimMapper.updateRowByCarType(rule_type, money, car_type, use_date);
     }
 
+    public TbRuleCustomInterim selectRowByDate(Date date,String car_type) throws NullPointerException{
+        return tbRuleCustomInterimMapper.selectRowByDate(date,car_type);
+    }
+
+
     @Autowired
     public void setTbRuleCustomInterimMapper(TbRuleCustomInterimMapper tbRuleCustomInterimMapper) {
         this.tbRuleCustomInterimMapper = tbRuleCustomInterimMapper;

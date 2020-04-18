@@ -18,6 +18,10 @@ public class RulePersonService {
         return tbRulePersonMapper.selectRowByCarType(car_type);
     }
 
+    public float selectMoneyByCarType(String car_type){
+        return tbRulePersonMapper.selectMoneyByCarType(car_type);
+    }
+
     public int addRowByCarType(String car_type, float money) {
         if (selectRowByCarType(car_type) != 1) {
             return tbRulePersonMapper.addRowByCarType(car_type, money);

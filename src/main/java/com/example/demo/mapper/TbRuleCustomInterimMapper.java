@@ -33,4 +33,6 @@ public interface TbRuleCustomInterimMapper {
     int updateRowByCarType(String rule_type, float money, String car_type, Date use_date);
 
     List<TbRuleCustomInterim> selectRowByPage(String rule_type, String car_type, String use_date, String money,int pageNum,int page);
+
+    TbRuleCustomInterim selectRowByDate(Date date,String car_type);
 }

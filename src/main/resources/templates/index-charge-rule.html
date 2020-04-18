@@ -937,7 +937,7 @@
                                                     <ul class="pagination">
                                                         <li class="paginate_button page-item"
                                                             th:if="${InterimNowPage-1 >=1}"
-                                                            id="zero_config_previous"><a
+                                                        ><a
                                                                 aria-controls="zero_config"
                                                                 data-dt-idx="0"
                                                                 tabindex="0"
@@ -1024,7 +1024,6 @@
                                                             </a>
                                                         </li>
                                                         <li class="paginate_button page-item"
-                                                            id="zero_config_next"
                                                             th:if="${InterimNowPage<InterimTotalPage&&InterimTotalPage!=1}">
                                                             <a
                                                                     aria-controls="zero_config"
@@ -1096,9 +1095,9 @@
                                     <select class="select2 form-control m-t-15"
                                             style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
                                             aria-hidden="true" id="zone_type">
-                                        <option>一类地区</option>
-                                        <option>二类地区</option>
-                                        <option>三类地区</option>
+                                        <option value="一类地区">一类地区</option>
+                                        <option value="二类地区">二类地区</option>
+                                        <option value="三类地区">三类地区</option>
                                     </select>
                                 </div>
                             </div>
@@ -1153,35 +1152,144 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="card-body border-top">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">时间</th>
-                                    <th>费用</th>
-                                </tr>
-                                </thead>
-                                <tbody class="TestResult" th:fragment="TestResult">
-                                <div th:if="${time_type=='按小时'}">
-                                    <tr th:each="stat:${TestResult}">
-                                        <td th:text="${#dates.format(stat.date, 'yyyy年M月d日H时m分s秒')}+'到'+${#dates.format(stat.date1, 'yyyy年M月d日H时m分s秒')}"></td>
-                                        <td th:text="${stat.total}"></td>
+                        <div class="TestResult" th:fragment="TestResult">
+                            <div class="card-body border-top">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">时间</th>
+                                        <th>费用</th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
+                                    <div th:if="${time_type=='按小时'}">
+                                        <tr th:each="stat:${TestResult}">
+                                            <td th:text="${#dates.format(stat.date, 'yyyy年M月d日H时m分s秒')}+'到'+${#dates.format(stat.date1, 'yyyy年M月d日H时m分s秒')}"></td>
+                                            <td th:text="${stat.total}"></td>
+                                        </tr>
+                                    </div>
+                                    <div th:if="${time_type=='按天'}">
+                                        <tr th:each="stat:${TestResult}">
+                                            <td th:text="${stat.month}"></td>
+                                            <td th:text="${stat.total}"></td>
+                                        </tr>
+                                    </div>
+                                    <div th:if="${time_type=='按月'}">
+                                        <tr th:each="stat:${TestResult}">
+                                            <td th:text="${stat.year}"></td>
+                                            <td th:text="${stat.total}"></td>
+                                        </tr>
+                                    </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-body border-top">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage-1 >=1}"
+                                                id="zero_config_previous"><a
+                                                    aria-controls="zero_config"
+                                                    data-dt-idx="0"
+                                                    tabindex="0"
+                                                    class="page-link"
+                                                    th:onclick="|javascript : selectTestPage( [[${TestNowPage-1}]] )|"
+                                            >上一页</a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a
+                                                        aria-controls="zero_config"
+                                                        data-dt-idx="0"
+                                                        tabindex="0"
+                                                        class="page-link"
+                                                        th:onclick="|javascript : selectTestPage( '1' )|"
+                                                >首页</a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage-3>=1}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage-3}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage-3}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage-2>=1}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage-2}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage-2}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage-1>=1}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage-1}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage-1}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item active">
+                                                <a aria-controls="zero_config" data-dt-idx="1"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage+1 <=TestTotalPage}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage+1}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage+1}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage+2 <=TestTotalPage}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage+2}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage+2}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${TestNowPage+3 <=TestTotalPage}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${TestNowPage+3}"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestNowPage+3}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:onclick="|javascript : selectTestPage( [[${TestTotalPage}]] )|"
+                                                >尾页
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                id="zero_config_next"
+                                                th:if="${TestNowPage<TestTotalPage&&TestTotalPage!=1}">
+                                                <a
+                                                        aria-controls="zero_config"
+                                                        data-dt-idx="2"
+                                                        tabindex="0"
+                                                        class="page-link"
+                                                        th:onclick="|javascript : selectTestPage( [[${TestNowPage+1}]] )|"
+                                                >下一页</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div th:if="${time_type=='按天'}">
-                                    <tr th:each="stat:${TestResult}">
-                                        <td th:text="${stat.month}"></td>
-                                        <td th:text="${stat.total}"></td>
-                                    </tr>
-                                </div>
-                                <div th:if="${time_type=='按月'}">
-                                    <tr th:each="stat:${TestResult}">
-                                        <td th:text="${stat.year}"></td>
-                                        <td th:text="${stat.total}"></td>
-                                    </tr>
-                                </div>
-                                </tbody>
-                            </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1255,7 +1363,7 @@
                 "interim_search_money": interim_search_money,
                 "interim_search_date": interim_search_date,
                 "interim_search_number": interim_search_number,
-                "page": 0,
+                "page": 1,
                 "random": new Date()
             }
             if (!isNaN(interim_search_money)) {
@@ -1631,12 +1739,57 @@
         }
         $.ajax({
             type: "post",
-            url: "/index-charge-rule/selectInterimRule",
+            url: "/index-data-manage/addCarByInfo",
             contentType: 'application/json;charset=utf-8',
             data: JSON.stringify(Data),
             dataType: "text",
             success: function (data) {
-                $(".InterimResult").html(data);
+                // $(".InterimResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
+    function selectTestPage(page) {
+        page = Number(page)
+        let r = 0;
+        const rule1 = $('input:radio[id="customControlValidation1"]:checked').val()
+        const rule2 = $('input:radio[id="customControlValidation2"]:checked').val()
+        const rule3 = $('input:radio[id="customControlValidation3"]:checked').val()
+        if (rule1 == 'on')
+            r = 1
+        if (rule2 == 'on')
+            r = 2
+        if (rule3 == 'on')
+            r = 3
+        const interim_rule = $('#customControlAutosizing1').is(':checked')
+        const plate_type = $('#plate_type ').val()
+        const car_type = $('#car_type').val()
+        const date = $('#Date').val()
+        const time_type = $('#time_type').val()
+        const searchNum = $('#searchNum').val()
+        const zone_type = $('#zone_type').val()
+        const Data = {
+            "rule": r,
+            "interim_rule": interim_rule,
+            "plate_type": plate_type,
+            "car_type": car_type,
+            "Date": date,
+            "time_type": time_type,
+            "searchNum": searchNum,
+            "zone_type": zone_type,
+            "page":page,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-charge-rule/parkingTest",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".TestResult").html(data);
             },
             error: function (date) {
                 alert("失败")

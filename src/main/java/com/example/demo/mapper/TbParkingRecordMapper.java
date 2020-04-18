@@ -3,6 +3,9 @@ package com.example.demo.mapper;
 import com.example.demo.entity.TbParkingRecord;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
+import java.util.List;
+
 @Mapper
 public interface TbParkingRecordMapper {
     /**
@@ -20,4 +23,12 @@ public interface TbParkingRecordMapper {
      * @mbg.generated Tue Feb 25 17:41:08 GMT+08:00 2020
      */
     int insertSelective(TbParkingRecord record);
+
+    int addRowByInfo(String car_plate_num, Date enter_time);
+
+    List<TbParkingRecord> selectEnter(Date date,int pageNum,int page);
+
+    List<TbParkingRecord> selectOuter(Date date,int pageNum,int page);
+
+    List<TbParkingRecord> selectAll(int pageNum,int page);
 }

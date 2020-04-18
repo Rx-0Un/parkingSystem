@@ -95,7 +95,8 @@
     <!--            select * from tb_user-->
     <!--        </select>-->
     <select id="selectAll" resultMap="BaseResultMap" parameterType="com.example.demo.entity.TbUser">
-            select * from tb_user
+            select *
+            from tb_user
     </select>
     <select id="selectForLogin" parameterType="java.lang.String" resultType="Integer">
         select count(*) from  tb_user

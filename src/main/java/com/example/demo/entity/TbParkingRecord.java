@@ -225,4 +225,16 @@ public class TbParkingRecord {
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
+
+    @Override
+    public String toString() {
+        return "TbParkingRecord{" +
+                "parkingPlateId=" + parkingPlateId +
+                ", carPlateNum='" + carPlateNum + '\'' +
+                ", enterTime=" + enterTime +
+                ", exitTime=" + exitTime +
+                ", lastTime='" + lastTime + '\'' +
+                ", orderId=" + orderId +
+                '}';
+    }
 }

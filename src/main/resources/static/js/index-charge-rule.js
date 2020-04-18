@@ -1,5 +1,4 @@
 $('#test').bind('click', function () {
-    console.log("!!!")
     let r = 0;
     const rule1 = $('input:radio[id="customControlValidation1"]:checked').val()
     const rule2 = $('input:radio[id="customControlValidation2"]:checked').val()
@@ -26,11 +25,12 @@ $('#test').bind('click', function () {
         "time_type": time_type,
         "searchNum": searchNum,
         "zone_type": zone_type,
+        "page":1,
         "random": new Date()
     }
     $.ajax({
         type: "post",
-        url: "/parkingTest",
+        url: "/index-charge-rule/parkingTest",
         contentType: 'application/json;charset=utf-8',
         data: JSON.stringify(Data),
         dataType: "text",

@@ -39,7 +39,7 @@
         <mapper resource="com/example/demo/mapper/mappers/TbParkingRecordMapper.xml"/>
         <mapper resource="com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml"/>
 <!--        <mapper resource="com/example/demo/mapper/mappers/TbRuleMapper.xml"/>-->
-
+        <mapper resource="com/example/demo/mapper/mappers/TbParkingLotMapper.xml"/>
         <mapper resource="com/example/demo/mapper/mappers/TbRuleCommonBasicMapper.xml"/>
         <mapper resource="com/example/demo/mapper/mappers/TbRuleCustomInterimMapper.xml"/>
         <mapper resource="com/example/demo/mapper/mappers/TbRuleCustomMapper.xml"/>

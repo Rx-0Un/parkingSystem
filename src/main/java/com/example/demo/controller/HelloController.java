@@ -14,7 +14,7 @@ public class HelloController {
     @GetMapping("/test")
     public ModelAndView test(Model model) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("test");
+        mv.setViewName("test2");
 
         return mv;
     }

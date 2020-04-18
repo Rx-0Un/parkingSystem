@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.TbParkingLot;
 import com.example.demo.entity.TbRuleCommonBasic;
 import com.example.demo.entity.TbRuleCustomInterim;
 import com.example.demo.entity.TbStaffTask;
@@ -24,6 +25,9 @@ public class StartController {
     RuleFixedParkingService ruleFixedParkingService;
     RuleCustomInterimService ruleCustomInterimService;
     RuleCustomService ruleCustomService;
+    ParkingLotSettingService parkingLotSettingService;
+    UserService userService;
+    CarService carService;
 
     @GetMapping("/index")
     public String test() {
@@ -52,11 +56,30 @@ public class StartController {
 
     @RequestMapping(value = "/index-manage-parking")
     public String parkingManage(Model model) {
+        model.addAttribute("UserResult",userService.selectAll());
         return "index-manage-parking";
     }
 
     @RequestMapping(value = "/index_parking_lot_setting")
-    public String parkingLotSetting() {
+    public String parkingLotSetting(Model model) {
+        List<TbParkingLot> list = parkingLotSettingService.selectRowById(2);
+        TbParkingLot tbParkingLot = list.get(0);
+        System.out.println(list.get(0).toString());
+        model.addAttribute("parking_lot_name", list.get(0).getParkingLotName());
+        model.addAttribute("zone_type", list.get(0).getParkingLotLevel());
+        model.addAttribute("parking_space_number", list.get(0).getSpaceNumber());
+        model.addAttribute("charge_open", tbParkingLot.getPaySetting().charAt(0));
+        model.addAttribute("account_open", tbParkingLot.getPaySetting().charAt(1));
+        model.addAttribute("coupon_open", tbParkingLot.getPaySetting().charAt(2));
+        model.addAttribute("fixed_past", tbParkingLot.getPaySetting().charAt(3));
+        model.addAttribute("nobody", tbParkingLot.getPaySetting().charAt(4));
+        model.addAttribute("forbid_out", tbParkingLot.getPaySetting().charAt(5));
+        model.addAttribute("save_data", tbParkingLot.getPaySetting().charAt(6));
+        model.addAttribute("print_open", tbParkingLot.getPrintSetting());
+        model.addAttribute("commonRule", tbParkingLot.getRuleSetting().charAt(0));
+        model.addAttribute("customRule", tbParkingLot.getRuleSetting().charAt(1));
+        model.addAttribute("interimRule", tbParkingLot.getRuleSetting().charAt(2));
+        model.addAttribute("personRule", tbParkingLot.getRuleSetting().charAt(3));
         return "index-parking-lot-setting";
     }
 
@@ -80,6 +103,9 @@ public class StartController {
         model.addAttribute("InterimTotalPage", total);
 
         model.addAttribute("CustomResult", ruleCustomService.selectAll());
+
+        model.addAttribute("TestTotalPage", 1);
+        model.addAttribute("TestNowPage", 1);
         return "index-charge-rule";
     }
 
@@ -88,15 +114,18 @@ public class StartController {
         return "index-order-search";
     }
 
-    @RequestMapping(value = "/index-car-manage")
-    public String indexCarManage() {
-        return "index-car-manage";
+    @RequestMapping(value = "/index-data-manage")
+    public String indexCarManage(Model model) {
+        model.addAttribute("UserResult", userService.selectAll());
+        model.addAttribute("CarResult", carService.selectAll(0, 0));
+        return "index-data-manage";
     }
 
     @RequestMapping(value = "/index-app-user-manage")
     public String appUserManage() {
         return "index-app-user-manage";
     }
+
 
     @Autowired
     public void setStaffTaskService(StaffTaskService staffTaskService) {
@@ -131,5 +160,20 @@ public class StartController {
     @Autowired
     public void setRuleCustomService(RuleCustomService ruleCustomService) {
         this.ruleCustomService = ruleCustomService;
+    }
+
+    @Autowired
+    public void setParkingLotSettingService(ParkingLotSettingService parkingLotSettingService) {
+        this.parkingLotSettingService = parkingLotSettingService;
+    }
+
+    @Autowired
+    public void setCarService(CarService carService) {
+        this.carService = carService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

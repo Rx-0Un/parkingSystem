@@ -77,4 +77,19 @@
       </if>
     </trim>
   </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from tb_car
+    <if test="pageNum!=0">
+      limit #{pageNum} offset #{page};
+    </if>
+  </select>
+  <insert id="addRowByInfo">
+        INSERT INTO test.tb_car (car_type,car_plate_number,car_color,car_type_model,column_6)
+        VALUES (#{car_type},#{car_plate_number},#{car_color},#{car_type_model},#{column_6})
+    </insert>
+  <delete id="delectRowById">
+    delete tb_car
+    where id=#{id}
+  </delete>
 </mapper>

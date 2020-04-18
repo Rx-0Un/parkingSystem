@@ -25,7 +25,9 @@ public class PersonRule extends BasicRule {
     public void countTotal(Date date, Date nextDay) {
         total += personCharge.getMoney();
         while (date.getTime() < nextDay.getTime()) {
-            dailyMap.add(new ResultBean(date, DateUtil.getNextHourDate(date), total));
+            if (date.getTime() != this.STARTING_TIME.getTime()) {
+                dailyMap.add(new ResultBean(date, DateUtil.getNextHourDate(date), total));
+            }
             date = DateUtil.getNextHourDate(date);
         }
         initMonthMap(new ResultBean(total, DateUtil.dateFormatMonth(date), ""));

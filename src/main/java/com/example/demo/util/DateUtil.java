@@ -161,7 +161,15 @@ public class DateUtil {
         return ca.getTime();
     }
 
-
+    /**
+     * 当前时间前一天
+     */
+    public static Date getLastDayDate(Date date){
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(date);
+        ca.add(Calendar.DAY_OF_WEEK, -1);
+        return ca.getTime();
+    }
     /**
      * 判断当前日期是否为周末
      *
@@ -207,4 +215,5 @@ public class DateUtil {
         }
         return dateStr;
     }
+
 }

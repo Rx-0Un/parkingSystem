@@ -23,7 +23,7 @@ public interface TbUserMapper {
      */
     int insertSelective(TbUser record);
 
-    TbUser[] selectAll();
+    List<TbUser> selectAll();
 
     int selectForLogin(@Param("phone") String phone, @Param("user_pwd") String pwd);
 

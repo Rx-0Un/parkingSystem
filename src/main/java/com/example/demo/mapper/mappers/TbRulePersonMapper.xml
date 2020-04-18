@@ -72,4 +72,9 @@
         select *
         from tb_rule_person
   </select>
+    <select id="selectMoneyByCarType" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from tb_rule_person
+        where car_type=#{car_type}
+  </select>
 </mapper>
