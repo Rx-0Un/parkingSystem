@@ -40,4 +40,17 @@ public class ParkingRecordMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void selectCarTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbParkingRecordMapper tbParkingRecordMapper = sqlSession.getMapper(TbParkingRecordMapper.class);
+            List<TbParkingRecord> list = tbParkingRecordMapper.selectCar();
+            for (int i=0;i<list.size();i++) {
+                System.out.println(list.get(i).toString());
+            }
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

@@ -1739,12 +1739,12 @@
         }
         $.ajax({
             type: "post",
-            url: "/index-data-manage/addCarByInfo",
+            url: "/index-charge-rule/selectInterimRule",
             contentType: 'application/json;charset=utf-8',
             data: JSON.stringify(Data),
             dataType: "text",
             success: function (data) {
-                // $(".InterimResult").html(data);
+                $(".InterimResult").html(data);
             },
             error: function (date) {
                 alert("失败")

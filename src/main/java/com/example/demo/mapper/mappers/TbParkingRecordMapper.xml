@@ -78,7 +78,7 @@
         </trim>
     </insert>
     <insert id="addRowByInfo">
-        INSERT INTO test.tb_parking_record (car_plate_number,enter_time)
+        INSERT INTO test.tb_parking_record (car_plate_num,enter_time)
         VALUES (#{car_plate_num},#{enter_time})
   </insert>
     <select id="selectEnter" resultMap="BaseResultMap">
@@ -90,6 +90,15 @@
             limit #{pageNum} offset #{page};
         </if>
     </select>
+    <select id="selectOuter" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record
+        where outer_time>=#{date}
+        Order By outer_time Desc
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
     <select id="selectAll" resultMap="BaseResultMap">
         select *
         from tb_parking_record
@@ -97,5 +106,10 @@
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>
+    </select>
+    <select id="selectCar" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record
+        where exit_time is null
     </select>
 </mapper>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ public class StartController {
     ParkingLotSettingService parkingLotSettingService;
     UserService userService;
     CarService carService;
+    ParkingRecordService parkingRecordService;
 
     @GetMapping("/index")
     public String test() {
@@ -55,8 +57,11 @@ public class StartController {
     }
 
     @RequestMapping(value = "/index-manage-parking")
-    public String parkingManage(Model model) {
-        model.addAttribute("UserResult",userService.selectAll());
+    public String parkingManage(Model model, HttpSession session) {
+        model.addAttribute("UserResult", userService.selectAll());
+        model.addAttribute("EnterResult", parkingRecordService.selectAll(0, 0));
+        model.addAttribute("ParkingCarResult",parkingRecordService.selectCar());
+        System.out.println(session.getAttribute("staffId"));
         return "index-manage-parking";
     }
 
@@ -175,5 +180,10 @@ public class StartController {
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Autowired
+    public void setParkingRecordService(ParkingRecordService parkingRecordService) {
+        this.parkingRecordService = parkingRecordService;
     }
 }

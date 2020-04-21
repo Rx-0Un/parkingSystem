@@ -31,4 +31,10 @@ public interface TbParkingRecordMapper {
     List<TbParkingRecord> selectOuter(Date date,int pageNum,int page);
 
     List<TbParkingRecord> selectAll(int pageNum,int page);
+
+    /**
+     * 查找尚未出场的车牌
+     * @return
+     */
+    List<TbParkingRecord> selectCar();
 }
