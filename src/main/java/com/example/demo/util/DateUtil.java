@@ -240,4 +240,16 @@ public class DateUtil {
         }
         return dateStr;
     }
+    public static String getNowDate2() {
+        String dateStr = "";
+        Date date = new Date();
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            dateStr = sdf.format(date);
+            System.out.println(dateStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dateStr;
+    }
 }

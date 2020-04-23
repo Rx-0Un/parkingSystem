@@ -191,4 +191,15 @@ public class TbStaffDuty {
     public void setStaffTaskId(Integer staffTaskId) {
         this.staffTaskId = staffTaskId;
     }
+
+    @Override
+    public String toString() {
+        return "TbStaffDuty{" +
+                "staffDutyId=" + staffDutyId +
+                ", staffId=" + staffId +
+                ", endingTime=" + endingTime +
+                ", startingTime=" + startingTime +
+                ", staffTaskId=" + staffTaskId +
+                '}';
+    }
 }

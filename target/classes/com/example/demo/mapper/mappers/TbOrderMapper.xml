@@ -93,10 +93,12 @@
         select sum(order_amount)
         from tb_order,tb_parking_record
         where tb_order.order_id=tb_parking_record.order_id
+        and tb_parking_record.exit_time>=#{date}
     </select>
     <select id="selectRowCount" resultType="java.lang.Integer">
         select count(order_amount)
         from tb_order,tb_parking_record
         where tb_order.order_id=tb_parking_record.order_id
+        and tb_parking_record.exit_time>=#{date}
     </select>
 </mapper>

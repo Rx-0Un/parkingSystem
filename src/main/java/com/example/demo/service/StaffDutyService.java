@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.TbStaffDuty;
 import com.example.demo.mapper.TbStaffDutyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,11 @@ public class StaffDutyService {
     public String selectStartingTime() {
         return tbStaffDutyMapper.selectStartingTime();
     }
+
+    public TbStaffDuty selectLastRow(){
+        return tbStaffDutyMapper.selectLastRow();
+    }
+
 
     @Autowired
     public void setTbStaffDutyMapper(TbStaffDutyMapper tbStaffDutyMapper) {

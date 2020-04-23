@@ -97,7 +97,7 @@
     </insert>
     <insert id="addRowByInfo">
         INSERT INTO test.tb_parking_record (car_plate_num,enter_time)
-        VALUES (#{car_plate_num},#{enter_time})
+        VALUES (#{car_plate_num},now())
   </insert>
     <select id="selectEnter" resultMap="BaseResultMap">
         select *
@@ -145,7 +145,7 @@
         select *
         from tb_parking_record,tb_car
         where tb_parking_record.car_plate_num=tb_car.car_plate_number
-        Order By enter_time
+        Order By enter_time DESC
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>
@@ -156,7 +156,7 @@
         where tb_parking_record.car_plate_num=tb_car.car_plate_number
         and tb_order.order_id=tb_parking_record.order_id
         and exit_time is true
-        Order By exit_time
+        Order By exit_time DESC
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>

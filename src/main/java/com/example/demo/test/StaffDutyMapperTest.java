@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import com.example.demo.entity.TbStaffDuty;
 import com.example.demo.mapper.TbOrderMapper;
 import com.example.demo.mapper.TbStaffDutyMapper;
 import com.example.demo.mapper.TbStaffTaskMapper;
@@ -38,6 +39,17 @@ public class StaffDutyMapperTest extends BaseMapperTest {
             int count = tbStaffDutyMapper.updateRowByInfo("2020-03-18 23:53:27");
             System.out.println(count);
             sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void selectLastRowTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbStaffDutyMapper tbStaffDutyMapper = sqlSession.getMapper(TbStaffDutyMapper.class);
+            TbStaffDuty tbStaffDuty = tbStaffDutyMapper.selectLastRow();
+            System.out.println(tbStaffDuty.toString());
         } finally {
             sqlSession.close();
         }

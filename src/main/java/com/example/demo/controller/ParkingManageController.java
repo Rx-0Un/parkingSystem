@@ -2,8 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbParkingRecord;
+import com.example.demo.entity.TbStaffDuty;
 import com.example.demo.service.*;
 import com.example.demo.util.DateUtil;
+import com.example.demo.util.FileUtil;
+import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +39,10 @@ public class ParkingManageController {
         String car_plate_num_head = map.get("car_plate_num_head");
         String car_plate_num = map.get("car_plate_num");
         String car_color = map.get("car_color");
-        String date = map.get("date");
         System.out.println(map.toString());
         String car_plate_number = car_plate_num_head + car_plate_num;
         carService.addRowByInfo(car_type, car_plate_number, car_color, car_type_model, processCarUser(car_user));
-        parkingRecordService.addRowByInfo(car_plate_number, DateUtil.process(date));
+        parkingRecordService.addRowByInfo(car_plate_number, new Date());
         String starting_date = staffDutyService.selectStartingTime();
         model.addAttribute("EnterResult", parkingRecordService.selectEnter(starting_date, 10, 0));
         return "index-manage-parking::EnterResult";
@@ -81,9 +84,30 @@ public class ParkingManageController {
         model.addAttribute("enterCount", parkingRecordService.selectCountEnter(startTime));
         model.addAttribute("outerCount", parkingRecordService.selectCountOuter(startTime));
         model.addAttribute("orderCount", orderService.selectRowCount(startTime));
-        model.addAttribute("TotalCount", orderService.selectTotalCount(startTime));
+        try {
+            model.addAttribute("TotalCount", orderService.selectTotalCount(startTime));
+        } catch (BindingException e) {
+            model.addAttribute("TotalCount", 0);
+        }
+
         model.addAttribute("OffWorkResult", parkingRecordService.selectDutyAll(startTime, 10, 0));
         return "index-manage-parking::OffWorkResult";
+    }
+
+    @RequestMapping(value = "/commitDutyOffWork", method = RequestMethod.POST)
+    public String commitDutyOffWork(Model model, @RequestBody Map<String, String> map, HttpSession session) {
+        String startTime = (String) session.getAttribute("startTime");
+        String endTime = DateUtil.getNowDate();
+        staffDutyService.updateRowByInf0(endTime);
+        TbStaffDuty tbStaffDuty = staffDutyService.selectLastRow();
+        String enterCount = String.valueOf(parkingRecordService.selectCountEnter(startTime));
+        String outerCount = String.valueOf(parkingRecordService.selectCountOuter(startTime));
+        String orderCount = String.valueOf(orderService.selectRowCount(startTime));
+        String TotalCount = String.valueOf(orderService.selectTotalCount(startTime));
+        Integer staffId = (Integer) session.getAttribute("staffId");//职员编号
+        String staffName = (String) session.getAttribute("staffName");//职员姓名
+        FileUtil.exportExcel(parkingRecordService.selectDutyAll(startTime, 10, 0), enterCount, outerCount, orderCount, TotalCount, new TbStaffDuty(), staffId, staffName);
+        return "index-manage-parking";
     }
 
     @RequestMapping(value = "/addDutyRow", method = RequestMethod.GET)

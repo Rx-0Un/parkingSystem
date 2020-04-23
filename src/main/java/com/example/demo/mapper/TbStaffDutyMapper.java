@@ -46,4 +46,10 @@ public interface TbStaffDutyMapper {
      * @return
      */
     int updateRowByInfo(String date);
+
+    /**
+     * 查询第一条数据
+     * @return
+     */
+    TbStaffDuty selectLastRow();
 }

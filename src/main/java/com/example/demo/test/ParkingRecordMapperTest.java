@@ -101,7 +101,7 @@ public class ParkingRecordMapperTest extends BaseMapperTest {
         SqlSession sqlSession = getSqlSession();
         try {
             TbParkingRecordMapper tbParkingRecordMapper = sqlSession.getMapper(TbParkingRecordMapper.class);
-            int count = tbParkingRecordMapper.selectCountEnter("2020-04-22 13:06:32");
+            int count = tbParkingRecordMapper.selectCountEnter("2020-04-23 22:18:36");
             System.out.println(count);
         } finally {
             sqlSession.close();

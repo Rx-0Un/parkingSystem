@@ -89,4 +89,10 @@
         from  tb_staff_duty
         where ending_time is null
     </select>
+    <select id="selectLastRow" resultType="com.example.demo.entity.TbStaffDuty">
+        select *
+        from tb_staff_duty
+        order by starting_time DESC
+        limit 1
+    </select>
 </mapper>
