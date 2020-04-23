@@ -71,6 +71,7 @@ public class LoginController {
         //第一步获取个人提示卡中的内容
         session.setAttribute("staffId", StaffId);
         session.setAttribute("staffName", name);
+
         model.addAttribute("currentTask", CurrentTaskNum);
         //获取未完成任务内容
         List<TbStaffTask> list = staffTaskService.selectUnfinishedTask(""+StaffId ,10,0);

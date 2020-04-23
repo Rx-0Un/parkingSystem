@@ -1,7 +1,9 @@
 package com.example.demo.mapper;
 
+import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbParkingRecord;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -26,15 +28,30 @@ public interface TbParkingRecordMapper {
 
     int addRowByInfo(String car_plate_num, Date enter_time);
 
-    List<TbParkingRecord> selectEnter(Date date,int pageNum,int page);
+    List<TbParkingRecord> selectEnter(String date, int pageNum, int page);
 
-    List<TbParkingRecord> selectOuter(Date date,int pageNum,int page);
+    List<TbParkingRecord> selectOuter(String date, int pageNum, int page);
 
-    List<TbParkingRecord> selectAll(int pageNum,int page);
+    List<TbParkingRecord> selectAll(int pageNum, int page);
+
+    List<TbParkingRecord> selectAllByEnter(int pageNum, int page);
+
+    List<TbParkingRecord> selectAllByOuter(int pageNum, int page);
 
     /**
      * 查找尚未出场的车牌
+     *
      * @return
      */
     List<TbParkingRecord> selectCar();
+
+    int updateByOuter(String order_car_number, String starting_time, Date date, int order_id);
+
+    List<TbParkingRecord> selectDutyAll(@Param(value = "date") String start_time, int pageNum, int page);
+
+    int selectAll();
+
+    int selectCountEnter(@Param(value = "date")String start_time);
+    int selectCountOuter(@Param(value = "date")String start_time);
+
 }

@@ -16,11 +16,11 @@ public class ParkingRecordService {
         return tbParkingRecordMapper.addRowByInfo(car_plate_num, enter_time);
     }
 
-    public List<TbParkingRecord> selectEnter(Date date, int pageNum, int page) {
+    public List<TbParkingRecord> selectEnter(String date, int pageNum, int page) {
         return tbParkingRecordMapper.selectEnter(date, pageNum, page);
     }
 
-    public List<TbParkingRecord> selectOuter(Date date, int pageNum, int page) {
+    public List<TbParkingRecord> selectOuter(String date, int pageNum, int page) {
         return tbParkingRecordMapper.selectOuter(date, pageNum, page);
     }
 
@@ -28,9 +28,35 @@ public class ParkingRecordService {
         return tbParkingRecordMapper.selectAll(pageNum, page);
     }
 
+    public List<TbParkingRecord> selectAllByEnter(int pageNum, int page) {
+        return tbParkingRecordMapper.selectAllByEnter(pageNum, page);
+    }
+
+    public List<TbParkingRecord> selectDutyAll(String starting_time, int pageNum, int page) {
+        return tbParkingRecordMapper.selectDutyAll(starting_time, pageNum, page);
+    }
+
+    public List<TbParkingRecord> selectAllByOuter(int pageNum, int page) {
+        return tbParkingRecordMapper.selectAllByOuter(pageNum, page);
+    }
+
     public List<TbParkingRecord> selectCar() {
         return tbParkingRecordMapper.selectCar();
     }
+
+    public int updateByOuter(String order_car_number, String starting_time, Date date, int order_id) {
+        return tbParkingRecordMapper.updateByOuter(order_car_number, starting_time, date, order_id);
+    }
+
+    public int selectCountEnter(String starting_time) {
+        return tbParkingRecordMapper.selectCountEnter(starting_time);
+    }
+
+    public int selectCountOuter(String starting_time) {
+        return tbParkingRecordMapper.selectCountOuter(starting_time);
+    }
+
+
 
     @Autowired
     public void setTbParkingRecordMapper(TbParkingRecordMapper tbParkingRecordMapper) {

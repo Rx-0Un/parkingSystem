@@ -81,4 +81,15 @@ public class StaffTaskMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void selectTaskTodayTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbStaffTaskMapper tbStaffTaskMapper = sqlSession.getMapper(TbStaffTaskMapper.class);
+            Integer count = tbStaffTaskMapper.selectTaskToday(1,"2020-04-22 10:53:01");
+            System.out.println(count);
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

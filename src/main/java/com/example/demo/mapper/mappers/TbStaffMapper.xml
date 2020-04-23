@@ -180,4 +180,9 @@
         from tb_staff
         where staff_name like CONCAT('%',#{string},'%')
     </select>
+    <select id="selectNameById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select staff_name
+        from tb_staff
+        where staff_id=#{staff_id}
+    </select>
 </mapper>

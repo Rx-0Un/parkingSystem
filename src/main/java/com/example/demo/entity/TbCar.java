@@ -223,4 +223,16 @@ public class TbCar {
     public void setColumn6(Integer column6) {
         this.column6 = column6;
     }
+
+    @Override
+    public String toString() {
+        return "TbCar{" +
+                "carId=" + carId +
+                ", carType='" + carType + '\'' +
+                ", carPlateNumber='" + carPlateNumber + '\'' +
+                ", carColor='" + carColor + '\'' +
+                ", carTypeModel='" + carTypeModel + '\'' +
+                ", column6=" + column6 +
+                '}';
+    }
 }

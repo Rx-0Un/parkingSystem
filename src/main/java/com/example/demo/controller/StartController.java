@@ -30,6 +30,7 @@ public class StartController {
     UserService userService;
     CarService carService;
     ParkingRecordService parkingRecordService;
+    StaffDutyService staffDutyService;
 
     @GetMapping("/index")
     public String test() {
@@ -59,9 +60,17 @@ public class StartController {
     @RequestMapping(value = "/index-manage-parking")
     public String parkingManage(Model model, HttpSession session) {
         model.addAttribute("UserResult", userService.selectAll());
-        model.addAttribute("EnterResult", parkingRecordService.selectAll(0, 0));
-        model.addAttribute("ParkingCarResult",parkingRecordService.selectCar());
-        System.out.println(session.getAttribute("staffId"));
+        String starting_date = staffDutyService.selectStartingTime();
+        model.addAttribute("EnterResult", parkingRecordService.selectAllByEnter(0, 0));
+        model.addAttribute("ParkingCarResult", parkingRecordService.selectCar());
+        model.addAttribute("OuterResult", parkingRecordService.selectAllByOuter(0, 0));
+        model.addAttribute("RecordAndOrderResult", parkingRecordService.selectDutyAll(starting_date, 10, 0));
+        Integer staffId = (Integer) session.getAttribute("staffId");
+        String staffName = (String) session.getAttribute("staffName");
+        System.out.println("当前操作职员为" + staffId + "号:" + staffName);
+        model.addAttribute("staffId", staffId);
+        model.addAttribute("staffName", staffName);
+
         return "index-manage-parking";
     }
 
@@ -185,5 +194,10 @@ public class StartController {
     @Autowired
     public void setParkingRecordService(ParkingRecordService parkingRecordService) {
         this.parkingRecordService = parkingRecordService;
+    }
+
+    @Autowired
+    public void setStaffDutyService(StaffDutyService staffDutyService) {
+        this.staffDutyService = staffDutyService;
     }
 }

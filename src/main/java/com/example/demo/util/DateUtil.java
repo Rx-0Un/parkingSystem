@@ -38,6 +38,11 @@ public class DateUtil {
         return date;
     }
 
+    public static String processDateToString(Date date) {
+        SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return a.format(date);
+    }
+
     public static Date processStringToDate(String string) {
         Date date = new Date();
         StringBuilder stringBuilder = new StringBuilder(string);
@@ -151,10 +156,11 @@ public class DateUtil {
         }
         return ca.getTime();
     }
+
     /**
      * 当前时间加一天
      */
-    public static Date getNextDayDate(Date date){
+    public static Date getNextDayDate(Date date) {
         Calendar ca = Calendar.getInstance();
         ca.setTime(date);
         ca.add(Calendar.DAY_OF_WEEK, 1);
@@ -164,12 +170,13 @@ public class DateUtil {
     /**
      * 当前时间前一天
      */
-    public static Date getLastDayDate(Date date){
+    public static Date getLastDayDate(Date date) {
         Calendar ca = Calendar.getInstance();
         ca.setTime(date);
         ca.add(Calendar.DAY_OF_WEEK, -1);
         return ca.getTime();
     }
+
     /**
      * 判断当前日期是否为周末
      *
@@ -216,4 +223,21 @@ public class DateUtil {
         return dateStr;
     }
 
+    /**
+     * 获取当前时间并且转为string输出
+     *
+     * @return
+     */
+    public static String getNowDate() {
+        String dateStr = "";
+        Date date = new Date();
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            dateStr = sdf.format(date);
+            System.out.println(dateStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dateStr;
+    }
 }

@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.TbOrder;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface TbOrderMapper {
@@ -20,4 +21,9 @@ public interface TbOrderMapper {
      * @mbg.generated Sat Apr 18 19:53:53 GMT+08:00 2020
      */
     int insertSelective(TbOrder record);
+
+    int addRowByInfo(TbOrder tbOrder);
+
+    float selectTotalCount(@Param(value = "date") String starting_time);
+    int selectRowCount(@Param(value = "date") String starting_time);
 }

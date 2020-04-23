@@ -30,12 +30,15 @@ public class StaffTaskService {
         return tbStaffTaskMapper.selectTaskByFuzzStr(search,searchData,searchDate1,pageNum,page);
     }
 
-
     public List<TbStaffTask> selectAllPage(int pageNum,int page){return  tbStaffTaskMapper.selectAllPage(pageNum,page);};
 
     public int addTask(String staffId, String starting_time, String description)
     {
         return tbStaffTaskMapper.addTask(staffId, starting_time,description);
+    }
+
+    public Integer selectTaskToday(int staff_id,String starting_time){
+        return tbStaffTaskMapper.selectTaskToday(staff_id, starting_time);
     }
 
     @Autowired

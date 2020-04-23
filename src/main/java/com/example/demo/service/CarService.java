@@ -12,6 +12,9 @@ public class CarService {
     TbCarMapper tbCarMapper;
 
     public  int addRowByInfo(String car_type,String car_plate_number,String car_color,String car_type_model,int column_6){
+        if (tbCarMapper.selectCarByCarPlate(car_plate_number)==1){
+            return 0;
+        }
         return tbCarMapper.addRowByInfo(car_type, car_plate_number, car_color, car_type_model, column_6);
     }
     public List<TbCar> selectAll(int pageNum, int page){

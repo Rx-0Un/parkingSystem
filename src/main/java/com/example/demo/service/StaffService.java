@@ -45,7 +45,9 @@ public class StaffService {
     public int selectIdByName(String name) {
         return tbStaffMapper.selectIdByName(name);
     }
-
+    public String selectNameById(int id) {
+        return tbStaffMapper.selectNameById(id);
+    }
     /**
      * 根据字符串模糊查询
      *
@@ -152,6 +154,8 @@ public class StaffService {
         int count = tbStaffMapper.deleteStaffById(id);
         return count;
     }
+
+
     @Autowired
     public void setTbStaffMapper(TbStaffMapper tbStaffMapper) {
         this.tbStaffMapper = tbStaffMapper;

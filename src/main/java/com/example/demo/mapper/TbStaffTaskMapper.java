@@ -89,4 +89,12 @@ public interface TbStaffTaskMapper {
      * @return
      */
     List<TbStaffTask> selectTaskByFuzzStr(@Param("search") String search, @Param("searchDate") String searchData, @Param("searchDate1") String searchDate1, @Param("pageNum") Integer pageNum, @Param("page") Integer page);
+
+    /**
+     * 查找职员当日是否有未完成的值班任务
+     * @param staff_id
+     * @param starting_time
+     * @return
+     */
+    Integer selectTaskToday(int staff_id,String starting_time);
 }

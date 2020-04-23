@@ -257,4 +257,17 @@ public class TbOrder {
     public void setOrderPurchaseType(String orderPurchaseType) {
         this.orderPurchaseType = orderPurchaseType == null ? null : orderPurchaseType.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TbOrder{" +
+                "orderId=" + orderId +
+                ", orderAmount=" + orderAmount +
+                ", orderPayer='" + orderPayer + '\'' +
+                ", orderReceiver='" + orderReceiver + '\'' +
+                ", orderState='" + orderState + '\'' +
+                ", orderPayType='" + orderPayType + '\'' +
+                ", orderPurchaseType='" + orderPurchaseType + '\'' +
+                '}';
+    }
 }

@@ -28,4 +28,5 @@ public interface TbCarMapper {
     int addRowByInfo(String car_type,String car_plate_number,String car_color,String car_type_model,int column_6);
     int delectRowById(int id);
     int updateRowByInfo(int id,String car_type,String car_plate_number,String car_color,String car_type_model,String column_6);
+    int selectCarByCarPlate(String car_plate_number);
 }

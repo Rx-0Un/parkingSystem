@@ -15,6 +15,24 @@
             <arg column="last_time" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="order_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
         </constructor>
+        <association property="tbCar" javaType="com.example.demo.entity.TbCar">
+            <id property="carId" column="car_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <result property="carType" column="car_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="carPlateNumber" column="car_plate_number" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="carColor" column="car_color" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="carTypeModel" column="car_type_model" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="column6" column="column_6" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        </association>
+        <collection property="tbOrder" javaType="com.example.demo.entity.TbOrder">
+            <id property="orderId" column="order_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <result property="orderAmount" column="order_amount" javaType="java.lang.Float" jdbcType="REAL"/>
+            <result property="orderPayer" column="order_payer" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="orderReceiver" column="order_receiver" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="orderState" column="order_state" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="orderPayType" column="order_pay_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="orderPurchaseType" column="order_purchase_type" javaType="java.lang.String"
+                    jdbcType="VARCHAR"/>
+        </collection>
     </resultMap>
     <insert id="insert" parameterType="com.example.demo.entity.TbParkingRecord">
         <!--
@@ -83,8 +101,10 @@
   </insert>
     <select id="selectEnter" resultMap="BaseResultMap">
         select *
-        from tb_parking_record
+        from tb_parking_record,tb_car
         where enter_time>=#{date}
+        and exit_time is null
+        and tb_parking_record.car_plate_num=tb_car.car_plate_number
         Order By enter_time Desc
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
@@ -92,9 +112,12 @@
     </select>
     <select id="selectOuter" resultMap="BaseResultMap">
         select *
-        from tb_parking_record
-        where outer_time>=#{date}
-        Order By outer_time Desc
+        from tb_parking_record,tb_order,tb_car
+        where exit_time>=#{date}
+        and exit_time is true
+        and tb_order.order_id=tb_parking_record.order_id
+        and tb_parking_record.car_plate_num=tb_car.car_plate_number
+        Order By exit_time Desc
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>
@@ -111,5 +134,51 @@
         select *
         from tb_parking_record
         where exit_time is null
+    </select>
+    <update id="updateByOuter">
+        update tb_parking_record
+        set exit_time=NOW(),order_id=#{order_id}
+        where car_plate_num=#{order_car_number}
+        and exit_time is null
+    </update>
+    <select id="selectAllByEnter" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record,tb_car
+        where tb_parking_record.car_plate_num=tb_car.car_plate_number
+        Order By enter_time
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
+    <select id="selectAllByOuter" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record,tb_car,tb_order
+        where tb_parking_record.car_plate_num=tb_car.car_plate_number
+        and tb_order.order_id=tb_parking_record.order_id
+        and exit_time is true
+        Order By exit_time
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
+    <select id="selectDutyAll" resultMap="BaseResultMap">
+        select *
+        from tb_order,tb_parking_record,tb_car
+        where tb_order.order_id=tb_parking_record.order_id
+        and tb_parking_record.car_plate_num=tb_car.car_plate_number
+        and tb_parking_record.exit_time>=#{date}
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
+    <select id="selectCountEnter" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_record
+        where enter_time>=#{date}
+    </select>
+    <select id="selectCountOuter" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_record
+        where exit_time>=#{date}
     </select>
 </mapper>
