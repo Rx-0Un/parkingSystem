@@ -14,13 +14,13 @@ public class OrderService {
         return tbOrderMapper.addRowByInfo(tbOrder);
     }
 
-//    public float selectTotalCount(String starting_time) {
-//        return tbOrderMapper.selectTotalCount(starting_time);
-//    }
-//
-//    public int selectRowCount(String starting_time) {
-//        return tbOrderMapper.selectRowCount(starting_time);
-//    }
+    public float selectTotalCount(String starting_time) {
+        return tbOrderMapper.selectTotalCount(starting_time);
+    }
+
+    public int selectRowCount(String starting_time) {
+        return tbOrderMapper.selectRowCount(starting_time);
+    }
 
     @Autowired
     public void setTbOrderMapper(TbOrderMapper tbOrderMapper) {

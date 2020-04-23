@@ -80,8 +80,8 @@ public class ParkingManageController {
         model.addAttribute("ending_time", DateUtil.getNowDate());
         model.addAttribute("enterCount", parkingRecordService.selectCountEnter(startTime));
         model.addAttribute("outerCount", parkingRecordService.selectCountOuter(startTime));
-//        model.addAttribute("orderCount", orderService.selectRowCount(startTime));
-//        model.addAttribute("TotalCount", orderService.selectTotalCount(startTime));
+        model.addAttribute("orderCount", orderService.selectRowCount(startTime));
+        model.addAttribute("TotalCount", orderService.selectTotalCount(startTime));
         model.addAttribute("OffWorkResult", parkingRecordService.selectDutyAll(startTime, 10, 0));
         return "index-manage-parking::OffWorkResult";
     }

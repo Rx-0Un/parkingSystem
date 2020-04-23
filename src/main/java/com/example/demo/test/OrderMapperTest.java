@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 public class OrderMapperTest extends BaseMapperTest {
     @Test
@@ -30,17 +31,16 @@ public class OrderMapperTest extends BaseMapperTest {
         }
     }
 
-//    @Test
-//    public void selectDutyOrder() {
-//        SqlSession sqlSession = getSqlSession();
-//        try {
-//            TbOrderMapper TbOrderMapper = sqlSession.getMapper(TbOrderMapper.class);
-//            List<TbOrder> list = TbOrderMapper.selectDutyOrder("2020-04-22 13:06:32");
-//            for (int i = 0; i < list.size(); i++) {
-//                System.out.println(list.get(i).toString());
-//            }
-//        } finally {
-//            sqlSession.close();
-//        }
-//    }
+    @Test
+    public void selectDutyOrder() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbOrderMapper TbOrderMapper = sqlSession.getMapper(TbOrderMapper.class);
+            Float count = TbOrderMapper.selectTotalCount("2020-04-22 13:06:32");
+            System.out.println(count);
+
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

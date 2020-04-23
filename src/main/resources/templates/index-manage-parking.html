@@ -432,6 +432,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
+                                    <label class="control-label">选择打印路径</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="validatedCustomFile" required="">
+                                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="accordion" id="accordionExample">
                                         <div class="card m-b-0">
                                             <div class="card-header" id="headingOne">
@@ -450,43 +459,26 @@
                                                         <tbody>
                                                         <tr>
                                                             <td><a href="#" class="link">持续时间</a></td>
-                                                            <td>1542</td>
+                                                            <td th:text="${enterCount}">1542</td>
                                                         </tr>
                                                         <tr>
                                                             <td><a href="#" class="link">进入车辆</a></td>
-                                                            <td>1240</td>
+                                                            <td th:text="${enterCount}">1240</td>
                                                         </tr>
                                                         <tr>
                                                             <td><a href="#" class="link">放行车辆</a></td>
-                                                            <td>1200</td>
+                                                            <td th:text="${outerCount}">1200</td>
                                                         </tr>
                                                         <tr>
                                                             <td><a href="#" class="link">生成订单</a></td>
-                                                            <td>1230</td>
+                                                            <td th:text="${orderCount}">1230</td>
                                                         </tr>
                                                         <tr>
                                                             <td><a href="#" class="link">总金额</a></td>
-                                                            <td>1542</td>
+                                                            <td th:text="${TotalCount}">1542</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card m-b-0 border-top">
-                                            <div class="card-header" id="headingTwo">
-                                                <h5 class="mb-0">
-                                                    <a class="collapsed" data-toggle="collapse"
-                                                       data-target="#collapseTwo"
-                                                       aria-expanded="false" aria-controls="collapseTwo">
-                                                        <span>详细信息</span>
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                                 data-parent="#accordionExample">
-                                                <div class="card-body">
-
                                                 </div>
                                             </div>
                                         </div>
