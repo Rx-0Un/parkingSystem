@@ -31,6 +31,7 @@ public class StartController {
     CarService carService;
     ParkingRecordService parkingRecordService;
     StaffDutyService staffDutyService;
+    OrderService orderService;
 
     @GetMapping("/index")
     public String test() {
@@ -71,6 +72,9 @@ public class StartController {
         model.addAttribute("staffId", staffId);
         model.addAttribute("staffName", staffName);
 
+        int totalSpace = parkingLotSettingService.selectRowById(2).get(0).getSpaceNumber();
+        int occupyNum = parkingRecordService.selectOccupyNum();
+        model.addAttribute("nowSpaceNumber", totalSpace - occupyNum);
         return "index-manage-parking";
     }
 
@@ -124,7 +128,8 @@ public class StartController {
     }
 
     @RequestMapping(value = "/index-order-search")
-    public String indexOrderSearch() {
+    public String indexOrderSearch(Model model) {
+        model.addAttribute("OrderResult",orderService.selectAll(10,0));
         return "index-order-search";
     }
 
@@ -179,6 +184,11 @@ public class StartController {
     @Autowired
     public void setParkingLotSettingService(ParkingLotSettingService parkingLotSettingService) {
         this.parkingLotSettingService = parkingLotSettingService;
+    }
+
+    @Autowired
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     @Autowired

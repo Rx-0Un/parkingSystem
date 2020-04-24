@@ -86,6 +86,7 @@
         select *
         from tb_staff_task
         where staff_id=#{staff_id}
+        and ending_time is null
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>

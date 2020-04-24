@@ -56,7 +56,13 @@ public class ParkingRecordService {
         return tbParkingRecordMapper.selectCountOuter(starting_time);
     }
 
+    public int selectOccupyNum(){
+        return tbParkingRecordMapper.selectOccupyNum();
+    }
 
+    public Date selectEnterTimeByCarPlate(String  order_car_number){
+        return tbParkingRecordMapper.selectEnterTimeByCarPlate(order_car_number);
+    }
 
     @Autowired
     public void setTbParkingRecordMapper(TbParkingRecordMapper tbParkingRecordMapper) {

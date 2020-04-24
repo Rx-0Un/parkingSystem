@@ -181,4 +181,15 @@
         from tb_parking_record
         where exit_time>=#{date}
     </select>
+    <select id="selectOccupyNum" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_record
+        where exit_time is null
+    </select>
+    <select id="selectEnterTimeByCarPlate" resultType="java.util.Date">
+        select enter_time
+        from tb_parking_record
+        where car_plate_num=#{order_car_number}
+        and exit_time is null
+    </select>
 </mapper>

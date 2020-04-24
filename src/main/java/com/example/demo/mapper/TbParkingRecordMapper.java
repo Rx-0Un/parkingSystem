@@ -54,4 +54,11 @@ public interface TbParkingRecordMapper {
     int selectCountEnter(@Param(value = "date")String start_time);
     int selectCountOuter(@Param(value = "date")String start_time);
 
+    /**
+     * 查找场内停车数量
+     * @return
+     */
+    int selectOccupyNum();
+
+    Date selectEnterTimeByCarPlate(String  order_car_number);
 }

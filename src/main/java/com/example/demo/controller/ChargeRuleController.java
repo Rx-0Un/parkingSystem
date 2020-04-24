@@ -48,7 +48,6 @@ public class ChargeRuleController {
         String Date = map.get("Date");
         String time_type = map.get("time_type");
         String zone_type = map.get("zone_type");
-
         int searchNum = Integer.parseInt(map.get("searchNum").trim());//用于处理分页
         int page = Integer.parseInt(map.get("page")) - 1;
 

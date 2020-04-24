@@ -144,7 +144,8 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mainPager"
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/mainPager"
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -273,114 +274,117 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="result">
-                        <div class="card-body">
-                            <table class="table table-striped table-bordered dataTable" role="grid"
-                                   aria-describedby="zero_config_info">
-                                <thead>
-                                <tr role="row">
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Name: activate to sort column ascending">订单编号
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Salary: activate to sort column ascending">订单类型
-                                    </th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                        colspan="1"
-                                        aria-label="Position: activate to sort column descending" aria-sort="ascending">
-                                        金额
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Office: activate to sort column ascending">支付人
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Age: activate to sort column ascending">操作职员
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Start date: activate to sort column ascending">订单状态
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr role="row" class="even">
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>中午呢</td>
-                                    <td>未完成</td>
-                                    <td>Thu Mar 19 04:39:42 GMT+08:00 2020</td>
-                                    <td></td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>中午呢</td>
-                                    <td>01</td>
-                                    <td>Wed Mar 18 08:00:00 GMT+08:00 2020</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr role="row" class="even">
-                                    <td>11</td>
-                                    <td>1</td>
-                                    <td>中午</td>
-                                    <td>01</td>
-                                    <td>Thu Mar 19 07:53:27 GMT+08:00 2020</td>
-                                    <td></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-body border-top">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_info" id="zero_config_info" role="status" aria-live="polite">
-                                        Showing 1 to 57 of 57 entries
+                <div class="OrderResult" th:fragment="OrderResult">
+                    <div class="col-lg-8">
+                        <div class="result">
+                            <div class="card-body">
+                                <table class="table table-striped table-bordered dataTable" role="grid"
+                                       aria-describedby="zero_config_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Name: activate to sort column ascending">订单编号
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Salary: activate to sort column ascending">订单类型
+                                        </th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Position: activate to sort column descending"
+                                            aria-sort="ascending">
+                                            金额
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Office: activate to sort column ascending">支付人
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Age: activate to sort column ascending">操作职员
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Start date: activate to sort column ascending">订单状态
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Start date: activate to sort column ascending">支付方式
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody th:each="stat:${OrderResult}">
+                                    <tr role="row" class="even">
+                                        <th th:text="${stat.orderId}"></th>
+                                        <th th:text="${stat.orderPurchaseType}"></th>
+                                        <th th:text="${stat.orderAmount}"></th>
+                                        <th th:text="${stat.orderPayer}"></th>
+                                        <th th:text="${stat.orderReceiver}"></th>
+                                        <th th:text="${stat.orderState}"></th>
+                                        <th th:text="${stat.orderPayType}"></th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-body border-top">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="dataTables_info" id="zero_config_info" role="status"
+                                             aria-live="polite">
+                                            Showing 1 to 57 of 57 entries
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="zero_config_paginate">
-                                        <ul class="pagination">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="dataTables_paginate paging_simple_numbers"
+                                             id="zero_config_paginate">
+                                            <ul class="pagination">
 
-                                            <li class="paginate_button page-item previous"><a
-                                                    aria-controls="zero_config"
-                                                    data-dt-idx="0" tabindex="0"
-                                                    class="page-link"
-                                                    onclick="javascript : selectPage( '1' )">首页</a>
-                                            </li>
+                                                <li class="paginate_button page-item previous"><a
+                                                        aria-controls="zero_config"
+                                                        data-dt-idx="0" tabindex="0"
+                                                        class="page-link"
+                                                        onclick="javascript : selectPage( '1' )">首页</a>
+                                                </li>
 
 
-                                            <li class="paginate_button page-item active">
-                                                <a aria-controls="zero_config" data-dt-idx="1" tabindex="0"
-                                                   class="page-link" onclick="javascript : selectPage( [[1]] )">1</a>
-                                            </li>
-                                            <li class="paginate_button page-item">
-                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                   class="page-link" onclick="javascript : selectPage( [[2]] )">2</a>
-                                            </li>
-                                            <li class="paginate_button page-item">
-                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                   class="page-link" onclick="javascript : selectPage( [[3]] )">3</a>
-                                            </li>
-                                            <li class="paginate_button page-item">
-                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                   class="page-link" onclick="javascript : selectPage( [[4]] )">4</a>
-                                            </li>
-                                            <li class="paginate_button page-item next">
-                                                <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                   class="page-link" onclick="javascript : selectPage([[12]])">尾页
-                                                </a>
-                                            </li>
-                                            <li class="paginate_button page-item next" id="zero_config_next"><a
-                                                    aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                    class="page-link" onclick="javascript : selectPage( [[2]] )">下一页</a>
-                                            </li>
-                                        </ul>
+                                                <li class="paginate_button page-item active">
+                                                    <a aria-controls="zero_config" data-dt-idx="1" tabindex="0"
+                                                       class="page-link"
+                                                       onclick="javascript : selectPage( [[1]] )">1</a>
+                                                </li>
+                                                <li class="paginate_button page-item">
+                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                       class="page-link"
+                                                       onclick="javascript : selectPage( [[2]] )">2</a>
+                                                </li>
+                                                <li class="paginate_button page-item">
+                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                       class="page-link"
+                                                       onclick="javascript : selectPage( [[3]] )">3</a>
+                                                </li>
+                                                <li class="paginate_button page-item">
+                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                       class="page-link"
+                                                       onclick="javascript : selectPage( [[4]] )">4</a>
+                                                </li>
+                                                <li class="paginate_button page-item next">
+                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                       class="page-link" onclick="javascript : selectPage([[12]])">尾页
+                                                    </a>
+                                                </li>
+                                                <li class="paginate_button page-item next" id="zero_config_next"><a
+                                                        aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                        class="page-link"
+                                                        onclick="javascript : selectPage( [[2]] )">下一页</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>

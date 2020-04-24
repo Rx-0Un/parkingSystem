@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.bean.BasicCharge;
+import com.example.demo.bean.CommonCharge;
 import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbParkingRecord;
 import com.example.demo.entity.TbStaffDuty;
+import com.example.demo.rule.Rule;
 import com.example.demo.service.*;
 import com.example.demo.util.DateUtil;
 import com.example.demo.util.FileUtil;
@@ -30,6 +33,7 @@ public class ParkingManageController {
     StaffTaskService staffTaskService;
     StaffDutyService staffDutyService;
     StaffService staffService;
+    RuleCommonBasicService ruleCommonBasicService;
 
     @RequestMapping(value = "/addParkingRecordEnter", method = RequestMethod.POST)
     public String addParkingRecordEnter(Model model, @RequestBody Map<String, String> map, HttpSession session) {
@@ -128,6 +132,20 @@ public class ParkingManageController {
         return "index-manage-parking";
     }
 
+    @RequestMapping(value = "/countCharge", method = RequestMethod.POST)
+    public String countCharge(Model model, @RequestBody Map<String, String> map, HttpSession session) {
+        String order_car_number = map.get("order_car_number");
+        Date ending_time = new Date();
+        Date starting_time = parkingRecordService.selectEnterTimeByCarPlate(order_car_number);
+        BasicCharge basicCharge = new BasicCharge("", "");
+        basicCharge = new CommonCharge("小车", "基本规则", ruleCommonBasicService.selectRowById("1").getMoney(),
+                ruleCommonBasicService.selectRowById("2").getMoney(), ruleCommonBasicService.selectRowById("3").getMoney(),
+                ruleCommonBasicService.selectRowById("4").getMoney(), ruleCommonBasicService.selectRowById("5").getMoney());
+        Rule rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge);
+        model.addAttribute("Amount", rule.total);
+        return "index-manage-parking::chargeResult";
+    }
+
     @Autowired
     public void setParkingRecordService(ParkingRecordService parkingRecordService) {
         this.parkingRecordService = parkingRecordService;
@@ -156,5 +174,10 @@ public class ParkingManageController {
     @Autowired
     public void setStaffService(StaffService staffService) {
         this.staffService = staffService;
+    }
+
+    @Autowired
+    public void setRuleCommonBasicService(RuleCommonBasicService ruleCommonBasicService) {
+        this.ruleCommonBasicService = ruleCommonBasicService;
     }
 }

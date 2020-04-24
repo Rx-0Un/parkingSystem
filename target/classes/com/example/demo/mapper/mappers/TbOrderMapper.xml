@@ -101,4 +101,11 @@
         where tb_order.order_id=tb_parking_record.order_id
         and tb_parking_record.exit_time>=#{date}
     </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select *
+        from tb_order
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
 </mapper>

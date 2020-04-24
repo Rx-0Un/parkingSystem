@@ -339,6 +339,7 @@
                                 <select class="select2 form-control custom-select select2-hidden-accessible"
                                         style="width: 100%; height:33px;" data-select2-id="1"
                                         tabindex="-1" aria-hidden="true" id="order_car_number">
+                                    <option>选择车牌</option>
                                     <optgroup label="场内车牌">
                                         <option th:each="stat:${ParkingCarResult}"
                                                 th:text="${stat.carPlateNum}"></option>
@@ -382,10 +383,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="control-label">金额</label>
-                                <input type="text" class="form-control form-white" id="money">
+                                <input type="text" class="form-control form-white" id="order_money" disabled="disabled">
                             </div>
                         </div>
-
+                        <div class="chargeResult" th:fragment="chargeResult">
+                            <input type="hidden" th:value="${Amount}" id="Amount"/>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -617,10 +620,6 @@
                                                     <canvas class="flot-overlay" width="2016" height="800"
                                                             style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1008px; height: 400px;"></canvas>
                                                 </div>
-                                                <p>Time between updates:
-                                                    <input id="updateInterval" type="text" value=""
-                                                           style="text-align: right; width:5em"> milliseconds
-                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -666,7 +665,7 @@
                                                                     <i class="fa fa-user w-30px m-t-5"></i>
                                                                     <div>
                                                                         <span class="font-bold">剩余车位</span>
-                                                                        <p th:text="${spaceNum}">0</p>
+                                                                        <p th:text="${nowSpaceNumber}">0</p>
                                                                     </div>
                                                                 </div>
                                                             </a>
@@ -676,7 +675,8 @@
                                                                 <div class="d-flex no-block">
                                                                     <i class="fa fa-user w-30px m-t-5"></i>
                                                                     <div>
-                                                                        <span class="font-bold">收费金额</span>　0
+                                                                        <span class="font-bold">收费金额</span>　
+                                                                        <div th:test="${TotalCount}"></div>
                                                                     </div>
                                                                 </div>
                                                             </a>
@@ -1092,6 +1092,33 @@
     });
     $('#closeDuty2').bind('click', function () {
         div3.style.display = "none"
+    });
+    $("#order_car_number").bind("input propertychange", function (event) {
+
+        const order_car_number = $('#order_car_number').val()
+        if(order_car_number!='选择车牌'){
+            const Data = {
+                "order_car_number": order_car_number,
+                "random": new Date()
+            }
+            $.ajax({
+                type: "post",
+                url: "/index-manage-parking/countCharge",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    $(".chargeResult").html(data);
+                    const Amount= $('#Amount').val()
+                    $('#order_money').val(Amount)
+                },
+                error: function (date) {
+
+                }
+            })
+        }else {
+            return false;
+        }
     });
     $('#offWork').bind('click', function () {
         const t = confirm("是否结束值班？");

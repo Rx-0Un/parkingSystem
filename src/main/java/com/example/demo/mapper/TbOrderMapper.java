@@ -4,6 +4,8 @@ import com.example.demo.entity.TbOrder;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface TbOrderMapper {
     /**
@@ -26,4 +28,6 @@ public interface TbOrderMapper {
 
     float selectTotalCount(@Param(value = "date") String starting_time);
     int selectRowCount(@Param(value = "date") String starting_time);
+
+    List<TbOrder> selectAll(int pageNum,int page);
 }

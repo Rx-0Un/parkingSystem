@@ -22,6 +22,7 @@ public class ParkingLotSettingService {
         return tbParkingLotMapper.selectRowById(id);
     }
 
+
     @Autowired
     public void setTbParkingLotMapper(TbParkingLotMapper tbParkingLotMapper) {
         this.tbParkingLotMapper = tbParkingLotMapper;

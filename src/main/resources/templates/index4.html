@@ -1,0 +1,49 @@
+<!-- HTML -->
+<div id="example-section6">
+    <div id="flotcontainer" style="width: 600px;height:200px; text-align: center; margin:0 auto;">
+    </div>
+</div>
+
+
+<!-- Javascript -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://www.pureexample.com/js/flot/excanvas.min.js"></script>
+<script src="http://www.pureexample.com/js/flot/jquery.flot.min.js"></script>
+<script type="text/javascript">
+    var data6 = [];
+
+    function DoSeries6(){
+        var data = [];
+        var start = 1354586000000;
+
+        for(i=1;i<=50;i++){
+            data.push([start, i * Math.cos(i)]);
+            start+= 100000
+        }
+
+        return data;
+    }
+
+    $(function () {
+        data6 = DoSeries6();
+
+        $.plot($("#example-section6 #flotcontainer"),
+            [
+                {
+                    data: data6,
+                    points: { show: true },
+                    lines: { show: true}
+                }
+            ],
+            {
+                grid: {
+                    backgroundColor: { colors: ["#B0D5FF", "#5CA8FF"] }
+                },
+                xaxis: {
+                    mode: "time",
+                    timeformat: "%0m/%0d %0H:%0M"
+                }
+            }
+        );
+    });
+</script>
