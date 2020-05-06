@@ -32,6 +32,7 @@ public class StartController {
     ParkingRecordService parkingRecordService;
     StaffDutyService staffDutyService;
     OrderService orderService;
+    CouponService couponService;
 
     @GetMapping("/index")
     public String test() {
@@ -62,9 +63,13 @@ public class StartController {
     public String parkingManage(Model model, HttpSession session) {
         model.addAttribute("UserResult", userService.selectAll());
         String starting_date = staffDutyService.selectStartingTime();
-        model.addAttribute("EnterResult", parkingRecordService.selectAllByEnter(0, 0));
+        model.addAttribute("EnterResult", parkingRecordService.selectAllByEnter(10, 0));
         model.addAttribute("ParkingCarResult", parkingRecordService.selectCar());
-        model.addAttribute("OuterResult", parkingRecordService.selectAllByOuter(0, 0));
+        model.addAttribute("OuterResult", parkingRecordService.selectAllByOuter(10, 0));
+
+
+
+
         model.addAttribute("RecordAndOrderResult", parkingRecordService.selectDutyAll(starting_date, 10, 0));
         Integer staffId = (Integer) session.getAttribute("staffId");
         String staffName = (String) session.getAttribute("staffName");
@@ -129,7 +134,7 @@ public class StartController {
 
     @RequestMapping(value = "/index-order-search")
     public String indexOrderSearch(Model model) {
-        model.addAttribute("OrderResult",orderService.selectAll(10,0));
+        model.addAttribute("OrderResult", orderService.selectAll(10, 0));
         return "index-order-search";
     }
 
@@ -137,6 +142,7 @@ public class StartController {
     public String indexCarManage(Model model) {
         model.addAttribute("UserResult", userService.selectAll());
         model.addAttribute("CarResult", carService.selectAll(0, 0));
+        model.addAttribute("UserSearch", userService.selectAll());
         return "index-data-manage";
     }
 
@@ -145,6 +151,11 @@ public class StartController {
         return "index-app-user-manage";
     }
 
+    @RequestMapping(value = "/index-coupon-manage")
+    public String couponManage(Model model) {
+        model.addAttribute("CouponResult", couponService.selectAll(10, 0));
+        return "index-coupon-manage";
+    }
 
     @Autowired
     public void setStaffTaskService(StaffTaskService staffTaskService) {
@@ -209,5 +220,9 @@ public class StartController {
     @Autowired
     public void setStaffDutyService(StaffDutyService staffDutyService) {
         this.staffDutyService = staffDutyService;
+    }
+    @Autowired
+    public void setCouponService(CouponService couponService) {
+        this.couponService = couponService;
     }
 }

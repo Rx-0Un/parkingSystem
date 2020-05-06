@@ -3,6 +3,9 @@ package com.example.demo.mapper;
 import com.example.demo.entity.TbCoupon;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
+import java.util.List;
+
 @Mapper
 public interface TbCouponMapper {
     /**
@@ -20,4 +23,13 @@ public interface TbCouponMapper {
      * @mbg.generated Tue Feb 25 17:41:08 GMT+08:00 2020
      */
     int insertSelective(TbCoupon record);
+
+    int addRowByInfo(float coupon_amount,
+                     int coupon_count,
+                     String coupon_location,
+                     int coupon_usage_count,
+                     Date starting_time,
+                     Date ending_time,
+                     String coupon_situation);
+    List<TbCoupon> selectAll(int pageNum, int page);
 }

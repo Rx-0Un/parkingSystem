@@ -3,36 +3,49 @@ package com.example.demo.rule;
 import com.example.demo.bean.CommonCharge;
 import com.example.demo.bean.ResultBean;
 import com.example.demo.util.DateUtil;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.*;
 
 public class Rule extends BasicRule {
     public Date FIST_HOUR_TIME;//开始一个小时的时间
     CommonCharge basicCharge;//基本规则
-    List<InterimRule> interimRuleList;
+    List<InterimRule> interimRuleList = new ArrayList<>();
 
-    public Rule(Date STARTING_TIME, Date ENDING_TIME, Date FIST_HOUR_TIME, CommonCharge basicCharge, List<InterimRule> interimRuleList) {
+    public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge, List<InterimRule> interimRuleList) {
         super(STARTING_TIME, ENDING_TIME);
-        this.FIST_HOUR_TIME = FIST_HOUR_TIME;
+        this.FIST_HOUR_TIME = STARTING_TIME;
         this.basicCharge = basicCharge;
         this.interimRuleList = interimRuleList;
+        initDailyMap(this.STARTING_TIME);
     }
 
     public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge) {
         super(STARTING_TIME, ENDING_TIME);
-        this.FIST_HOUR_TIME = DateUtil.getNextHourDate(STARTING_TIME);
+        this.FIST_HOUR_TIME = STARTING_TIME;
         this.basicCharge = basicCharge;
-        if (DateUtil.countHour(this.STARTING_TIME, this.ENDING_TIME) == 0) {
+        if (DateUtil.countHour(this.STARTING_TIME, this.ENDING_TIME) == 0 && searchInterimRule(this.STARTING_TIME) != null) {
             countTotal(this.STARTING_TIME);
         } else {
             initDailyMap(this.STARTING_TIME);
         }
     }
 
-    private void initDailyMap(Date date) {
-        if (date.getTime() < ENDING_TIME.getTime()) {
-            countTotal(date);
-            initDailyMap(DateUtil.getNextHourDate(date));
+    @Async
+    public void initDailyMap(Date date) {
+        while (date.getTime() < ENDING_TIME.getTime()) {
+            //判断当前时间内是否有临时规则
+            if (searchInterimRule(date) != null) {
+                InterimRule interimRule = searchInterimRule(date);
+                interimRule.initMap(date, STARTING_TIME, ENDING_TIME, total);
+                total += interimRule.total;
+                dailyMap.addAll(interimRule.getDailyMap());
+                monthMap.addAll(interimRule.getMonthMap());
+                date = DateUtil.addDay(date, this.ENDING_TIME);
+            } else {
+                countTotal(date);
+                date = addDate1(date);
+            }
         }
     }
 
@@ -41,34 +54,33 @@ public class Rule extends BasicRule {
      *
      * @param date
      */
+    @Async
     public void countTotal(Date date) {
+        float addTotal = this.total;
         if (DateUtil.isWeekday(date)) {
             if (date.getTime() == FIST_HOUR_TIME.getTime()) {
                 total += basicCharge.firstHour;
-                dailyMap.add(new ResultBean(date, addDate1(date), total));
             } else {
                 total += basicCharge.plainHour;
-                dailyMap.add(new ResultBean(date, addDate1(date), total));
             }
         } else {
             if (DateUtil.isPeak(date)) {
                 if (date.getTime() == FIST_HOUR_TIME.getTime()) {
                     total += basicCharge.workFirstHour;
-                    dailyMap.add(new ResultBean(date, addDate1(date), total));
                 } else {
                     total += basicCharge.workPeakHour;
-                    dailyMap.add(new ResultBean(date, addDate1(date), total));
                 }
             } else {
                 total += basicCharge.workPlainHour;
-                dailyMap.add(new ResultBean(date, addDate1(date), total));
             }
         }
-        initMonthMap(new ResultBean(total, DateUtil.dateFormatMonth(date), ""));
-
-        initYearMap(new ResultBean(total, "", DateUtil.dateFormatYear(date)));
+        addTotal = total - addTotal;
+        dailyMap.add(new ResultBean(date, addDate1(date), total, this.basicCharge.getNow_rule(), String.valueOf(addTotal)));
+        initMonthMap(new ResultBean(this.total, DateUtil.dateFormatMonth(date), "", this.basicCharge.getNow_rule(), String.valueOf(addTotal)));
+        initYearMap(new ResultBean(this.total, "", DateUtil.dateFormatYear(date), this.basicCharge.getNow_rule(), String.valueOf(addTotal)));
     }
 
+    @Async
     public Date addDate1(Date date) {
         if (DateUtil.getNextHourDate(date).getTime() > this.ENDING_TIME.getTime()) {
             return this.ENDING_TIME;
@@ -76,26 +88,35 @@ public class Rule extends BasicRule {
         return DateUtil.getNextHourDate(date);
     }
 
+    @Async
     public void initMonthMap(ResultBean resultBean) {
         if (MonthMapContains(resultBean) == -1) {
             monthMap.add(resultBean);
         } else {
             monthMap.set(MonthMapContains(resultBean), resultBean);
         }
-        if (MonthMapContains(resultBean) > 0) {
-            resultBean.setTotal(resultBean.getTotal() - monthMap.get(MonthMapContains(resultBean) - 1).getTotal());
-        }
     }
 
+    @Async
     public void initYearMap(ResultBean resultBean) {
         if (YearMapContains(resultBean) == -1) {
             yearLMap.add(resultBean);
         } else {
             yearLMap.set(YearMapContains(resultBean), resultBean);
         }
-        if (YearMapContains(resultBean) > 0) {
-            resultBean.setTotal(resultBean.getTotal() - yearLMap.get(YearMapContains(resultBean) - 1).getTotal());
+    }
+
+    @Async
+    public InterimRule searchInterimRule(Date date) {
+        date = DateUtil.getTimeByDate(date, 0);
+        if (interimRuleList.size() > 0) {
+            for (InterimRule interimRule : interimRuleList) {
+                if (interimRule.use_date.getTime() == date.getTime()) {
+                    return interimRule;
+                }
+            }
         }
+        return null;
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.TbParkingLot;
 import com.example.demo.entity.TbParkingRecord;
 import com.example.demo.mapper.TbParkingRecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,7 @@ public class ParkingRecordService {
     public int selectOccupyNum(){
         return tbParkingRecordMapper.selectOccupyNum();
     }
+
 
     public Date selectEnterTimeByCarPlate(String  order_car_number){
         return tbParkingRecordMapper.selectEnterTimeByCarPlate(order_car_number);

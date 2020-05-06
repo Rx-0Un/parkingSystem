@@ -28,11 +28,11 @@ public class LoginController {
     private StaffService staffService;
 
     private StaffTaskService staffTaskService;
-    UserService userService;
     OrderService orderService;
     ParkingLotSettingService parkingLotSettingService;
     ParkingRecordService parkingRecordService;
     CarService carService;
+    UserService userService;
 
     /**
      * 登录验证
@@ -82,6 +82,7 @@ public class LoginController {
         model.addAttribute("nowPage", 1);
         model.addAttribute("totalPage", (totalPage / 10) - 1);
 //        System.out.println(list.get(0).toString());
+        model.addAttribute("AllPeople", staffService.selectAll().size());
         model.addAttribute("AllPeople", staffService.selectAll().size() + userService.selectAll().size());
         model.addAttribute("newUser", userService.selectAll().size());
         model.addAttribute("AllUser", userService.selectAll().size());
@@ -128,10 +129,10 @@ public class LoginController {
         this.staffTaskService = staffTaskService;
     }
 
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+//    @Autowired
+//    public void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
 
     @Autowired
     public void setOrderService(OrderService orderService) {
@@ -151,5 +152,10 @@ public class LoginController {
     @Autowired
     public void setParkingRecordService(ParkingRecordService parkingRecordService) {
         this.parkingRecordService = parkingRecordService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

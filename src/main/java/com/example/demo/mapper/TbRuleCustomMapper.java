@@ -31,7 +31,8 @@ public interface TbRuleCustomMapper {
     int updateRowByCarType(@Param(value = "car_type") String car_type, @Param(value = "rule_type") String rule_type, @Param(value = "money") float money, @Param(value = "description") String description);
 
     int selectRowByCarType(@Param(value = "car_type") String car_type, @Param(value = "rule_type") String rule_type);
-    
-    
-    List<TbRuleCustom> selectByFurzzyStr(@Param(value = "car_type") String car_type,@Param(value = "rule_type") String rule_type);
+
+    float selectMoneyByInfo(String rule_type, String car_type);
+
+    List<TbRuleCustom> selectByFurzzyStr(@Param(value = "car_type") String car_type, @Param(value = "rule_type") String rule_type);
 }

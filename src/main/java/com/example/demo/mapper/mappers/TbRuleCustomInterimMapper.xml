@@ -107,9 +107,56 @@
             and money like CONCAT('%',#{money},'%')
         </if>
         <if test="use_date!=null and use_date!=''">
-            and date_format(use_date,'%Y-%m-%d') = #{use_date}
+            and TO_DAYS(use_date) = TO_DAYS(#{use_date})
         </if>
         order by interim_rule_id
         limit #{pageNum} offset #{page};
+    </select>
+    <select id="selectAllExist" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from tb_rule_custom_interim
+        where rule_type='全天'
+        and TO_DAYS(use_date) = TO_DAYS(#{date})
+    </select>
+    <select id="selectRuleExist" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from tb_rule_custom_interim
+        where TO_DAYS(use_date) = TO_DAYS(#{date})
+    </select>
+    <select id="selectMoneyByInfo" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from tb_rule_custom_interim
+        where TO_DAYS(use_date) = TO_DAYS(#{date})
+        and rule_type=#{rule_type}
+        and car_type=#{car_type}
+    </select>
+    <select id="selectMoneyByPeakFirst" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from tb_rule_custom_interim
+        where TO_DAYS(use_date) = TO_DAYS(#{date})
+        and rule_type='高峰前一个小时'
+        and car_type=#{car_type}
+    </select>
+    <select id="selectMoneyByPeak" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from tb_rule_custom_interim
+        where TO_DAYS(use_date) = TO_DAYS(#{date})
+        and rule_type='高峰普通时段'
+        and car_type=#{car_type}
+    </select>
+    <select id="selectMoneyByPlain" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from tb_rule_custom_interim
+        where TO_DAYS(use_date) = TO_DAYS(#{date})
+        and rule_type='非高峰时段'
+        and car_type=#{car_type}
+    </select>
+
+    <select id="selectMoneyByAll" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from tb_rule_custom_interim
+        where TO_DAYS(use_date) = TO_DAYS(#{date})
+        and rule_type='全天最高上限'
+        and car_type=#{car_type}
     </select>
 </mapper>

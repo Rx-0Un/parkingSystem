@@ -8,6 +8,7 @@ import com.example.demo.service.*;
 import com.example.demo.util.DateUtil;
 import com.example.demo.util.RuleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,17 +29,18 @@ public class ChargeRuleController {
     RuleFixedParkingService ruleFixedParkingService;
     RuleCustomInterimService ruleCustomInterimService;
     RuleCustomService ruleCustomService;
-    List<InterimRule> interimRuleList;
+    List<InterimRule> interimRuleList = new ArrayList<>();
     //规则类用于测试
     Rule rule;
     PersonRule personRule;
     CustomRule customRule;
     BasicCharge basicCharge = new BasicCharge("", "");
-
+    InterimCharge interimCharge;
     //开始时间结束时间
     Date ending_time = new Date();
     Date starting_time = new Date();
 
+    @Async
     @RequestMapping(value = "/parkingTest", method = RequestMethod.POST)
     public String parkingTest(Model model, @RequestBody Map<String, String> map) {
         int rule = Integer.parseInt(map.get("rule"));
@@ -50,18 +52,15 @@ public class ChargeRuleController {
         String zone_type = map.get("zone_type");
         int searchNum = Integer.parseInt(map.get("searchNum").trim());//用于处理分页
         int page = Integer.parseInt(map.get("page")) - 1;
-
-
         model.addAttribute("time_type", time_type);//用于处理视图
         processCharge(rule, car_type, zone_type);
         processData(Date);
-        processInterimRule(this.starting_time, car_type);
-        processRule(interim_rule, plate_type);
+        processInterimRule(starting_time, ending_time, car_type);
+        processRule(interim_rule);
         List<ResultBean> list = processTimeType(rule, time_type);
         if (searchNum * (page + 1) < list.size()) {
             model.addAttribute("TestResult", list.subList(page * searchNum, (page + 1) * searchNum));
-        }
-        else {
+        } else {
             model.addAttribute("TestResult", list.subList(page * searchNum, list.size()));
         }
         model.addAttribute("TestTotalPage", (list.size() / searchNum) + 1);
@@ -69,15 +68,52 @@ public class ChargeRuleController {
         return "index-charge-rule::TestResult";
     }
 
-    public void processInterimRule(Date date, String car_type) {
-        TbRuleCustomInterim tbRuleCustomInterim;
-        while (date.getTime() < ending_time.getTime()) {
-//            interimRuleList.add(new I)
-            date = DateUtil.getNextDayDate(date);
+    @Async
+    public void processInterimRule(Date starting_time, Date ending_time, String car_type) {
+        this.interimRuleList = new ArrayList<>();
+        while (starting_time.getTime() < ending_time.getTime()) {
+            String d = DateUtil.getNowDate(starting_time);
+            if (searchInterimList(starting_time) == -1) {
+                if (ruleCustomInterimService.selectRuleExist(d) != 0) {
+                    if (ruleCustomInterimService.selectAllExist(d) == 1) {
+                        this.interimCharge = new InterimCharge(car_type, "临时规则", "全天制度",
+                                DateUtil.process(d),
+                                ruleCustomInterimService.selectMoneyByInfo(d, "全天", "小车") == null ? 0
+                                        : ruleCustomInterimService.selectMoneyByInfo(d, "全天", "小车"));
+                    } else {
+                        this.interimCharge = new InterimCharge(car_type, "临时规则",
+                                "小时制度", DateUtil.process(d),
+                                ruleCustomInterimService.selectMoneyByPeakFirst(d, "小车"),
+                                ruleCustomInterimService.selectMoneyByPeak(d, "小车"),
+                                ruleCustomInterimService.selectMoneyByPlain(d, "小车"),
+                                ruleCustomInterimService.selectMoneyByAll(d, "小车")
+                        );
+                    }
+                    addInterimRuleList(DateUtil.getNowDate(d));
+                }
+            }
+            starting_time = DateUtil.addDay(starting_time, ending_time);
         }
     }
 
+    @Async
+    public void addInterimRuleList(Date date) {
+        if (searchInterimList(date) == -1) {
+            this.interimRuleList.add(new InterimRule(this.interimCharge, date));
+        }
+    }
 
+    @Async
+    public int searchInterimList(Date date) {
+        for (int i = 0; i < interimRuleList.size(); i++) {
+            if (interimRuleList.get(i).getUse_date().getTime() == date.getTime()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Async
     public List<ResultBean> processTimeType(int rule, String time_type) {
         if (rule == 1) {
             switch (time_type) {
@@ -87,6 +123,16 @@ public class ChargeRuleController {
                     return this.rule.getMonthMap();
                 case RuleUtil.TYPE_RESULT_LIST_THREE:
                     return this.rule.getYearLMap();
+            }
+        }
+        if (rule == 2) {
+            switch (time_type) {
+                case RuleUtil.TYPE_RESULT_LIST_ONE:
+                    return this.customRule.getDailyMap();
+                case RuleUtil.TYPE_RESULT_LIST_TWO:
+                    return this.customRule.getMonthMap();
+                case RuleUtil.TYPE_RESULT_LIST_THREE:
+                    return this.customRule.getYearLMap();
             }
         }
         if (rule == 3) {
@@ -103,55 +149,8 @@ public class ChargeRuleController {
         return null;
     }
 
-    //    public List<ResultBean> processData(int rule, String interim_rule, String plate_type, String car_type, String Date, String time_type) {
-//        //字符串转化成时间
-//        Date ending_time = new Date();
-//        Date starting_time = new Date();
-//        Date = Date.trim();
-//        for (int i = 0; i < Date.length(); i++) {
-//            if (Date.charAt(i) == '到') {
-//                starting_time = DateUtil.process(Date.substring(0, i - 1));
-//                ending_time = DateUtil.process(Date.substring(i + 1, Date.length()));
-//            }
-//        }
-//
-//
-//        BasicCharge basicCharge;
-//        switch (car_type) {
-//            case "小车":
-//            case "大车":
-//            case "超大型车":
-//            case "其他车":
-//        }
-//
-//        return processRule(rule, starting_time, ending_time, time_type, new CommonCharge("小车", "", 15, 3, 1, 5, 1));
-//    }
-//
-//    public List<ResultBean> processRule(int rule, Date starting_time, Date ending_time, String time_type, CommonCharge charge) {
-//        List<ResultBean> list;
-//        BasicRule basicRule = null;
-//        switch (rule) {
-//            case RuleUtil.RULE_BASIC:
-//                basicRule = new Rule(starting_time, ending_time, charge);
-//                list = basicRule.getDailyMap();
-//                for (ResultBean resultBean : list) {
-//                    System.out.println("Time = " + resultBean.getDate() + ", Total = " + resultBean.getTotal());
-//                }
-//                break;
-//            case RuleUtil.RULE_CUSTOM:
-//            case RuleUtil.RULE_PERSON:
-//        }
-//        switch (time_type) {
-//            case RuleUtil.TYPE_RESULT_LIST_ONE:
-//                return basicRule.getDailyMap();
-//            case RuleUtil.TYPE_RESULT_LIST_TWO:
-//                return basicRule.getMonthMap();
-//            case RuleUtil.TYPE_RESULT_LIST_THREE:
-//                return basicRule.getYearLMap();
-//        }
-//        return null;
-//    }
-    public void processRule(String interim_rule, String plate_type) {
+    @Async
+    public void processRule(String interim_rule) {
         if (interim_rule.equals("false")) {
             switch (basicCharge.getNow_rule()) {
                 case "私人规则":
@@ -159,21 +158,24 @@ public class ChargeRuleController {
                     break;
                 case "基本规则":
                     rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge);
+                    break;
                 case "自定义规则":
-
+                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge);
+                    break;
             }
         } else {
             switch (basicCharge.getNow_rule()) {
                 case "私人规则":
-                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge);
+                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge,interimRuleList);
                     break;
                 case "基本规则":
-                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge);
+                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, interimRuleList);
+                    break;
                 case "自定义规则":
-
+                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, interimRuleList);
+                    break;
             }
         }
-
     }
 
     /**
@@ -181,6 +183,7 @@ public class ChargeRuleController {
      *
      * @param Date
      */
+    @Async
     public void processData(String Date) {
         Date = Date.trim();
         for (int i = 0; i < Date.length(); i++) {
@@ -198,6 +201,7 @@ public class ChargeRuleController {
      * @param car_type
      * @param zone_type
      */
+    @Async
     public void processCharge(int rule, String car_type, String zone_type) {
         switch (rule) {
             case 1:
@@ -283,7 +287,36 @@ public class ChargeRuleController {
     }
 
     public void processCustomCharge(String car_type) {
-
+        switch (car_type) {
+            case "小车":
+                this.basicCharge = new CustomCharge("小车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "小车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "小车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "小车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "小车"));
+                break;
+            case "大型车":
+                this.basicCharge = new CustomCharge("大型车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "大型车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "大型车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "大型车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "大型车"));
+                break;
+            case "超大型车":
+                this.basicCharge = new CustomCharge("超大型车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "超大型车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "超大型车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "超大型车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "超大型车"));
+                break;
+            case "其他车":
+                this.basicCharge = new CustomCharge("其他车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "其他车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "其他车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "其他车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "其他车"));
+                break;
+        }
     }
 
     public void processPersonCharge(String car_type) {
@@ -347,7 +380,7 @@ public class ChargeRuleController {
         System.out.println(interim_money);
         System.out.println(interim_use_date);
         ruleCustomInterimService.addRowByCarType(interim_rule_type, Float.parseFloat(interim_money),
-                interim_car_type, DateUtil.processStringToDate(interim_use_date));
+                interim_car_type, interim_use_date);
 
         int total = (ruleCustomInterimService.selectAll(0, 0).size() / 10) + 1;
         model.addAttribute("InterimResult", ruleCustomInterimService.selectAll(10, 0));

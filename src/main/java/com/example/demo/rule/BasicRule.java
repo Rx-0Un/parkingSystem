@@ -54,9 +54,11 @@ public class BasicRule {
 
 
     public int MonthMapContains(ResultBean resultBean) {
-        for (int i = 0; i < monthMap.size(); i++) {
-            if (resultBean.getMonth().equals(monthMap.get(i).getMonth())) {
-                return i;
+        if (monthMap != null && !monthMap.isEmpty()) {
+            for (int i = 0; i < monthMap.size(); i++) {
+                if (resultBean.getMonth().equals(monthMap.get(i).getMonth())) {
+                    return i;
+                }
             }
         }
         return -1;

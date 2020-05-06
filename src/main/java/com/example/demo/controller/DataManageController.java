@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.TbUser;
 import com.example.demo.service.CarService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/index-data-manage")
 public class DataManageController {
     CarService carService;
+    UserService userService;
 
     @RequestMapping(value = "/addCarByInfo", method = RequestMethod.POST)
     public String addCarByInfo(Model model, @RequestBody Map<String, String> map) {
@@ -30,8 +34,21 @@ public class DataManageController {
         System.out.println(car_type_model);
         System.out.println(car_user);
         carService.addRowByInfo(car_type, car_plate_number_head + car_plate_number, car_color, car_type_model, Integer.parseInt(car_user.trim()));
-        model.addAttribute("CarResult",carService.selectAll(0,0));
+        model.addAttribute("CarResult", carService.selectAll(0, 0));
         return "index-data-manage::CarResult";
+    }
+
+    @RequestMapping(value = "/selectUser")
+    public String selectUser(Model model, @RequestBody Map<String, String> map) {
+        String select = map.get("select");
+        String Keyword = map.get("Keyword");
+        model.addAttribute("UserSearch", userService.selectUser(select, Keyword));
+        return "index-data-manage::UserSearch";
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @Autowired

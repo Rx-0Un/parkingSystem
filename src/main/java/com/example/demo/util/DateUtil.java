@@ -30,7 +30,6 @@ public class DateUtil {
             }
         }
         try {
-            System.out.println(stringBuilder);
             date = fmt.parse(new String(stringBuilder));
         } catch (Exception e) {
 
@@ -56,7 +55,6 @@ public class DateUtil {
             }
         }
         try {
-            System.out.println(stringBuilder);
             date = fmt.parse(new String(stringBuilder));
         } catch (Exception e) {
 
@@ -71,12 +69,11 @@ public class DateUtil {
      * @param end
      * @return
      */
-    public static Date countDay(Date start, Date end) {
+    public static long countDay(Date start, Date end) {
         long e = end.getTime();
         long s = start.getTime();
         long betweenDate = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
-        System.out.println(betweenDate);
-        return start;
+        return betweenDate;
     }
 
     /**
@@ -99,7 +96,7 @@ public class DateUtil {
      * @return
      */
     public static Boolean isPeak(Date date) {
-        return getTimeByDate(date, 8).getTime() < date.getTime() && date.getTime() <= getTimeByDate(date, 20).getTime();
+        return getTimeByDate(date, 8).getTime() <= date.getTime() && date.getTime() <= getTimeByDate(date, 20).getTime();
     }
 
     /**
@@ -234,22 +231,67 @@ public class DateUtil {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             dateStr = sdf.format(date);
-            System.out.println(dateStr);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return dateStr;
     }
+
     public static String getNowDate2() {
         String dateStr = "";
         Date date = new Date();
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             dateStr = sdf.format(date);
-            System.out.println(dateStr);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return dateStr;
+    }
+
+    /**
+     * 将时间类变为XX-XX-XX
+     *
+     * @param date
+     * @return
+     */
+    public static String getNowDate(Date date) {
+        String dateStr = "";
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            dateStr = sdf.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dateStr;
+    }
+
+    /**
+     * 将XX-XX-XX变为时间类
+     *
+     * @param string
+     * @return
+     */
+    public static Date getNowDate(String string) {
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        try {
+            date = fmt.parse(string);
+        } catch (Exception e) {
+
+        }
+        return date;
+    }
+
+    /**
+     * 当前时间推进直到当天的０点或者结束时间
+     *
+     * @param date
+     * @param ENDING_TIME
+     * @return
+     */
+    public static Date addDay(Date date, Date ENDING_TIME) {
+        Date date1 = getTimeByDate(getNextDayDate(date), 0);
+        return ENDING_TIME.getTime() > date1.getTime() ? date1 : ENDING_TIME;
     }
 }

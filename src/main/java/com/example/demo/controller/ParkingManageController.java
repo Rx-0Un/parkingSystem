@@ -106,10 +106,19 @@ public class ParkingManageController {
         TbStaffDuty tbStaffDuty = staffDutyService.selectLastRow();
         String enterCount = String.valueOf(parkingRecordService.selectCountEnter(startTime));
         String outerCount = String.valueOf(parkingRecordService.selectCountOuter(startTime));
-        String orderCount = String.valueOf(orderService.selectRowCount(startTime));
-        String TotalCount = String.valueOf(orderService.selectTotalCount(startTime));
+        String orderCount;
+        String TotalCount;
+        try {
+            orderCount = String.valueOf(orderService.selectRowCount(startTime));
+            TotalCount = String.valueOf(orderService.selectTotalCount(startTime));
+        } catch (Exception e) {
+            orderCount = "0";
+            TotalCount = "0";
+        }
         Integer staffId = (Integer) session.getAttribute("staffId");//职员编号
         String staffName = (String) session.getAttribute("staffName");//职员姓名
+        session.removeAttribute("nowStaff");
+        session.removeAttribute("startTime");
         FileUtil.exportExcel(parkingRecordService.selectDutyAll(startTime, 10, 0), enterCount, outerCount, orderCount, TotalCount, new TbStaffDuty(), staffId, staffName);
         return "index-manage-parking";
     }
@@ -145,6 +154,20 @@ public class ParkingManageController {
         model.addAttribute("Amount", rule.total);
         return "index-manage-parking::chargeResult";
     }
+
+    @RequestMapping(value = "/selectRecordAndOrderByPage", method = RequestMethod.POST)
+    public String selectRecordAndOrderByPage(Model model, @RequestBody Map<String, String> map, HttpSession session) {
+        String starting_date = staffDutyService.selectStartingTime();
+        String search_car_plate_type = map.get("search_car_plate_type");
+        String search_car_type = map.get("search_car_type");
+        String search_pay_type = map.get("search_pay_type");
+        String search_Keyword_title = map.get("search_Keyword_title");
+        int page = Integer.parseInt(map.get("page"));
+        int pageNum = Integer.parseInt(map.get("search_number"));
+        model.addAttribute("RecordAndOrderResult", parkingRecordService.selectDutyAll(starting_date, pageNum, page));
+        return "index-manage-parking::RecordAndOrderResult";
+    }
+
 
     @Autowired
     public void setParkingRecordService(ParkingRecordService parkingRecordService) {

@@ -24,15 +24,26 @@ public interface TbRuleCustomInterimMapper {
      */
     int insertSelective(TbRuleCustomInterim record);
 
-    List<TbRuleCustomInterim> selectAll(int pageNum,int page);
+    List<TbRuleCustomInterim> selectAll(int pageNum, int page);
 
-    int selectRowByInfo(String rule_type, String car_type, Date use_date);
+    int selectRowByInfo(String rule_type, String car_type, String use_date);
 
-    int addRowByCarType(String rule_type, float money, String car_type, Date use_date);
+    int addRowByCarType(String rule_type, float money, String car_type, String use_date);
 
-    int updateRowByCarType(String rule_type, float money, String car_type, Date use_date);
+    int updateRowByCarType(String rule_type, float money, String car_type, String use_date);
 
-    List<TbRuleCustomInterim> selectRowByPage(String rule_type, String car_type, String use_date, String money,int pageNum,int page);
+    List<TbRuleCustomInterim> selectRowByPage(String rule_type, String car_type, String use_date, String money, int pageNum, int page);
 
-    TbRuleCustomInterim selectRowByDate(Date date,String car_type);
+    TbRuleCustomInterim selectRowByDate(Date date, String car_type);
+
+    int selectAllExist(String date);
+
+    int selectRuleExist(String date);
+
+    Float selectMoneyByInfo(String date, String rule_type, String car_type);
+
+    Float selectMoneyByPeakFirst(String date,String car_type);
+    Float selectMoneyByPeak     (String date,String car_type);
+    Float selectMoneyByPlain    (String date,String car_type);
+    Float selectMoneyByAll      (String date,String car_type);
 }

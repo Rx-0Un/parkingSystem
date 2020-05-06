@@ -516,10 +516,6 @@
                                                     aria-selected="false"><span class="hidden-sm-up"></span> <span
                                     class="hidden-xs-down"><font style="vertical-align: inherit;"><font
                                     style="vertical-align: inherit;">当班收费</font></font></span></a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#inside_info" role="tab"
-                                                    aria-selected="false"><span class="hidden-sm-up"></span> <span
-                                    class="hidden-xs-down"><font style="vertical-align: inherit;"><font
-                                    style="vertical-align: inherit;">场内信息</font></font></span></a></li>
                         </ul>
                         <div class="tab-content tabcontent-border">
                             <div class="tab-pane active show" id="real_time_info" role="tabpanel">
@@ -627,9 +623,44 @@
                                         <div class="card">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h4 class="card-title m-b-0">当前时间 </h4>
-                                                    <h4 class="card-title m-b-0">[[${#dates.format(new
-                                                        java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}]]</h4>
+                                                    <div class="col-md-4">
+                                                        <div class="bg-dark p-10 text-white text-center">
+                                                            <i class="fa fa-user m-b-5 font-16"></i>
+                                                            <div class="clock">
+                                                                <div class="numbers"
+                                                                     style="width:20%; display:inline-block;vertical-align: center;">
+                                                                    <p class="hours"></p>
+                                                                </div>
+                                                                <div class="colon"
+                                                                     style="width:1%; display:inline-block;vertical-align: center;">
+                                                                    <p>:</p>
+                                                                </div>
+                                                                <div class="numbers"
+                                                                     style="width:20%; display:inline-block;vertical-align: center;">
+                                                                    <p class="minutes"></p>
+                                                                </div>
+                                                                <div class="colon"
+                                                                     style="width:1%; display:inline-block;vertical-align: center;">
+                                                                    <p>:</p>
+                                                                </div>
+                                                                <div class="numbers"
+                                                                     style="width:20%; display:inline-block;vertical-align: center;">
+                                                                    <p class="seconds"></p>
+                                                                </div>
+                                                                <div class="am-pm"
+                                                                     style="width:10%; display:inline-block;vertical-align: center;">
+                                                                    <div>
+                                                                        <p class="am">am</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="pm" style="display: none">pm</p>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <big class="font-light">当前时间</big>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="DutyResult" th:fragment="DutyResult">
                                                     <input type="hidden" th:value="${info}" id="info"/>
@@ -810,7 +841,7 @@
                                                     <label>展示数量</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
                                                             style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
+                                                            tabindex="-1" aria-hidden="true" id="search_number">
                                                         <option>10</option>
                                                         <option>25</option>
                                                         <option>50</option>
@@ -821,7 +852,7 @@
                                                     <label>车牌类型</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
                                                             style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
+                                                            tabindex="-1" aria-hidden="true" id="search_car_plate_type">
                                                         <option>全体</option>
                                                         <option>临时车</option>
                                                         <option>固定车</option>
@@ -831,7 +862,7 @@
                                                     <label>车辆类型</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
                                                             style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
+                                                            tabindex="-1" aria-hidden="true" id="search_car_type">
                                                         <option>全体</option>
                                                         <option>小车</option>
                                                         <option>大型车</option>
@@ -843,7 +874,7 @@
                                                     <label>支付方式</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
                                                             style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true">
+                                                            tabindex="-1" aria-hidden="true" id="search_pay_type">
                                                         <option>现金</option>
                                                         <option>余额</option>
                                                         <option>手机支付</option>
@@ -854,9 +885,10 @@
                                                     <label>关键字</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
                                                             style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true" id="search_car_type">
+                                                            tabindex="-1" aria-hidden="true" id="search_Keyword_title">
                                                         <option>全体</option>
                                                         <option>金额</option>
+                                                        <option>车牌号</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
@@ -915,9 +947,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane p-20" id="inside_info" role="tabpanel">
-
                             </div>
                         </div>
                     </div>
@@ -1021,7 +1050,7 @@
         const order_pay_type = $('#order_pay_type').val()
         const order_payer = $('#order_payer').val()
         const order_receiver = $('#order_receiver').val()
-        const money = $('#money').val()
+        const money = $('#order_money').val()
         const Data = {
             "order_car_number": order_car_number,
             "order_pay_type": order_pay_type,
@@ -1096,7 +1125,7 @@
     $("#order_car_number").bind("input propertychange", function (event) {
 
         const order_car_number = $('#order_car_number').val()
-        if(order_car_number!='选择车牌'){
+        if (order_car_number != '选择车牌') {
             const Data = {
                 "order_car_number": order_car_number,
                 "random": new Date()
@@ -1109,14 +1138,14 @@
                 dataType: "text",
                 success: function (data) {
                     $(".chargeResult").html(data);
-                    const Amount= $('#Amount').val()
+                    const Amount = $('#Amount').val()
                     $('#order_money').val(Amount)
                 },
                 error: function (date) {
 
                 }
             })
-        }else {
+        } else {
             return false;
         }
     });
@@ -1143,6 +1172,127 @@
             return false;
         }
     });
+
+    $("#search_keyword").bind("input propertychange", function (event) {
+        const search_number = $('#search_number').val()
+        const search_car_plate_type = $('#search_car_plate_type').val()
+        const search_car_type = $('#search_car_type').val()
+        const search_pay_type = $('#search_pay_type').val()
+        const search_Keyword_title = $('#search_Keyword_title').val()
+        const Data = {
+            "search_number": search_number,
+            "search_car_plate_type": search_car_plate_type,
+            "search_car_type": search_car_type,
+            "search_pay_type": search_pay_type,
+            "search_Keyword_title": search_Keyword_title,
+            "page":0,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-manage-parking/selectRecordAndOrderByPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".RecordAndOrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#search_number").bind("input propertychange", function (event) {
+        alert("!!")
+    });
+    $("#search_keyword").bind("input propertychange", function (event) {
+        alert("!!")
+    });
+    $("#search_car_plate_type").bind("input propertychange", function (event) {
+        alert("!!")
+    });
+    $("#search_car_type").bind("input propertychange", function (event) {
+        alert("!!")
+    });
+    $("#search_pay_type").bind("input propertychange", function (event) {
+        alert("!!")
+    });
+    $("#search_Keyword_title").bind("input propertychange", function (event) {
+        alert("!!")
+    });
+    // search_number
+    // search_car_plate_type
+    // search_car_type
+    // search_pay_type
+    // search_Keyword_title
+</script>
+<script type="text/javascript">
+    //invokes functions as soon as window loads
+    window.onload = function () {
+        time();
+        ampm();
+        whatDay();
+        setInterval(function () {
+            time();
+            ampm();
+            whatDay();
+        }, 1000);
+    };
+
+
+    //gets current time and changes html to reflect it
+    function time() {
+        var date = new Date(),
+            hours = date.getHours(),
+            minutes = date.getMinutes(),
+            seconds = date.getSeconds();
+
+        //make clock a 12 hour clock instead of 24 hour clock
+        // hours = (hours > 12) ? (hours - 12) : hours;
+        // hours = (hours === 0) ? 12 : hours;
+
+        //invokes function to make sure number has at least two digits
+        hours = addZero(hours);
+        minutes = addZero(minutes);
+        seconds = addZero(seconds);
+
+        //changes the html to match results
+        document.getElementsByClassName('hours')[0].innerHTML = hours;
+        document.getElementsByClassName('minutes')[0].innerHTML = minutes;
+        document.getElementsByClassName('seconds')[0].innerHTML = seconds;
+    }
+
+    //turns single digit numbers to two digit numbers by placing a zero in front
+    function addZero(val) {
+        return (val <= 9) ? ("0" + val) : val;
+    }
+
+    //lights up either am or pm on clock
+    function ampm() {
+        var date = new Date(),
+            hours = date.getHours(),
+            am = document.getElementsByClassName("am")[0].classList,
+            pm = document.getElementsByClassName("pm")[0].classList;
+
+
+        (hours >= 12) ? pm.add("light-on") : am.add("light-on");
+        (hours >= 12) ? am.remove("light-on") : pm.remove("light-on");
+    }
+
+    //lights up what day of the week it is
+    function whatDay() {
+        var date = new Date(),
+            currentDay = date.getDay(),
+            days = document.getElementsByClassName("day");
+
+        //iterates through all divs with a class of "day"
+        for (x in days) {
+            //list of classes in current div
+            var classArr = days[x].classList;
+
+            (classArr !== undefined) && ((x == currentDay) ? classArr.add("light-on") : classArr.remove("light-on"));
+        }
+    }
 </script>
 </body>
 </body>

@@ -4,63 +4,145 @@ import com.example.demo.bean.InterimCharge;
 import com.example.demo.bean.ResultBean;
 import com.example.demo.util.DateUtil;
 import com.example.demo.util.RuleUtil;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.Date;
 
 public class InterimRule extends BasicRule {
-    Date starting_date;//收费计时开始时间
-    Date ending_date;//收费计时结束时间
     InterimCharge interimCharge;
+    Date use_date;
+    private Date nowDate;
+    private Date endDate;
+    private Date startDate;
+    private Float AllTotal;
+
+    public InterimRule(InterimCharge interimCharge, Date use_date) {
+        super(DateUtil.getTimeByDate(use_date, 0), DateUtil.getTimeByDate(use_date, 24));
+        this.interimCharge = interimCharge;
+        this.use_date = use_date;
+    }
 
     /**
-     * @param money
-     * @param rule_type
-     * @param use_date  　收费规则使用日期
-     * @param date      date为当前时间
-     * @param date1     date1为本次收费计时的第一个小时
+     * 三个值为外部传入的时间
+     *
+     * @param nowDate
+     * @param endDate
+     * @param startDate
      */
-    public InterimRule(String car_type, float money, String rule_type, Date use_date, Date date, Date date1) {
-        super(DateUtil.getTimeByDate(use_date, 0), DateUtil.getTimeByDate(use_date, 24));
-        interimCharge = new InterimCharge(car_type, money, rule_type, use_date);
-        initDate(use_date);
-        //如果当前的收费类型为1
-        //且开始时间和结束时间相隔一个小时
-        //且当前时间处于收费刚刚开始的一个小时内　则进行收费
-        if (Integer.parseInt(interimCharge.getRule_type()) == 1 &&
-                DateUtil.countHour(this.starting_date, this.ending_date) == 0
-                && date.getTime() == date1.getTime()) {
-            countTotal(this.starting_date);
-        } else {
-            initMap(date);
-        }
+    @Async
+    public void initMap(Date nowDate, Date startDate, Date endDate, float total) {
+        this.AllTotal = total;
+        this.nowDate = nowDate;
+        this.endDate = endDate;
+        this.startDate = startDate;
+        initMap(nowDate);
     }
 
-    public void initDate(Date date) {
-        switch (Integer.parseInt(interimCharge.getRule_type())) {
-            case RuleUtil.RULE_INTERIM_CHARGE_TYPE_ONE:
-            case RuleUtil.RULE_INTERIM_CHARGE_TYPE_TWO:
-            case RuleUtil.RULE_INTERIM_CHARGE_TYPE_THREE:
-                starting_date = DateUtil.getLastChargeDate(date);
-                ending_date = DateUtil.getNextChargeDate(date);
-                break;
-            case RuleUtil.RULE_INTERIM_CHARGE_TYPE_FOUR:
-                starting_date = DateUtil.getTimeByDate(date, 0);
-                ending_date = DateUtil.getTimeByDate(date, 24);
-                break;
-        }
-    }
-
+    @Async
     public void initMap(Date date) {
-        //判断传入的时间是否在规则时间范围内
-        if (date.getTime() > starting_date.getTime()
-                && date.getTime() < ending_date.getTime()) {
-            countTotal(date);
-            initMap(DateUtil.getNextHourDate(date));
+        if (date.getTime() < this.ENDING_TIME.getTime() && date.getTime() < endDate.getTime()) {
+            if ("小时制度".equals(interimCharge.getRule_type())) {
+                countHoursTotal(date);
+                initMap(addDate(date));
+            } else {
+                countTotal(date);
+            }
         }
     }
 
+    /**
+     * 小时制度收费计算
+     *
+     * @param date
+     */
+    @Async
+    public void countHoursTotal(Date date) {
+        float addTotal = total;
+        if (DateUtil.isPeak(date)) {
+            if (date.getTime() == startDate.getTime()) {
+                total += interimCharge.getPeakFirstHour();
+            } else {
+                total += interimCharge.getPeakHour();
+            }
+        } else {
+            total += interimCharge.getPlainHour();
+        }
+        if (total>interimCharge.getTopMoney()){
+            total=interimCharge.getTopMoney();
+        }
+        addTotal = total - addTotal;
+        dailyMap.add(new ResultBean(date, addDate1(date), AllTotal+total, DateUtil.getNowDate(date) + this.interimCharge.getNow_rule(), String.valueOf(addTotal)));
+        initMonthMap(new ResultBean(AllTotal+total, DateUtil.dateFormatMonth(date), "",
+                DateUtil.getNowDate(date) + this.interimCharge.getNow_rule(),
+                String.valueOf(interimCharge.getAllDay())));
+        initYearMap(new ResultBean(AllTotal+total, "", DateUtil.dateFormatYear(date),
+                DateUtil.getNowDate(date) + this.interimCharge.getNow_rule(),
+                String.valueOf(interimCharge.getAllDay())));
+    }
+
+    @Async
+    public Date addDate1(Date date) {
+        if (DateUtil.getNextHourDate(date).getTime() > this.endDate.getTime()) {
+            return this.ENDING_TIME.getTime() > this.endDate.getTime() ? this.endDate : this.ENDING_TIME;
+        }
+        if (DateUtil.getNextHourDate(date).getTime() > this.ENDING_TIME.getTime()) {
+            return this.ENDING_TIME.getTime() > this.endDate.getTime() ? this.endDate : this.ENDING_TIME;
+        }
+        return DateUtil.getNextHourDate(date);
+    }
+
+    @Async
+    public void initYearMap(ResultBean resultBean) {
+        if (YearMapContains(resultBean) == -1) {
+            yearLMap.add(resultBean);
+        } else {
+            yearLMap.set(YearMapContains(resultBean), resultBean);
+        }
+        if (YearMapContains(resultBean) > 0) {
+            resultBean.setTotal(resultBean.getTotal() - yearLMap.get(YearMapContains(resultBean) - 1).getTotal());
+        }
+    }
+
+    @Async
+    public void initMonthMap(ResultBean resultBean) {
+        if (MonthMapContains(resultBean) == -1) {
+            monthMap.add(resultBean);
+        } else {
+            monthMap.set(MonthMapContains(resultBean), resultBean);
+        }
+        if (MonthMapContains(resultBean) > 0) {
+            resultBean.setTotal(resultBean.getTotal() - monthMap.get(MonthMapContains(resultBean) - 1).getTotal());
+        }
+    }
+
+    /**
+     * 全天制度收费计算
+     */
+    @Async
     public void countTotal(Date date) {
-        total += interimCharge.getMoney();
-        dailyMap.add(new ResultBean(date, DateUtil.getNextHourDate(date), total));
+        this.total += interimCharge.getAllDay();
+        this.monthMap.add(new ResultBean(total, DateUtil.dateFormatMonth(date), "", DateUtil.getNowDate(interimCharge.getUse_date()) + this.interimCharge.getNow_rule(), "" + interimCharge.getAllDay()));
+        while (date.getTime() < this.endDate.getTime() && date.getTime() < this.ENDING_TIME.getTime()) {
+            if (dailyMap.size() == 0) {
+                this.dailyMap.add(new ResultBean(date, addDate(date), total, DateUtil.getNowDate(date) + this.interimCharge.getNow_rule(), "" + interimCharge.getAllDay()));
+            } else {
+                this.dailyMap.add(new ResultBean(date, addDate(date), total, "", ""));
+            }
+            date = DateUtil.getNextHourDate(date);
+        }
+    }
+
+    @Async
+    public Date addDate(Date date) {
+        if (DateUtil.getNextHourDate(date).getTime() > this.ENDING_TIME.getTime()
+                || DateUtil.getNextHourDate(date).getTime() > this.endDate.getTime()) {
+            return this.ENDING_TIME;
+        }
+        return DateUtil.getNextHourDate(date);
+    }
+
+    @Async
+    public Date getUse_date() {
+        return use_date;
     }
 }

@@ -86,6 +86,11 @@
         from  tb_rule_custom
         where car_type=#{car_type} and rule_type=#{rule_type}
   </select>
+    <select id="selectMoneyByInfo" parameterType="java.lang.String" resultType="java.lang.Float">
+        select money
+        from  tb_rule_custom
+        where car_type=#{car_type} and rule_type=#{rule_type}
+  </select>
     <select id="selectByFurzzyStr" parameterType="java.lang.String" resultMap="BaseResultMap">
         select *
         from tb_rule_custom

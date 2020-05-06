@@ -24,7 +24,8 @@ public class RuleUtil {
     public static final int RULE_INTERIM_CHARGE_TYPE_ONE = 1;//计费方式     高峰前一个小时
     public static final int RULE_INTERIM_CHARGE_TYPE_TWO = 2;//计费方式　    高峰普通时段
     public static final int RULE_INTERIM_CHARGE_TYPE_THREE = 3;//计费方式　非高峰时段
-    public static final int RULE_INTERIM_CHARGE_TYPE_FOUR = 4;//计费方式　全天
+    public static final int RULE_INTERIM_CHARGE_TYPE_FOUR = 4;//计费方式  全天上限
+    public static final int RULE_INTERIM_CHARGE_TYPE_FIVE = 5;//计费方式　全天
 
     //返回类型
     public static final String TYPE_RESULT_LIST_ONE = "按小时";

@@ -6,24 +6,33 @@ import com.example.demo.util.DateUtil;
 import java.util.Date;
 
 public class InterimCharge extends BasicCharge {
-    float money;
-    String rule_type;
-    Date use_date;
 
-    public InterimCharge(String car_type, float money, String rule_type, Date use_date) {
-        super(car_type, rule_type);
-        this.money = money;
+    String rule_type;//
+    Date use_date;
+    float allDay;
+    float peakFirstHour;
+    float peakHour;
+    float plainHour;
+    float topMoney;
+
+    public InterimCharge(String car_type, String now_rule,
+                         String rule_type, Date use_date,
+                         float peakFirstHour, float peakHour,
+                         float plainHour, float topMoney) {
+        super(car_type, now_rule);
         this.rule_type = rule_type;
         this.use_date = use_date;
-
+        this.peakFirstHour = peakFirstHour;
+        this.peakHour = peakHour;
+        this.plainHour = plainHour;
+        this.topMoney = topMoney;
     }
 
-    public float getMoney() {
-        return money;
-    }
-
-    public void setMoney(float money) {
-        this.money = money;
+    public InterimCharge(String car_type, String now_rule, String rule_type, Date use_date, float allDay) {
+        super(car_type, now_rule);
+        this.rule_type = rule_type;
+        this.use_date = use_date;
+        this.allDay = allDay;
     }
 
     public String getRule_type() {
@@ -42,4 +51,43 @@ public class InterimCharge extends BasicCharge {
         this.use_date = use_date;
     }
 
+    public float getAllDay() {
+        return allDay;
+    }
+
+    public void setAllDay(float allDay) {
+        this.allDay = allDay;
+    }
+
+    public float getPeakFirstHour() {
+        return peakFirstHour;
+    }
+
+    public void setPeakFirstHour(float peakFirstHour) {
+        this.peakFirstHour = peakFirstHour;
+    }
+
+    public float getPeakHour() {
+        return peakHour;
+    }
+
+    public void setPeakHour(float peakHour) {
+        this.peakHour = peakHour;
+    }
+
+    public float getPlainHour() {
+        return plainHour;
+    }
+
+    public void setPlainHour(float plainHour) {
+        this.plainHour = plainHour;
+    }
+
+    public float getTopMoney() {
+        return topMoney;
+    }
+
+    public void setTopMoney(float topMoney) {
+        this.topMoney = topMoney;
+    }
 }

@@ -32,6 +32,9 @@ public class RuleCustomService {
         return tbRuleCustomMapper.selectByFurzzyStr(car_type, rule_type);
     }
 
+    public float selectMoneyByInfo(String rule_type,String car_type){
+        return tbRuleCustomMapper.selectMoneyByInfo(rule_type,car_type);
+    }
     @Autowired
     public void setTbRuleCustomMapper(TbRuleCustomMapper tbRuleCustomMapper) {
         this.tbRuleCustomMapper = tbRuleCustomMapper;

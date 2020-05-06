@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+
 @Mapper
 public interface TbUserMapper {
     /**
@@ -29,4 +30,14 @@ public interface TbUserMapper {
 
 
     int selectByUserPhone(@Param("phone") String phone);
+
+    int addUserByInfo(@Param("phone") String phone, @Param("user_pwd") String password);
+
+    List<TbUser> selectAllByStr(@Param("Keyword") String Keyword);
+
+    List<TbUser> selectAllByPhone(@Param("Keyword") String Keyword);
+
+    List<TbUser> selectAllById(@Param("Keyword") String Keyword);
+
+    List<TbUser> selectAllByName(@Param("Keyword") String Keyword);
 }

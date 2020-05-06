@@ -10,19 +10,23 @@ public class ResultBean {
     float total;
     String month;
     String year;
+    String now_rule;
+    String add;
 
-    public ResultBean(Date date, Date date1, float total) {
+    public ResultBean(Date date, Date date1, float total, String now_rule, String add) {
         this.date = date;
         this.date1 = date1;
         this.total = total;
-        this.month = DateUtil.dateFormatMonth(date);
-        this.year = DateUtil.dateFormatYear(date);
+        this.now_rule = now_rule;
+        this.add = add;
     }
 
-    public ResultBean(float total, String month, String year) {
+    public ResultBean(float total, String month, String year,String now_rule, String add) {
         this.total = total;
         this.month = month;
         this.year = year;
+        this.now_rule=now_rule;
+        this.add = add;
     }
 
     public String getMonth() {
@@ -63,5 +67,21 @@ public class ResultBean {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getAdd() {
+        return add;
+    }
+
+    public void setAdd(String add) {
+        this.add = add;
+    }
+
+    public String getNow_rule() {
+        return now_rule;
+    }
+
+    public void setNow_rule(String now_rule) {
+        this.now_rule = now_rule;
     }
 }

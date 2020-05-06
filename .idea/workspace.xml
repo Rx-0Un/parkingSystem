@@ -2,32 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/app/CouponDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/app/RegisterDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CouponManageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/app/AppCouponController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CouponService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/htmleaf-demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index-coupon-manage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/InterimCharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/InterimCharge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/LoginDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/app/LoginDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/ResultBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/ResultBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ChargeRuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ChargeRuleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ParkingManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ParkingManageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbOrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingRecordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbOrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingLotSettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingLotSettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/app/AppLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/app/AppLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbCouponMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbCouponMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbRuleCustomInterimMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbRuleCustomInterimMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbRuleCustomMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbRuleCustomMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbCouponMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbCouponMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbRuleCustomInterimMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbRuleCustomInterimMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbRuleCustomMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbRuleCustomMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/BasicRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/BasicRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/CustomRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/CustomRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/InterimRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/InterimRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/PersonRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/PersonRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/rule/Rule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RuleCustomInterimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RuleCustomInterimService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RuleCustomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RuleCustomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/test/RuleCustomInterimMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/RuleCustomInterimMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/test/RuleMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/RuleMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/util/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/util/RuleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/util/RuleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-charge-rule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-charge-rule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-data-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-data-manage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-order-search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-order-search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/HelloController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbOrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbOrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingRecordMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingRecordMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbOrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffTaskMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/TbUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/TbUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbCouponMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbCouponMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbUserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbCouponMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbCouponMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +88,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -111,17 +147,18 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\mappers" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
       <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\css" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\js" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.demo.mapper" />
       <recent name="com.example.demo.entity" />
+      <recent name="com.example.demo.mapper" />
       <recent name="com.example.demo.controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\template" />
       <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
     </key>
   </component>
@@ -158,37 +195,6 @@
         <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/../demo\pom.xml" goal="clean install" />
       </method>
     </configuration>
-    <configuration name="FileUtil" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.util" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.util.FileUtil" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileUtil.createFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.util" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.util.FileUtil" />
-      <option name="METHOD_NAME" value="createFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ParkingRecordMapperTest.selectCountEnterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -200,6 +206,22 @@
       <option name="PACKAGE_NAME" value="com.example.demo.test" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.test.ParkingRecordMapperTest" />
       <option name="METHOD_NAME" value="selectCountEnterTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RuleCustomInterimMapperTest.selectAllExistTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.RuleCustomInterimMapperTest" />
+      <option name="METHOD_NAME" value="selectAllExistTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -237,6 +259,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserMapperTest.testUserSelectAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.UserMapperTest" />
+      <option name="METHOD_NAME" value="testUserSelectAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
@@ -246,20 +284,20 @@
     </configuration>
     <list>
       <item itemvalue="ECS on Alibaba Cloud.ECS on Alibaba Cloud" />
-      <item itemvalue="JUnit.FileUtil.createFile" />
-      <item itemvalue="JUnit.FileUtil" />
       <item itemvalue="JUnit.StaffDutyMapperTest.selectLastRowTest" />
       <item itemvalue="JUnit.StaffDutyMapperTest.updateRowByInfoTest" />
       <item itemvalue="JUnit.ParkingRecordMapperTest.selectCountEnterTest" />
+      <item itemvalue="JUnit.RuleCustomInterimMapperTest.selectAllExistTest" />
+      <item itemvalue="JUnit.UserMapperTest.testUserSelectAll" />
       <item itemvalue="Spring Boot.DemoApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserMapperTest.testUserSelectAll" />
+        <item itemvalue="JUnit.RuleCustomInterimMapperTest.selectAllExistTest" />
         <item itemvalue="JUnit.ParkingRecordMapperTest.selectCountEnterTest" />
         <item itemvalue="JUnit.StaffDutyMapperTest.updateRowByInfoTest" />
         <item itemvalue="JUnit.StaffDutyMapperTest.selectLastRowTest" />
-        <item itemvalue="JUnit.FileUtil.createFile" />
-        <item itemvalue="JUnit.FileUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -371,7 +409,21 @@
       <workItem from="1587633858318" duration="285000" />
       <workItem from="1587634278412" duration="19446000" />
       <workItem from="1587689213876" duration="7058000" />
-      <workItem from="1587696441773" duration="6502000" />
+      <workItem from="1587696441773" duration="16652000" />
+      <workItem from="1587960034772" duration="22871000" />
+      <workItem from="1588038053627" duration="16344000" />
+      <workItem from="1588127094361" duration="7505000" />
+      <workItem from="1588204131757" duration="5159000" />
+      <workItem from="1588219916219" duration="7818000" />
+      <workItem from="1588251736364" duration="1312000" />
+      <workItem from="1588390402676" duration="8661000" />
+      <workItem from="1588404550250" duration="7320000" />
+      <workItem from="1588470294776" duration="495000" />
+      <workItem from="1588470795693" duration="1259000" />
+      <workItem from="1588484511529" duration="6010000" />
+      <workItem from="1588558552568" duration="9530000" />
+      <workItem from="1588650969217" duration="13659000" />
+      <workItem from="1588737200948" duration="2670000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -548,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587656703839</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="版本1.30">
+      <created>1587704695438</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1587704695438</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +647,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库" />
     <MESSAGE value="完成登录页面的编写,并成功跳转页面,但首页index.html页面打开时会出现无法连接资源的报错" />
     <MESSAGE value="版本1.10 编写index.html页面以及控制器&#10;准备向数据库添加两张表tb_staff_duty和tb_staff_task表&#10;向tb_parking_space中添加一个parking_space_pic字段用于保存图片" />
     <MESSAGE value="版本1.12 编写index.html页面以及controller&#10;发现缺少session&#10;需要配置redis" />
@@ -613,7 +671,8 @@
     <MESSAGE value="版本1.27 突然间的报错" />
     <MESSAGE value="版本1.28 新增poi 用于文件导出" />
     <MESSAGE value="版本1.29 稳定版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="版本1.29 稳定版本" />
+    <MESSAGE value="版本1.30" />
+    <option name="LAST_COMMIT_MESSAGE" value="版本1.30" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="188" key="#ECS_on_Alibaba_Cloud" timestamp="1585201964208">
@@ -632,10 +691,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585229181002" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1587704204302">
+    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1588664313522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587704204302" />
+    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588664313522" />
     <state x="580" y="198" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1583572250736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -648,18 +707,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="407" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586506040064" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587525094421">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587705619990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587525094421" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587705619990" />
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1583572120061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583572120061" />
-    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1587656701872">
+    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1587704694450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587656701872" />
+    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587704694450" />
     <state x="200" y="42" key="DiffContextDialog" timestamp="1585208710279">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -676,38 +735,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="835" y="410" width="273" height="292" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583471720240" />
-    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1587704622770">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1588738392484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622770" />
-    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1587704622770">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392484" />
+    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1588738392484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622770" />
-    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1587704622770">
+    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392484" />
+    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1588738392484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622770" />
-    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1587704622770">
+    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392484" />
+    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1588738392484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622770" />
-    <state width="1877" height="293" key="GridCell.Tab.1.bottom" timestamp="1587704622771">
+    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392484" />
+    <state width="1877" height="293" key="GridCell.Tab.1.bottom" timestamp="1588738392485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622771" />
-    <state width="1877" height="293" key="GridCell.Tab.1.center" timestamp="1587704622771">
+    <state width="1877" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392485" />
+    <state width="1877" height="293" key="GridCell.Tab.1.center" timestamp="1588738392485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622771" />
-    <state width="1877" height="293" key="GridCell.Tab.1.left" timestamp="1587704622770">
+    <state width="1877" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392485" />
+    <state width="1877" height="293" key="GridCell.Tab.1.left" timestamp="1588738392484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622770" />
-    <state width="1877" height="293" key="GridCell.Tab.1.right" timestamp="1587704622771">
+    <state width="1877" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392484" />
+    <state width="1877" height="293" key="GridCell.Tab.1.right" timestamp="1588738392485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587704622771" />
+    <state width="1877" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588738392485" />
     <state width="1293" height="285" key="GridCell.Tab.2.bottom" timestamp="1585204697472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -736,6 +795,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585224099778" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588426355631">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588426355631" />
+    <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588666632679">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1588666632679" />
     <state x="690" y="284" key="extract.method.dialog" timestamp="1584535602033">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -748,10 +815,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="221" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585205176663" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1587477503639">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1588654902977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587477503639" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588654902977" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587698719926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -760,15 +827,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbStaffTask.java</url>
           <line>230</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/util/FileUtil.java</url>
           <line>37</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/ChargeRuleController.java</url>
+          <line>405</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

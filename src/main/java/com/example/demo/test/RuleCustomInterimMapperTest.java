@@ -22,7 +22,7 @@ public class RuleCustomInterimMapperTest extends BaseMapperTest {
         SqlSession sqlSession = getSqlSession();
         try {
             TbRuleCustomInterimMapper tbRuleCustomInterimMapper = sqlSession.getMapper(TbRuleCustomInterimMapper.class);
-            int count = tbRuleCustomInterimMapper.addRowByCarType("全天", 5,"小车",new Date());
+            int count = tbRuleCustomInterimMapper.addRowByCarType("全天", 5, "小车", "");
             System.out.println(count);
             sqlSession.commit();
         } finally {
@@ -40,7 +40,7 @@ public class RuleCustomInterimMapperTest extends BaseMapperTest {
         SqlSession sqlSession = getSqlSession();
         try {
             TbRuleCustomInterimMapper tbRuleCustomInterimMapper = sqlSession.getMapper(TbRuleCustomInterimMapper.class);
-            List<TbRuleCustomInterim> list = tbRuleCustomInterimMapper.selectAll(10,1);
+            List<TbRuleCustomInterim> list = tbRuleCustomInterimMapper.selectAll(10, 1);
             for (int i = 0; i < list.size(); i++) {
                 System.out.println(list.get(i).toString());
             }
@@ -51,14 +51,26 @@ public class RuleCustomInterimMapperTest extends BaseMapperTest {
 
 
     @Test
-    public void selectTest(){
+    public void selectTest() {
         SqlSession sqlSession = getSqlSession();
         try {
             TbRuleCustomInterimMapper tbRuleCustomInterimMapper = sqlSession.getMapper(TbRuleCustomInterimMapper.class);
-            List<TbRuleCustomInterim> list = tbRuleCustomInterimMapper.selectRowByPage("全天","小车","2020-4-15", "80",10,0);
+            List<TbRuleCustomInterim> list = tbRuleCustomInterimMapper.selectRowByPage("全天", "小车", "2020-4-15", "80", 10, 0);
             for (int i = 0; i < list.size(); i++) {
                 System.out.println(list.get(i).toString());
             }
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void selectAllExistTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbRuleCustomInterimMapper tbRuleCustomInterimMapper = sqlSession.getMapper(TbRuleCustomInterimMapper.class);
+            int count = tbRuleCustomInterimMapper.selectAllExist("2020-4-28");
+            System.out.println(count);
         } finally {
             sqlSession.close();
         }
