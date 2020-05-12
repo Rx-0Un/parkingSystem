@@ -66,10 +66,6 @@ public class StartController {
         model.addAttribute("EnterResult", parkingRecordService.selectAllByEnter(10, 0));
         model.addAttribute("ParkingCarResult", parkingRecordService.selectCar());
         model.addAttribute("OuterResult", parkingRecordService.selectAllByOuter(10, 0));
-
-
-
-
         model.addAttribute("RecordAndOrderResult", parkingRecordService.selectDutyAll(starting_date, 10, 0));
         Integer staffId = (Integer) session.getAttribute("staffId");
         String staffName = (String) session.getAttribute("staffName");

@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.TbUser;
 import com.example.demo.service.CarService;
+import com.example.demo.service.ParkingLotSettingService;
+import com.example.demo.service.ParkingSpaceService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.Map;
 public class DataManageController {
     CarService carService;
     UserService userService;
+    ParkingLotSettingService parkingLotSettingService;
+    ParkingSpaceService parkingSpaceService;
 
     @RequestMapping(value = "/addCarByInfo", method = RequestMethod.POST)
     public String addCarByInfo(Model model, @RequestBody Map<String, String> map) {
@@ -46,6 +50,21 @@ public class DataManageController {
         return "index-data-manage::UserSearch";
     }
 
+    @RequestMapping(value = "/addParkingSpaceBefore")
+    public String addParkingSpaceBefore(Model model) {
+        int spaceNum = parkingLotSettingService.selectRowById(2).get(0).getSpaceNumber();
+        int fixParkingSpace = parkingSpaceService.selectAll(0, 0) == null ? 0 : parkingSpaceService.selectAll(0, 0).size();
+        int interimParkingSpace = spaceNum - fixParkingSpace;
+        model.addAttribute("spaceNum", spaceNum);
+        model.addAttribute("interimParkingSpace", interimParkingSpace);
+        model.addAttribute("fixParkingSpace", fixParkingSpace);
+        return "index-data-manage::SpaceNumberResult";
+    }
+    @RequestMapping(value = "/addParkingSpace")
+    public String addParkingSpace(Model model,@RequestBody Map<String, String> map) {
+
+        return "index-data-manage::SpaceNumberResult";
+    }
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -54,5 +73,15 @@ public class DataManageController {
     @Autowired
     public void setCarService(CarService carService) {
         this.carService = carService;
+    }
+
+    @Autowired
+    public void setParkingLotSettingService(ParkingLotSettingService parkingLotSettingService) {
+        this.parkingLotSettingService = parkingLotSettingService;
+    }
+
+    @Autowired
+    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
     }
 }

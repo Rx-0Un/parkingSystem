@@ -205,6 +205,102 @@
             </nav>
         </div>
     </aside>
+    <div class="modal fade none-border show" id="add-new-event" style="display: none; padding-right: 17px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>添加</strong>新订单</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close0">×</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">车主编号</label>
+                                <input class="form-control form-white " readonly="readonly" placeholder="输入姓名"
+                                       type="text" name="staffId" id="userId">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">姓名</label>
+                                <input class="form-control form-white " readonly="readonly" placeholder="输入姓名"
+                                       type="text" name="staffName" id="userName">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">车牌号码</label>
+                                <input class="form-control form-white " placeholder="输入姓名"
+                                       type="text" name="staffName" id="carPlate">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">车位编号</label>
+                                <input class="form-control form-white " placeholder="输入姓名"
+                                       type="text" name="staffName" id="spaceNumber">
+                            </div>
+                        </div>
+                        时间　金额
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect waves-light save-category"
+                            data-dismiss="modal" id="sub">提交
+                    </button>
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal" id="close">关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade none-border show" id="add-new-event2" style="display: none; padding-right: 17px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>添加</strong>固定车位</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close1">×
+                    </button>
+                </div>
+                <div class="SpaceNumberResult" th:fragment="SpaceNumberResult">
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label">当前车位数量</label>
+                                    <input class="form-control form-white " readonly="readonly"
+                                           type="text" th:value="${spaceNum}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="control-label">临时车位数量</label>
+                                    <input class="form-control form-white " readonly="readonly"
+                                           type="text" th:value="${interimParkingSpace}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="control-label">固定车位数量</label>
+                                    <input class="form-control form-white " readonly="readonly"
+                                           type="text" th:value="${fixParkingSpace}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="control-label">车位位置</label>
+                                    <textarea class="form-control" placeholder="输入车位位置"
+                                              id="parkingSpaceArea"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect waves-light save-category"
+                            data-dismiss="modal" id="sub2">提交
+                    </button>
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal" id="close2">关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="page-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -322,7 +418,7 @@
                                                 </div>
                                                 <div class="col-md-1">
                                                     <label><font color="white">添加</font></label>
-                                                    <button type="button" class="btn btn-info btn-md" id="addCar">添加
+                                                    <button type="button" class="btn btn-info btn-md" id="add">添加
                                                     </button>
                                                 </div>
                                             </div>
@@ -389,12 +485,6 @@
                                                         <th style="width: 75px">
                                                             车主
                                                         </th>
-                                                        <th style="width: 75px">
-                                                            修改
-                                                        </th>
-                                                        <th style="width: 75px">
-                                                            删除
-                                                        </th>
                                                     </tr>
                                                     </thead>
                                                     <tbody th:each="stat:${CarResult}">
@@ -405,8 +495,6 @@
                                                         <th th:text="${stat.carColor}"></th>
                                                         <th th:text="${stat.carTypeModel}"></th>
                                                         <th th:text="${stat.column6}"></th>
-                                                        <th>修改</th>
-                                                        <th>删除</th>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -546,15 +634,18 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div>
-                                                                <span class="font-bold"
-                                                                      th:text="${blogIdStat.userId}"> </span>
+                                                                                        <span class="font-bold"
+                                                                                              th:text="${blogIdStat.userId}"> </span>
+                                                                                        &nbsp&nbsp&nbsp
+                                                                                        <span class="font-bold"
+                                                                                              th:text="${blogIdStat.userPhone}"> </span>
                                                                                     </div>
                                                                                 </a>
                                                                             </div>
                                                                             <div class="col-1">
                                                                                 <button type="button"
                                                                                         class="btn btn-info btn-sm"
-                                                                                        th:onclick="">
+                                                                                        th:onclick="popWindow([[${blogIdStat.userId}]],[[${blogIdStat.userName}]])">
                                                                                     +
                                                                                 </button>
                                                                             </div>
@@ -570,7 +661,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9">
-
                                                 <div class="card-body border-bottom">
                                                     <h4 class="card-title m-t-10">固定车位列表</h4>
                                                 </div>
@@ -602,6 +692,14 @@
                                                                                class="form-control form-control-sm"
                                                                                placeholder="请选择日期" id="searchDate1">
                                                             </label></div>
+                                                        <div class="dataTables_filter">
+                                                            <label><font color="white">添加</font>
+                                                                <button type="button"
+                                                                        class="btn btn-info btn-sm form-control"
+                                                                        id="parkingSpaceAdd">添加
+                                                                </button>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="ParkingSpaceResult" th:fragment="ParkingSpaceResult">
@@ -768,6 +866,73 @@
         )
     }
 
+    //四个按钮用于弹出和关闭窗口
+    const div = document.getElementById('add-new-event');
+    const sub = document.getElementById('sub');
+    const close = document.getElementById('close');
+    const close0 = document.getElementById('close0');
+
+    //弹出添加固定车位窗口
+    function popWindow() {
+        div.style.display = "block"
+    }
+
+    $('#close').bind('click', function () {
+        div.style.display = "none"
+    });
+    $('#close0').bind('click', function () {
+        div.style.display = "none"
+    });
+
+    const div2 = document.getElementById('add-new-event2');
+    const sub2 = document.getElementById('sub2');
+    $('#parkingSpaceAdd').bind('click', function () {
+        div2.style.display = "block"
+        $.ajax({
+            type: "get",
+            url: "/index-data-manage/addParkingSpaceBefore",
+            contentType: 'application/json;charset=utf-8',
+            dataType: "text",
+            success: function (data) {
+                $(".SpaceNumberResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $('#close1').bind('click', function () {
+        div2.style.display = "none"
+    });
+    $('#close2').bind('click', function () {
+        div2.style.display = "none"
+    });
+    $('#sub2').bind('click', function () {
+        const r = confirm("是否确认添加？");
+        const parkingSpaceArea = $('#parkingSpaceArea').val()
+        if (r == true) {
+            const Data = {
+                "parkingSpaceArea": parkingSpaceArea,
+                "random": new Date()
+            }
+            $.ajax({
+                type: "post",
+                url: "/index-data-manage/addParkingSpace",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(Data),
+                dataType: "text",
+                success: function (data) {
+                    div2.style.display = "block"
+
+                },
+                error: function (date) {
+                    alert("失败")
+                }
+            })
+        } else {
+            return false;
+        }
+    });
 </script>
 </body>
 </body>
