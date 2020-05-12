@@ -34,6 +34,8 @@ public class StartController {
     OrderService orderService;
     CouponService couponService;
 
+    String now_page = "";
+
     @GetMapping("/index")
     public String test() {
 //        return "index3";
@@ -217,6 +219,7 @@ public class StartController {
     public void setStaffDutyService(StaffDutyService staffDutyService) {
         this.staffDutyService = staffDutyService;
     }
+
     @Autowired
     public void setCouponService(CouponService couponService) {
         this.couponService = couponService;

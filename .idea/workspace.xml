@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingSpaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingSpaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingSpaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-data-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-data-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingSpaceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingSpaceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,7 +372,7 @@
       <workItem from="1588737200948" duration="8356000" />
       <workItem from="1588829176285" duration="625000" />
       <workItem from="1589004785791" duration="1031000" />
-      <workItem from="1589090537035" duration="2430000" />
+      <workItem from="1589090537035" duration="2670000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -573,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588749774320</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　点击进入模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中">
+      <created>1589259356018</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1589259356018</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +610,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="版本1.10 编写index.html页面以及控制器&#10;准备向数据库添加两张表tb_staff_duty和tb_staff_task表&#10;向tb_parking_space中添加一个parking_space_pic字段用于保存图片" />
     <MESSAGE value="版本1.12 编写index.html页面以及controller&#10;发现缺少session&#10;需要配置redis" />
     <MESSAGE value="版本1.12 编写index.html页面&#10;出现mysql无法插入中文的问题" />
     <MESSAGE value="版本1.13 编写index-staff.html页面&#10;全新问题:&#10;1.index-staff.html出现checkbox无法传递到controller的问题&#10;尚未解决:&#10;1.mysql无法插入中文的问题;" />
@@ -638,7 +634,8 @@
     <MESSAGE value="版本1.29 稳定版本" />
     <MESSAGE value="版本1.30" />
     <MESSAGE value="版本1.31 修复了版本过低的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="版本1.31 修复了版本过低的bug" />
+    <MESSAGE value="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　点击进入模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中" />
+    <option name="LAST_COMMIT_MESSAGE" value="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　点击进入模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="188" key="#ECS_on_Alibaba_Cloud" timestamp="1585201964208">
@@ -681,10 +678,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583572120061" />
-    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1588749768654">
+    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1589259354736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588749768654" />
+    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589259354736" />
     <state x="200" y="42" key="DiffContextDialog" timestamp="1585208710279">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
