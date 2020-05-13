@@ -1,161 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/css/htmleaf-demo.css">
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-<div class="htmleaf-container">
-    <main>
-        <!-- DAY OF THE WEEK -->
-        <div class="days">
+<!-- HTML -->
+<div id="example-section13">
+    <div id="legendPlaceholder"></div>
+    <div id="flotcontainer" style="width: 600px;height:200px; text-align: left;"></div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://www.pureexample.com/js/flot/excanvas.min.js"></script>
+<script src="http://www.pureexample.com/js/flot/jquery.flot.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var data1 = GenerateSeries(0);
 
-            <div class="day">
-                <p class="sunday">星期日</p>
-            </div>
+        function GenerateSeries(added){
+            var data = [];
+            var start = 100 + added;
+            var end = 200 + added;
 
-            <div class="day">
-                <p class="monday">星期一</p>
-            </div>
+            for(i=1;i<=20;i++){
+                var d = Math.floor(Math.random() * (end - start + 1) + start);
+                data.push([i, d]);
+                start++;
+                end++;
+            }
 
-            <div class="day">
-                <p class="tuesday">星期二</p>
-            </div>
+            return data;
+        }
 
-            <div class="day">
-                <p class="wednesday">星期三</p>
-            </div>
-
-            <div class="day">
-                <p class="thursday">星期四</p>
-            </div>
-
-            <div class="day">
-                <p class="friday">星期五</p>
-            </div>
-
-            <div class="day">
-                <p class="saturday">星期六</p>
-            </div>
-
-        </div>
-        <!-- CLOCK -->
-        <div class="clock">
-            <!-- HOUR -->
-            <div class="numbers">
-                <p class="hours"></p>
-                <p class="placeholder">88</p>
-            </div>
-
-            <div class="colon">
-                <p>:</p>
-            </div>
-
-            <!-- MINUTE -->
-            <div class="numbers">
-                <p class="minutes"></p>
-                <p class="placeholder">88</p>
-            </div>
-
-            <div class="colon">
-                <p>:</p>
-            </div>
-
-            <!-- SECOND -->
-            <div class="numbers">
-                <p class="seconds"></p>
-                <p class="placeholder">88</p>
-            </div>
-
-            <!-- AM / PM -->
-            <div class="am-pm">
-
-                <!-- AM -->
-                <div>
-                    <p class="am">am</p>
-                </div>
-
-                <!-- PM -->
-                <div>
-                    <p class="pm">pm</p>
-                </div>
-            </div>
-
-        </div><!-- END CLOCK -->
-
-    </main>
-    <script type="text/javascript">
-        //invokes functions as soon as window loads
-        window.onload = function(){
-            time();
-            ampm();
-            whatDay();
-            setInterval(function(){
-                time();
-                ampm();
-                whatDay();
-            }, 1000);
+        var options = {
+            series:{
+                bars:{show: true}
+            },
+            bars:{
+                barWidth:0.8
+            },
+            grid:{
+                backgroundColor: { colors: ["#919191", "#141414"] }
+            }
         };
 
+        $.plot($("#example-section13 #flotcontainer"), [data1], options);
 
-        //gets current time and changes html to reflect it
-        function time(){
-            var date = new Date(),
-                hours = date.getHours(),
-                minutes = date.getMinutes(),
-                seconds = date.getSeconds();
-
-            //make clock a 12 hour clock instead of 24 hour clock
-            hours = (hours > 12) ? (hours - 12) : hours;
-            hours = (hours === 0) ? 12 : hours;
-
-            //invokes function to make sure number has at least two digits
-            hours = addZero(hours);
-            minutes = addZero(minutes);
-            seconds = addZero(seconds);
-
-            //changes the html to match results
-            document.getElementsByClassName('hours')[0].innerHTML = hours;
-            document.getElementsByClassName('minutes')[0].innerHTML = minutes;
-            document.getElementsByClassName('seconds')[0].innerHTML = seconds;
-        }
-
-        //turns single digit numbers to two digit numbers by placing a zero in front
-        function addZero (val){
-            return (val <= 9) ? ("0" + val) : val;
-        }
-
-        //lights up either am or pm on clock
-        function ampm(){
-            var date = new Date(),
-                hours = date.getHours(),
-                am = document.getElementsByClassName("am")[0].classList,
-                pm = document.getElementsByClassName("pm")[0].classList;
-
-
-            (hours >= 12) ? pm.add("light-on") : am.add("light-on");
-            (hours >= 12) ? am.remove("light-on") : pm.remove("light-on");
-        }
-
-        //lights up what day of the week it is
-        function whatDay(){
-            var date = new Date(),
-                currentDay = date.getDay(),
-                days = document.getElementsByClassName("day");
-
-            //iterates through all divs with a class of "day"
-            for (x in days){
-                //list of classes in current div
-                var classArr = days[x].classList;
-
-                (classArr !== undefined) && ((x == currentDay) ? classArr.add("light-on") : classArr.remove("light-on"));
-            }
-        }
-    </script>
-</div>
-</body>
-</html>
+    });
+</script>

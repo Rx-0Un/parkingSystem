@@ -174,6 +174,14 @@ public class DateUtil {
         return ca.getTime();
     }
 
+    public static Date getLastDayDateByNum(int i) {
+        Date date = new Date();
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(date);
+        ca.add(Calendar.DAY_OF_WEEK, -i);
+        return ca.getTime();
+    }
+
     /**
      * 判断当前日期是否为周末
      *

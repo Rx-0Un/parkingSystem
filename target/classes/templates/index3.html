@@ -54,8 +54,6 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
                                 src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> 基本信息</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>
                                 修改密码</a>
                             <div class="dropdown-divider"></div>
@@ -207,85 +205,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="bars" style="height: 400px; padding: 0px; position: relative;">
-                                <canvas class="flot-base" width="707" height="500"
-                                        style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 566.2px; height: 400px;"></canvas>
-                                <div class="flot-text"
-                                     style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
-                                    <div class="flot-x-axis flot-x1-axis xAxis x1Axis"
-                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 18px; text-align: center;">
-                                            0
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 69px; text-align: center;">
-                                            1
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 121px; text-align: center;">
-                                            2
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 172px; text-align: center;">
-                                            3
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 224px; text-align: center;">
-                                            4
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 276px; text-align: center;">
-                                            5
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 327px; text-align: center;">
-                                            6
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 379px; text-align: center;">
-                                            7
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 431px; text-align: center;">
-                                            8
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 482px; text-align: center;">
-                                            9
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; max-width: 47px; top: 381px; left: 531px; text-align: center;">
-                                            10
-                                        </div>
-                                    </div>
-                                    <div class="flot-y-axis flot-y1-axis yAxis y1Axis"
-                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 368px; left: 9px; text-align: right;">0
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 306px; left: 9px; text-align: right;">5
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 245px; left: 2px; text-align: right;">10
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 184px; left: 2px; text-align: right;">15
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 123px; left: 2px; text-align: right;">20
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 62px; left: 2px; text-align: right;">25
-                                        </div>
-                                        <div class="flot-tick-label tickLabel"
-                                             style="position: absolute; top: 1px; left: 2px; text-align: right;">30
-                                        </div>
-                                    </div>
-                                </div>
-                                <canvas class="flot-overlay" width="707" height="500"
-                                        style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 566.2px; height: 400px;">
-                                </canvas>
+
                             </div>
                         </div>
                     </div>
@@ -712,7 +632,6 @@
 <script src="assets/libs/flot/jquery.flot.stack.js"></script>
 <script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
 <script src="assets/libs/chart/jquery.peity.min.js"></script>
-<script src="assets/libs/chart/matrix.charts.js"></script>
 <script src="assets/libs/chart/jquery.flot.pie.min.js"></script>
 <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="assets/libs/chart/turning-series.js"></script>
@@ -732,6 +651,56 @@
             }
         })
     }
+</script>
+<script language="JavaScript" type="text/javascript" th:inline="javascript">
+    const type = [[${chartResult}]];
+    const data = new Array();
+    const date=new Date(new Date().toLocaleDateString()).getTime()
+
+    //分割字符串
+    function formatDate(number) {
+        const re1 = /.*[\u4e00-\u9fa5]+.*/;
+        for (let i = 0; i < number.length; i++) {
+            if (re1.test(number[i])) {
+                number = number.substr(0, i - 1);
+            }
+        }
+        return number;
+    };
+
+    let j=9;
+    for (let i = 0; i <10; i++) {
+        data.push([date-j*60*60*24*1000, type[i]])
+        console.log(type[i])
+        j--;
+    }
+    const data1 = [{
+        label: "data1",
+        data: data,
+        bars: {
+            show: true,
+            barWidth: 60*60*24*800
+        }
+    },{
+        label: "data2",
+        data: data,
+        lines: {
+            show: true
+        },
+        points:{
+            show:true
+        }
+    }];
+
+    $(document).ready(function () {
+        var options = {
+            xaxis: {
+                mode: "time",
+                timeformat: "%m/%d"
+            }
+        };
+        $.plot($(".bars"), [data], options);
+    });
 </script>
 </body>
 </body>

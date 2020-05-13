@@ -13,6 +13,7 @@ import com.example.demo.util.DateUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -115,6 +116,22 @@ public class ParkingRecordMapperTest extends BaseMapperTest {
             TbParkingRecordMapper tbParkingRecordMapper = sqlSession.getMapper(TbParkingRecordMapper.class);
             int count = tbParkingRecordMapper.selectCountOuter("2020-04-22 13:06:32");
             System.out.println(count);
+        } finally {
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void selectTenDayDateTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbParkingRecordMapper tbParkingRecordMapper = sqlSession.getMapper(TbParkingRecordMapper.class);
+            List<Integer> list = new ArrayList<>();
+            for (int i = 9; i > -1; i--) {
+                list.add(tbParkingRecordMapper.selectTenDayDate(i).size());
+            }
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i).toString());
+            }
         } finally {
             sqlSession.close();
         }

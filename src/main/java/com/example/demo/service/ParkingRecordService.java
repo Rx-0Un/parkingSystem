@@ -3,9 +3,11 @@ package com.example.demo.service;
 import com.example.demo.entity.TbParkingLot;
 import com.example.demo.entity.TbParkingRecord;
 import com.example.demo.mapper.TbParkingRecordMapper;
+import com.example.demo.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,13 +59,21 @@ public class ParkingRecordService {
         return tbParkingRecordMapper.selectCountOuter(starting_time);
     }
 
-    public int selectOccupyNum(){
+    public int selectOccupyNum() {
         return tbParkingRecordMapper.selectOccupyNum();
     }
 
 
-    public Date selectEnterTimeByCarPlate(String  order_car_number){
+    public Date selectEnterTimeByCarPlate(String order_car_number) {
         return tbParkingRecordMapper.selectEnterTimeByCarPlate(order_car_number);
+    }
+
+    public List<Integer> selectTenDayDate() {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 9; i > -1; i--) {
+            list.add(tbParkingRecordMapper.selectTenDayDate(i).size());
+        }
+        return list;
     }
 
     @Autowired

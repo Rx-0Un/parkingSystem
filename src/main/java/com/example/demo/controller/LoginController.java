@@ -76,6 +76,10 @@ public class LoginController {
         session.setAttribute("staffId", StaffId);
         session.setAttribute("staffName", name);
         model.addAttribute("currentTask", CurrentTaskNum);
+
+        //加载图表
+        model.addAttribute("chartResult", parkingRecordService.selectTenDayDate());
+
         //获取未完成任务内容
         List<TbStaffTask> list = staffTaskService.selectUnfinishedTask("" + StaffId, 10, 0);
         int totalPage = staffTaskService.selectUnfinishedTask("" + StaffId, 0, 0).size();

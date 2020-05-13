@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" afterDir="false" />
+    <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　限制使用模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中&#10;7.员工权限修改&#10;8.页面添加分页查询&#10;9.新增一个查看值班记录的页面">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingRecordMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingRecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/test/ParkingRecordMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/ParkingRecordMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/util/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/libs/chart/matrix.charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/libs/chart/matrix.charts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-charge-rule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-charge-rule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index5.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingRecordMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingRecordMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/libs/chart/matrix.charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assets/libs/chart/matrix.charts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +174,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ParkingRecordMapperTest.selectTenDayDateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.ParkingRecordMapperTest" />
+      <option name="METHOD_NAME" value="selectTenDayDateTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RuleCustomInterimMapperTest.selectAllExistTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -168,22 +201,6 @@
       <option name="PACKAGE_NAME" value="com.example.demo.test" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.test.RuleCustomInterimMapperTest" />
       <option name="METHOD_NAME" value="selectAllExistTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StaffDutyMapperTest.selectLastRowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.test" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.StaffDutyMapperTest" />
-      <option name="METHOD_NAME" value="selectLastRowTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -230,20 +247,20 @@
     </configuration>
     <list>
       <item itemvalue="ECS on Alibaba Cloud.ECS on Alibaba Cloud" />
-      <item itemvalue="JUnit.StaffDutyMapperTest.selectLastRowTest" />
       <item itemvalue="JUnit.StaffDutyMapperTest.updateRowByInfoTest" />
       <item itemvalue="JUnit.ParkingRecordMapperTest.selectCountEnterTest" />
       <item itemvalue="JUnit.RuleCustomInterimMapperTest.selectAllExistTest" />
       <item itemvalue="JUnit.UserMapperTest.testUserSelectAll" />
       <item itemvalue="Spring Boot.DemoApplication" />
+      <item itemvalue="JUnit.ParkingRecordMapperTest.selectTenDayDateTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParkingRecordMapperTest.selectTenDayDateTest" />
         <item itemvalue="JUnit.UserMapperTest.testUserSelectAll" />
         <item itemvalue="JUnit.RuleCustomInterimMapperTest.selectAllExistTest" />
         <item itemvalue="JUnit.ParkingRecordMapperTest.selectCountEnterTest" />
         <item itemvalue="JUnit.StaffDutyMapperTest.updateRowByInfoTest" />
-        <item itemvalue="JUnit.StaffDutyMapperTest.selectLastRowTest" />
       </list>
     </recent_temporary>
   </component>
@@ -372,7 +389,7 @@
       <workItem from="1588737200948" duration="8356000" />
       <workItem from="1588829176285" duration="625000" />
       <workItem from="1589004785791" duration="1031000" />
-      <workItem from="1589090537035" duration="2670000" />
+      <workItem from="1589090537035" duration="22223000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -570,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589259356018</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　限制使用模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中&#10;7.员工权限修改&#10;8.页面添加分页查询&#10;9.新增一个查看值班记录的页面">
+      <created>1589259624262</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1589259624262</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="版本1.12 编写index.html页面以及controller&#10;发现缺少session&#10;需要配置redis" />
     <MESSAGE value="版本1.12 编写index.html页面&#10;出现mysql无法插入中文的问题" />
     <MESSAGE value="版本1.13 编写index-staff.html页面&#10;全新问题:&#10;1.index-staff.html出现checkbox无法传递到controller的问题&#10;尚未解决:&#10;1.mysql无法插入中文的问题;" />
     <MESSAGE value="版本1.14 编写index-staff.html页面中的删除，修改功能&#10;全新问题:&#10;1.如何不通过表单发起数据请求&#10;2.button点击事件无效&#10;3.js发起请求无效&#10;尚未解决:&#10;1.mysql无法插入中文的问题;" />
@@ -635,7 +658,8 @@
     <MESSAGE value="版本1.30" />
     <MESSAGE value="版本1.31 修复了版本过低的bug" />
     <MESSAGE value="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　点击进入模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中" />
-    <option name="LAST_COMMIT_MESSAGE" value="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　点击进入模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中" />
+    <MESSAGE value="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　限制使用模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中&#10;7.员工权限修改&#10;8.页面添加分页查询&#10;9.新增一个查看值班记录的页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　限制使用模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中&#10;7.员工权限修改&#10;8.页面添加分页查询&#10;9.新增一个查看值班记录的页面" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="188" key="#ECS_on_Alibaba_Cloud" timestamp="1585201964208">
@@ -654,10 +678,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585229181002" />
-    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1588754230859">
+    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1589262949411">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588754230859" />
+    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589262949411" />
     <state x="580" y="198" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1583572250736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -678,10 +702,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583572120061" />
-    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1589259354736">
+    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1589260078920">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589259354736" />
+    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589260078920" />
     <state x="200" y="42" key="DiffContextDialog" timestamp="1585208710279">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -698,38 +722,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="835" y="410" width="273" height="292" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583471720240" />
-    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1588754821642">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821642" />
-    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1588754821641">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
+    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821641" />
-    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1588754821641">
+    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
+    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821641" />
-    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1588754821641">
+    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
+    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821641" />
-    <state width="1877" height="293" key="GridCell.Tab.1.bottom" timestamp="1588754821642">
+    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
+    <state width="1877" height="293" key="GridCell.Tab.1.bottom" timestamp="1589345724467">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821642" />
-    <state width="1877" height="293" key="GridCell.Tab.1.center" timestamp="1588754821642">
+    <state width="1877" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724467" />
+    <state width="1877" height="293" key="GridCell.Tab.1.center" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821642" />
-    <state width="1877" height="293" key="GridCell.Tab.1.left" timestamp="1588754821642">
+    <state width="1877" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
+    <state width="1877" height="293" key="GridCell.Tab.1.left" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821642" />
-    <state width="1877" height="293" key="GridCell.Tab.1.right" timestamp="1588754821642">
+    <state width="1877" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
+    <state width="1877" height="293" key="GridCell.Tab.1.right" timestamp="1589345724466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588754821642" />
+    <state width="1877" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589345724466" />
     <state width="1293" height="285" key="GridCell.Tab.2.bottom" timestamp="1585204697472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -778,10 +802,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="221" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585205176663" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1588753234488">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1589272400988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588753234488" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589272400988" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587698719926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -804,6 +828,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/ChargeRuleController.java</url>
           <line>405</line>
           <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -192,4 +192,11 @@
         where car_plate_num=#{order_car_number}
         and exit_time is null
     </select>
+    <select id="selectTenDayDate" resultMap="BaseResultMap">
+        SELECT *
+        FROM tb_parking_record,tb_order
+        where
+        <![CDATA[ TO_DAYS(NOW( )) - TO_DAYS(exit_time) = #{number} ]]>
+        and tb_order.order_id=tb_parking_record.order_id
+    </select>
 </mapper>
