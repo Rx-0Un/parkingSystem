@@ -77,10 +77,11 @@ public class DataManageController {
         String parking_space_key_word_title = map.get("parking_space_key_word_title");
         int parking_space_searchNum = Integer.valueOf(map.get("parking_space_searchNum"));
         int page = Integer.valueOf(map.get("page"));
-        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title,parking_space_key_word, parking_space_searchDate, parking_space_searchNum, page - 1));
-        List list = parkingSpaceService.selectAll(0, 0);
+        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title, parking_space_key_word, parking_space_searchDate, parking_space_searchNum, (page - 1)*parking_space_searchNum));
+        List list = parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title, parking_space_key_word, parking_space_searchDate, 0, 0);
         model.addAttribute("ParkingSpaceTotalPage", list.size() / 10);
         model.addAttribute("ParkingSpaceNowPage", page);
+
         return "index-data-manage::ParkingSpaceResult";
     }
 

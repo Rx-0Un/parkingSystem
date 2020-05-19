@@ -148,7 +148,31 @@
         from tb_parking_space
         where parking_space_occupy is null
     </select>
-    <select id="selectAllByFurryStr">
-
+    <select id="selectAllByFurryStr" resultMap="BaseResultMap">
+        select *
+        from tb_parking_space
+        where true
+        <if test="parking_space_key_word_title='全体'">
+            and parking_space_id =#{parking_space_key_word}
+            or parking_space_location =#{parking_space_key_word}
+            or car_id =#{parking_space_key_word}
+            or TO_DAYS(expire_date) = TO_DAYS(#{parking_space_searchDate})
+        </if>
+        <if test="parking_space_key_word_title='车位编号'">
+            and parking_space_id =#{parking_space_key_word}
+        </if>
+        <if test="parking_space_key_word_title='车辆位置'">
+            and parking_space_location =#{parking_space_key_word}
+        </if>
+        <if test="parking_space_key_word_title='车辆id'">
+            and car_id =#{parking_space_key_word}
+        </if>
+        <if test="parking_space_searchDate!=null">
+            and TO_DAYS(expire_date) = TO_DAYS(#{parking_space_searchDate})
+        </if>
+        order by parking_space_id
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
     </select>
 </mapper>

@@ -715,14 +715,14 @@
                                                             <option value="100">100</option>
                                                         </select>条数据</label>
                                                         <label>关键字<select name="zero_config_length"
-                                                                         aria-controls="zero_config"
-                                                                         class="form-control form-control-sm"
-                                                                         id="parking_space_key_title">
-                                                            <option value="10">全体</option>
-                                                            <option value="25">车位编号</option>
-                                                            <option value="50">车辆位置</option>
-                                                            <option value="100">车辆id</option>
-                                                        </select>条数据</label>
+                                                                          aria-controls="zero_config"
+                                                                          class="form-control form-control-sm"
+                                                                          id="parking_space_key_title">
+                                                            <option value="全体">全体</option>
+                                                            <option value="车位编号">车位编号</option>
+                                                            <option value="车辆位置">车辆位置</option>
+                                                            <option value="车辆id">车辆id</option>
+                                                        </select></label>
                                                         <div id="zero_config_filter" class="dataTables_filter">
                                                             <label>关键字:<input type="search"
                                                                               class="form-control form-control-sm"
@@ -1172,9 +1172,9 @@
 
     function selectParkingSpacePage(page) {
         page = Number(page)
-        const parking_space_searchNum   = $('#parking_space_searchNum').val()
+        const parking_space_searchNum = $('#parking_space_searchNum').val()
         const parking_space_searchDate = $('#parking_space_searchDate').val()
-        const parking_space_key_word    = $('#parking_space_key_word').val()
+        const parking_space_key_word = $('#parking_space_key_word').val()
         const Data = {
             "parking_space_searchNum": parking_space_searchNum,
             "parking_space_searchDate": parking_space_searchDate,
@@ -1196,16 +1196,17 @@
             }
         })
     }
+
     $("#parking_space_searchNum").bind("input propertychange", function (event) {
-        const parking_space_searchNum   = $('#parking_space_searchNum').val()
+        const parking_space_searchNum = $('#parking_space_searchNum').val()
         const parking_space_searchDate = $('#parking_space_searchDate').val()
-        const parking_space_key_word    = $('#parking_space_key_word').val()
-        const parking_space_key_word_title    = $('#parking_space_key_word_title').val()
+        const parking_space_key_word = $('#parking_space_key_word').val()
+        const parking_space_key_word_title = $('#parking_space_key_word_title').val()
         const Data = {
             "parking_space_searchNum": parking_space_searchNum,
             "parking_space_searchDate": parking_space_searchDate,
             "parking_space_key_word": parking_space_key_word,
-            "parking_space_key_word_title":parking_space_key_word_title,
+            "parking_space_key_word_title": parking_space_key_word_title,
             "page": 1,
             "random": new Date()
         }

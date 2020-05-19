@@ -1,80 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　限制使用模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中&#10;7.员工权限修改&#10;8.页面添加分页查询&#10;9.新增一个查看值班记录的页面">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/app/AmountAddBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/app/MyPageBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bean/app/OrderData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StaffDutyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/app/AppAmountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/app/AppOrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/app/MyPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserAmountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/UserAmountTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index-chart-statistics-detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index-chart-statistics.html" afterDir="false" />
+    <list default="true" id="0fd5517b-366f-4582-9c09-7ac587f10565" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/ParkingSpaceMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ChargeRuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ChargeRuleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbCarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbCarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbMonthlyCardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbMonthlyCardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbOrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingRecordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingSpaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbParkingSpaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbRuleFixedParkingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbRuleFixedParkingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffDutyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffDutyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbStaffMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbUserAmountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbUserAmountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/TbUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbParkingSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/TbParkingSpace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbCarMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbCarMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbOrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbRuleFixedParkingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbRuleFixedParkingMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffDutyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffDutyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbStaffMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbUserAmountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/mappers/TbUserAmountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/CarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingSpaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/ParkingSpaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RuleFixedParkingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/RuleFixedParkingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffDutyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffDutyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/StaffService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/test/OrderMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/test/OrderMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-charge-rule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-charge-rule.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-data-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-data-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index-manage-parking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/StartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/TbOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/TbOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/TbUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/TbUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbCarMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbCarMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbOrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbOrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingRecordMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingRecordMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingSpaceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbParkingSpaceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffDutyMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffDutyMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbStaffMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbUserAmountMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbUserAmountMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/TbUserMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbCarMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbCarMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbOrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingRecordMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbParkingSpaceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffDutyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffDutyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbStaffMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbUserAmountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/mappers/TbUserAmountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/StaffService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index3.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/demo.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/demo.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +116,7 @@
       <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
+  <component name="RunManager" selected="JUnit.ParkingSpaceMapperTest.Test">
     <configuration name="ECS on Alibaba Cloud" type="ECS_RUN_CONFIGRATION" factoryName="Ecs configuration factory">
       <option name="address" />
       <option name="afterCommand" value="nohup java -jar demo.jar &gt;demo.txt &amp; cat demo.txt" />
@@ -229,6 +165,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ParkingSpaceMapperTest.Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.ParkingSpaceMapperTest" />
+      <option name="METHOD_NAME" value="Test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParkingSpaceMapperTest.selectAllByFurryStrTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.ParkingSpaceMapperTest" />
+      <option name="METHOD_NAME" value="selectAllByFurryStrTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserAmountTest.addRowByCarTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -240,38 +208,6 @@
       <option name="PACKAGE_NAME" value="com.example.demo.test" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.test.UserAmountTest" />
       <option name="METHOD_NAME" value="addRowByCarTypeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAmountTest.selectMoneyByInfoAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.test" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.UserAmountTest" />
-      <option name="METHOD_NAME" value="selectMoneyByInfoAll" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserAmountTest.selectRowByIdAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.test" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.test.UserAmountTest" />
-      <option name="METHOD_NAME" value="selectRowByIdAll" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -302,20 +238,20 @@
     </configuration>
     <list>
       <item itemvalue="ECS on Alibaba Cloud.ECS on Alibaba Cloud" />
-      <item itemvalue="JUnit.UserAmountTest.selectRowByIdAll" />
-      <item itemvalue="JUnit.UserAmountTest.selectMoneyByInfoAll" />
       <item itemvalue="JUnit.UserAmountTest.addRowByCarTypeTest" />
       <item itemvalue="JUnit.UserAmountTest.updateRowByInfoTest" />
       <item itemvalue="JUnit.OrderMapperTest.selectOrderByUserName" />
       <item itemvalue="Spring Boot.DemoApplication" />
+      <item itemvalue="JUnit.ParkingSpaceMapperTest.selectAllByFurryStrTest" />
+      <item itemvalue="JUnit.ParkingSpaceMapperTest.Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParkingSpaceMapperTest.Test" />
+        <item itemvalue="JUnit.ParkingSpaceMapperTest.selectAllByFurryStrTest" />
         <item itemvalue="JUnit.OrderMapperTest.selectOrderByUserName" />
         <item itemvalue="JUnit.UserAmountTest.updateRowByInfoTest" />
         <item itemvalue="JUnit.UserAmountTest.addRowByCarTypeTest" />
-        <item itemvalue="JUnit.UserAmountTest.selectMoneyByInfoAll" />
-        <item itemvalue="JUnit.UserAmountTest.selectRowByIdAll" />
       </list>
     </recent_temporary>
   </component>
@@ -448,7 +384,7 @@
       <workItem from="1589695276840" duration="5973000" />
       <workItem from="1589772448402" duration="2385000" />
       <workItem from="1589775335379" duration="15337000" />
-      <workItem from="1589853486022" duration="5154000" />
+      <workItem from="1589853486022" duration="11676000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -660,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589345813693</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="系统剩余工作&#10;1.员工修改密码&#10;2.根据员工权限　限制使用模块&#10;3.图表数据展示&#10;4.图表数据打印成文件&#10;5.固定车位规则完善&#10;6.规则导入到正式收费中&#10;7.员工权限修改&#10;8.页面添加分页查询&#10;9.新增一个查看值班记录的页面">
+      <created>1589858760939</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1589858760940</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -744,10 +687,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585229181002" />
-    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1589790528196">
+    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1589861457877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589790528196" />
+    <state x="1397" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589861457877" />
     <state x="580" y="198" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1583572250736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -768,10 +711,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583572120061" />
-    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1589855850715">
+    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1589858754983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589855850715" />
+    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589858754983" />
     <state x="200" y="42" key="DiffContextDialog" timestamp="1585208710279">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -788,38 +731,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="835" y="410" width="273" height="292" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583471720240" />
-    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1589858588841">
+    <state width="914" height="292" key="GridCell.Tab.0.bottom" timestamp="1589868162296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588841" />
-    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1589858588841">
+    <state width="914" height="292" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589868162296" />
+    <state width="914" height="292" key="GridCell.Tab.0.center" timestamp="1589868162296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588841" />
-    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1589858588840">
+    <state width="914" height="292" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589868162296" />
+    <state width="914" height="292" key="GridCell.Tab.0.left" timestamp="1589868162296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588840" />
-    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1589858588841">
+    <state width="914" height="292" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589868162296" />
+    <state width="914" height="292" key="GridCell.Tab.0.right" timestamp="1589868162296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588841" />
-    <state width="1877" height="293" key="GridCell.Tab.1.bottom" timestamp="1589858588842">
+    <state width="914" height="292" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589868162296" />
+    <state width="1877" height="293" key="GridCell.Tab.1.bottom" timestamp="1589866711907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588842" />
-    <state width="1877" height="293" key="GridCell.Tab.1.center" timestamp="1589858588841">
+    <state width="1877" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589866711907" />
+    <state width="1877" height="293" key="GridCell.Tab.1.center" timestamp="1589866711907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588841" />
-    <state width="1877" height="293" key="GridCell.Tab.1.left" timestamp="1589858588841">
+    <state width="1877" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589866711907" />
+    <state width="1877" height="293" key="GridCell.Tab.1.left" timestamp="1589866711907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588841" />
-    <state width="1877" height="293" key="GridCell.Tab.1.right" timestamp="1589858588842">
+    <state width="1877" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589866711907" />
+    <state width="1877" height="293" key="GridCell.Tab.1.right" timestamp="1589866711907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589858588842" />
+    <state width="1877" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589866711907" />
     <state width="1293" height="285" key="GridCell.Tab.2.bottom" timestamp="1585204697472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -899,6 +842,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/test/OrderMapperTest.java</url>
           <line>51</line>
           <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/DataManageController.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

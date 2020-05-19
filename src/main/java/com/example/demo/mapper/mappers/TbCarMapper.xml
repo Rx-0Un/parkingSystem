@@ -107,16 +107,6 @@
                  where tb_parking_space.car_id = tb_car.car_id)
         from tb_parking_space)
     </select>
-    <select id="selectCarByUserId" resultMap="BaseResultMap">
-        select *
-        from tb_car
-        where column_6=#{userId}
-          and car_id != (select tb_car.car_id
-                 from tb_parking_space,
-                      tb_car
-                 where tb_parking_space.car_id = tb_car.car_id)
-        from tb_parking_space)
-    </select>
     <update id="updateCarType" parameterType="java.lang.String">
         UPDATE test.tb_car t
         SET t.car_type = '固定车'

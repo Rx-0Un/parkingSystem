@@ -259,4 +259,17 @@ public class TbParkingSpace {
     public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
+
+    @Override
+    public String toString() {
+        return "TbParkingSpace{" +
+                "parkingSpaceId=" + parkingSpaceId +
+                ", parkingSpaceLocation='" + parkingSpaceLocation + '\'' +
+                ", parkingSpaceOccupy=" + parkingSpaceOccupy +
+                ", parkingSpaceQuestion='" + parkingSpaceQuestion + '\'' +
+                ", parkingSpaceReservation=" + parkingSpaceReservation +
+                ", carId=" + carId +
+                ", expireDate=" + expireDate +
+                '}';
+    }
 }
