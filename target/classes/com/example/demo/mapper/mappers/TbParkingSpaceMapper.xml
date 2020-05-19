@@ -93,4 +93,62 @@
             limit #{pageNum} offset #{page};
         </if>
     </select>
+    <insert id="addParkingSpace">
+        INSERT INTO test.tb_parking_space (parking_space_location)
+        VALUES (#{parkingSpaceArea})
+    </insert>
+    <update id="updateParkingSpace" parameterType="java.lang.String">
+        UPDATE test.tb_parking_space t
+        SET t.parking_space_occupy = 1,
+        <if test="expire_date='一个月'">
+            expire_date=date_add(expire_date, interval 1 month ),
+        </if>
+        <if test="expire_date='季度'">
+            expire_date=date_add(expire_date, interval 3 month ),
+        </if>
+        <if test="expire_date='半年'">
+            expire_date=date_add(expire_date, interval 6 month ),
+        </if>
+        <if test="expire_date='全年'">
+            expire_date=date_add(expire_date, interval 12 month ),
+        </if>
+        car_id=(select car_id from tb_car where car_plate_number=#{car_id})
+        WHERE t.parking_space_id = #{parking_space_id}
+    </update>
+    <update id="addateParkingSpace" parameterType="java.lang.String">
+        UPDATE test.tb_parking_space t
+        SET t.parking_space_occupy = 1,
+        <if test="expire_date='一个月'">
+            expire_date=date_add(now(), interval 1 month ),
+        </if>
+        <if test="expire_date='季度'">
+            expire_date=date_add(now(), interval 3 month ),
+        </if>
+        <if test="expire_date='半年'">
+            expire_date=date_add(now(), interval 6 month ),
+        </if>
+        <if test="expire_date='全年'">
+            expire_date=date_add(now(), interval 12 month ),
+        </if>
+        car_id=(select car_id from tb_car where car_plate_number=#{car_id})
+        WHERE t.parking_space_id = #{parking_space_id}
+    </update>
+    <select id="selectRowById" resultType="com.example.demo.entity.TbParkingSpace">
+        select *
+        from tb_parking_space
+        where parking_space_id=#{parking_space_id}
+    </select>
+    <delete id="deleteParkingSpace">
+        DELETE FROM test.tb_parking_space
+        WHERE parking_space_id = #{parking_space_id}
+        and car_id !=null
+    </delete>
+    <select id="selectNotOccupy" resultMap="BaseResultMap">
+        select *
+        from tb_parking_space
+        where parking_space_occupy is null
+    </select>
+    <select id="selectAllByFurryStr">
+
+    </select>
 </mapper>

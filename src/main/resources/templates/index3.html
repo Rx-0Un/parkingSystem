@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,53 +72,63 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="/index-manage-parking" aria-expanded="false"><i
-                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场管理</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="1" aria-expanded="false"><i
-                            class="mdi mdi-receipt"></i><span class="hide-menu">缴费管理 </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="/index-charge-rule" class="sidebar-link"><i
-                                    class="mdi mdi-note-outline"></i><span class="hide-menu">收费规则 </span></a></li>
-                            <li class="sidebar-item"><a href="/index-order-search" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
-                            <li class="sidebar-item"><a href="/index-coupon-manage" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
-                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="/index-data-manage" aria-expanded="false"><i
-                            class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场数据</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="javascript:void(0)" aria-expanded="false"><i
-                            class="mdi mdi-receipt"></i><span class="hide-menu">员工管理 </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="/index-staff" class="sidebar-link"><i
-                                    class="mdi mdi-note-outline"></i><span class="hide-menu">员工信息</span></a></li>
-                            <li class="sidebar-item"><a href="/index-duty-statistics" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">当班统计 </span></a></li>
-                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">任务详情</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="javascript:void(0)" aria-expanded="false"><i
-                            class="mdi mdi-receipt"></i><span class="hide-menu">app管理 </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="1" class="sidebar-link"><i
-                                    class="mdi mdi-note-outline"></i><span class="hide-menu">消息推送 </span></a></li>
-                            <li class="sidebar-item"><a href="/index-app-user-manage" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">用户管理 </span></a></li>
-                            <li class="sidebar-item"><a href="#" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表 </span></a></li>
-                        </ul>
-                    </li>
+
+                    <div th:if="${#strings.substring(session.staffType,3,4)}eq'1'">
+                        <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                    href="/index-manage-parking" aria-expanded="false"><i
+                                class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场管理</span></a></li>
+                    </div>
+                    <div th:if="${#strings.substring(session.staffType,4,5)}eq'1'">
+                        <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                    href="javascript:void(0)" aria-expanded="false"><i
+                                class="mdi mdi-receipt"></i><span class="hide-menu">缴费管理 </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="/index-charge-rule" class="sidebar-link"><i
+                                        class="mdi mdi-note-outline"></i><span class="hide-menu">收费规则 </span></a></li>
+                                <li class="sidebar-item"><a href="/index-order-search" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
+                                <li class="sidebar-item"><a href="/index-coupon-manage" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
+                                <li class="sidebar-item"><a href="1" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div th:if="${#strings.substring(session.staffType,2,3)}eq'1'">
+                        <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                    href="/index-data-manage" aria-expanded="false"><i
+                                class="mdi mdi-view-dashboard"></i><span class="hide-menu"> 车场数据</span></a></li>
+                    </div>
+                    <div th:if="${#strings.substring(session.staffType,1,2)}eq'1'">
+                        <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                    href="javascript:void(0)" aria-expanded="false"><i
+                                class="mdi mdi-receipt"></i><span class="hide-menu">员工管理 </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <div th:if="${#strings.substring(session.staffType,0,1)}eq'1'">
+                                    <li class="sidebar-item"><a href="/index-staff" class="sidebar-link"><i
+                                            class="mdi mdi-note-outline"></i><span class="hide-menu">员工信息</span></a>
+                                    </li>
+                                </div>
+                                <li class="sidebar-item"><a href="/index-duty-statistics" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu">当班统计 </span></a></li>
+                                <li class="sidebar-item"><a href="/index-chart-statistics" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu">任务详情</span></a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div th:if="${#strings.substring(session.staffType,5,6)}eq'1'">
+                        <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
+                                                    href="javascript:void(0)" aria-expanded="false"><i
+                                class="mdi mdi-receipt"></i><span class="hide-menu">app管理 </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="#" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表 </span></a></li>
+                            </ul>
+                        </li>
+                    </div>
                     <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
                                                 href="javascript:void(0)" aria-expanded="false"><i
                             class="mdi mdi-receipt"></i><span class="hide-menu">
@@ -652,10 +661,50 @@
         })
     }
 </script>
+<!--<script language="JavaScript" type="text/javascript" th:inline="javascript">-->
+<!--    const type = [[${chartResult}]];-->
+<!--    const data = new Array();-->
+<!--    const date=new Date(new Date().toLocaleDateString()).getTime()-->
+
+<!--    //分割字符串-->
+<!--    function formatDate(number) {-->
+<!--        const re1 = /.*[\u4e00-\u9fa5]+.*/;-->
+<!--        for (let i = 0; i < number.length; i++) {-->
+<!--            if (re1.test(number[i])) {-->
+<!--                number = number.substr(0, i - 1);-->
+<!--            }-->
+<!--        }-->
+<!--        return number;-->
+<!--    };-->
+
+<!--    let j=9;-->
+<!--    for (let i = 0; i <10; i++) {-->
+<!--        data.push([date-j*60*60*24*1000, type[i]])-->
+<!--        console.log(type[i])-->
+<!--        j&#45;&#45;;-->
+<!--    }-->
+
+
+<!--    $(document).ready(function () {-->
+<!--        var options = {-->
+<!--            series: {-->
+<!--                bars: {show: true}-->
+<!--            },-->
+<!--            bars: {-->
+<!--                barWidth: 60*60*24*1000*0.8-->
+<!--            },-->
+<!--            xaxis: {-->
+<!--                mode: "time",-->
+<!--                timeformat: "%m/%d"-->
+<!--            }-->
+<!--        };-->
+<!--        $.plot($(".bars"), [data], options);-->
+<!--    });-->
+<!--</script>-->
 <script language="JavaScript" type="text/javascript" th:inline="javascript">
     const type = [[${chartResult}]];
     const data = new Array();
-    const date=new Date(new Date().toLocaleDateString()).getTime()
+    const date = new Date(new Date().toLocaleDateString()).getTime()
 
     //分割字符串
     function formatDate(number) {
@@ -668,28 +717,39 @@
         return number;
     };
 
-    let j=9;
-    for (let i = 0; i <10; i++) {
-        data.push([date-j*60*60*24*1000, type[i]])
+    let j = 9;
+    for (let i = 0; i < 10; i++) {
+        data.push([date - j * 60 * 60 * 24 * 1000, type[i]])
         console.log(type[i])
         j--;
     }
-    
-
-    $(document).ready(function () {
-        var options = {
-            series: {
-                bars: {show: true}
-            },
+    $(function () {
+        var data1 = [{
+            label: "data1",
+            data: data,
             bars: {
-                barWidth: 60*60*24*800
+                show: true,
+                barWidth: 60 * 60 * 24 * 1000 * 0.8
+            }
+        }, {
+            label: "data2",
+            data: data,
+            lines: {
+                show: true
             },
+            points: {
+                show: true
+            }
+        }];
+
+        var options = {
             xaxis: {
                 mode: "time",
                 timeformat: "%m/%d"
             }
         };
-        $.plot($(".bars"), [data], options);
+
+        $.plot($(".bars"), data1, options);
     });
 </script>
 </body>

@@ -108,4 +108,6 @@ public interface TbStaffMapper{
     int deleteStaffById(@Param("staffId") Integer id);
 
     String selectNameById(@Param("staff_id") int staffId);
+
+    Integer selectRight(@Param("staff_id")String staffId);
 }

@@ -26,6 +26,7 @@ public class OrderService {
     public List<TbOrder> selectAll(int pagNum,int page){
         return tbOrderMapper.selectAll(pagNum,page);
     }
+    public List<TbOrder> selectOrderByUserName(String username){return tbOrderMapper.selectOrderByUserName(username);}
     @Autowired
     public void setTbOrderMapper(TbOrderMapper tbOrderMapper) {
         this.tbOrderMapper = tbOrderMapper;

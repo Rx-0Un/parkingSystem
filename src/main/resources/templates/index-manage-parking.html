@@ -363,7 +363,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="control-label">操作员</label>
-                                <input type="text" class="form-control form-white" value="tony" id="order_payer">
+                                <input type="text" class="form-control form-white" th:value="tony" id="order_payer">
                             </div>
                         </div>
                         <div class="row">
@@ -524,8 +524,8 @@
                                         <div class="card border">
                                             <div class="card-body">
                                                 <h5 class="card-title">场内停车数量变化</h5>
-                                                <div class="bars" style="height: 600px; padding: 0px; position: relative;">
-
+                                                <div class="bars"
+                                                     style="height: 500px; padding: 0px; position: relative;">
                                                 </div>
                                             </div>
                                         </div>
@@ -1096,7 +1096,7 @@
             "search_car_type": search_car_type,
             "search_pay_type": search_pay_type,
             "search_Keyword_title": search_Keyword_title,
-            "page":0,
+            "page": 0,
             "date": new Date()
         }
         $.ajax({
@@ -1204,6 +1204,46 @@
             (classArr !== undefined) && ((x == currentDay) ? classArr.add("light-on") : classArr.remove("light-on"));
         }
     }
+</script>
+<script language="JavaScript" type="text/javascript" th:inline="javascript">
+    const type = [[${chartResult}]];
+    const data = new Array();
+    const date = new Date(new Date().toLocaleDateString()).getTime()
+
+    //分割字符串
+    function formatDate(number) {
+        const re1 = /.*[\u4e00-\u9fa5]+.*/;
+        for (let i = 0; i < number.length; i++) {
+            if (re1.test(number[i])) {
+                number = number.substr(0, i - 1);
+            }
+        }
+        return number;
+    };
+
+    let j = 23;
+    for (let i = 0; i < 24; i++) {
+        data.push([date - j * 60 * 60 * 1000, type[i]])
+        console.log(type[i])
+        j--;
+    }
+    $(function () {
+        const data1 = [{
+            label: "data2",
+            data: data,
+            lines: {
+                show: true
+            }
+        }];
+
+        var options = {
+            xaxis: {
+                mode: "time",
+            }
+        };
+
+        $.plot($(".bars"), data1, options);
+    });
 </script>
 </body>
 </body>

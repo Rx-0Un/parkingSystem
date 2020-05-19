@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -216,33 +215,73 @@
                     <form>
                         <div class="row">
                             <div class="col-md-12">
-                                <label class="control-label">车主编号</label>
+                                <label class="control-label">操作员</label>
                                 <input class="form-control form-white " readonly="readonly" placeholder="输入姓名"
-                                       type="text" name="staffId" id="userId">
+                                       type="text" th:value="${session.staffName}" id="staffName">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label class="control-label">姓名</label>
-                                <input class="form-control form-white " readonly="readonly" placeholder="输入姓名"
-                                       type="text" name="staffName" id="userName">
+                                <label class="control-label">支付人</label>
+                                <input class="form-control form-white " readonly="readonly"
+                                       type="text" id="userName">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label class="control-label">车牌号码</label>
-                                <input class="form-control form-white " placeholder="输入姓名"
-                                       type="text" name="staffName" id="carPlate">
+                        <div class="UserCarResult" th:fragment="UserCarResult">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label">车位选择</label>
+                                    <select class="select2 form-control custom-select select2-hidden-accessible"
+                                            style="width: 100%; height:33px;" data-select2-id="1"
+                                            tabindex="-1" aria-hidden="true" id="parkingSpace">
+                                        <option th:each="stat:${ParkingSpace}"
+                                                th:text="${stat.parkingSpaceLocation}"
+                                                th:value="${stat.parkingSpaceId}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label">车牌号码</label>
+                                    <select class="select2 form-control custom-select select2-hidden-accessible"
+                                            style="width: 100%; height:33px;" data-select2-id="1"
+                                            tabindex="-1" aria-hidden="true" id="carPlateNumber">
+                                        <option th:each="stat:${UserCar}" th:value="${stat.carPlateNumber}"
+                                                th:text="${stat.carTypeModel}+':'+${stat.carPlateNumber}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label">购买方案</label>
+                                    <select class="select2 form-control custom-select select2-hidden-accessible"
+                                            style="width: 100%; height:33px;" data-select2-id="1"
+                                            tabindex="-1" aria-hidden="true" id="OrderMoney">
+                                        <optgroup label="小车">
+                                            <option
+                                                    th:each="stat:${FixedRule}"
+                                                    th:if="${stat.carType}eq'小车'"
+                                                    th:text="${stat.money}+'/'+${stat.chargeCycle}"
+                                                    th:value="${stat.carType}"></option>
+                                        </optgroup>
+                                        <optgroup label="大型车">
+                                            <option
+                                                    th:each="stat:${FixedRule}"
+                                                    th:if="${stat.carType}eq'大型车'"
+                                                    th:text="${stat.money}+'/'+${stat.chargeCycle}"
+                                                    th:value="${stat.money}"></option>
+                                        </optgroup>
+                                        <optgroup label="超大型车">
+                                            <option
+                                                    th:each="stat:${FixedRule}"
+                                                    th:if="${stat.carType}eq'超大型车'"
+                                                    th:text="${stat.money}+'/'+${stat.chargeCycle}"
+                                                    th:value="${stat.money}"></option>
+                                        </optgroup>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label class="control-label">车位编号</label>
-                                <input class="form-control form-white " placeholder="输入姓名"
-                                       type="text" name="staffName" id="spaceNumber">
-                            </div>
-                        </div>
-                        时间　金额
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -669,28 +708,33 @@
                                                         <label>显示<select name="zero_config_length"
                                                                          aria-controls="zero_config"
                                                                          class="form-control form-control-sm"
-                                                                         id="searchNum">
+                                                                         id="parking_space_searchNum">
                                                             <option value="10">10</option>
                                                             <option value="25">25</option>
                                                             <option value="50">50</option>
                                                             <option value="100">100</option>
+                                                        </select>条数据</label>
+                                                        <label>关键字<select name="zero_config_length"
+                                                                         aria-controls="zero_config"
+                                                                         class="form-control form-control-sm"
+                                                                         id="parking_space_key_title">
+                                                            <option value="10">全体</option>
+                                                            <option value="25">车位编号</option>
+                                                            <option value="50">车辆位置</option>
+                                                            <option value="100">车辆id</option>
                                                         </select>条数据</label>
                                                         <div id="zero_config_filter" class="dataTables_filter">
                                                             <label>关键字:<input type="search"
                                                                               class="form-control form-control-sm"
                                                                               placeholder=""
                                                                               aria-controls="zero_config"
-                                                                              id="search"></label>
+                                                                              id="parking_space_key_word"></label>
                                                         </div>
                                                         <div class="dataTables_filter">
-                                                            <label>开始时间:<input type="text"
+                                                            <label>过期时间:<input type="text"
                                                                                class="form-control form-control-sm"
-                                                                               placeholder="请选择日期" id="searchDate">
-                                                            </label></div>
-                                                        <div class="dataTables_filter">
-                                                            <label>结束时间:<input type="text"
-                                                                               class="form-control form-control-sm"
-                                                                               placeholder="请选择日期" id="searchDate1">
+                                                                               placeholder="请选择日期"
+                                                                               id="parking_space_searchDate">
                                                             </label></div>
                                                         <div class="dataTables_filter">
                                                             <label><font color="white">添加</font>
@@ -744,14 +788,138 @@
                                                                     aria-label="Salary: activate to sort column ascending"
                                                                 >到期时间
                                                                 </th>
+                                                                <th class="sorting" tabindex="0"
+                                                                    aria-controls="zero_config"
+                                                                    rowspan="1"
+                                                                    colspan="1"
+                                                                    aria-label="Salary: activate to sort column ascending"
+                                                                >操作
+                                                                </th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <tr role="row" class="even" th:each="stat:${allTask}">
-                                                                <td th:text="${stat.staffTaskId}">任务编号</td>
+                                                            <tr role="row" class="even"
+                                                                th:each="stat:${ParkingSpaceResult}">
+                                                                <td th:text="${stat.parkingSpaceId}"></td>
+                                                                <td th:text="${stat.parkingSpaceLocation}"></td>
+                                                                <!--                                                                <td th:if="${stat.parkingSpaceOccupy}==0" th:text="${stat.parkingSpaceOccupy}"></td>-->
+                                                                <td th:text="${stat.parkingSpaceOccupy}==null? '否':'是'"></td>
+                                                                <td th:text="${stat.carId}==null?'无':${stat.carId}"></td>
+                                                                <td th:text="${stat.expireDate}==null?'无':${#dates.format(stat.expireDate, 'yyyy-MM-dd')}"></td>
+                                                                <td>
+                                                                    <a class="btn btn-danger btn-sm">
+                                                                        <span class="icon-trash-o"></span> 删除
+                                                                    </a>
+                                                                </td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="card-body border-top">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-12">
+                                                                <ul class="pagination">
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage-1 >=1}"
+                                                                    ><a
+                                                                            aria-controls="zero_config"
+                                                                            data-dt-idx="0"
+                                                                            tabindex="0"
+                                                                            class="page-link"
+                                                                            th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage-1}]] )|"
+                                                                    >上一页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item">
+                                                                        <a
+                                                                                aria-controls="zero_config"
+                                                                                data-dt-idx="0"
+                                                                                tabindex="0"
+                                                                                class="page-link"
+                                                                                th:onclick="|javascript : selectParkingSpacePage( '1' )|"
+                                                                        >首页</a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage-3>=1}">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage-3}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage-3}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage-2>=1}">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage-2}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage-2}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage-1>=1}">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage-1}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage-1}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item active">
+                                                                        <a aria-controls="zero_config" data-dt-idx="1"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage+1 <=ParkingSpaceTotalPage}">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage+1}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage+1}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage+2 <=ParkingSpaceTotalPage}">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage+2}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage+2}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage+3 <=ParkingSpaceTotalPage}">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:text="${ParkingSpaceNowPage+3}"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage+3}]] )|"
+                                                                        >
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item">
+                                                                        <a aria-controls="zero_config" data-dt-idx="2"
+                                                                           tabindex="0" class="page-link"
+                                                                           th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceTotalPage}]] )|"
+                                                                        >尾页
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="paginate_button page-item"
+                                                                        th:if="${ParkingSpaceNowPage<ParkingSpaceTotalPage&&ParkingSpaceTotalPage!=1}">
+                                                                        <a
+                                                                                aria-controls="zero_config"
+                                                                                data-dt-idx="2"
+                                                                                tabindex="0"
+                                                                                class="page-link"
+                                                                                th:onclick="|javascript : selectParkingSpacePage( [[${ParkingSpaceNowPage+1}]] )|"
+                                                                        >下一页</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -801,6 +969,8 @@
 <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="assets/libs/chart/turning-series.js"></script>
 <script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script src="assets/libs/chart/matrix.charts.js"></script>
+<script src="assets/libs/chart/jquery.peity.min.js"></script>
 <script language="JavaScript">
     //添加固定车辆
     $('#addCar').bind('click', function () {
@@ -873,10 +1043,75 @@
     const close0 = document.getElementById('close0');
 
     //弹出添加固定车位窗口
-    function popWindow() {
-        div.style.display = "block"
+    function popWindow(userId, userName) {
+        // $('#userName').val(userName+"123")
+        if (userName == null) {
+            $('#userName').val("无")
+        } else {
+            $('#userName').val(userName)
+        }
+        const Data = {
+            "userId": userId,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectUserCar",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".UserCarResult").html(data);
+                div.style.display = "block"
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
     }
 
+    $('#sub').bind('click', function () {
+        const r = confirm("是否确认添加？");
+        const parkingSpace = $('#parkingSpace option:selected').val()
+        const OrderMoneyText = $('#OrderMoney option:selected').text()
+        const carPlateNumberValue = $('#carPlateNumber option:selected').val()
+        const carPlateNumberText = $('#carPlateNumber option:selected').text()
+        const OrderMoneyValue = $('#OrderMoney option:selected').val()
+        const staffName = $('#staffName').val()
+        const userName = $('#userName').val()
+        if (r == true) {
+            if (carPlateNumberText.indexOf(OrderMoneyValue) != -1) {
+                const Data = {
+                    "staffName": staffName,
+                    "userName": userName,
+                    "parkingSpace": parkingSpace,
+                    "OrderMoneyText": OrderMoneyText,
+                    "carPlateNumberValue": carPlateNumberValue,
+                    "random": new Date()
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/index-data-manage/addOrder",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(Data),
+                    dataType: "text",
+                    success: function (data) {
+                        alert("成功")
+                        $(".ParkingSpaceResult").html(data);
+                    },
+                    error: function (date) {
+                        alert("失败")
+                    }
+                })
+            } else {
+                alert("车辆类型和购买方案不匹配")
+                return false;
+            }
+        } else {
+            return false;
+        }
+        div.style.display = "none"
+    });
     $('#close').bind('click', function () {
         div.style.display = "none"
     });
@@ -922,8 +1157,9 @@
                 data: JSON.stringify(Data),
                 dataType: "text",
                 success: function (data) {
-                    div2.style.display = "block"
-
+                    alert("成功")
+                    div2.style.display = "none"
+                    $(".ParkingSpaceResult").html(data);
                 },
                 error: function (date) {
                     alert("失败")
@@ -932,6 +1168,60 @@
         } else {
             return false;
         }
+    });
+
+    function selectParkingSpacePage(page) {
+        page = Number(page)
+        const parking_space_searchNum   = $('#parking_space_searchNum').val()
+        const parking_space_searchDate = $('#parking_space_searchDate').val()
+        const parking_space_key_word    = $('#parking_space_key_word').val()
+        const Data = {
+            "parking_space_searchNum": parking_space_searchNum,
+            "parking_space_searchDate": parking_space_searchDate,
+            "parking_space_key_word": parking_space_key_word,
+            "page": page,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectParkingSpacePage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".SpaceNumberResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
+    $("#parking_space_searchNum").bind("input propertychange", function (event) {
+        const parking_space_searchNum   = $('#parking_space_searchNum').val()
+        const parking_space_searchDate = $('#parking_space_searchDate').val()
+        const parking_space_key_word    = $('#parking_space_key_word').val()
+        const parking_space_key_word_title    = $('#parking_space_key_word_title').val()
+        const Data = {
+            "parking_space_searchNum": parking_space_searchNum,
+            "parking_space_searchDate": parking_space_searchDate,
+            "parking_space_key_word": parking_space_key_word,
+            "parking_space_key_word_title":parking_space_key_word_title,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectParkingSpacePage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".SpaceNumberResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
     });
 </script>
 </body>

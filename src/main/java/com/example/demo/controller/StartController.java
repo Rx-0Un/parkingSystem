@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.TbParkingLot;
-import com.example.demo.entity.TbRuleCommonBasic;
-import com.example.demo.entity.TbRuleCustomInterim;
-import com.example.demo.entity.TbStaffTask;
+import com.example.demo.entity.*;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,17 +30,15 @@ public class StartController {
     StaffDutyService staffDutyService;
     OrderService orderService;
     CouponService couponService;
-
-    String now_page = "";
+    ParkingSpaceService parkingSpaceService;
 
     @GetMapping("/index")
     public String test() {
-//        return "index3";
         return "authentication-login";
     }
 
     @RequestMapping(value = "/index-staff")
-    public String getAll(Model model) {
+    public String getAll(Model model, HttpSession session) {
         model.addAttribute("allStaff", staffService.selectAll());
         return "index-staff";
     }
@@ -74,7 +69,7 @@ public class StartController {
         System.out.println("当前操作职员为" + staffId + "号:" + staffName);
         model.addAttribute("staffId", staffId);
         model.addAttribute("staffName", staffName);
-
+        model.addAttribute("chartResult", parkingRecordService.select24hourDate());
         int totalSpace = parkingLotSettingService.selectRowById(2).get(0).getSpaceNumber();
         int occupyNum = parkingRecordService.selectOccupyNum();
         model.addAttribute("nowSpaceNumber", totalSpace - occupyNum);
@@ -141,6 +136,10 @@ public class StartController {
         model.addAttribute("UserResult", userService.selectAll());
         model.addAttribute("CarResult", carService.selectAll(0, 0));
         model.addAttribute("UserSearch", userService.selectAll());
+        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAll(10, 0));
+        List list=parkingSpaceService.selectAll(0, 0);
+        model.addAttribute("ParkingSpaceTotalPage", list.size()/10);
+        model.addAttribute("ParkingSpaceNowPage", 1);
         return "index-data-manage";
     }
 
@@ -154,6 +153,17 @@ public class StartController {
         model.addAttribute("CouponResult", couponService.selectAll(10, 0));
         return "index-coupon-manage";
     }
+
+    @RequestMapping(value = "/index-chart-statistics")
+    public String chartStatistics(Model model) {
+        List<TbStaffDuty> list = staffDutyService.selectAll(16, 0);
+//        for (int i=0;i<list.size();i++){
+//            model.addAttribute("DutyResult"+i,list.get(i));
+//        }
+        model.addAttribute("DutyResult", list);
+        return "index-chart-statistics";
+    }
+
 
     @Autowired
     public void setStaffTaskService(StaffTaskService staffTaskService) {
@@ -223,5 +233,10 @@ public class StartController {
     @Autowired
     public void setCouponService(CouponService couponService) {
         this.couponService = couponService;
+    }
+
+    @Autowired
+    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
     }
 }

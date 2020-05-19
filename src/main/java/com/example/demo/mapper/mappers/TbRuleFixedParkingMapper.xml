@@ -86,4 +86,9 @@
         from  tb_rule_fixed_parking
         where car_type=#{car_type} and charge_cycle=#{charge_cycle}
   </select>
+    <select id="selectRuleByCarType" resultMap="BaseResultMap">
+        select *
+        from tb_rule_fixed_parking
+        where car_type=#{car_type}
+    </select>
 </mapper>

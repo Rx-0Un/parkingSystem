@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.TbCar;
+import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbUser;
-import com.example.demo.service.CarService;
-import com.example.demo.service.ParkingLotSettingService;
-import com.example.demo.service.ParkingSpaceService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +21,8 @@ public class DataManageController {
     UserService userService;
     ParkingLotSettingService parkingLotSettingService;
     ParkingSpaceService parkingSpaceService;
+    RuleFixedParkingService ruleFixedParkingService;
+    OrderService orderService;
 
     @RequestMapping(value = "/addCarByInfo", method = RequestMethod.POST)
     public String addCarByInfo(Model model, @RequestBody Map<String, String> map) {
@@ -60,11 +61,70 @@ public class DataManageController {
         model.addAttribute("fixParkingSpace", fixParkingSpace);
         return "index-data-manage::SpaceNumberResult";
     }
-    @RequestMapping(value = "/addParkingSpace")
-    public String addParkingSpace(Model model,@RequestBody Map<String, String> map) {
 
-        return "index-data-manage::SpaceNumberResult";
+    @RequestMapping(value = "/addParkingSpace")
+    public String addParkingSpace(Model model, @RequestBody Map<String, String> map) {
+        String parkingSpaceArea = map.get("parkingSpaceArea");
+        parkingSpaceService.addParkingSpace(parkingSpaceArea);
+        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAll(10, 0));
+        return "index-data-manage::ParkingSpaceResult";
     }
+
+    @RequestMapping(value = "/selectParkingSpacePage")
+    public String selectParkingSpacePage(Model model, @RequestBody Map<String, String> map) {
+        String parking_space_searchDate = map.get("parking_space_searchDate");
+        String parking_space_key_word = map.get("parking_space_key_word ");
+        String parking_space_key_word_title = map.get("parking_space_key_word_title");
+        int parking_space_searchNum = Integer.valueOf(map.get("parking_space_searchNum"));
+        int page = Integer.valueOf(map.get("page"));
+        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title,parking_space_key_word, parking_space_searchDate, parking_space_searchNum, page - 1));
+        List list = parkingSpaceService.selectAll(0, 0);
+        model.addAttribute("ParkingSpaceTotalPage", list.size() / 10);
+        model.addAttribute("ParkingSpaceNowPage", page);
+        return "index-data-manage::ParkingSpaceResult";
+    }
+
+    @RequestMapping(value = "/selectUserCar")
+    public String selectUserCar(Model model, @RequestBody Map<String, String> map) {
+        String userId = map.get("userId");
+        List<TbCar> list = carService.selectCarByUserId(userId);
+        model.addAttribute("UserCar", list);
+        model.addAttribute("ParkingSpace", parkingSpaceService.selectNotOccupy());
+//            model.addAttribute("FixedRule", ruleFixedParkingService.selectRuleByCarType(list.get(0).getCarTypeModel()));
+        model.addAttribute("FixedRule", ruleFixedParkingService.selectAll());
+        return "index-data-manage::UserCarResult";
+    }
+
+    @RequestMapping(value = "/addOrder")
+    public String addOrder(Model model, @RequestBody Map<String, String> map) {
+        String parkingSpace = map.get("parkingSpace");
+        String OrderMoneyText = map.get("OrderMoneyText");
+        String carPlateNumberValue = map.get("carPlateNumberValue");
+        String userName = map.get("userName");
+        String staffName = map.get("staffName");
+        float money = 0;
+        String cycle = new String();
+        for (int i = 0; i < OrderMoneyText.length(); i++) {
+            if (carPlateNumberValue.indexOf(i) == '/') {
+                money = Integer.parseInt(OrderMoneyText.substring(0, i - 1));
+                cycle = carPlateNumberValue.substring(i + 1, OrderMoneyText.length());
+            }
+        }
+        TbOrder tbOrder = new TbOrder();
+        tbOrder.setOrderAmount(money);
+        tbOrder.setOrderReceiver(userName);
+        tbOrder.setOrderPayer(staffName);
+        tbOrder.setOrderState("未完成");
+        tbOrder.setOrderPayType("手机支付");
+        tbOrder.setOrderPurchaseType("固定车位购买");
+        if (orderService.addRowByInfo(tbOrder) != 0) {
+            parkingSpaceService.updateParkingSpace(carPlateNumberValue, cycle, parkingSpace);
+            carService.updateCarType(carPlateNumberValue);
+        }
+        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAll(10, 0));
+        return "index-data-manage::ParkingSpaceResult";
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -83,5 +143,15 @@ public class DataManageController {
     @Autowired
     public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
         this.parkingSpaceService = parkingSpaceService;
+    }
+
+    @Autowired
+    public void setRuleFixedParkingService(RuleFixedParkingService ruleFixedParkingService) {
+        this.ruleFixedParkingService = ruleFixedParkingService;
+    }
+
+    @Autowired
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
     }
 }

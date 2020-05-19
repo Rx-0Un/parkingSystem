@@ -16,6 +16,16 @@
             <arg column="order_pay_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="order_purchase_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </constructor>
+        <association property="tbUser" javaType="com.example.demo.entity.TbUser">
+            <id property="userId" column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <result property="userName" column="user_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="userPhone" column="user_phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="userAdress" column="user_adress" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="userPwd" column="user_pwd" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="userEmail" column="user_mail" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="userSex" column="user_sex" javaType="java.lang.String" jdbcType="INTEGER"/>
+            <result property="userRegtime" column="user_regtime" jdbcType="TIMESTAMP"/>
+        </association>
     </resultMap>
     <insert id="insert" parameterType="com.example.demo.entity.TbOrder">
         <!--
@@ -107,5 +117,11 @@
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>
+    </select>
+    <select id="selectOrderByUserName" resultMap="BaseResultMap">
+        select *
+        from tb_order,tb_user
+        where tb_order.order_receiver = tb_user.user_name
+        and user_name=#{username}
     </select>
 </mapper>

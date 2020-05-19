@@ -95,4 +95,11 @@
         order by starting_time DESC
         limit 1
     </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select *
+        from tb_staff_duty
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
 </mapper>

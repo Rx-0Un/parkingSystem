@@ -21,6 +21,12 @@ public class CarService {
         return tbCarMapper.selectAll(pageNum, page);
     }
 
+    public List<TbCar> selectCarByUserId(String userId){
+        return tbCarMapper.selectCarByUserId(userId);
+    }
+    public int updateCarType(String carPlateNumber){
+        return tbCarMapper.updateCarType(carPlateNumber);
+    }
     @Autowired
     public void setTbCarMapper(TbCarMapper tbCarMapper) {
         this.tbCarMapper = tbCarMapper;

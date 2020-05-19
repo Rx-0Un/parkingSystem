@@ -293,4 +293,18 @@ public class TbUser {
     public void setUserRegtime(Date userRegtime) {
         this.userRegtime = userRegtime;
     }
+
+    @Override
+    public String toString() {
+        return "TbUser{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userAdress='" + userAdress + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userSex='" + userSex + '\'' +
+                ", userRegtime=" + userRegtime +
+                '}';
+    }
 }

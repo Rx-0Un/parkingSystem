@@ -3,6 +3,9 @@ package com.example.demo.mapper;
 import com.example.demo.entity.TbMonthlyCard;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * 已经弃用
+ */
 @Mapper
 public interface TbMonthlyCardMapper {
     /**

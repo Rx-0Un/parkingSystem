@@ -30,4 +30,6 @@ public interface TbOrderMapper {
     int selectRowCount(@Param(value = "date") String starting_time);
 
     List<TbOrder> selectAll(int pageNum,int page);
+
+    List<TbOrder> selectOrderByUserName(String username);
 }

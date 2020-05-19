@@ -63,4 +63,6 @@ public interface TbParkingRecordMapper {
     Date selectEnterTimeByCarPlate(String  order_car_number);
 
     List<TbParkingRecord> selectTenDayDate(int number);
+
+    List<TbParkingRecord> select24hourDate(int number);
 }

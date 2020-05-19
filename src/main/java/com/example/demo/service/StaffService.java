@@ -155,6 +155,9 @@ public class StaffService {
         return count;
     }
 
+    public Integer selectRight(String staffId){
+        return tbStaffMapper.selectRight(staffId);
+    }
 
 
 

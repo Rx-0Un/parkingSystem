@@ -199,4 +199,10 @@
         <![CDATA[ TO_DAYS(NOW( )) - TO_DAYS(exit_time) = #{number} ]]>
         and tb_order.order_id=tb_parking_record.order_id
     </select>
+    <select id="select24hourDate" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM tb_parking_record
+        where date_sub(now(), interval #{number} hour) >enter_time
+        and exit_time is null
+    </select>
 </mapper>

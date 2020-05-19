@@ -185,4 +185,9 @@
         from tb_staff
         where staff_id=#{staff_id}
     </select>
+    <select id="selectRight"  resultType="java.lang.Integer">
+        select staff_type
+        from tb_staff
+        where staff_id=#{staff_id}
+    </select>
 </mapper>

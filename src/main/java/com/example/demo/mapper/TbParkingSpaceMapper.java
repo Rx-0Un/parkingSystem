@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbParkingSpace;
 
 import java.util.List;
@@ -23,4 +24,17 @@ public interface TbParkingSpaceMapper {
 
     List<TbParkingSpace> selectAll(int pageNum, int page);
 
+    List<TbParkingSpace> selectSpaceById(String user_id);
+
+    int addParkingSpace(String parkingSpaceArea);
+
+    int updateParkingSpace(String car_id, String expire_date, String parking_space_id);
+
+    int addateParkingSpace(String car_id, String expire_date, String parking_space_id);
+
+    List<TbParkingSpace> selectNotOccupy();
+
+    TbParkingSpace selectRowById(String parking_space_id);
+
+    List<TbParkingSpace> selectAllByFurryStr(String parking_space_key_word_title,String parking_space_key_word,String parking_space_searchDate,int pageNum, int page);
 }

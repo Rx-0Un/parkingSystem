@@ -3,6 +3,8 @@ package com.example.demo.mapper;
 import com.example.demo.entity.TbStaffDuty;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface TbStaffDutyMapper {
     /**
@@ -23,25 +25,30 @@ public interface TbStaffDutyMapper {
 
     /**
      * 新增加值班记录
+     *
      * @param staff_id
      * @param date
      * @return
      */
-    int addRowByInfo(int staff_id, String date,int staff_task_id);
+    int addRowByInfo(int staff_id, String date, int staff_task_id);
 
     /**
      * 查找当前是否有人值班
+     *
      * @return
      */
     int selectDutyExist();
 
     /**
      * 查找当前值班的开始时间
+     *
      * @return
      */
     String selectStartingTime();
+
     /**
      * 下班
+     *
      * @param date
      * @return
      */
@@ -49,7 +56,13 @@ public interface TbStaffDutyMapper {
 
     /**
      * 查询第一条数据
+     *
      * @return
      */
     TbStaffDuty selectLastRow();
+
+    /**
+     * 查找所有数据
+     */
+    List<TbStaffDuty> selectAll(int pageNum, int page);
 }

@@ -53,10 +53,10 @@ public class ChargeRuleController {
         int searchNum = Integer.parseInt(map.get("searchNum").trim());//用于处理分页
         int page = Integer.parseInt(map.get("page")) - 1;
         model.addAttribute("time_type", time_type);//用于处理视图
-        processCharge(rule, car_type, zone_type);
-        processData(Date);
-        processInterimRule(starting_time, ending_time, car_type);
-        processRule(interim_rule);
+        processCharge(rule, car_type, zone_type);//根据条件从数据库获取收费规则
+        processData(Date);//获得开始时间和结束时间
+        processInterimRule(starting_time, ending_time, car_type);//加载临时规则
+        processRule(interim_rule);//加载规则
         List<ResultBean> list = processTimeType(rule, time_type);
         if (searchNum * (page + 1) < list.size()) {
             model.addAttribute("TestResult", list.subList(page * searchNum, (page + 1) * searchNum));

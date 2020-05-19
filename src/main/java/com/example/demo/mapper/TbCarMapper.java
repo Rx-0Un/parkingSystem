@@ -23,10 +23,17 @@ public interface TbCarMapper {
      */
     int insertSelective(TbCar record);
 
-    List<TbCar> selectAll(int pageNum,int page);
+    List<TbCar> selectAll(int pageNum, int page);
 
-    int addRowByInfo(String car_type,String car_plate_number,String car_color,String car_type_model,int column_6);
+    int addRowByInfo(String car_type, String car_plate_number, String car_color, String car_type_model, int column_6);
+
     int delectRowById(int id);
-    int updateRowByInfo(int id,String car_type,String car_plate_number,String car_color,String car_type_model,String column_6);
+
+    int updateRowByInfo(int id, String car_type, String car_plate_number, String car_color, String car_type_model, String column_6);
+
     int selectCarByCarPlate(String car_plate_number);
+
+    List<TbCar> selectCarByUserId(String userId);
+
+    int updateCarType(String carPlateNumber);
 }

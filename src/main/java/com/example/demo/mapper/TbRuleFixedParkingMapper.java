@@ -29,4 +29,5 @@ public interface TbRuleFixedParkingMapper {
     int addRowByCarType(@Param(value = "car_type") String car_type,@Param(value = "charge_cycle") String charge_cycle,@Param(value = "money") float money,@Param(value = "description") String description);
     int updateRowByCarType(@Param(value = "car_type") String car_type,@Param(value = "charge_cycle") String charge_cycle,@Param(value = "money") float money,@Param(value = "description") String description);
     int selectRowByCarType(@Param(value = "car_type") String car_type,@Param(value = "charge_cycle") String charge_cycle);
+    List<TbRuleFixedParking> selectRuleByCarType(@Param(value = "car_type")String carModel);
 }

@@ -16,11 +16,16 @@ public class RuleFixedParkingService {
     }
 
     public int addRowByCarType(String car_type, String charge_cycle, float money, String description) {
-        if (tbRuleFixedParkingMapper.selectRowByCarType(car_type, charge_cycle)==1){
+        if (tbRuleFixedParkingMapper.selectRowByCarType(car_type, charge_cycle) == 1) {
             return tbRuleFixedParkingMapper.updateRowByCarType(car_type, charge_cycle, money, description);
         }
         return tbRuleFixedParkingMapper.addRowByCarType(car_type, charge_cycle, money, description);
     }
+
+    public List<TbRuleFixedParking> selectRuleByCarType(String carModel) {
+        return tbRuleFixedParkingMapper.selectRuleByCarType(carModel);
+    }
+
 
     @Autowired
     public void setTbRuleFixedParkingMapper(TbRuleFixedParkingMapper tbRuleFixedParkingMapper) {

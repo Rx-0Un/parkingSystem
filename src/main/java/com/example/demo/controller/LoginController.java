@@ -75,6 +75,10 @@ public class LoginController {
         //第一步获取个人提示卡中的内容
         session.setAttribute("staffId", StaffId);
         session.setAttribute("staffName", name);
+        session.setAttribute("staffType",staffService.selectRight(String.valueOf(StaffId)));
+        session.setAttribute("now_page", "index3");
+
+
         model.addAttribute("currentTask", CurrentTaskNum);
 
         //加载图表
