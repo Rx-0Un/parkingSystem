@@ -122,6 +122,8 @@ public class StartController {
 
         model.addAttribute("TestTotalPage", 1);
         model.addAttribute("TestNowPage", 1);
+
+        model.addAttribute("FixedCarResult",carService.selectAllFixedCar());
         return "index-charge-rule";
     }
 

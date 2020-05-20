@@ -1037,17 +1037,17 @@
                                 <div class="col-md-9">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" class="custom-control-input" id="customControlValidation1"
-                                               name="radio-stacked" required="" checked="checked">
+                                               name="radio-stacked" required="" checked="checked" value="基本规则">
                                         <label class="custom-control-label" for="customControlValidation1">基本规则</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" class="custom-control-input" id="customControlValidation2"
-                                               name="radio-stacked" required="">
+                                               name="radio-stacked" required="" value="自定义规则">
                                         <label class="custom-control-label" for="customControlValidation2">自定义规则</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input type="radio" class="custom-control-input" id="customControlValidation3"
-                                               name="radio-stacked" required="">
+                                               name="radio-stacked" required="" value="私人规则">
                                         <label class="custom-control-label" for="customControlValidation3">私人规则</label>
                                     </div>
                                 </div>
@@ -1064,39 +1064,56 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 m-t-15 text-center">选择车牌:</label>
+                                <label class="col-md-3 text-center"><font style="color: white">是否启用</font></label>
                                 <div class="col-md-9">
-                                    <select class="select2 form-control m-t-15"
-                                            style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
-                                            aria-hidden="true" id="plate_type">
-                                        <option>临时车</option>
-                                        <option>固定车</option>
-                                    </select>
+                                    <div class="custom-control custom-checkbox mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="customControlAutosizing2">
+                                        <label class="custom-control-label"
+                                               for="customControlAutosizing2">启用固定规则</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 m-t-15 text-center">选择区域:</label>
-                                <div class="col-md-9">
-                                    <select class="select2 form-control m-t-15"
-                                            style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
-                                            aria-hidden="true" id="zone_type">
-                                        <option value="一类地区">一类地区</option>
-                                        <option value="二类地区">二类地区</option>
-                                        <option value="三类地区">三类地区</option>
-                                    </select>
+                            <div id="zone_type_div">
+                                <div class="form-group row">
+                                    <label class="col-md-3 m-t-15 text-center">选择区域:</label>
+                                    <div class="col-md-9">
+                                        <select class="select2 form-control m-t-15"
+                                                style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
+                                                aria-hidden="true" id="zone_type">
+                                            <option value="一类地区">一类地区</option>
+                                            <option value="二类地区">二类地区</option>
+                                            <option value="三类地区">三类地区</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 m-t-15 text-center">选择车型:</label>
-                                <div class="col-md-9">
-                                    <select class="select2 form-control m-t-15"
-                                            style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
-                                            aria-hidden="true" id="car_type">
-                                        <option>小车</option>
-                                        <option>大型车</option>
-                                        <option>超大型车</option>
-                                        <option>其他车</option>
-                                    </select>
+                            <div id="plate_type_div" style="display: none">
+                                <div class="form-group row">
+                                    <label class="col-md-3 m-t-15 text-center">选择车牌:</label>
+                                    <div class="col-md-9">
+                                        <select class="select2 form-control m-t-15"
+                                                style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
+                                                aria-hidden="true" id="plate_type">
+                                            <option th:each="stat:${FixedCarResult}" th:value="${stat.carPlateNumber}"
+                                                    th:text="${stat.carTypeModel}+':'+${stat.carPlateNumber}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="car_type_div">
+                                <div class="form-group row">
+                                    <label class="col-md-3 m-t-15 text-center">选择车型:</label>
+                                    <div class="col-md-9">
+                                        <select class="select2 form-control m-t-15"
+                                                style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
+                                                aria-hidden="true" id="car_type">
+                                            <option>小车</option>
+                                            <option>大型车</option>
+                                            <option>超大型车</option>
+                                            <option>其他车</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -1743,17 +1760,9 @@
 
     function selectTestPage(page) {
         page = Number(page)
-        let r = 0;
-        const rule1 = $('input:radio[id="customControlValidation1"]:checked').val()
-        const rule2 = $('input:radio[id="customControlValidation2"]:checked').val()
-        const rule3 = $('input:radio[id="customControlValidation3"]:checked').val()
-        if (rule1 == 'on')
-            r = 1
-        if (rule2 == 'on')
-            r = 2
-        if (rule3 == 'on')
-            r = 3
+        const rule = $("input[name='radio-stacked']").filter(':checked').val();
         const interim_rule = $('#customControlAutosizing1').is(':checked')
+        const fix_rule = $('#customControlAutosizing2').is(':checked')
         const plate_type = $('#plate_type ').val()
         const car_type = $('#car_type').val()
         const date = $('#Date').val()
@@ -1761,8 +1770,9 @@
         const searchNum = $('#searchNum').val()
         const zone_type = $('#zone_type').val()
         const Data = {
-            "rule": r,
+            "rule": rule,
             "interim_rule": interim_rule,
+            "fix_rule": fix_rule,
             "plate_type": plate_type,
             "car_type": car_type,
             "Date": date,
@@ -1786,6 +1796,28 @@
             }
         })
     }
+
+    const div = document.getElementById('zone_type_div');
+    $(":radio").click(function () {
+        if ($(this).val() == "基本规则") {
+            div.style.display = "block"
+        } else {
+            div.style.display = "none"
+        }
+    })
+    ;
+    $("#customControlAutosizing2").click(function () {
+        const div2 = document.getElementById('plate_type_div');
+        const div3 = document.getElementById('car_type_div');
+
+        if ($(this).prop("checked")) {
+            div2.style.display = "block"
+            div3.style.display = "none"
+        } else {
+            div2.style.display = "none"
+            div3.style.display = "block"
+        }
+    });
 </script>
 </body>
 </body>

@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbParkingSpace;
 
+import java.util.Date;
 import java.util.List;
 
 public interface TbParkingSpaceMapper {
@@ -37,4 +38,6 @@ public interface TbParkingSpaceMapper {
     TbParkingSpace selectRowById(String parking_space_id);
 
     List<TbParkingSpace> selectAllByFurryStr(String parking_space_key_word_title,String parking_space_key_word,String parking_space_searchDate,int pageNum, int page);
+
+    List<TbParkingSpace> selectExpireDateByCar(String car_plate_num);
 }

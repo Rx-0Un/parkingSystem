@@ -29,9 +29,4 @@ public class ParkingSpaceMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
-    @Test
-    public void Test() {
-        System.out.println(-5%3);
-        System.out.println(5%-3);
-    }
 }

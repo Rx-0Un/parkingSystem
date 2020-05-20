@@ -16,6 +16,14 @@
             <arg column="car_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="expire_date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
         </constructor>
+        <association property="tbCar" javaType="com.example.demo.entity.TbCar">
+            <id property="carId" column="car_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <result property="carType" column="car_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="carPlateNumber" column="car_plate_number" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="carColor" column="car_color" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="carTypeModel" column="car_type_model" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <result property="column6" column="column_6" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        </association>
     </resultMap>
     <insert id="insert" parameterType="com.example.demo.entity.TbParkingSpace">
         <!--
@@ -174,5 +182,11 @@
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>
+    </select>
+    <select id="selectExpireDateByCar" resultMap="BaseResultMap">
+        select  *
+        from tb_parking_space,tb_car
+        where tb_parking_space.car_id=tb_car.car_id
+        and tb_car.car_plate_number=#{car_plate_num}
     </select>
 </mapper>

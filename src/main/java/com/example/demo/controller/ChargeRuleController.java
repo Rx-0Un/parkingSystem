@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.bean.*;
+import com.example.demo.entity.TbParkingSpace;
 import com.example.demo.entity.TbRuleCommonBasic;
 import com.example.demo.entity.TbRuleCustomInterim;
 import com.example.demo.rule.*;
@@ -29,13 +30,16 @@ public class ChargeRuleController {
     RuleFixedParkingService ruleFixedParkingService;
     RuleCustomInterimService ruleCustomInterimService;
     RuleCustomService ruleCustomService;
-    List<InterimRule> interimRuleList = new ArrayList<>();
+    ParkingSpaceService parkingSpaceService;
     //规则类用于测试
     Rule rule;
     PersonRule personRule;
     CustomRule customRule;
+    FixedRule fixedRule;
+    List<InterimRule> interimRuleList = new ArrayList<>();
     BasicCharge basicCharge = new BasicCharge("", "");
     InterimCharge interimCharge;
+
     //开始时间结束时间
     Date ending_time = new Date();
     Date starting_time = new Date();
@@ -43,20 +47,32 @@ public class ChargeRuleController {
     @Async
     @RequestMapping(value = "/parkingTest", method = RequestMethod.POST)
     public String parkingTest(Model model, @RequestBody Map<String, String> map) {
-        int rule = Integer.parseInt(map.get("rule"));
+        String rule = map.get("rule");
         String interim_rule = map.get("interim_rule");
-        String plate_type = map.get("plate_type");
-        String car_type = map.get("car_type");
+        String fix_rule = map.get("fix_rule");
         String Date = map.get("Date");
         String time_type = map.get("time_type");
         String zone_type = map.get("zone_type");
+        String plate_type = map.get("plate_type");
+        String car_type = map.get("car_type");
         int searchNum = Integer.parseInt(map.get("searchNum").trim());//用于处理分页
         int page = Integer.parseInt(map.get("page")) - 1;
+        if ("true".equals(fix_rule)) {
+            for (int i = 0; i < plate_type.length(); i++) {
+                if (plate_type.charAt(i) == ':') {
+                    car_type = plate_type.substring(i + 1, plate_type.length());
+                    plate_type = plate_type.substring(0, i - 1);
+                }
+            }
+        }
         model.addAttribute("time_type", time_type);//用于处理视图
         processCharge(rule, car_type, zone_type);//根据条件从数据库获取收费规则
         processData(Date);//获得开始时间和结束时间
         processInterimRule(starting_time, ending_time, car_type);//加载临时规则
-        processRule(interim_rule);//加载规则
+        if ("true".equals(fix_rule)) {
+            processFixRule(ending_time, plate_type, car_type);
+        }
+        processRule(interim_rule, fix_rule);//加载规则
         List<ResultBean> list = processTimeType(rule, time_type);
         if (searchNum * (page + 1) < list.size()) {
             model.addAttribute("TestResult", list.subList(page * searchNum, (page + 1) * searchNum));
@@ -67,6 +83,14 @@ public class ChargeRuleController {
         model.addAttribute("TestNowPage", page + 1);
         return "index-charge-rule::TestResult";
     }
+
+    @Async
+    public void processFixRule(Date ending_time, String plate_type, String car_type) {
+        TbParkingSpace tbParkingSpace = parkingSpaceService.selectExpireDateByCar(plate_type).get(0);
+        Date date = tbParkingSpace.getExpireDate();
+        fixedRule = new FixedRule(date, new BasicCharge(car_type, "固定车位规则"));
+    }
+
 
     @Async
     public void processInterimRule(Date starting_time, Date ending_time, String car_type) {
@@ -114,8 +138,8 @@ public class ChargeRuleController {
     }
 
     @Async
-    public List<ResultBean> processTimeType(int rule, String time_type) {
-        if (rule == 1) {
+    public List<ResultBean> processTimeType(String rule, String time_type) {
+        if (rule.equals("基本规则")) {
             switch (time_type) {
                 case RuleUtil.TYPE_RESULT_LIST_ONE:
                     return this.rule.getDailyMap();
@@ -125,7 +149,7 @@ public class ChargeRuleController {
                     return this.rule.getYearLMap();
             }
         }
-        if (rule == 2) {
+        if (rule.equals("自定义规则")) {
             switch (time_type) {
                 case RuleUtil.TYPE_RESULT_LIST_ONE:
                     return this.customRule.getDailyMap();
@@ -135,7 +159,7 @@ public class ChargeRuleController {
                     return this.customRule.getYearLMap();
             }
         }
-        if (rule == 3) {
+        if (rule.equals("私人规则")) {
             switch (time_type) {
                 case RuleUtil.TYPE_RESULT_LIST_ONE:
                     return this.personRule.getDailyMap();
@@ -149,9 +173,49 @@ public class ChargeRuleController {
         return null;
     }
 
-    @Async
-    public void processRule(String interim_rule) {
-        if (interim_rule.equals("false")) {
+
+    public void processRule(String interim_rule, String fix_rule) {
+        if (interim_rule.equals("true") && fix_rule.equals("true")) {
+            switch (basicCharge.getNow_rule()) {
+                case "私人规则":
+                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge, interimRuleList, fixedRule);
+                    break;
+                case "基本规则":
+                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, interimRuleList, fixedRule);
+                    break;
+                case "自定义规则":
+//                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, interimRuleList, fixedRule);
+                    break;
+            }
+        }
+        if (interim_rule.equals("true") && fix_rule.equals("false")) {
+            switch (basicCharge.getNow_rule()) {
+                case "私人规则":
+                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge, interimRuleList);
+                    break;
+                case "基本规则":
+                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, interimRuleList);
+                    break;
+                case "自定义规则":
+                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, interimRuleList);
+                    break;
+            }
+        }
+        if (interim_rule.equals("false") && fix_rule.equals("true")) {
+            switch (basicCharge.getNow_rule()) {
+                case "私人规则":
+                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge, fixedRule);
+                    break;
+                case "基本规则":
+
+                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, fixedRule);
+                    break;
+                case "自定义规则":
+//                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, fixedRule);
+                    break;
+            }
+        }
+        if (interim_rule.equals("false") && fix_rule.equals("false")) {
             switch (basicCharge.getNow_rule()) {
                 case "私人规则":
                     personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge);
@@ -161,18 +225,6 @@ public class ChargeRuleController {
                     break;
                 case "自定义规则":
                     customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge);
-                    break;
-            }
-        } else {
-            switch (basicCharge.getNow_rule()) {
-                case "私人规则":
-                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge,interimRuleList);
-                    break;
-                case "基本规则":
-                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, interimRuleList);
-                    break;
-                case "自定义规则":
-                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, interimRuleList);
                     break;
             }
         }
@@ -202,15 +254,15 @@ public class ChargeRuleController {
      * @param zone_type
      */
     @Async
-    public void processCharge(int rule, String car_type, String zone_type) {
+    public void processCharge(String rule, String car_type, String zone_type) {
         switch (rule) {
-            case 1:
+            case "基本规则":
                 processCommonCharge(car_type, zone_type);
                 break;
-            case 2:
+            case "自定义规则":
                 processCustomCharge(car_type);
                 break;
-            case 3:
+            case "私人规则":
                 processPersonCharge(car_type);
                 break;
         }
@@ -455,5 +507,10 @@ public class ChargeRuleController {
     @Autowired
     public void setRuleCustomService(RuleCustomService ruleCustomService) {
         this.ruleCustomService = ruleCustomService;
+    }
+
+    @Autowired
+    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
     }
 }

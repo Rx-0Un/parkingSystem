@@ -11,14 +11,7 @@ public class Rule extends BasicRule {
     public Date FIST_HOUR_TIME;//开始一个小时的时间
     CommonCharge basicCharge;//基本规则
     List<InterimRule> interimRuleList = new ArrayList<>();
-
-    public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge, List<InterimRule> interimRuleList) {
-        super(STARTING_TIME, ENDING_TIME);
-        this.FIST_HOUR_TIME = STARTING_TIME;
-        this.basicCharge = basicCharge;
-        this.interimRuleList = interimRuleList;
-        initDailyMap(this.STARTING_TIME);
-    }
+    FixedRule fixedRule;
 
     public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge) {
         super(STARTING_TIME, ENDING_TIME);
@@ -29,10 +22,44 @@ public class Rule extends BasicRule {
         } else {
             initDailyMap(this.STARTING_TIME);
         }
+        initDailyMap(this.STARTING_TIME);
+    }
+
+    public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge, List<InterimRule> interimRuleList) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.FIST_HOUR_TIME = STARTING_TIME;
+        this.basicCharge = basicCharge;
+        this.interimRuleList = interimRuleList;
+        initDailyMap(this.STARTING_TIME);
+    }
+
+    public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge, FixedRule fixedRule) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.FIST_HOUR_TIME = STARTING_TIME;
+        this.basicCharge = basicCharge;
+        this.fixedRule = fixedRule;
+        initDailyMap(this.STARTING_TIME);
+    }
+
+    public Rule(Date STARTING_TIME, Date ENDING_TIME, CommonCharge basicCharge, List<InterimRule> interimRuleList, FixedRule fixedRule) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.FIST_HOUR_TIME = STARTING_TIME;
+        this.basicCharge = basicCharge;
+        this.interimRuleList = interimRuleList;
+        this.fixedRule = fixedRule;
+        initDailyMap(this.STARTING_TIME);
     }
 
     @Async
     public void initDailyMap(Date date) {
+        //判断当前时间是否有固定车位规则
+        if (fixedRule != null) {
+            fixedRule.initMap(STARTING_TIME, ENDING_TIME);
+            dailyMap.addAll(fixedRule.getDailyMap());
+            monthMap.addAll(fixedRule.getMonthMap());
+            yearLMap.addAll(fixedRule.getYearLMap());
+            date = fixedRule.ENDING_TIME;
+        }
         while (date.getTime() < ENDING_TIME.getTime()) {
             //判断当前时间内是否有临时规则
             if (searchInterimRule(date) != null) {
@@ -41,6 +68,7 @@ public class Rule extends BasicRule {
                 total += interimRule.total;
                 dailyMap.addAll(interimRule.getDailyMap());
                 monthMap.addAll(interimRule.getMonthMap());
+                yearLMap.addAll(interimRule.getYearLMap());
                 date = DateUtil.addDay(date, this.ENDING_TIME);
             } else {
                 countTotal(date);
@@ -118,6 +146,7 @@ public class Rule extends BasicRule {
         }
         return null;
     }
+
 }
 
 

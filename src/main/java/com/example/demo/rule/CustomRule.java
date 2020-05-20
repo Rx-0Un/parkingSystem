@@ -16,6 +16,7 @@ public class CustomRule extends BasicRule {
     List<InterimRule> interimRuleList = new ArrayList<>();
     float dayTotal = 0;
     Date dayDate = new Date();
+    FixedRule fixedRule;
 
     public CustomRule(Date STARTING_TIME, Date ENDING_TIME, CustomCharge customCharge, List<InterimRule> interimRuleList) {
         super(STARTING_TIME, ENDING_TIME);

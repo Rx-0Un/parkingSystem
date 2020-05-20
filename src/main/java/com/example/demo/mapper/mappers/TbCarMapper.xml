@@ -112,4 +112,10 @@
         SET t.car_type = '固定车'
         WHERE t.car_plate_number = #{carPlateNumber}
     </update>
+    <select id="selectAllFixedCar" resultMap="BaseResultMap">
+        select *
+        from tb_car,
+             tb_parking_space
+        where tb_car.car_id=tb_parking_space.car_id
+    </select>
 </mapper>

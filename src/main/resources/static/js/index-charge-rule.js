@@ -1,15 +1,7 @@
 $('#test').bind('click', function () {
-    let r = 0;
-    const rule1 = $('input:radio[id="customControlValidation1"]:checked').val()
-    const rule2 = $('input:radio[id="customControlValidation2"]:checked').val()
-    const rule3 = $('input:radio[id="customControlValidation3"]:checked').val()
-    if (rule1 == 'on')
-        r = 1
-    if (rule2 == 'on')
-        r = 2
-    if (rule3 == 'on')
-        r = 3
+    const rule = $("input[name='radio-stacked']").filter(':checked').val();
     const interim_rule = $('#customControlAutosizing1').is(':checked')
+    const fix_rule = $('#customControlAutosizing2').is(':checked')
     const plate_type = $('#plate_type ').val()
     const car_type = $('#car_type').val()
     const date = $('#Date').val()
@@ -17,8 +9,9 @@ $('#test').bind('click', function () {
     const searchNum = $('#searchNum').val()
     const zone_type = $('#zone_type').val()
     const Data = {
-        "rule": r,
+        "rule": rule,
         "interim_rule": interim_rule,
+        "fix_rule":fix_rule,
         "plate_type": plate_type,
         "car_type": car_type,
         "Date": date,

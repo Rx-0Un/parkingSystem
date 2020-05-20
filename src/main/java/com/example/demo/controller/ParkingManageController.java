@@ -146,6 +146,7 @@ public class ParkingManageController {
         String order_car_number = map.get("order_car_number");
         Date ending_time = new Date();
         Date starting_time = parkingRecordService.selectEnterTimeByCarPlate(order_car_number);
+
         BasicCharge basicCharge = new BasicCharge("", "");
         basicCharge = new CommonCharge("小车", "基本规则", ruleCommonBasicService.selectRowById("1").getMoney(),
                 ruleCommonBasicService.selectRowById("2").getMoney(), ruleCommonBasicService.selectRowById("3").getMoney(),

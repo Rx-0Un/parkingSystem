@@ -12,11 +12,27 @@ import java.util.List;
 public class PersonRule extends BasicRule {
     PersonCharge personCharge;
     List<InterimRule> interimRuleList = new ArrayList<>();
+    FixedRule fixedRule;
+
+    public PersonRule(Date STARTING_TIME, Date ENDING_TIME, PersonCharge personCharge, List<InterimRule> interimRuleList, FixedRule fixedRule) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.personCharge = personCharge;
+        this.interimRuleList = interimRuleList;
+        this.fixedRule = fixedRule;
+        initMap(this.STARTING_TIME);
+    }
 
     public PersonRule(Date STARTING_TIME, Date ENDING_TIME, PersonCharge personCharge, List<InterimRule> interimRuleList) {
         super(STARTING_TIME, ENDING_TIME);
         this.personCharge = personCharge;
         this.interimRuleList = interimRuleList;
+        initMap(this.STARTING_TIME);
+    }
+
+    public PersonRule(Date STARTING_TIME, Date ENDING_TIME, PersonCharge personCharge, FixedRule fixedRule) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.personCharge = personCharge;
+        this.fixedRule = fixedRule;
         initMap(this.STARTING_TIME);
     }
 
@@ -28,6 +44,13 @@ public class PersonRule extends BasicRule {
 
     public void initMap(Date date) {
         InterimRule interimRule = null;
+        if (fixedRule != null) {
+            fixedRule.initMap(STARTING_TIME, ENDING_TIME);
+            dailyMap.addAll(fixedRule.getDailyMap());
+            monthMap.addAll(fixedRule.getMonthMap());
+            yearLMap.addAll(fixedRule.getYearLMap());
+            date = fixedRule.ENDING_TIME;
+        }
         while (date.getTime() < this.ENDING_TIME.getTime()) {
             if (searchInterimRule(date) != null) {
                 interimRule = searchInterimRule(date);

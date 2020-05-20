@@ -36,4 +36,6 @@ public interface TbCarMapper {
     List<TbCar> selectCarByUserId(String userId);
 
     int updateCarType(String carPlateNumber);
+
+    List<TbCar> selectAllFixedCar();
 }
