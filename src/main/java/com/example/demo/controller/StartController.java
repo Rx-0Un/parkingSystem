@@ -94,8 +94,8 @@ public class StartController {
         model.addAttribute("print_open", tbParkingLot.getPrintSetting());
         model.addAttribute("commonRule", tbParkingLot.getRuleSetting().charAt(0));
         model.addAttribute("customRule", tbParkingLot.getRuleSetting().charAt(1));
-        model.addAttribute("interimRule", tbParkingLot.getRuleSetting().charAt(2));
-        model.addAttribute("personRule", tbParkingLot.getRuleSetting().charAt(3));
+        model.addAttribute("personRule", tbParkingLot.getRuleSetting().charAt(2));
+        model.addAttribute("interimRule", tbParkingLot.getRuleSetting().charAt(3));
         return "index-parking-lot-setting";
     }
 
@@ -110,20 +110,15 @@ public class StartController {
         model.addAttribute("basic", ruleCommonBasicService.selectAll());
         model.addAttribute("PersonResult", rulePersonService.selectAll());
         model.addAttribute("FixedResult", ruleFixedParkingService.selectAll());
-
-
         //加载临时规则表
         int total = (ruleCustomInterimService.selectAll(0, 0).size() / 10) + 1;
         model.addAttribute("InterimResult", ruleCustomInterimService.selectAll(10, 0));
         model.addAttribute("InterimNowPage", 1);
         model.addAttribute("InterimTotalPage", total);
-
         model.addAttribute("CustomResult", ruleCustomService.selectAll());
-
         model.addAttribute("TestTotalPage", 1);
         model.addAttribute("TestNowPage", 1);
-
-        model.addAttribute("FixedCarResult",carService.selectAllFixedCar());
+        model.addAttribute("FixedCarResult", carService.selectAllFixedCar());
         return "index-charge-rule";
     }
 
@@ -139,8 +134,8 @@ public class StartController {
         model.addAttribute("CarResult", carService.selectAll(0, 0));
         model.addAttribute("UserSearch", userService.selectAll());
         model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAll(10, 0));
-        List list=parkingSpaceService.selectAll(0, 0);
-        model.addAttribute("ParkingSpaceTotalPage", list.size()/10);
+        List list = parkingSpaceService.selectAll(0, 0);
+        model.addAttribute("ParkingSpaceTotalPage", list.size() / 10);
         model.addAttribute("ParkingSpaceNowPage", 1);
         return "index-data-manage";
     }

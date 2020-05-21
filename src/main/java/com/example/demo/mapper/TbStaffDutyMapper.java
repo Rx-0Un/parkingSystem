@@ -65,4 +65,11 @@ public interface TbStaffDutyMapper {
      * 查找所有数据
      */
     List<TbStaffDuty> selectAll(int pageNum, int page);
+
+    /**
+     * 根据id查找记录
+     * @param staffDutyId
+     * @return
+     */
+    TbStaffDuty selectRowById(String staffDutyId);
 }

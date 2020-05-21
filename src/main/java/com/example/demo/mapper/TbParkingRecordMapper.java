@@ -4,6 +4,7 @@ import com.example.demo.entity.TbOrder;
 import com.example.demo.entity.TbParkingRecord;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.lang.Nullable;
 
 import java.util.Date;
 import java.util.List;
@@ -51,18 +52,34 @@ public interface TbParkingRecordMapper {
 
     int selectAll();
 
-    int selectCountEnter(@Param(value = "date")String start_time);
-    int selectCountOuter(@Param(value = "date")String start_time);
+    int selectCountEnter(@Param(value = "date") String start_time);
+
+    int selectCountOuter(@Param(value = "date") String start_time);
 
     /**
      * 查找场内停车数量
+     *
      * @return
      */
     int selectOccupyNum();
 
-    Date selectEnterTimeByCarPlate(String  order_car_number);
+    TbParkingRecord selectEnterTimeByCarPlate(String order_car_number);
 
     List<TbParkingRecord> selectTenDayDate(int number);
 
     List<TbParkingRecord> select24hourDate(int number);
+
+    List<TbParkingRecord> selectRowByCarNum(String car_number);
+
+    int selectExitCarByDate(String starting_time, String ending_time);
+
+    int selectEnterCarByDate(String starting_time, String ending_time);
+
+
+    List<TbParkingRecord> selectCountByDate(String starting_time, String ending_time);
+
+    int selectAllByDate(String starting_time, String ending_time);
+
+    List<TbParkingRecord> selectInterimCarByDate(String starting_time, String ending_time);
+
 }

@@ -11,26 +11,33 @@ import java.util.List;
 public class CarService {
     TbCarMapper tbCarMapper;
 
-    public  int addRowByInfo(String car_type,String car_plate_number,String car_color,String car_type_model,int column_6){
-        if (tbCarMapper.selectCarByCarPlate(car_plate_number)==1){
+    public int addRowByInfo(String car_type, String car_plate_number, String car_color, String car_type_model, int column_6) {
+        if (tbCarMapper.selectCarByCarPlate(car_plate_number) == 1) {
             return 0;
         }
         return tbCarMapper.addRowByInfo(car_type, car_plate_number, car_color, car_type_model, column_6);
     }
-    public List<TbCar> selectAll(int pageNum, int page){
+
+    public List<TbCar> selectAll(int pageNum, int page) {
         return tbCarMapper.selectAll(pageNum, page);
     }
 
-    public List<TbCar> selectCarByUserId(String userId){
+    public List<TbCar> selectCarByUserId(String userId) {
         return tbCarMapper.selectCarByUserId(userId);
     }
-    public int updateCarType(String carPlateNumber){
+
+    public int updateCarType(String carPlateNumber) {
         return tbCarMapper.updateCarType(carPlateNumber);
     }
 
-    public List<TbCar> selectAllFixedCar(){
+    public TbCar selectRowByCarNum(String carNum) {
+        return tbCarMapper.selectRowByCarNum(carNum);
+    }
+
+    public List<TbCar> selectAllFixedCar() {
         return tbCarMapper.selectAllFixedCar();
     }
+
     @Autowired
     public void setTbCarMapper(TbCarMapper tbCarMapper) {
         this.tbCarMapper = tbCarMapper;

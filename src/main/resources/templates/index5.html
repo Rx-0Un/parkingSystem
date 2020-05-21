@@ -1,43 +1,36 @@
 <!-- HTML -->
-<div id="example-section13">
+<div id="example-section17">
     <div id="legendPlaceholder"></div>
-    <div id="flotcontainer" style="width: 600px;height:200px; text-align: left;"></div>
+    <div id="flotcontainer" style="width: 600px;height:400px; text-align: left;"></div>
 </div>
+
+
+<!-- Javascript -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://www.pureexample.com/js/flot/excanvas.min.js"></script>
 <script src="http://www.pureexample.com/js/flot/jquery.flot.min.js"></script>
+<script src="http://www.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>
 <script type="text/javascript">
     $(function () {
-        var data1 = GenerateSeries(0);
-
-        function GenerateSeries(added){
-            var data = [];
-            var start = 100 + added;
-            var end = 200 + added;
-
-            for(i=1;i<=20;i++){
-                var d = Math.floor(Math.random() * (end - start + 1) + start);
-                data.push([i, d]);
-                start++;
-                end++;
-            }
-
-            return data;
-        }
+        var data = [
+            {label: "data1", data:10},
+            {label: "data2", data: 20},
+            {label: "data3", data: 30},
+            {label: "data4", data: 40},
+            {label: "data5", data: 50},
+            {label: "data6", data: 60},
+            {label: "data7", data: 70}
+        ];
 
         var options = {
-            series:{
-                bars:{show: true}
+            series: {
+                pie: {show: true}
             },
-            bars:{
-                barWidth:0.8
-            },
-            grid:{
-                backgroundColor: { colors: ["#919191", "#141414"] }
+            legend: {
+                show: false
             }
         };
 
-        $.plot($("#example-section13 #flotcontainer"), [data1], options);
-
+        $.plot($("#example-section17 #flotcontainer"), data, options);
     });
 </script>

@@ -6,6 +6,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.server.Session;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,19 +78,14 @@ public class LoginController {
         session.setAttribute("staffName", name);
         session.setAttribute("staffType",staffService.selectRight(String.valueOf(StaffId)));
         session.setAttribute("now_page", "index3");
-
-
         model.addAttribute("currentTask", CurrentTaskNum);
-
         //加载图表
         model.addAttribute("chartResult", parkingRecordService.selectTenDayDate());
-
         //获取未完成任务内容
         List<TbStaffTask> list = staffTaskService.selectUnfinishedTask("" + StaffId, 10, 0);
         int totalPage = staffTaskService.selectUnfinishedTask("" + StaffId, 0, 0).size();
         model.addAttribute("nowPage", 1);
         model.addAttribute("totalPage", (totalPage / 10) - 1);
-//        System.out.println(list.get(0).toString());
         model.addAttribute("AllPeople", staffService.selectAll().size());
         model.addAttribute("AllPeople", staffService.selectAll().size() + userService.selectAll().size());
         model.addAttribute("newUser", userService.selectAll().size());

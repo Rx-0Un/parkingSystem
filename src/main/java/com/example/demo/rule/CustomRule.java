@@ -18,6 +18,29 @@ public class CustomRule extends BasicRule {
     Date dayDate = new Date();
     FixedRule fixedRule;
 
+    public CustomRule(Date STARTING_TIME, Date ENDING_TIME, CustomCharge customCharge, List<InterimRule> interimRuleList, FixedRule fixedRule) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.customCharge = customCharge;
+        this.interimRuleList = interimRuleList;
+        this.fixedRule = fixedRule;
+        if (DateUtil.countHour(this.STARTING_TIME, this.ENDING_TIME) == 0) {
+            countTotal(this.STARTING_TIME);
+        } else {
+            initDailyMap(this.STARTING_TIME);
+        }
+    }
+
+    public CustomRule(Date STARTING_TIME, Date ENDING_TIME, CustomCharge customCharge, FixedRule fixedRule) {
+        super(STARTING_TIME, ENDING_TIME);
+        this.customCharge = customCharge;
+        this.fixedRule = fixedRule;
+        if (DateUtil.countHour(this.STARTING_TIME, this.ENDING_TIME) == 0) {
+            countTotal(this.STARTING_TIME);
+        } else {
+            initDailyMap(this.STARTING_TIME);
+        }
+    }
+
     public CustomRule(Date STARTING_TIME, Date ENDING_TIME, CustomCharge customCharge, List<InterimRule> interimRuleList) {
         super(STARTING_TIME, ENDING_TIME);
         this.customCharge = customCharge;
@@ -43,9 +66,16 @@ public class CustomRule extends BasicRule {
 
     @Async
     public void initDailyMap(Date date) {
-        Date date1=DateUtil.getNextDayDate(date);
-        Date date2=DateUtil.getTimeByDate(date1,0);
-        dayDate =date2;
+        if (fixedRule != null) {
+            fixedRule.initMap(STARTING_TIME, ENDING_TIME);
+            dailyMap.addAll(fixedRule.getDailyMap());
+            monthMap.addAll(fixedRule.getMonthMap());
+            yearLMap.addAll(fixedRule.getYearLMap());
+            date = fixedRule.ENDING_TIME;
+        }
+        Date date1 = DateUtil.getNextDayDate(date);
+        Date date2 = DateUtil.getTimeByDate(date1, 0);
+        dayDate = date2;
         while (date.getTime() < ENDING_TIME.getTime()) {
             InterimRule interimRule = searchInterimRule(date);
             if (interimRuleList.size() > 0 && interimRule != null) {
@@ -57,7 +87,7 @@ public class CustomRule extends BasicRule {
             } else {
                 if (date.getTime() >= dayDate.getTime()) {
                     dayTotal = 0;
-                    dayDate = DateUtil.getTimeByDate(DateUtil.getNextDayDate(date),0);
+                    dayDate = DateUtil.getTimeByDate(DateUtil.getNextDayDate(date), 0);
                 }
                 countTotal(date);
                 date = addDate1(date);

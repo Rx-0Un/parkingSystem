@@ -186,11 +186,12 @@
         from tb_parking_record
         where exit_time is null
     </select>
-    <select id="selectEnterTimeByCarPlate" resultType="java.util.Date">
-        select enter_time
+    <select id="selectEnterTimeByCarPlate" resultType="com.example.demo.entity.TbParkingRecord">
+        select *
         from tb_parking_record
         where car_plate_num=#{order_car_number}
         and exit_time is null
+        limit 1
     </select>
     <select id="selectTenDayDate" resultMap="BaseResultMap">
         SELECT *
@@ -204,5 +205,44 @@
         FROM tb_parking_record
         where date_sub(now(), interval #{number} hour) >enter_time
         and exit_time is null
+    </select>
+    <select id="selectRowByCarNum" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record,tb_car
+        where car_plate_num=#{car_number}
+        and car_plate_num=car_plate_number
+        and exit_time is null
+    </select>
+
+    <select id="selectExitCarByDate" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_record
+        where exit_time>=#{starting_time}
+        and #{ending_time}>=exit_time
+    </select>
+    <select id="selectEnterCarByDate" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_record
+        where enter_time>=#{starting_time}
+        and #{ending_time}>=enter_time
+    </select>
+    <select id="selectAllByDate" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_record
+        where exit_time>=#{starting_time}
+        and #{ending_time}>=exit_time
+    </select>
+    <select id="selectCountByDate" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record,tb_order
+        where exit_time>=#{starting_time}
+        and #{ending_time}>=exit_time
+        and tb_order.order_id=tb_parking_record.order_id
+    </select>
+    <select id="selectInterimCarByDate" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record
+        where (enter_time > #{starting_time} and #{ending_time}>enter_time )
+        or (exit_time > #{starting_time} and #{ending_time}>exit_time);
     </select>
 </mapper>

@@ -102,4 +102,9 @@
             limit #{pageNum} offset #{page};
         </if>
     </select>
+    <select id="selectRowById" resultType="com.example.demo.entity.TbStaffDuty">
+        select *
+        from tb_staff_duty
+        where staff_duty_id=#{staffDutyId}
+    </select>
 </mapper>

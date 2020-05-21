@@ -145,7 +145,7 @@
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
                                             <span class="font-bold">操作员</span>
-                                            <p></p>
+                                            <p th:text="${staff}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -156,7 +156,7 @@
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
                                             <span class="font-bold">开始时间</span>
-                                            <p></p>
+                                            <p th:text="${startTime}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -167,7 +167,7 @@
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
                                             <span class="font-bold">结束时间</span>
-                                            <p></p>
+                                            <p th:text="${endTime}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -178,7 +178,7 @@
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
                                             <span class="font-bold">持续时间</span>　
-                                            <div></div>
+                                            <div th:text="${lastTime}"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -198,7 +198,7 @@
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
                                             <span class="font-bold">放行车辆</span>
-                                            <p></p>
+                                            <p th:text="${ExitCar}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -208,8 +208,8 @@
                                     <div class="d-flex no-block">
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
-                                            <span class="font-bold">生成订单数</span>
-                                            <p></p>
+                                            <span class="font-bold">进入车辆</span>
+                                            <p th:text="${Outer}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -219,8 +219,8 @@
                                     <div class="d-flex no-block">
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
-                                            <span class="font-bold">订单总金额</span>
-                                            <p></p>
+                                            <span class="font-bold">订单总数</span>
+                                            <p th:text="${Order}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -231,7 +231,7 @@
                                         <i class="fa fa-user w-30px m-t-5"></i>
                                         <div>
                                             <span class="font-bold">收费金额</span>　
-                                            <div></div>
+                                            <div th:text="${Total}"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -244,8 +244,16 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Pie Chart</h5>
-                            <div class="pie" style="height: 400px; padding: 0px; position: relative;"><canvas class="flot-base" width="706" height="500" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 565.4px; height: 400px;"></canvas><canvas class="flot-overlay" width="706" height="500" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 565.4px; height: 400px;"></canvas><div class="legend"><div style="position: absolute; width: 57.6px; height: 18.4px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(72,140,19);overflow:hidden"></div></div></td><td class="legendLabel">Series1</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 39.5875px; height: 34.4px; top: 420.8px; left: 304.406px; background-color: rgb(0, 0, 0); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 420.8px; left: 304.406px;"><div style="font-size:8pt;text-align:center;padding:2px;color:white;">Series1<br>100%</div></span></div>
+                            <!--                            <div class="pie" style="height: 400px; padding: 0px; position: center;">-->
+
+                            <!--                            </div>-->
+                            <!--                            <div id="example-section17">-->
+                            <!--                                <div id="legendPlaceholder"></div>-->
+                            <!--                                <div id="flotcontainer" style="width: 600px;height:400px; text-align: left;"></div>-->
+                            <!--                            </div>-->
+                            <div class="pie" style="height: 400px; padding: 0px; position: relative;">
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,7 +261,86 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Line Chart</h5>
-                            <div class="bars" style="height: 400px; padding: 0px; position: relative;"><canvas class="flot-base" width="706" height="500" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 565.4px; height: 400px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 18px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 69px; text-align: center;">1</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 121px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 172px; text-align: center;">3</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 224px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 275px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 327px; text-align: center;">6</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 379px; text-align: center;">7</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 430px; text-align: center;">8</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 482px; text-align: center;">9</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 47px; top: 381px; left: 530px; text-align: center;">10</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 368px; left: 9px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 306px; left: 9px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 245px; left: 2px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 184px; left: 2px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 123px; left: 2px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 62px; left: 2px; text-align: right;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 2px; text-align: right;">30</div></div></div><canvas class="flot-overlay" width="706" height="500" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 565.4px; height: 400px;"></canvas></div>
+                            <div class="bars" style="height: 400px; padding: 0px; position: relative;">
+                                <canvas class="flot-base" width="706" height="500"
+                                        style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 565.4px; height: 400px;"></canvas>
+                                <div class="flot-text"
+                                     style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+                                    <div class="flot-x-axis flot-x1-axis xAxis x1Axis"
+                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 18px; text-align: center;">
+                                            0
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 69px; text-align: center;">
+                                            1
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 121px; text-align: center;">
+                                            2
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 172px; text-align: center;">
+                                            3
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 224px; text-align: center;">
+                                            4
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 275px; text-align: center;">
+                                            5
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 327px; text-align: center;">
+                                            6
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 379px; text-align: center;">
+                                            7
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 430px; text-align: center;">
+                                            8
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 482px; text-align: center;">
+                                            9
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; max-width: 47px; top: 381px; left: 530px; text-align: center;">
+                                            10
+                                        </div>
+                                    </div>
+                                    <div class="flot-y-axis flot-y1-axis yAxis y1Axis"
+                                         style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 368px; left: 9px; text-align: right;">0
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 306px; left: 9px; text-align: right;">5
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 245px; left: 2px; text-align: right;">10
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 184px; left: 2px; text-align: right;">15
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 123px; left: 2px; text-align: right;">20
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 62px; left: 2px; text-align: right;">25
+                                        </div>
+                                        <div class="flot-tick-label tickLabel"
+                                             style="position: absolute; top: 1px; left: 2px; text-align: right;">30
+                                        </div>
+                                    </div>
+                                </div>
+                                <canvas class="flot-overlay" width="706" height="500"
+                                        style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 565.4px; height: 400px;"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -277,10 +364,9 @@
 <script src="/assets/libs/moment/min/moment.min.js"></script>
 <script src="/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="/dist/js/pages/calendar/cal-init.js"></script>
-<script src="/assets/libs/chart/matrix.interface.js"></script>
+
 <script src="/assets/libs/chart/excanvas.min.js"></script>
 <script src="/assets/libs/flot/jquery.flot.js"></script>
-<script src="/assets/libs/flot/jquery.flot.pie.js"></script>
 <script src="/assets/libs/flot/jquery.flot.time.js"></script>
 <script src="/assets/libs/flot/jquery.flot.stack.js"></script>
 <script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
@@ -289,6 +375,25 @@
 <script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="/assets/libs/chart/turning-series.js"></script>
 <script src="/dist/js/pages/chart/chart-page-init.js"></script>
+<script language="JavaScript" type="text/javascript" th:inline="javascript">
+    const interim = [[${interim}]];
+    const fix = [[${fix}]];
+    $(function () {
+        const data = [
+            {label: "临时车辆", data:interim},
+            {label: "固定车辆", data:fix}
+        ];
+
+        const options = {
+            series: {
+                pie: {show: true}
+            }
+        };
+        $.plot($(".pie"), data, options);
+    });
+
+    
+</script>
 </body>
 </body>
 </html>

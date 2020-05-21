@@ -1,16 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.BasicCharge;
-import com.example.demo.bean.CommonCharge;
-import com.example.demo.entity.TbOrder;
-import com.example.demo.entity.TbParkingRecord;
-import com.example.demo.entity.TbStaffDuty;
-import com.example.demo.rule.Rule;
+import com.example.demo.bean.*;
+import com.example.demo.entity.*;
+import com.example.demo.rule.*;
 import com.example.demo.service.*;
 import com.example.demo.util.DateUtil;
 import com.example.demo.util.FileUtil;
 import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +31,21 @@ public class ParkingManageController {
     StaffTaskService staffTaskService;
     StaffDutyService staffDutyService;
     StaffService staffService;
+    ParkingLotSettingService parkingLotSettingService;
+    ParkingSpaceService parkingSpaceService;
     RuleCommonBasicService ruleCommonBasicService;
+    RulePersonService rulePersonService;
+    RuleCustomService ruleCustomService;
+    RuleCustomInterimService ruleCustomInterimService;
+    RuleFixedParkingService ruleFixedParkingService;
+    //计费
+    FixedRule fixedRule;
+    Rule rule;
+    PersonRule personRule;
+    CustomRule customRule;
+    BasicCharge basicCharge;
+    InterimCharge interimCharge;
+    List<InterimRule> interimRuleList;
 
     @RequestMapping(value = "/addParkingRecordEnter", method = RequestMethod.POST)
     public String addParkingRecordEnter(Model model, @RequestBody Map<String, String> map, HttpSession session) {
@@ -141,21 +153,6 @@ public class ParkingManageController {
         return "index-manage-parking";
     }
 
-    @RequestMapping(value = "/countCharge", method = RequestMethod.POST)
-    public String countCharge(Model model, @RequestBody Map<String, String> map, HttpSession session) {
-        String order_car_number = map.get("order_car_number");
-        Date ending_time = new Date();
-        Date starting_time = parkingRecordService.selectEnterTimeByCarPlate(order_car_number);
-
-        BasicCharge basicCharge = new BasicCharge("", "");
-        basicCharge = new CommonCharge("小车", "基本规则", ruleCommonBasicService.selectRowById("1").getMoney(),
-                ruleCommonBasicService.selectRowById("2").getMoney(), ruleCommonBasicService.selectRowById("3").getMoney(),
-                ruleCommonBasicService.selectRowById("4").getMoney(), ruleCommonBasicService.selectRowById("5").getMoney());
-        Rule rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge);
-        model.addAttribute("Amount", rule.total);
-        return "index-manage-parking::chargeResult";
-    }
-
     @RequestMapping(value = "/selectRecordAndOrderByPage", method = RequestMethod.POST)
     public String selectRecordAndOrderByPage(Model model, @RequestBody Map<String, String> map, HttpSession session) {
         String starting_date = staffDutyService.selectStartingTime();
@@ -169,6 +166,265 @@ public class ParkingManageController {
         return "index-manage-parking::RecordAndOrderResult";
     }
 
+    @Async
+    @RequestMapping(value = "/countCharge", method = RequestMethod.POST)
+    public String countCharge(Model model, @RequestBody Map<String, String> map, HttpSession session) {
+        String order_car_number = map.get("order_car_number");
+        Date ending_time = new Date();
+        TbParkingRecord tbParkingRecord = parkingRecordService.selectRowByCarNum(order_car_number).get(0);
+        Date starting_time = tbParkingRecord.getEnterTime();
+        TbParkingLot tbParkingLot = parkingLotSettingService.selectRowById(2).get(0);
+        String car_type = tbParkingRecord.getTbCar().getCarTypeModel();
+        String rule = processRuleType(tbParkingLot.getRuleSetting().substring(0, 3));
+        String interimRule = tbParkingLot.getRuleSetting().substring(3, 4);
+        processCharge(rule, car_type, tbParkingLot.getParkingLotLevel());
+        if (interimRule.equals("1")) {
+            processInterimRule(starting_time, ending_time, car_type);
+        }
+        processFixRule(ending_time, order_car_number, car_type);
+        processRule(starting_time, ending_time, interimRule);//加载规则
+        switch (rule) {
+            case "基本规则":
+                model.addAttribute("Amount", this.rule.total);break;
+            case "自定义规则":
+                model.addAttribute("Amount", this.customRule.total);break;
+            case "私人规则":
+                model.addAttribute("Amount", this.personRule.total);break;
+        }
+        return "index-manage-parking::chargeResult";
+    }
+
+    public void processRule(Date starting_time, Date ending_time, String interim_rule) {
+        if (interim_rule.equals("1")) {
+            switch (basicCharge.getNow_rule()) {
+                case "私人规则":
+                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge, interimRuleList, fixedRule);
+                    break;
+                case "基本规则":
+                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, interimRuleList, fixedRule);
+                    break;
+                case "自定义规则":
+                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, interimRuleList, fixedRule);
+                    break;
+            }
+        }
+        else  {
+            switch (basicCharge.getNow_rule()) {
+                case "私人规则":
+                    personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge, fixedRule);
+                    break;
+                case "基本规则":
+
+                    rule = new Rule(starting_time, ending_time, (CommonCharge) basicCharge, fixedRule);
+                    break;
+                case "自定义规则":
+                    customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, fixedRule);
+                    break;
+            }
+        }
+    }
+
+    public String processRuleType(String rule) {
+        switch (rule) {
+            case "100":
+                return "基本规则";
+            case "010":
+                return "自定义规则";
+            case "001":
+                return "私人规则";
+        }
+        return "";
+    }
+
+    @Async
+    public void processInterimRule(Date starting_time, Date ending_time, String car_type) {
+        this.interimRuleList = new ArrayList<>();
+        while (starting_time.getTime() < ending_time.getTime()) {
+            String d = DateUtil.getNowDate(starting_time);
+            if (searchInterimList(starting_time) == -1) {
+                if (ruleCustomInterimService.selectRuleExist(d) != 0) {
+                    if (ruleCustomInterimService.selectAllExist(d) == 1) {
+                        this.interimCharge = new InterimCharge(car_type, "临时规则", "全天制度",
+                                DateUtil.process(d),
+                                ruleCustomInterimService.selectMoneyByInfo(d, "全天", "小车") == null ? 0
+                                        : ruleCustomInterimService.selectMoneyByInfo(d, "全天", "小车"));
+                    } else {
+                        this.interimCharge = new InterimCharge(car_type, "临时规则",
+                                "小时制度", DateUtil.process(d),
+                                ruleCustomInterimService.selectMoneyByPeakFirst(d, "小车"),
+                                ruleCustomInterimService.selectMoneyByPeak(d, "小车"),
+                                ruleCustomInterimService.selectMoneyByPlain(d, "小车"),
+                                ruleCustomInterimService.selectMoneyByAll(d, "小车")
+                        );
+                    }
+                    addInterimRuleList(DateUtil.getNowDate(d));
+                }
+            }
+            starting_time = DateUtil.addDay(starting_time, ending_time);
+        }
+    }
+
+    @Async
+    public int searchInterimList(Date date) {
+        for (int i = 0; i < interimRuleList.size(); i++) {
+            if (interimRuleList.get(i).getUse_date().getTime() == date.getTime()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Async
+    public void addInterimRuleList(Date date) {
+        if (searchInterimList(date) == -1) {
+            this.interimRuleList.add(new InterimRule(this.interimCharge, date));
+        }
+    }
+
+    @Async
+    public void processFixRule(Date ending_time, String plate_type, String car_type) {
+        try {
+            TbParkingSpace tbParkingSpace = parkingSpaceService.selectExpireDateByCar(plate_type).get(0);
+            Date date = tbParkingSpace.getExpireDate();
+            fixedRule = new FixedRule(date, new BasicCharge(car_type, "固定车位规则"));
+        }catch (Exception e){
+            fixedRule=null;
+        }
+    }
+
+    public void processCharge(String rule, String car_type, String zone_type) {
+        switch (rule) {
+            case "基本规则":
+                processCommonCharge(car_type, zone_type);
+                break;
+            case "自定义规则":
+                processCustomCharge(car_type);
+                break;
+            case "私人规则":
+                processPersonCharge(car_type);
+                break;
+        }
+    }
+
+    public void processCommonCharge(String car_type, String zone_type) {
+        if (car_type.equals("小车")) {
+            switch (zone_type) {
+                case "一类地区":
+                    basicCharge = new CommonCharge("小车", "基本规则", ruleCommonBasicService.selectRowById("1").getMoney(),
+                            ruleCommonBasicService.selectRowById("2").getMoney(), ruleCommonBasicService.selectRowById("3").getMoney(),
+                            ruleCommonBasicService.selectRowById("4").getMoney(), ruleCommonBasicService.selectRowById("5").getMoney());
+                    break;
+                case "二类地区":
+                    basicCharge = new CommonCharge("小车", "基本规则", ruleCommonBasicService.selectRowById("6").getMoney(),
+                            ruleCommonBasicService.selectRowById("7").getMoney(), ruleCommonBasicService.selectRowById("8").getMoney(),
+                            ruleCommonBasicService.selectRowById("9").getMoney(), ruleCommonBasicService.selectRowById("10").getMoney());
+                    break;
+                case "三类地区":
+                    basicCharge = new CommonCharge("小车", "基本规则", ruleCommonBasicService.selectRowById("11").getMoney());
+                    break;
+
+            }
+        }
+        if (car_type.equals("大型车")) {
+            switch (zone_type) {
+                case "一类地区":
+                    basicCharge = new CommonCharge("大型车", "基本规则", ruleCommonBasicService.selectRowById("12").getMoney(),
+                            ruleCommonBasicService.selectRowById("13").getMoney(), ruleCommonBasicService.selectRowById("14").getMoney(),
+                            ruleCommonBasicService.selectRowById("15").getMoney(), ruleCommonBasicService.selectRowById("16").getMoney());
+                    break;
+                case "二类地区":
+                    basicCharge = new CommonCharge("大型车", "基本规则", ruleCommonBasicService.selectRowById("17").getMoney(),
+                            ruleCommonBasicService.selectRowById("18").getMoney(), ruleCommonBasicService.selectRowById("19").getMoney(),
+                            ruleCommonBasicService.selectRowById("20").getMoney(), ruleCommonBasicService.selectRowById("21").getMoney());
+                    break;
+                case "三类地区":
+                    basicCharge = new CommonCharge("大型车", "基本规则", ruleCommonBasicService.selectRowById("22").getMoney());
+                    break;
+
+            }
+        }
+        if (car_type.equals("超大型车")) {
+            switch (zone_type) {
+                case "一类地区":
+                    basicCharge = new CommonCharge("超大型车", "基本规则", ruleCommonBasicService.selectRowById("23").getMoney(),
+                            ruleCommonBasicService.selectRowById("24").getMoney(), ruleCommonBasicService.selectRowById("25").getMoney(),
+                            ruleCommonBasicService.selectRowById("26").getMoney(), ruleCommonBasicService.selectRowById("27").getMoney());
+                    break;
+                case "二类地区":
+                    basicCharge = new CommonCharge("超大型车", "基本规则", ruleCommonBasicService.selectRowById("28").getMoney(),
+                            ruleCommonBasicService.selectRowById("29").getMoney(), ruleCommonBasicService.selectRowById("30").getMoney(),
+                            ruleCommonBasicService.selectRowById("31").getMoney(), ruleCommonBasicService.selectRowById("32").getMoney());
+                    break;
+                case "三类地区":
+                    basicCharge = new CommonCharge("超大型车", "基本规则", ruleCommonBasicService.selectRowById("33").getMoney());
+                    break;
+
+            }
+        }
+        if (car_type.equals("其他车")) {
+            switch (zone_type) {
+                case "一类地区":
+                    basicCharge = new CommonCharge("其他车", "基本规则", ruleCommonBasicService.selectRowById("34").getMoney());
+                    break;
+                case "二类地区":
+                    basicCharge = new CommonCharge("其他车", "基本规则", ruleCommonBasicService.selectRowById("35").getMoney());
+                    break;
+                case "三类地区":
+                    basicCharge = new CommonCharge("其他车", "基本规则", ruleCommonBasicService.selectRowById("36").getMoney());
+                    break;
+            }
+        }
+    }
+
+    public void processCustomCharge(String car_type) {
+        switch (car_type) {
+            case "小车":
+                this.basicCharge = new CustomCharge("小车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "小车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "小车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "小车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "小车"));
+                break;
+            case "大型车":
+                this.basicCharge = new CustomCharge("大型车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "大型车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "大型车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "大型车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "大型车"));
+                break;
+            case "超大型车":
+                this.basicCharge = new CustomCharge("超大型车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "超大型车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "超大型车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "超大型车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "超大型车"));
+                break;
+            case "其他车":
+                this.basicCharge = new CustomCharge("其他车", "自定义规则",
+                        ruleCustomService.selectMoneyByInfo("高峰前一个小时", "其他车"),
+                        ruleCustomService.selectMoneyByInfo("高峰普通时段", "其他车"),
+                        ruleCustomService.selectMoneyByInfo("非高峰时段", "其他车"),
+                        ruleCustomService.selectMoneyByInfo("全天最高上限", "其他车"));
+                break;
+        }
+    }
+
+    public void processPersonCharge(String car_type) {
+        switch (car_type) {
+            case "小车":
+                basicCharge = new PersonCharge("小车", "私人规则", rulePersonService.selectMoneyByCarType("小车"));
+                break;
+            case "大车":
+                basicCharge = new PersonCharge("小车", "私人规则", rulePersonService.selectMoneyByCarType("大车"));
+                break;
+            case "超大型车":
+                basicCharge = new PersonCharge("小车", "私人规则", rulePersonService.selectMoneyByCarType("超大型车"));
+                break;
+            case "其他车":
+                basicCharge = new PersonCharge("小车", "私人规则", rulePersonService.selectMoneyByCarType("其他车"));
+                break;
+        }
+    }
 
     @Autowired
     public void setParkingRecordService(ParkingRecordService parkingRecordService) {
@@ -203,5 +459,35 @@ public class ParkingManageController {
     @Autowired
     public void setRuleCommonBasicService(RuleCommonBasicService ruleCommonBasicService) {
         this.ruleCommonBasicService = ruleCommonBasicService;
+    }
+
+    @Autowired
+    public void setRulePersonService(RulePersonService rulePersonService) {
+        this.rulePersonService = rulePersonService;
+    }
+
+    @Autowired
+    public void setRuleCustomService(RuleCustomService ruleCustomService) {
+        this.ruleCustomService = ruleCustomService;
+    }
+
+    @Autowired
+    public void setRuleCustomInterimService(RuleCustomInterimService ruleCustomInterimService) {
+        this.ruleCustomInterimService = ruleCustomInterimService;
+    }
+
+    @Autowired
+    public void setRuleFixedParkingService(RuleFixedParkingService ruleFixedParkingService) {
+        this.ruleFixedParkingService = ruleFixedParkingService;
+    }
+
+    @Autowired
+    public void setParkingLotSettingService(ParkingLotSettingService parkingLotSettingService) {
+        this.parkingLotSettingService = parkingLotSettingService;
+    }
+
+    @Autowired
+    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
     }
 }

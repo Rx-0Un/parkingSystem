@@ -118,4 +118,9 @@
              tb_parking_space
         where tb_car.car_id=tb_parking_space.car_id
     </select>
+    <select id="selectRowByCarNum" resultMap="BaseResultMap">
+        select *
+        from tb_car
+        where tb_car.car_plate_number=#{carNum}
+    </select>
 </mapper>

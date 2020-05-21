@@ -54,4 +54,15 @@ public class StaffDutyMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void selectRowByIdTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbStaffDutyMapper tbStaffDutyMapper = sqlSession.getMapper(TbStaffDutyMapper.class);
+            TbStaffDuty tbStaffDuty = tbStaffDutyMapper.selectRowById("2");
+            System.out.println(tbStaffDuty.toString());
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

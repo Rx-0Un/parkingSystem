@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.TbCar;
 import com.example.demo.entity.TbParkingLot;
 import com.example.demo.entity.TbParkingRecord;
 import com.example.demo.mapper.TbParkingLotMapper;
@@ -66,8 +67,12 @@ public class ParkingRecordService {
     }
 
 
-    public Date selectEnterTimeByCarPlate(String order_car_number) {
+    public TbParkingRecord selectEnterTimeByCarPlate(String order_car_number) {
         return tbParkingRecordMapper.selectEnterTimeByCarPlate(order_car_number);
+    }
+
+    public List<TbParkingRecord> selectRowByCarNum(String car_number) {
+        return tbParkingRecordMapper.selectRowByCarNum(car_number);
     }
 
     public List<Integer> selectTenDayDate() {
@@ -87,6 +92,30 @@ public class ParkingRecordService {
         return list;
     }
 
+    public int selectExitCarByDate(Date starting_time, Date ending_time) {
+        return tbParkingRecordMapper.selectExitCarByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
+    }
+
+    public int selectEnterCarByDate(Date starting_time, Date ending_time) {
+        return tbParkingRecordMapper.selectEnterCarByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
+    }
+
+    public float selectCountByDate(Date starting_time, Date ending_time) {
+        List<TbParkingRecord> list = tbParkingRecordMapper.selectCountByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
+        float sum = 0;
+        for (TbParkingRecord tbParkingRecord : list) {
+            sum += tbParkingRecord.getTbOrder().getOrderAmount();
+        }
+        return sum;
+    }
+
+    public int selectAllByDate(Date starting_time, Date ending_time) {
+        return tbParkingRecordMapper.selectAllByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
+    }
+
+    public List<TbParkingRecord> selectInterimCarByDate(Date starting_time, Date ending_time) {
+        return tbParkingRecordMapper.selectInterimCarByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
+    }
     @Autowired
     public void setTbParkingRecordMapper(TbParkingRecordMapper tbParkingRecordMapper) {
         this.tbParkingRecordMapper = tbParkingRecordMapper;

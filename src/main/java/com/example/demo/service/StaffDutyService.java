@@ -25,17 +25,22 @@ public class StaffDutyService {
         return tbStaffDutyMapper.updateRowByInfo(date);
     }
 
+    public TbStaffDuty selectRowById(String staffDutyId) {
+        return tbStaffDutyMapper.selectRowById(staffDutyId);
+    }
+
     public String selectStartingTime() {
         return tbStaffDutyMapper.selectStartingTime();
     }
 
-    public TbStaffDuty selectLastRow(){
+    public TbStaffDuty selectLastRow() {
         return tbStaffDutyMapper.selectLastRow();
     }
 
-    public List<TbStaffDuty> selectAll(int pageNum,int page){
-        return tbStaffDutyMapper.selectAll(pageNum,page);
+    public List<TbStaffDuty> selectAll(int pageNum, int page) {
+        return tbStaffDutyMapper.selectAll(pageNum, page);
     }
+
     @Autowired
     public void setTbStaffDutyMapper(TbStaffDutyMapper tbStaffDutyMapper) {
         this.tbStaffDutyMapper = tbStaffDutyMapper;

@@ -92,6 +92,7 @@ com\example\demo\service\ParkingLotSettingService.class
 com\example\demo\entity\TbRuleCustomInterim.class
 com\example\demo\DemoApplication.class
 com\example\demo\rule\CustomRule.class
+com\example\demo\test\ParkingSpaceMapperTest.class
 com\example\demo\entity\TbMonthlyCard.class
 com\example\demo\mapper\TbRuleCommonBasicMapper.class
 com\example\demo\controller\StaffDutyController.class
@@ -106,6 +107,7 @@ com\example\demo\service\UserService.class
 com\example\demo\controller\app\AppAmountController.class
 com\example\demo\mapper\TbUserCouponMapper.class
 com\example\demo\entity\TbParkingRecord.class
+com\example\demo\rule\FixedRule.class
 com\example\demo\test\StaffTaskMapperTest.class
 com\example\demo\entity\test.class
 com\example\demo\entity\TbRuleCommonBasic.class
