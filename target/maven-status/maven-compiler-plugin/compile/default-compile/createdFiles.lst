@@ -25,6 +25,7 @@ com\example\demo\mapper\TbRuleCustomMapper.class
 com\example\demo\controller\CouponManageController.class
 com\example\demo\entity\TbCar.class
 com\example\demo\bean\app\AmountAddBean.class
+com\example\demo\bean\app\ParkingSpaceData.class
 com\example\demo\mapper\TbParkingSpaceMapper.class
 com\example\demo\test\RulePersonMapperTest.class
 com\example\demo\entity\TbParkingSpace.class
@@ -74,6 +75,7 @@ com\example\demo\entity\TbUserMonthlyCard.class
 com\example\demo\service\RulePersonService.class
 com\example\demo\entity\TbUserAmount.class
 com\example\demo\mapper\TbCarUserMapper.class
+com\example\demo\controller\app\AppParkingSpaceController.class
 com\example\demo\entity\TbStaff.class
 com\example\demo\test\RuleMapperTest.class
 com\example\demo\controller\HelloController.class
@@ -94,6 +96,7 @@ com\example\demo\DemoApplication.class
 com\example\demo\rule\CustomRule.class
 com\example\demo\test\ParkingSpaceMapperTest.class
 com\example\demo\entity\TbMonthlyCard.class
+com\example\demo\bean\ChartBean.class
 com\example\demo\mapper\TbRuleCommonBasicMapper.class
 com\example\demo\controller\StaffDutyController.class
 com\example\demo\test\StaffMapperTest.class

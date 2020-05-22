@@ -154,7 +154,8 @@
     <select id="selectNotOccupy" resultMap="BaseResultMap">
         select *
         from tb_parking_space
-        where parking_space_occupy is null
+        where NOW()>expire_date
+        or expire_date is null
     </select>
     <select id="selectAllByFurryStr" resultMap="BaseResultMap">
         select *
@@ -188,5 +189,23 @@
         from tb_parking_space,tb_car
         where tb_parking_space.car_id=tb_car.car_id
         and tb_car.car_plate_number=#{car_plate_num}
+    </select>
+    <select id="selectCarSpaceNumberByUserId" resultType="java.lang.Integer">
+        select count(*)
+        from tb_parking_space,
+             tb_car,
+             tb_user
+        where tb_parking_space.car_id = tb_car.car_id
+          and user_id = column_6
+         and user_id=#{userId};
+    </select>
+    <select id="selectAllByUserId" resultMap="BaseResultMap">
+        select *
+        from tb_parking_space,
+             tb_car,
+             tb_user
+        where tb_parking_space.car_id = tb_car.car_id
+          and user_id = column_6
+         and user_id=#{userId};
     </select>
 </mapper>

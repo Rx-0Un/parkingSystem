@@ -27,7 +27,7 @@ public interface TbParkingRecordMapper {
      */
     int insertSelective(TbParkingRecord record);
 
-    int addRowByInfo(String car_plate_num, Date enter_time);
+    int addRowByInfo(String car_plate_num, String enter_time);
 
     List<TbParkingRecord> selectEnter(String date, int pageNum, int page);
 
@@ -46,7 +46,7 @@ public interface TbParkingRecordMapper {
      */
     List<TbParkingRecord> selectCar();
 
-    int updateByOuter(String order_car_number, String starting_time, Date date, int order_id);
+    int updateByOuter(String order_car_number, String starting_time, String date, int order_id);
 
     List<TbParkingRecord> selectDutyAll(@Param(value = "date") String start_time, int pageNum, int page);
 
@@ -62,6 +62,8 @@ public interface TbParkingRecordMapper {
      * @return
      */
     int selectOccupyNum();
+
+    int selectNumByDate(String date);
 
     TbParkingRecord selectEnterTimeByCarPlate(String order_car_number);
 

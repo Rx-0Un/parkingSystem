@@ -118,10 +118,10 @@
             limit #{pageNum} offset #{page};
         </if>
     </select>
-    <select id="selectOrderByUserName" resultMap="BaseResultMap">
+    <select id="selectOrderByUserId" resultMap="BaseResultMap">
         select *
         from tb_order,tb_user
         where tb_order.order_receiver = tb_user.user_name
-        and user_name=#{username}
+        and user_id=#{userId}
     </select>
 </mapper>

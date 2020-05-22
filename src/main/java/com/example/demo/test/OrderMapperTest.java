@@ -48,7 +48,7 @@ public class OrderMapperTest extends BaseMapperTest {
         SqlSession sqlSession = getSqlSession();
         try {
             TbOrderMapper TbOrderMapper = sqlSession.getMapper(TbOrderMapper.class);
-            List<TbOrder>list= TbOrderMapper.selectOrderByUserName("tony");
+            List<TbOrder>list= TbOrderMapper.selectOrderByUserId("1");
             System.out.println(list);
 
         } finally {

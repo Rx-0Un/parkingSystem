@@ -19,7 +19,7 @@ public class ParkingRecordService {
     TbParkingLotMapper tbParkingLotMapper;
 
     public int addRowByInfo(String car_plate_num, Date enter_time) {
-        return tbParkingRecordMapper.addRowByInfo(car_plate_num, enter_time);
+        return tbParkingRecordMapper.addRowByInfo(car_plate_num, DateUtil.processDateToString(enter_time));
     }
 
     public List<TbParkingRecord> selectEnter(String date, int pageNum, int page) {
@@ -51,7 +51,7 @@ public class ParkingRecordService {
     }
 
     public int updateByOuter(String order_car_number, String starting_time, Date date, int order_id) {
-        return tbParkingRecordMapper.updateByOuter(order_car_number, starting_time, date, order_id);
+        return tbParkingRecordMapper.updateByOuter(order_car_number, starting_time, DateUtil.processDateToString(date), order_id);
     }
 
     public int selectCountEnter(String starting_time) {
@@ -65,7 +65,9 @@ public class ParkingRecordService {
     public int selectOccupyNum() {
         return tbParkingRecordMapper.selectOccupyNum();
     }
-
+    public int selectNumByDate(Date date) {
+        return tbParkingRecordMapper.selectNumByDate(DateUtil.processDateToString(date));
+    }
 
     public TbParkingRecord selectEnterTimeByCarPlate(String order_car_number) {
         return tbParkingRecordMapper.selectEnterTimeByCarPlate(order_car_number);

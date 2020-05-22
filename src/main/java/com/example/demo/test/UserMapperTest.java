@@ -1,6 +1,7 @@
 package com.example.demo.test;
 
 import com.example.demo.entity.TbUser;
+import com.example.demo.mapper.TbUserAmountMapper;
 import com.example.demo.mapper.TbUserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -35,6 +36,17 @@ public class UserMapperTest extends BaseMapperTest {
             else {
                 System.out.println("success");
             }
+        } finally {
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void selectRowByPhoneTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbUserMapper tbUserMapper= sqlSession.getMapper(TbUserMapper.class);
+//            TbUser tbUser = tbUserMapper.selectRowByPhone("17798567311");
+//            System.out.println(tbUser.toString());
         } finally {
             sqlSession.close();
         }

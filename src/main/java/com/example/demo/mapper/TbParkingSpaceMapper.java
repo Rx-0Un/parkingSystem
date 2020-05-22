@@ -37,7 +37,11 @@ public interface TbParkingSpaceMapper {
 
     TbParkingSpace selectRowById(String parking_space_id);
 
-    List<TbParkingSpace> selectAllByFurryStr(String parking_space_key_word_title,String parking_space_key_word,String parking_space_searchDate,int pageNum, int page);
+    List<TbParkingSpace> selectAllByFurryStr(String parking_space_key_word_title, String parking_space_key_word, String parking_space_searchDate, int pageNum, int page);
 
     List<TbParkingSpace> selectExpireDateByCar(String car_plate_num);
+
+    int selectCarSpaceNumberByUserId(String userId);
+
+    List<TbParkingSpace> selectAllByUserId(String userId);
 }

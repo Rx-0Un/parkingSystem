@@ -5,15 +5,16 @@ import com.example.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/App")
 public class AppOrderController {
     OrderService orderService;
 
-    @RequestMapping("/App")
-    public OrderData selectOrderByName(String username) {
-        return new OrderData(orderService.selectOrderByUserName(username));
+    @RequestMapping("/Order/selectOrderByName")
+    public OrderData selectOrderByName(String userId) {
+        return new OrderData(orderService.selectOrderByUserId(userId));
     }
 
     @Autowired

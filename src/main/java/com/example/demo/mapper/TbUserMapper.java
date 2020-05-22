@@ -42,4 +42,6 @@ public interface TbUserMapper {
     List<TbUser> selectAllByName(@Param("Keyword") String Keyword);
 
     int selectRowById(@Param("userId") String userId);
+
+    List<TbUser> selectRowByPhone(@Param("phone") String phone);
 }

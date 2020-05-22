@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.bean.ChartBean;
 import com.example.demo.entity.TbParkingRecord;
 import com.example.demo.entity.TbStaffDuty;
-import com.example.demo.service.CarService;
-import com.example.demo.service.ParkingRecordService;
-import com.example.demo.service.StaffDutyService;
-import com.example.demo.service.StaffService;
+import com.example.demo.service.*;
 import com.example.demo.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +21,9 @@ import java.util.List;
 public class StaffDutyController {
     StaffDutyService staffDutyService;
     StaffService staffService;
+    ParkingLotSettingService parkingLotSettingService;
     ParkingRecordService parkingRecordService;
+    ParkingSpaceService parkingSpaceService;
     CarService carService;
 
     @RequestMapping(value = "/selectDetail", method = RequestMethod.GET)
@@ -49,6 +50,7 @@ public class StaffDutyController {
         List<TbParkingRecord> list1 = parkingRecordService.selectInterimCarByDate(starting_time, ending_time);
         int interim = 0;
         int fix = 0;
+        List<ChartBean> list2 = new ArrayList<>();
         for (TbParkingRecord tbParkingRecord : list1) {
             String carType = carService.selectRowByCarNum(tbParkingRecord.getCarPlateNum()).getCarType();
             if (carType.equals("临时车")) {
@@ -56,11 +58,37 @@ public class StaffDutyController {
             } else {
                 fix++;
             }
+            Date enter = tbParkingRecord.getEnterTime();
+            Date exit = tbParkingRecord.getExitTime();
+            if (enter.getTime() > starting_time.getTime() && enter.getTime() < ending_time.getTime()) {
+                list2.add(new ChartBean(enter.getTime(), +1));
+            }
+            if (exit.getTime() > starting_time.getTime() && exit.getTime() < ending_time.getTime()) {
+                list2.add(new ChartBean(exit.getTime(), -1));
+            }
+        }
+        for (int i = 0; i < list2.size() - 1; i++) {
+            for (int j = 0; j < list2.size() - 1 - i; j++) {
+                //比较两个整数的大小
+                if (list2.get(j).getDate() > list2.get(j + 1).getDate()) {
+                    ChartBean chartBean = list2.get(j);
+
+                    list2.set(j, list2.get(j + 1));
+                    list2.set(j + 1, chartBean);
+                }
+            }
+        }
+        List<Integer> list3 = new ArrayList<>();
+        List<Long> list4 = new ArrayList<>();
+        int total = parkingLotSettingService.selectRowById(2).get(0).getSpaceNumber() - parkingRecordService.selectNumByDate(starting_time);
+        for (ChartBean chartBean : list2) {
+            list3.add(total+chartBean.getI());
+            list4.add(chartBean.getDate());
         }
         model.addAttribute("interim", interim);
         model.addAttribute("fix", fix);
-
-
+        model.addAttribute("chartY", list3);
+        model.addAttribute("chartX", list4);
         return "index-chart-statistics-detail";
     }
 
@@ -77,6 +105,16 @@ public class StaffDutyController {
     @Autowired
     public void setParkingRecordService(ParkingRecordService parkingRecordService) {
         this.parkingRecordService = parkingRecordService;
+    }
+
+    @Autowired
+    public void setParkingLotSettingService(ParkingLotSettingService parkingLotSettingService) {
+        this.parkingLotSettingService = parkingLotSettingService;
+    }
+
+    @Autowired
+    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
     }
 
     @Autowired

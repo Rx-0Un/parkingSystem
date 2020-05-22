@@ -38,12 +38,20 @@ public class ParkingSpaceService {
         return tbParkingSpaceMapper.updateParkingSpace(car_id, expire_date, parking_space_id);
     }
 
+    public int selectCarSpaceNumberByUserId(String userId) {
+        return tbParkingSpaceMapper.selectCarSpaceNumberByUserId(userId);
+    }
+
     public List<TbParkingSpace> selectNotOccupy() {
         return tbParkingSpaceMapper.selectNotOccupy();
     }
 
     public List<TbParkingSpace> selectExpireDateByCar(String car_plate_num) {
         return tbParkingSpaceMapper.selectExpireDateByCar(car_plate_num);
+    }
+
+    public List<TbParkingSpace> selectAllByUserId(String userId) {
+        return tbParkingSpaceMapper.selectAllByUserId(userId);
     }
 
     @Autowired

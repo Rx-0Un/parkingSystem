@@ -136,4 +136,9 @@
         where
         user_name like CONCAT('%',#{Keyword},'%')
     </select>
+    <select id="selectRowByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from tb_user
+        where user_phone=#{phone};
+    </select>
 </mapper>

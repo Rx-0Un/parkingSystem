@@ -378,21 +378,41 @@
 <script language="JavaScript" type="text/javascript" th:inline="javascript">
     const interim = [[${interim}]];
     const fix = [[${fix}]];
+    const chartX = [[${chartX}]];
+    const chartY = [[${chartY}]];
+    const data2 = new Array();
+
+    for (let i = 0; i < chartX.length; i++) {
+        console.log(chartX[i])
+        data2.push([chartX[i], chartY[i]])
+    }
     $(function () {
         const data = [
-            {label: "临时车辆", data:interim},
-            {label: "固定车辆", data:fix}
+            {label: "临时车辆", data: interim},
+            {label: "固定车辆", data: fix}
         ];
-
         const options = {
             series: {
                 pie: {show: true}
             }
         };
         $.plot($(".pie"), data, options);
+        const data1 = [{
+            label: "data2",
+            data: data2,
+            lines: {
+                show: true
+            }, points: {
+                show: true
+            }
+        }];
+        const options1 = {
+            xaxis: {
+                mode: "time"
+            }
+        };
+        $.plot($(".bars"), data1, options1);
     });
-
-    
 </script>
 </body>
 </body>

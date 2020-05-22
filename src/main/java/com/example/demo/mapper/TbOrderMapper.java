@@ -31,5 +31,5 @@ public interface TbOrderMapper {
 
     List<TbOrder> selectAll(int pageNum,int page);
 
-    List<TbOrder> selectOrderByUserName(String username);
+    List<TbOrder> selectOrderByUserId(String userId);
 }

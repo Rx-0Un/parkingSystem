@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.TbUser;
 import com.example.demo.mapper.TbUserAmountMapper;
 import com.example.demo.mapper.TbUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserAmountService {
@@ -22,6 +25,10 @@ public class UserAmountService {
         return 0;
     }
 
+    public List<TbUser> selectRowByPhone(String phone) {
+        return tbUserMapper.selectRowByPhone(phone);
+    }
+
     public float selectAmountByInfo(String user_id) {
         return tbUserAmountMapper.selectMoneyByInfo(user_id);
     }
@@ -33,5 +40,10 @@ public class UserAmountService {
     @Autowired
     public void setTbUserAmountMapper(TbUserAmountMapper tbUserAmountMapper) {
         this.tbUserAmountMapper = tbUserAmountMapper;
+    }
+
+    @Autowired
+    public void setTbUserMapper(TbUserMapper tbUserMapper) {
+        this.tbUserMapper = tbUserMapper;
     }
 }

@@ -217,26 +217,22 @@
     <select id="selectExitCarByDate" resultType="java.lang.Integer">
         select count(*)
         from tb_parking_record
-        where exit_time>=#{starting_time}
-        and #{ending_time}>=exit_time
+        where (enter_time > #{starting_time} and #{ending_time}>enter_time )
     </select>
     <select id="selectEnterCarByDate" resultType="java.lang.Integer">
         select count(*)
         from tb_parking_record
-        where enter_time>=#{starting_time}
-        and #{ending_time}>=enter_time
+        where (exit_time > #{starting_time} and #{ending_time}>exit_time);
     </select>
     <select id="selectAllByDate" resultType="java.lang.Integer">
         select count(*)
         from tb_parking_record
-        where exit_time>=#{starting_time}
-        and #{ending_time}>=exit_time
+        where (exit_time > #{starting_time} and #{ending_time}>exit_time);
     </select>
     <select id="selectCountByDate" resultMap="BaseResultMap">
         select *
         from tb_parking_record,tb_order
-        where exit_time>=#{starting_time}
-        and #{ending_time}>=exit_time
+        where exit_time>=#{starting_time}and #{ending_time}>=exit_time
         and tb_order.order_id=tb_parking_record.order_id
     </select>
     <select id="selectInterimCarByDate" resultMap="BaseResultMap">
@@ -244,5 +240,10 @@
         from tb_parking_record
         where (enter_time > #{starting_time} and #{ending_time}>enter_time )
         or (exit_time > #{starting_time} and #{ending_time}>exit_time);
+    </select>
+    <select id="selectNumByDate" resultType="java.lang.Integer">
+        select COUNT(*)
+        from tb_parking_record
+        where exit_time > #{date};
     </select>
 </mapper>
