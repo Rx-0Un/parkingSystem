@@ -323,4 +323,11 @@ public class DateUtil {
         return day + "天" + (hour - day * 24) + "小时"
                 + (min - day * 24 * 60) + "分钟" + sec + "秒。";
     }
+
+    public static Date getLastMonthLastDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.add(Calendar.DATE, -1);
+        return calendar.getTime();
+    }
 }

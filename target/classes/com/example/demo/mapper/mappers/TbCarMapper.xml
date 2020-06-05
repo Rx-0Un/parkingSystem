@@ -15,6 +15,19 @@
             <arg column="car_type_model" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="column_6" javaType="java.lang.Integer" jdbcType="INTEGER"/>
         </constructor>
+        <association property="tbParkingSpace" javaType="com.example.demo.entity.TbParkingSpace">
+            <id property="parkingSpaceId" column="parking_space_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <result property="parkingSpaceLocation" column="parking_space_location" javaType="java.lang.String"
+                    jdbcType="VARCHAR"/>
+            <result property="parkingSpaceOccupy" column="parking_space_occupy" javaType="java.lang.Integer"
+                    jdbcType="INTEGER"/>
+            <result property="parkingSpaceQuestion" column="parking_space_question" javaType="java.lang.String"
+                    jdbcType="VARCHAR"/>
+            <result property="parkingSpaceReservation" column="parking_space_reservation" javaType="java.lang.Integer"
+                    jdbcType="INTEGER"/>
+            <result property="carId" column="car_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <result property="expireDate" column="expire_date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </association>
     </resultMap>
     <insert id="insert" parameterType="com.example.demo.entity.TbCar">
         <!--
@@ -103,7 +116,8 @@
         where column_6=#{userId}
           and car_id != (select tb_car.car_id
                  from tb_parking_space,tb_car
-                 where tb_parking_space.car_id = tb_car.car_id)
+                 where tb_parking_space.car_id = tb_car.car_id
+                 or now()>expire_date)
     </select>
     <update id="updateCarType" parameterType="java.lang.String">
         UPDATE test.tb_car t
@@ -120,5 +134,28 @@
         select *
         from tb_car
         where tb_car.car_plate_number=#{carNum}
+    </select>
+    <select id="selectAllCarByUserId" resultMap="BaseResultMap">
+        select *
+        from tb_car a
+        left join tb_parking_space b on a.car_id= b.car_id
+        where column_6=#{userId}
+    </select>
+    <delete id="deleteCarByCarId">
+        DELETE FROM test.tb_car WHERE car_id = #{carId}
+    </delete>
+    <select id="selectCarByStr" resultMap="BaseResultMap">
+        select *
+        from tb_car
+        where true
+        <if test="search_car_type!='全体'">
+            and car_type_model=#{search_car_type}
+        </if>
+        <if test="search_keyword!=null">
+            and car_plate_number like CONCAT('%', #{search_keyword}, '%')
+        </if>
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
     </select>
 </mapper>

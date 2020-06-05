@@ -85,7 +85,7 @@ public class LoginController {
         List<TbStaffTask> list = staffTaskService.selectUnfinishedTask("" + StaffId, 10, 0);
         int totalPage = staffTaskService.selectUnfinishedTask("" + StaffId, 0, 0).size();
         model.addAttribute("nowPage", 1);
-        model.addAttribute("totalPage", (totalPage / 10) - 1);
+        model.addAttribute("totalPage", (totalPage / 10) + 1);
         model.addAttribute("AllPeople", staffService.selectAll().size());
         model.addAttribute("AllPeople", staffService.selectAll().size() + userService.selectAll().size());
         model.addAttribute("newUser", userService.selectAll().size());
@@ -118,7 +118,7 @@ public class LoginController {
         List<TbStaffTask> list = staffTaskService.selectUnfinishedTask("" + staffId, 10, (Integer.parseInt(page) - 1) * 10);
         model.addAttribute("AllTask", list);
         model.addAttribute("totalPage", list.size());
-        model.addAttribute("nowPage", Integer.parseInt(page));
+        model.addAttribute("NowPage", Integer.parseInt(page));
         session.setAttribute("staffId", Integer.valueOf(staffId));
         return "index3::result";
     }

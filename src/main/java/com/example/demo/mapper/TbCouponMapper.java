@@ -28,8 +28,11 @@ public interface TbCouponMapper {
                      int coupon_count,
                      String coupon_location,
                      int coupon_usage_count,
-                     Date starting_time,
-                     Date ending_time,
+                     String starting_time,
+                     String ending_time,
                      String coupon_situation);
+
     List<TbCoupon> selectAll(int pageNum, int page);
+
+    List<TbCoupon> selectCouponByStr(String amount,String starting_time,String ending_time,int pageNum,int page);
 }

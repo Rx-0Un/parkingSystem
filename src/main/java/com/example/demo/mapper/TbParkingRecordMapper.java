@@ -69,7 +69,7 @@ public interface TbParkingRecordMapper {
 
     List<TbParkingRecord> selectTenDayDate(int number);
 
-    List<TbParkingRecord> select24hourDate(int number);
+    Integer select24hourDate(int number,String date);
 
     List<TbParkingRecord> selectRowByCarNum(String car_number);
 
@@ -83,5 +83,18 @@ public interface TbParkingRecordMapper {
     int selectAllByDate(String starting_time, String ending_time);
 
     List<TbParkingRecord> selectInterimCarByDate(String starting_time, String ending_time);
+
+    /**
+     * 模糊查询
+     * @param starting_date
+     * @param search_car_plate_type
+     * @param search_car_type
+     * @param search_pay_type
+     * @param search_Keyword_title
+     * @param pageNum
+     * @param page
+     * @return
+     */
+    List<TbParkingRecord> selectAllByInfo(String starting_date,String search_car_plate_type, String search_car_type, String search_pay_type, String search_Keyword_title,String search_Keyword, int pageNum, int page);
 
 }

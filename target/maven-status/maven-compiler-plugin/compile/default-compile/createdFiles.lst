@@ -1,10 +1,12 @@
 com\example\demo\mapper\TbParkingLotMapper.class
 com\example\demo\controller\ChargeRuleController.class
+com\example\demo\controller\app\AppCarController.class
 com\example\demo\service\RuleCustomInterimService.class
 com\example\demo\service\StaffDutyService.class
 com\example\demo\controller\StartController.class
 com\example\demo\test\RuleCustomInterimMapperTest.class
 com\example\demo\test\OrderMapperTest.class
+com\example\demo\bean\app\CarData.class
 com\example\demo\controller\StaffTaskController.class
 com\example\demo\mapper\TbStaffTaskMapper.class
 com\example\demo\service\ParkingSpaceService.class
@@ -49,6 +51,7 @@ com\example\demo\entity\TbUser.class
 com\example\demo\bean\app\LoginDate.class
 com\example\demo\mapper\TbRulePersonMapper.class
 com\example\demo\bean\ResultBean.class
+com\example\demo\controller\OrderController.class
 com\example\demo\mapper\TbCouponMapper.class
 com\example\demo\mapper\TbMonthlyCardMapper.class
 com\example\demo\test\UserAmountTest.class
@@ -62,6 +65,7 @@ com\example\demo\bean\PersonCharge.class
 com\example\demo\service\OrderService.class
 com\example\demo\controller\StaffTaskController$1.class
 com\example\demo\mapper\TbRuleCustomInterimMapper.class
+com\example\demo\controller\app\AppParkingInfoController.class
 com\example\demo\service\CouponService.class
 com\example\demo\bean\app\OrderData.class
 com\example\demo\mapper\testMapper.class
@@ -81,6 +85,7 @@ com\example\demo\test\RuleMapperTest.class
 com\example\demo\controller\HelloController.class
 com\example\demo\mapper\TbUserMapper.class
 com\example\demo\service\RuleCommonBasicService.class
+com\example\demo\bean\app\InfoResult.class
 com\example\demo\util\RuleUtil.class
 com\example\demo\entity\TbRuleFixedParking.class
 com\example\demo\rule\BasicRule.class
@@ -90,6 +95,7 @@ com\example\demo\test\BaseMapperTest.class
 com\example\demo\test\StaffDutyMapperTest.class
 com\example\demo\service\BaseService.class
 com\example\demo\bean\CustomCharge.class
+com\example\demo\test\CouponMapperTest.class
 com\example\demo\service\ParkingLotSettingService.class
 com\example\demo\entity\TbRuleCustomInterim.class
 com\example\demo\DemoApplication.class
@@ -101,6 +107,7 @@ com\example\demo\mapper\TbRuleCommonBasicMapper.class
 com\example\demo\controller\StaffDutyController.class
 com\example\demo\test\StaffMapperTest.class
 com\example\demo\controller\DataManageController.class
+com\example\demo\bean\app\CarResult.class
 com\example\demo\rule\InterimRule.class
 com\example\demo\mapper\TbOrderMapper.class
 com\example\demo\mapper\TbUserMonthlyCardMapper.class
@@ -109,6 +116,7 @@ com\example\demo\mapper\TbUserAmountMapper.class
 com\example\demo\service\UserService.class
 com\example\demo\controller\app\AppAmountController.class
 com\example\demo\mapper\TbUserCouponMapper.class
+com\example\demo\bean\ParkingInfoResult.class
 com\example\demo\entity\TbParkingRecord.class
 com\example\demo\rule\FixedRule.class
 com\example\demo\test\StaffTaskMapperTest.class

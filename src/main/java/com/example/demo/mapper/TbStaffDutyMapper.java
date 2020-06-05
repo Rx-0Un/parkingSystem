@@ -72,4 +72,9 @@ public interface TbStaffDutyMapper {
      * @return
      */
     TbStaffDuty selectRowById(String staffDutyId);
+
+    /**
+     * 查找所有数据
+     */
+    List<TbStaffDuty> selectAllDesc(int pageNum, int page);
 }

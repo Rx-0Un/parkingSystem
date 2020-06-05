@@ -147,4 +147,15 @@ public class ParkingRecordMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void select24hourDateTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbParkingRecordMapper tbParkingRecordMapper = sqlSession.getMapper(TbParkingRecordMapper.class);
+            int count = tbParkingRecordMapper.select24hourDate(0,"2020-06-04 11:58:07");
+            System.out.println(count);
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

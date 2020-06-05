@@ -27,9 +27,16 @@ public interface TbOrderMapper {
     int addRowByInfo(TbOrder tbOrder);
 
     float selectTotalCount(@Param(value = "date") String starting_time);
+
     int selectRowCount(@Param(value = "date") String starting_time);
 
-    List<TbOrder> selectAll(int pageNum,int page);
+    List<TbOrder> selectAll(int pageNum, int page);
 
     List<TbOrder> selectOrderByUserId(String userId);
+
+    List<TbOrder> selectOrderByStr(String orderPurchaseType, String orderPayType, String orderState, String keyword_title, String keyword, int pageNum, int page);
+
+    Integer selectCashOrder();
+
+    Integer selectPhoneOrder();
 }

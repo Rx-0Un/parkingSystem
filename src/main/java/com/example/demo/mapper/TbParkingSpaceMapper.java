@@ -44,4 +44,6 @@ public interface TbParkingSpaceMapper {
     int selectCarSpaceNumberByUserId(String userId);
 
     List<TbParkingSpace> selectAllByUserId(String userId);
+
+    int updateParkingSpaceByCarId(String carId);
 }

@@ -24,6 +24,19 @@ public class DataManageController {
     RuleFixedParkingService ruleFixedParkingService;
     OrderService orderService;
 
+    @RequestMapping(value = "/selectCarPage", method = RequestMethod.POST)
+    public String selectCarPage(Model model, @RequestBody Map<String, String> map) {
+        String search_keyword = map.get("search_keyword");
+        String search_car_type = map.get("search_car_type");
+        int pageNum = Integer.valueOf(map.get("pageNum"));
+        int page = Integer.valueOf(map.get("page"));
+        model.addAttribute("CarResult", carService.selectCarByStr(search_keyword, search_car_type, pageNum, (page - 1) * pageNum));
+        model.addAttribute("CarNowPage", page);
+        model.addAttribute("CarTotalPage", (carService.selectCarByStr(search_keyword, search_car_type, pageNum, page).size() / pageNum) + 1);
+        return "index-data-manage::CarResult";
+    }
+
+
     @RequestMapping(value = "/addCarByInfo", method = RequestMethod.POST)
     public String addCarByInfo(Model model, @RequestBody Map<String, String> map) {
         String car_type = map.get("car_type");
@@ -32,12 +45,6 @@ public class DataManageController {
         String car_color = map.get("car_color");
         String car_type_model = map.get("car_type_model");
         String car_user = map.get("car_user");
-        System.out.println(car_type);
-        System.out.println(car_plate_number_head);
-        System.out.println(car_plate_number);
-        System.out.println(car_color);
-        System.out.println(car_type_model);
-        System.out.println(car_user);
         carService.addRowByInfo(car_type, car_plate_number_head + car_plate_number, car_color, car_type_model, Integer.parseInt(car_user.trim()));
         model.addAttribute("CarResult", carService.selectAll(0, 0));
         return "index-data-manage::CarResult";
@@ -73,15 +80,14 @@ public class DataManageController {
     @RequestMapping(value = "/selectParkingSpacePage")
     public String selectParkingSpacePage(Model model, @RequestBody Map<String, String> map) {
         String parking_space_searchDate = map.get("parking_space_searchDate");
-        String parking_space_key_word = map.get("parking_space_key_word ");
+        String parking_space_key_word = map.get("parking_space_key_word");
         String parking_space_key_word_title = map.get("parking_space_key_word_title");
-        int parking_space_searchNum = Integer.valueOf(map.get("parking_space_searchNum"));
+        int pageNum = Integer.valueOf(map.get("parking_space_searchNum"));
         int page = Integer.valueOf(map.get("page"));
-        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title, parking_space_key_word, parking_space_searchDate, parking_space_searchNum, (page - 1)*parking_space_searchNum));
+        model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title, parking_space_key_word, parking_space_searchDate, pageNum, (page - 1) * pageNum));
         List list = parkingSpaceService.selectAllByFurryStr(parking_space_key_word_title, parking_space_key_word, parking_space_searchDate, 0, 0);
         model.addAttribute("ParkingSpaceTotalPage", list.size() / 10);
         model.addAttribute("ParkingSpaceNowPage", page);
-
         return "index-data-manage::ParkingSpaceResult";
     }
 

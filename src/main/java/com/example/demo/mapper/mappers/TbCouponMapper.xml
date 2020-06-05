@@ -114,4 +114,15 @@
             LIMIT #{pageNum} offset #{page}
         </if>
     </select>
+    <select id="selectCouponByStr" resultMap="BaseResultMap">
+        SELECT t.*
+        FROM test.tb_coupon t
+        where true
+        <if test="amount!=null">
+            and coupon_amount like CONCAT('%', #{amount}, '%')
+        </if>
+        <if test="pageNum!=0">
+            LIMIT #{pageNum} offset #{page}
+        </if>
+    </select>
 </mapper>

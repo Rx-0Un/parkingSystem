@@ -154,15 +154,20 @@ public class ParkingManageController {
     }
 
     @RequestMapping(value = "/selectRecordAndOrderByPage", method = RequestMethod.POST)
-    public String selectRecordAndOrderByPage(Model model, @RequestBody Map<String, String> map, HttpSession session) {
+    public String selectRecordAndOrderByPage(Model model, @RequestBody Map<String, String> map) {
+        System.out.println(map.toString());
         String starting_date = staffDutyService.selectStartingTime();
         String search_car_plate_type = map.get("search_car_plate_type");
         String search_car_type = map.get("search_car_type");
         String search_pay_type = map.get("search_pay_type");
         String search_Keyword_title = map.get("search_Keyword_title");
+        String search_Keyword = map.get("search_Keyword");
         int page = Integer.parseInt(map.get("page"));
         int pageNum = Integer.parseInt(map.get("search_number"));
-        model.addAttribute("RecordAndOrderResult", parkingRecordService.selectDutyAll(starting_date, pageNum, page));
+        model.addAttribute("RecordAndOrderResult", parkingRecordService.selectAllByInfo(starting_date, search_car_plate_type, search_car_type, search_pay_type, search_Keyword_title, search_Keyword, pageNum, (page - 1) * pageNum));
+        List<TbParkingRecord> list = parkingRecordService.selectAllByInfo(starting_date, search_car_plate_type, search_car_type, search_pay_type, search_Keyword_title, search_Keyword, 0, 0);
+        model.addAttribute("NowPage", page );
+        model.addAttribute("TotalPage", (list.size() / pageNum)+1);
         return "index-manage-parking::RecordAndOrderResult";
     }
 
@@ -185,11 +190,14 @@ public class ParkingManageController {
         processRule(starting_time, ending_time, interimRule);//加载规则
         switch (rule) {
             case "基本规则":
-                model.addAttribute("Amount", this.rule.total);break;
+                model.addAttribute("Amount", this.rule.total);
+                break;
             case "自定义规则":
-                model.addAttribute("Amount", this.customRule.total);break;
+                model.addAttribute("Amount", this.customRule.total);
+                break;
             case "私人规则":
-                model.addAttribute("Amount", this.personRule.total);break;
+                model.addAttribute("Amount", this.personRule.total);
+                break;
         }
         return "index-manage-parking::chargeResult";
     }
@@ -207,8 +215,7 @@ public class ParkingManageController {
                     customRule = new CustomRule(starting_time, ending_time, (CustomCharge) basicCharge, interimRuleList, fixedRule);
                     break;
             }
-        }
-        else  {
+        } else {
             switch (basicCharge.getNow_rule()) {
                 case "私人规则":
                     personRule = new PersonRule(starting_time, ending_time, (PersonCharge) basicCharge, fixedRule);
@@ -287,8 +294,8 @@ public class ParkingManageController {
             TbParkingSpace tbParkingSpace = parkingSpaceService.selectExpireDateByCar(plate_type).get(0);
             Date date = tbParkingSpace.getExpireDate();
             fixedRule = new FixedRule(date, new BasicCharge(car_type, "固定车位规则"));
-        }catch (Exception e){
-            fixedRule=null;
+        } catch (Exception e) {
+            fixedRule = null;
         }
     }
 

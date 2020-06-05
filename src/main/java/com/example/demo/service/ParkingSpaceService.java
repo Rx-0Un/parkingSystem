@@ -42,6 +42,10 @@ public class ParkingSpaceService {
         return tbParkingSpaceMapper.selectCarSpaceNumberByUserId(userId);
     }
 
+    public int updateParkingSpaceByCarId(String carId){
+        return tbParkingSpaceMapper.updateParkingSpaceByCarId(carId);
+    }
+
     public List<TbParkingSpace> selectNotOccupy() {
         return tbParkingSpaceMapper.selectNotOccupy();
     }

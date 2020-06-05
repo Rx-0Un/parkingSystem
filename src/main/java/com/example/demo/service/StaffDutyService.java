@@ -40,7 +40,9 @@ public class StaffDutyService {
     public List<TbStaffDuty> selectAll(int pageNum, int page) {
         return tbStaffDutyMapper.selectAll(pageNum, page);
     }
-
+    public List<TbStaffDuty> selectAllDesc(int pageNum, int page) {
+        return tbStaffDutyMapper.selectAllDesc(pageNum, page);
+    }
     @Autowired
     public void setTbStaffDutyMapper(TbStaffDutyMapper tbStaffDutyMapper) {
         this.tbStaffDutyMapper = tbStaffDutyMapper;

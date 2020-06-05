@@ -52,7 +52,7 @@ public class UserAmountTest extends BaseMapperTest {
         SqlSession sqlSession = getSqlSession();
         try {
             TbUserAmountMapper tbUserAmountMapper = sqlSession.getMapper(TbUserAmountMapper.class);
-            int count = tbUserAmountMapper.updateRowByInfo("2",50);
+            int count = tbUserAmountMapper.updateRowByInfo("22",50);
             System.out.println(count);
             sqlSession.commit();
         } finally {

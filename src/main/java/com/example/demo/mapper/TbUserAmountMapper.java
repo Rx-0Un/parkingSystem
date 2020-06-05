@@ -28,7 +28,7 @@ public interface TbUserAmountMapper {
      * @param amount
      * @return
      */
-    int addRowByInfo(String user_id, int amount);
+    int addRowByInfo(String user_id, float amount);
 
     /**
      * 修改用户余额
@@ -37,7 +37,7 @@ public interface TbUserAmountMapper {
      * @param amount
      * @return
      */
-    int updateRowByInfo(String user_id, int amount);
+    int updateRowByInfo(String user_id, float amount);
 
     /**
      * 查找是否存在
@@ -53,6 +53,6 @@ public interface TbUserAmountMapper {
      * @param user_id
      * @return
      */
-    float selectMoneyByInfo(String user_id);
+    Float selectMoneyByInfo(String user_id);
 
 }

@@ -75,7 +75,8 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mainPager"
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/mainPager"
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
 
@@ -95,8 +96,6 @@
                                         class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
                                 <li class="sidebar-item"><a href="#" class="sidebar-link"><i
                                         class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
-                                <li class="sidebar-item"><a href="1" class="sidebar-link"><i
-                                        class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
                             </ul>
                         </li>
                     </div>
@@ -208,30 +207,36 @@
     </div>
     <div class="page-wrapper">
         <div class="container-fluid">
-            <div class="row">
+            <div class="col-lg-9">
                 <div class="card">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home"
                                                 role="tab"><span class="hidden-sm-up"></span> <span
                                 class="hidden-xs-down"><font style="vertical-align: inherit;"><font
                                 style="vertical-align: inherit;">优惠券管理</font></font></span></a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"><span
-                                class="hidden-sm-up"></span> <span class="hidden-xs-down"><font
-                                style="vertical-align: inherit;"><font
-                                style="vertical-align: inherit;" id="personRule">客户优惠券管理</font></font></span></a>
-                        </li>
                     </ul>
                     <div class="tab-content tabcontent-border">
                         <div class="tab-pane active" id="home" role="tabpanel">
                             <div class="card">
                                 <div class="col-md-12">
-                                    <div class="card-body border-top">
+                                    <div class="card-body">
                                         <div class="row mb-3">
                                             <div class="col-md-2">
-                                                <label>展示数量</label>
+                                                <label>使用次数</label>
                                                 <select class="select2 form-control custom-select select2-hidden-accessible"
                                                         style="width: 100%; height:33px;" data-select2-id="1"
-                                                        tabindex="-1" aria-hidden="true">
+                                                        tabindex="-1" aria-hidden="true" id="user_time">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>发布数量</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="usage_count">
                                                     <option>10</option>
                                                     <option>25</option>
                                                     <option>50</option>
@@ -239,57 +244,54 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>车辆类型</label>
-                                                <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                        style="width: 100%; height:33px;" data-select2-id="1"
-                                                        tabindex="-1" aria-hidden="true">
-                                                    <option>全体</option>
-                                                    <option>小车</option>
-                                                    <option>大型车</option>
-                                                    <option>超大型车</option>
-                                                    <option>其他</option>
-                                                </select>
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="coupon_money">
                                             </div>
                                             <div class="col-md-2">
-                                                <label>支付方式</label>
-                                                <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                        style="width: 100%; height:33px;" data-select2-id="1"
-                                                        tabindex="-1" aria-hidden="true">
-                                                    <option>现金</option>
-                                                    <option>余额</option>
-                                                    <option>手机支付</option>
-                                                    <option>其他</option>
-                                                </select>
+                                                <label>开始时间</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="starting_time">
                                             </div>
                                             <div class="col-md-2">
-                                                <label>关键字</label>
-                                                <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                        style="width: 100%; height:33px;" data-select2-id="1"
-                                                        tabindex="-1" aria-hidden="true" id="search_car_type">
-                                                    <option>全体</option>
-                                                    <option>金额</option>
-                                                </select>
+                                                <label>结束时间</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="ending_time">
                                             </div>
-                                            <div class="col-md-2">
-                                                <label><font color="white">关键字</font></label>
-                                                <input class="form-control" placeholder=""
-                                                       value=""
-                                                       type="text" id="search_keyword">
+                                            <div class="col-md-1">
+                                                <label><font color="white">描述</font></label>
+                                                <button type="button" class="btn btn-info" id="add2">添加
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body border-top">
                                         <div class="row mb-3">
                                             <div class="col-md-2">
-                                                <label>展示数量</label>
+                                                <label>数量</label>
                                                 <select class="select2 form-control custom-select select2-hidden-accessible"
                                                         style="width: 100%; height:33px;" data-select2-id="1"
-                                                        tabindex="-1" aria-hidden="true">
-                                                    <option>10</option>
-                                                    <option>25</option>
-                                                    <option>50</option>
-                                                    <option>100</option>
+                                                        tabindex="-1" aria-hidden="true" id="pageNum">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
                                                 </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>金额</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="search_coupon_money">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>开始时间</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="search_starting_time">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>结束时间</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="search_ending_time">
                                             </div>
                                         </div>
                                     </div>
@@ -334,13 +336,114 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <div class="card-body border-top">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <ul class="pagination">
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage-1 >=1}"
+                                                        ><a
+                                                                aria-controls="zero_config"
+                                                                data-dt-idx="0"
+                                                                tabindex="0"
+                                                                class="page-link"
+                                                                th:onclick="|javascript : selectPage( [[${NowPage-1}]] )|"
+                                                        >上一页</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item">
+                                                            <a
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="0"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectPage( '1' )|"
+                                                            >首页</a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage-3>=1}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage-3}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage-3}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage-2>=1}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage-2}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage-2}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage-1>=1}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage-1}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage-1}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item active">
+                                                            <a aria-controls="zero_config" data-dt-idx="1"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage+1 <=TotalPage}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage+1}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage+1}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage+2 <=TotalPage}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage+2}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage+2}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage+3 <=TotalPage}">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:text="${NowPage+3}"
+                                                               th:onclick="|javascript : selectPage( [[${NowPage+3}]] )|"
+                                                            >
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item">
+                                                            <a aria-controls="zero_config" data-dt-idx="2"
+                                                               tabindex="0" class="page-link"
+                                                               th:onclick="|javascript : selectPage( [[${TotalPage}]] )|"
+                                                            >尾页
+                                                            </a>
+                                                        </li>
+                                                        <li class="paginate_button page-item"
+                                                            th:if="${NowPage<TotalPage&&TotalPage!=1}">
+                                                            <a
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="2"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectPage( [[${NowPage+1}]] )|"
+                                                            >下一页</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane  p-20" id="profile" role="tabpanel">
-                            <div class="card">
-
                             </div>
                         </div>
                     </div>
@@ -379,40 +482,32 @@
 <script src="assets/libs/chart/turning-series.js"></script>
 <script src="dist/js/pages/chart/chart-page-init.js"></script>
 <script src="laydate/laydate.js"></script>
-<script>
-    lay('#version').html('-v' + laydate.v);
-    //执行一个laydate实例
-    laydate.render({
-        elem: '#time'
-        , type: 'datetime'
-        , range: '到'
-        , format: 'yyyy年M月d日H时m分s秒'
-    });
-</script>
 <script language="JavaScript">
-    $('#sub').bind('click', function () {
-        const time = $('#time').val()
-        const coupon_amount = $('#coupon_amount').val()
-        const coupon_count = $('#coupon_count').val()
-        const coupon_usage_count = $('#coupon_usage_count').val()
+    $('#add2').bind('click', function () {
+        const user_time = $('#user_time').val()
+        const usage_count = $('#usage_count').val()
+        const coupon_money = $('#coupon_money').val()
+        const starting_time = $('#starting_time').val()
+        const ending_time = $('#ending_time').val()
         const t = confirm("是否添加新的优惠券？");
         if (t == true) {
-            if (!isNaN(coupon_amount)) {
+            if (!isNaN(coupon_money)) {
                 const Data = {
-                    "time": time,
-                    "coupon_amount": coupon_amount,
-                    "coupon_count": coupon_count,
-                    "coupon_usage_count": coupon_usage_count,
+                    "user_time": user_time,
+                    "usage_count": usage_count,
+                    "coupon_money": coupon_money,
+                    "starting_time": starting_time,
+                    "ending_time": ending_time,
                     "date": new Date()
                 }
                 $.ajax({
                     type: "post",
-                    url: "/index-manage-parking/addNewCoupon",
+                    url: "/index-coupon-manage/addNewCoupon",
                     contentType: 'application/json;charset=utf-8',
                     data: JSON.stringify(Data),
                     dataType: "text",
                     success: function (data) {
-
+                        $(".CouponResult").html(data);
                     },
                     error: function (date) {
                         alert("失败")
@@ -425,6 +520,92 @@
         } else {
             return false;
         }
+    });
+    $("#pageNum").bind("input propertychange", function (event) {
+        const search_ending_time    = $('#search_ending_time').val()
+        const search_starting_time = $('#search_starting_time').val()
+        const pageNum               = $('#pageNum').val()
+        const search_coupon_money   = $('#search_coupon_money').val()
+        const Data = {
+            "pageNum": pageNum,
+            "search_ending_time": search_ending_time,
+            "search_starting_time": search_starting_time,
+            "search_coupon_money": search_coupon_money,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-coupon-manage/selectCouponPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CouponResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#search_coupon_money").bind("input propertychange", function (event) {
+        const search_ending_time    = $('#search_ending_time').val()
+        const search_starting_time = $('#search_starting_time').val()
+        const pageNum               = $('#pageNum').val()
+        const search_coupon_money   = $('#search_coupon_money').val()
+        const Data = {
+            "pageNum": pageNum,
+            "search_ending_time": search_ending_time,
+            "search_starting_time": search_starting_time,
+            "search_coupon_money": search_coupon_money,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-coupon-manage/selectCouponPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CouponResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+</script>
+<script language="JavaScript">
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#starting_time'
+        , format: 'yyyy年M月d日'
+    });
+</script>
+<script language="JavaScript">
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#search_starting_time'
+        , format: 'yyyy年M月d日'
+    });
+</script>
+<script language="JavaScript">
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#ending_time'
+        , format: 'yyyy年M月d日'
+    });
+</script>
+<script language="JavaScript">
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#search_ending_time'
+        , format: 'yyyy年M月d日'
     });
 </script>
 </body>

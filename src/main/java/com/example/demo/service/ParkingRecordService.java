@@ -65,6 +65,7 @@ public class ParkingRecordService {
     public int selectOccupyNum() {
         return tbParkingRecordMapper.selectOccupyNum();
     }
+
     public int selectNumByDate(Date date) {
         return tbParkingRecordMapper.selectNumByDate(DateUtil.processDateToString(date));
     }
@@ -86,11 +87,14 @@ public class ParkingRecordService {
     }
 
     public List<Integer> select24hourDate() {
+        String date = DateUtil.processDateToString(new Date());
         int total = tbParkingLotMapper.selectRowById(2).get(0).getSpaceNumber();
         List<Integer> list = new ArrayList<>();
         for (int i = 23; i > -1; i--) {
-            list.add(total - tbParkingRecordMapper.select24hourDate(i).size());
+            int count = tbParkingRecordMapper.select24hourDate(i, date);
+            list.add(total - count);
         }
+
         return list;
     }
 
@@ -118,6 +122,11 @@ public class ParkingRecordService {
     public List<TbParkingRecord> selectInterimCarByDate(Date starting_time, Date ending_time) {
         return tbParkingRecordMapper.selectInterimCarByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
     }
+
+    public List<TbParkingRecord> selectAllByInfo(String starting_date, String search_car_plate_type, String search_car_type, String search_pay_type, String search_Keyword_title, String search_Keyword, int pageNum, int page) {
+        return tbParkingRecordMapper.selectAllByInfo(starting_date, search_car_plate_type, search_car_type, search_pay_type, search_Keyword_title, search_Keyword, pageNum, page);
+    }
+
     @Autowired
     public void setTbParkingRecordMapper(TbParkingRecordMapper tbParkingRecordMapper) {
         this.tbParkingRecordMapper = tbParkingRecordMapper;

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.*;
 import com.example.demo.service.*;
+import com.example.demo.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,6 +43,7 @@ public class StartController {
     @RequestMapping(value = "/index-staff")
     public String getAll(Model model, HttpSession session) {
         model.addAttribute("allStaff", staffService.selectAll());
+
         return "index-staff";
     }
 
@@ -63,7 +67,12 @@ public class StartController {
         model.addAttribute("EnterResult", parkingRecordService.selectAllByEnter(10, 0));
         model.addAttribute("ParkingCarResult", parkingRecordService.selectCar());
         model.addAttribute("OuterResult", parkingRecordService.selectAllByOuter(10, 0));
-        model.addAttribute("RecordAndOrderResult", parkingRecordService.selectDutyAll(starting_date, 10, 0));
+
+        List<TbParkingRecord> list = parkingRecordService.selectDutyAll(starting_date, 10, 0);
+        model.addAttribute("RecordAndOrderResult", list);
+        model.addAttribute("NowPage", 1);
+        model.addAttribute("TotalPage", (list.size() / 10) + 1);
+
         Integer staffId = (Integer) session.getAttribute("staffId");
         String staffName = (String) session.getAttribute("staffName");
         System.out.println("当前操作职员为" + staffId + "号:" + staffName);
@@ -124,14 +133,19 @@ public class StartController {
 
     @RequestMapping(value = "/index-order-search")
     public String indexOrderSearch(Model model) {
-        model.addAttribute("OrderResult", orderService.selectAll(10, 0));
+        List<TbOrder> list = orderService.selectAll(10, 0);
+        model.addAttribute("OrderResult", list);
+        model.addAttribute("NowPage", 1);
+        model.addAttribute("TotalPage", (list.size() / 10) + 1);
         return "index-order-search";
     }
 
     @RequestMapping(value = "/index-data-manage")
     public String indexCarManage(Model model) {
         model.addAttribute("UserResult", userService.selectAll());
-        model.addAttribute("CarResult", carService.selectAll(0, 0));
+        model.addAttribute("CarResult", carService.selectAll(10, 0));
+        model.addAttribute("CarNowPage", 1);
+        model.addAttribute("CarTotalPage", (carService.selectAll(0, 0).size() / 10) + 1);
         model.addAttribute("UserSearch", userService.selectAll());
         model.addAttribute("ParkingSpaceResult", parkingSpaceService.selectAll(10, 0));
         List list = parkingSpaceService.selectAll(0, 0);
@@ -147,13 +161,16 @@ public class StartController {
 
     @RequestMapping(value = "/index-coupon-manage")
     public String couponManage(Model model) {
-        model.addAttribute("CouponResult", couponService.selectAll(10, 0));
+        List<TbCoupon> list = couponService.selectAll(10, 0);
+        model.addAttribute("CouponResult", list);
+        model.addAttribute("NowPage", 1);
+        model.addAttribute("TotalPage", (list.size() / 10) + 1);
         return "index-coupon-manage";
     }
 
     @RequestMapping(value = "/index-chart-statistics")
     public String chartStatistics(Model model) {
-        List<TbStaffDuty> list = staffDutyService.selectAll(16, 0);
+        List<TbStaffDuty> list = staffDutyService.selectAllDesc(16, 0);
 //        for (int i=0;i<list.size();i++){
 //            model.addAttribute("DutyResult"+i,list.get(i));
 //        }
@@ -161,6 +178,47 @@ public class StartController {
         return "index-chart-statistics";
     }
 
+    @RequestMapping(value = "/index-app-chart")
+    public String selectAppChart(Model model) {
+        model.addAttribute("PhoneResult", orderService.selectPhoneOrder());
+        model.addAttribute("CashResult", orderService.selectCashOrder());
+        List<TbCoupon> list = couponService.selectAll(10, 0);
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (i < 10) {
+                list1.add(list.get(i).getCouponId());
+                list2.add(list.get(i).getCouponCount());
+            }
+        }
+
+        model.addAttribute("CouponXResult", list1);
+        model.addAttribute("CouponYResult", list2);
+
+        List<TbUser> list3 = userService.selectAll();
+        List<Long> list4 = new ArrayList<>();
+        List<Integer> list5 = new ArrayList<>();
+        Date date = DateUtil.getLastMonthLastDay();
+        for (int i = 0; i < list3.size(); i++) {
+            if (date.getTime() < list3.get(i).getUserRegtime().getTime()) {
+                list4.add(list3.get(i).getUserRegtime().getTime());
+                list5.add(count(list3, list3.get(i).getUserRegtime().getTime()));
+            }
+        }
+        model.addAttribute("UserDateResult", list4);
+        model.addAttribute("UserCountResult", list5);
+        return "index-app-chart";
+    }
+
+    public int count(List<TbUser> list, long date) {
+        int count = 0;
+        for (TbUser tbUser : list) {
+            if (tbUser.getUserRegtime().getTime() < date) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     @Autowired
     public void setStaffTaskService(StaffTaskService staffTaskService) {

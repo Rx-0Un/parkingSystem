@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -20,22 +18,17 @@ public class StaffController {
 
     StaffService staffService;
 
-    /**
-     * 条件查询
-     *
-     * @param model
-     * @param select
-     * @param Keyword
-     * @param checkbox1
-     * @param checkbox2
-     * @param checkbox3
-     * @param checkbox4
-     * @param checkbox5
-     * @param checkbox6
-     * @return
-     */
-    @RequestMapping(value = "/selectStaffByCondition")
-    public String selectStaffByCondition(Model model, String select, @RequestParam(value = "Keyword") String Keyword, String checkbox1, String checkbox2, String checkbox3, String checkbox4, String checkbox5, String checkbox6) {
+
+    @RequestMapping(value = "/selectStaffByCondition",method = RequestMethod.POST)
+    public String selectStaffByCondition(Model model, @RequestBody Map<String,String> map) {
+        String select=map.get("select");
+        String keyword=map.get("keyword");
+        String checkbox1=map.get("check1");
+        String checkbox2=map.get("check2");
+        String checkbox3=map.get("check3");
+        String checkbox4=map.get("check4");
+        String checkbox5=map.get("check5");
+        String checkbox6=map.get("check6");
         String type = new String();
         type += processType(checkbox1);
         type += processType(checkbox2);
@@ -43,19 +36,13 @@ public class StaffController {
         type += processType(checkbox4);
         type += processType(checkbox5);
         type += processType(checkbox6);
-
-//        System.out.println("Keyword:" + Keyword);
-//        System.out.println("select:" + select);
-//        System.out.println("type:" + type);
-
-        List<TbStaff> list = prossType(select, Keyword, type);
+        List<TbStaff> list = prossType(select, keyword, type);
         model.addAttribute("allStaff", list);
-        model.addAttribute("searchInfo", prossSearchInFo(select, Keyword) + list.size() + "条数据");
-        return "index-staff";
+        return "index-staff::result";
     }
 
     public String processType(String string) {
-        if (string == null || string.isEmpty()) {
+        if (string.equals("false")) {
             return "0";
         }
         return "1";

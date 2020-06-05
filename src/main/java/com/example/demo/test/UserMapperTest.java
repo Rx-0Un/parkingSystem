@@ -51,4 +51,15 @@ public class UserMapperTest extends BaseMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void updateRowByUserIdTest() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            TbUserMapper tbUserMapper= sqlSession.getMapper(TbUserMapper.class);
+            int count= tbUserMapper.updateRowByUserId("22","17798567311","男","tony","三里屯","523224616@qq.com");
+            System.out.println(count);
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

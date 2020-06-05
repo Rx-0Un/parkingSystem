@@ -1,7 +1,9 @@
 package com.example.demo.controller.app;
 
+import com.example.demo.bean.app.InfoResult;
 import com.example.demo.bean.app.LoginDate;
 import com.example.demo.bean.app.RegisterDate;
+import com.example.demo.entity.TbUser;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,14 +52,29 @@ public class AppLoginController {
             //注册失败返回0
             registerDate.setRegisterCode(1);
             registerDate.setRegisterDetail("用户已经存在");
-        }
-        else  {
+        } else {
             userService.addUserByInfo(phone, password);
             registerDate.setRegisterCode(0);
             registerDate.setRegisterDetail("成功");
         }
         return registerDate;
     }
+
+    @RequestMapping(value = "/selectRowByUserId")
+    public InfoResult selectRowByUserId(String userId) {
+        return new InfoResult(1, userService.selectRowByUserId(userId));
+    }
+
+    @RequestMapping(value = "/updateRowByUserId")
+    public InfoResult updateRowByUserId(String userId, String phone, String sex, String name, String address, String email) {
+        if (!userService.selectRowByUserId(userId).getUserName().equals(name)) {
+            if (userService.selectCountByName(name) == 1) {
+                return new InfoResult(2);
+            }
+        }
+        return new InfoResult(userService.updateRowByUserId(userId, phone, sex, name, address, email), userService.selectRowByUserId(userId));
+    }
+
 
     @Autowired
     public void setUserService(UserService userService) {

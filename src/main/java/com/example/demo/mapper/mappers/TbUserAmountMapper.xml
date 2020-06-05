@@ -78,6 +78,6 @@
     <update id="updateRowByInfo">
      UPDATE test.tb_user_amount t
      SET t.user_amount_balance =t.user_amount_balance +#{amount}
-     WHERE t.user_amount_id = #{user_id}
+     WHERE t.user_id = #{user_id}
     </update>
 </mapper>

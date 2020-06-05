@@ -144,7 +144,8 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mainPager"
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/mainPager"
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
 
@@ -164,8 +165,6 @@
                                         class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
                                 <li class="sidebar-item"><a href="/index-coupon-manage" class="sidebar-link"><i
                                         class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
-                                <li class="sidebar-item"><a href="1" class="sidebar-link"><i
-                                        class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
                             </ul>
                         </li>
                     </div>
@@ -230,7 +229,7 @@
                             <label>数量</label>
                             <select class="select2 form-control custom-select select2-hidden-accessible"
                                     style="width: 100%; height:33px;" data-select2-id="1"
-                                    tabindex="-1" aria-hidden="true">
+                                    tabindex="-1" aria-hidden="true" id="pageNum">
                                 <option value="10">10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
@@ -241,17 +240,19 @@
                             <label>订单类型</label>
                             <select class="select2 form-control custom-select select2-hidden-accessible"
                                     style="width: 100%; height:33px;" data-select2-id="1"
-                                    tabindex="-1" aria-hidden="true">
+                                    tabindex="-1" aria-hidden="true" id="orderPurchaseType">
+                                <option>全体</option>
                                 <option>停车支付</option>
                                 <option>固定车位</option>
-                                <option>购买金额</option>
+                                <option>余额购买</option>
                             </select>
                         </div>
                         <div class="col-md-1">
                             <label>订单类型</label>
                             <select class="select2 form-control custom-select select2-hidden-accessible"
                                     style="width: 100%; height:33px;" data-select2-id="1"
-                                    tabindex="-1" aria-hidden="true">
+                                    tabindex="-1" aria-hidden="true" id="OrderPayType">
+                                <option>全体</option>
                                 <option>现金</option>
                                 <option>手机支付</option>
                                 <option>app余额</option>
@@ -261,25 +262,26 @@
                             <label>订单状态</label>
                             <select class="select2 form-control custom-select select2-hidden-accessible"
                                     style="width: 100%; height:33px;" data-select2-id="1"
-                                    tabindex="-1" aria-hidden="true">
+                                    tabindex="-1" aria-hidden="true" id="orderState">
+                                <option>全体</option>
                                 <option>已完成</option>
                                 <option>未完成</option>
                             </select>
                         </div>
                         <div class="col-md-1">
-                            <label><font color="white">关键字</font></label>
+                            <label>关键字</label>
                             <select class="select2 form-control custom-select select2-hidden-accessible"
                                     style="width: 100%; height:33px;" data-select2-id="1"
-                                    tabindex="-1" aria-hidden="true">
+                                    tabindex="-1" aria-hidden="true" id="keyword_title">
                                 <option>全体</option>
                                 <option>支付人</option>
                                 <option>职员</option>
                             </select>
                         </div>
                         <div class="col-md-1">
-                            <label>关键字</label>
+                            <label><font color="white">关键字</font></label>
                             <input class="form-control" name="Keyword" placeholder="" value=""
-                                   type="text">
+                                   type="text" id="keyword">
                         </div>
                     </div>
                 </div>
@@ -307,12 +309,13 @@
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1"
-                                            aria-label="Office: activate to sort column ascending">支付人
+                                            aria-label="Age: activate to sort column ascending">操作职员
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1"
-                                            aria-label="Age: activate to sort column ascending">操作职员
+                                            aria-label="Office: activate to sort column ascending">支付人
                                         </th>
+
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1"
                                             aria-label="Start date: activate to sort column ascending">订单状态
@@ -338,57 +341,107 @@
                             </div>
                             <div class="card-body border-top">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="dataTables_info" id="zero_config_info" role="status"
-                                             aria-live="polite">
-                                            Showing 1 to 57 of 57 entries
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="dataTables_paginate paging_simple_numbers"
-                                             id="zero_config_paginate">
-                                            <ul class="pagination">
-
-                                                <li class="paginate_button page-item previous"><a
+                                    <div class="col-sm-12 col-md-12">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage-1 >=1}"
+                                            ><a
+                                                    aria-controls="zero_config"
+                                                    data-dt-idx="0"
+                                                    tabindex="0"
+                                                    class="page-link"
+                                                    th:onclick="|javascript : selectPage( [[${NowPage-1}]] )|"
+                                            >上一页</a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a
                                                         aria-controls="zero_config"
-                                                        data-dt-idx="0" tabindex="0"
+                                                        data-dt-idx="0"
+                                                        tabindex="0"
                                                         class="page-link"
-                                                        onclick="javascript : selectPage( '1' )">首页</a>
-                                                </li>
-
-
-                                                <li class="paginate_button page-item active">
-                                                    <a aria-controls="zero_config" data-dt-idx="1" tabindex="0"
-                                                       class="page-link"
-                                                       onclick="javascript : selectPage( [[1]] )">1</a>
-                                                </li>
-                                                <li class="paginate_button page-item">
-                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                       class="page-link"
-                                                       onclick="javascript : selectPage( [[2]] )">2</a>
-                                                </li>
-                                                <li class="paginate_button page-item">
-                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                       class="page-link"
-                                                       onclick="javascript : selectPage( [[3]] )">3</a>
-                                                </li>
-                                                <li class="paginate_button page-item">
-                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                       class="page-link"
-                                                       onclick="javascript : selectPage( [[4]] )">4</a>
-                                                </li>
-                                                <li class="paginate_button page-item next">
-                                                    <a aria-controls="zero_config" data-dt-idx="2" tabindex="0"
-                                                       class="page-link" onclick="javascript : selectPage([[12]])">尾页
-                                                    </a>
-                                                </li>
-                                                <li class="paginate_button page-item next" id="zero_config_next"><a
-                                                        aria-controls="zero_config" data-dt-idx="2" tabindex="0"
+                                                        th:onclick="|javascript : selectPage( '1' )|"
+                                                >首页</a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage-3>=1}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage-3}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage-3}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage-2>=1}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage-2}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage-2}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage-1>=1}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage-1}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage-1}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item active">
+                                                <a aria-controls="zero_config" data-dt-idx="1"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage+1 <=TotalPage}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage+1}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage+1}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage+2 <=TotalPage}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage+2}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage+2}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage+3 <=TotalPage}">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:text="${NowPage+3}"
+                                                   th:onclick="|javascript : selectPage( [[${NowPage+3}]] )|"
+                                                >
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item">
+                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                   tabindex="0" class="page-link"
+                                                   th:onclick="|javascript : selectPage( [[${TotalPage}]] )|"
+                                                >尾页
+                                                </a>
+                                            </li>
+                                            <li class="paginate_button page-item"
+                                                th:if="${NowPage<TotalPage&&TotalPage!=1}">
+                                                <a
+                                                        aria-controls="zero_config"
+                                                        data-dt-idx="2"
+                                                        tabindex="0"
                                                         class="page-link"
-                                                        onclick="javascript : selectPage( [[2]] )">下一页</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                        th:onclick="|javascript : selectPage( [[${NowPage+1}]] )|"
+                                                >下一页</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -428,6 +481,195 @@
 <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="assets/libs/chart/turning-series.js"></script>
 <script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script language="JavaScript" type="text/javascript">
+    $("#pageNum").bind("input propertychange", function (event) {
+        const pageNum           = $('#pageNum').val()
+        const orderPurchaseType = $('#orderPurchaseType').val()
+        const OrderPayType      = $('#OrderPayType').val()
+        const orderState        = $('#orderState').val()
+        const keyword_title     = $('#keyword_title').val()
+        const keyword           = $('#keyword').val()
+        const Data = {
+            "orderPurchaseType": orderPurchaseType,
+            "OrderPayType": OrderPayType,
+            "orderState": orderState,
+            "keyword_title": keyword_title,
+            "keyword": keyword,
+            "pageNum": pageNum,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-order-search/selectOrderByStr",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".OrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#orderPurchaseType").bind("input propertychange", function (event) {
+        const pageNum           = $('#pageNum').val()
+        const orderPurchaseType = $('#orderPurchaseType').val()
+        const OrderPayType      = $('#OrderPayType').val()
+        const orderState        = $('#orderState').val()
+        const keyword_title     = $('#keyword_title').val()
+        const keyword           = $('#keyword').val()
+        const Data = {
+            "orderPurchaseType": orderPurchaseType,
+            "OrderPayType": OrderPayType,
+            "orderState": orderState,
+            "keyword_title": keyword_title,
+            "keyword": keyword,
+            "pageNum": pageNum,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-order-search/selectOrderByStr",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".OrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#OrderPayType ").bind("input propertychange", function (event) {
+        const pageNum           = $('#pageNum').val()
+        const orderPurchaseType = $('#orderPurchaseType').val()
+        const OrderPayType      = $('#OrderPayType').val()
+        const orderState        = $('#orderState').val()
+        const keyword_title     = $('#keyword_title').val()
+        const keyword           = $('#keyword').val()
+        const Data = {
+            "orderPurchaseType": orderPurchaseType,
+            "OrderPayType": OrderPayType,
+            "orderState": orderState,
+            "keyword_title": keyword_title,
+            "keyword": keyword,
+            "pageNum": pageNum,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-order-search/selectOrderByStr",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".OrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#orderState ").bind("input propertychange", function (event) {
+        const pageNum           = $('#pageNum').val()
+        const orderPurchaseType = $('#orderPurchaseType').val()
+        const OrderPayType      = $('#OrderPayType').val()
+        const orderState        = $('#orderState').val()
+        const keyword_title     = $('#keyword_title').val()
+        const keyword           = $('#keyword').val()
+        const Data = {
+            "orderPurchaseType": orderPurchaseType,
+            "OrderPayType": OrderPayType,
+            "orderState": orderState,
+            "keyword_title": keyword_title,
+            "keyword": keyword,
+            "pageNum": pageNum,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-order-search/selectOrderByStr",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".OrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#keyword").bind("input propertychange", function (event) {
+        const pageNum           = $('#pageNum').val()
+        const orderPurchaseType = $('#orderPurchaseType').val()
+        const OrderPayType      = $('#OrderPayType').val()
+        const orderState        = $('#orderState').val()
+        const keyword_title     = $('#keyword_title').val()
+        const keyword           = $('#keyword').val()
+        const Data = {
+            "orderPurchaseType": orderPurchaseType,
+            "OrderPayType": OrderPayType,
+            "orderState": orderState,
+            "keyword_title": keyword_title,
+            "keyword": keyword,
+            "pageNum": pageNum,
+            "page": 1,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-order-search/selectOrderByStr",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".OrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    function selectPage(page) {
+        page = Number(page)
+        const pageNum           = $('#pageNum').val()
+        const orderPurchaseType = $('#orderPurchaseType').val()
+        const OrderPayType      = $('#OrderPayType').val()
+        const orderState        = $('#orderState').val()
+        const keyword_title     = $('#keyword_title').val()
+        const keyword           = $('#keyword').val()
+        const Data = {
+            "orderPurchaseType": orderPurchaseType,
+            "OrderPayType": OrderPayType,
+            "orderState": orderState,
+            "keyword_title": keyword_title,
+            "keyword": keyword,
+            "pageNum": pageNum,
+            "page": page,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-order-search/selectOrderByStr",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".OrderResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
+</script>
 </body>
 </body>
 </html>

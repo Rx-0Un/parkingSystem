@@ -1,7 +1,7 @@
 <!-- HTML -->
-<div id="example-section17">
-    <div id="legendPlaceholder"></div>
-    <div id="flotcontainer" style="width: 600px;height:400px; text-align: left;"></div>
+<div id="example-section3">
+    <div id="flotcontainer" style="width: 600px;height:200px; text-align: center; margin:0 auto;">
+    </div>
 </div>
 
 
@@ -9,28 +9,21 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://www.pureexample.com/js/flot/excanvas.min.js"></script>
 <script src="http://www.pureexample.com/js/flot/jquery.flot.min.js"></script>
-<script src="http://www.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        var data = [
-            {label: "data1", data:10},
-            {label: "data2", data: 20},
-            {label: "data3", data: 30},
-            {label: "data4", data: 40},
-            {label: "data5", data: 50},
-            {label: "data6", data: 60},
-            {label: "data7", data: 70}
-        ];
+    var data1 = [
+        [10, 10], [20, 15], [30, 22], [40, 18], [50, 50], [60, 10],
+        [70, 10], [80, 15], [90, 22], [100, 18], [110, 50], [120, 10],
+        [130, 10], [140, 15], [150, 22], [160, 18], [170, 50], [180, 10],
+        [190, 10], [200, 15], [210, 22], [220, 18], [230, 50], [240, 10]
+    ];
 
-        var options = {
-            series: {
-                pie: {show: true}
-            },
-            legend: {
-                show: false
+    $(document).ready(function(){
+        $.plot($("#example-section3 #flotcontainer"), [
+            {
+                data: data1,
+                lines: { show: true}
             }
-        };
+        ]);
 
-        $.plot($("#example-section17 #flotcontainer"), data, options);
     });
 </script>

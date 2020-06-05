@@ -21,7 +21,7 @@ public class ParkingSpaceMapperTest extends BaseMapperTest{
         try {
             TbParkingSpaceMapper tbParkingSpaceMapper = sqlSession.getMapper(TbParkingSpaceMapper.class);
 //            Date date =DateUtil.process("2020-04-16 17:53:07");
-            List<TbParkingSpace> list = tbParkingSpaceMapper.selectAllByFurryStr("车辆位置","1","2020-5-13",0,0);
+            List<TbParkingSpace> list = tbParkingSpaceMapper.selectAllByFurryStr("全体","4","",0,0);
             for (int i = 0; i < list.size(); i++) {
                 System.out.println(list.get(i).toString());
             }

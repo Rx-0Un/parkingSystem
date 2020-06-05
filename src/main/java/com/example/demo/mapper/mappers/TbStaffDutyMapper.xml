@@ -107,4 +107,12 @@
         from tb_staff_duty
         where staff_duty_id=#{staffDutyId}
     </select>
+    <select id="selectAllDesc" resultMap="BaseResultMap">
+        select *
+        from tb_staff_duty
+        group by staff_task_id desc
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
 </mapper>

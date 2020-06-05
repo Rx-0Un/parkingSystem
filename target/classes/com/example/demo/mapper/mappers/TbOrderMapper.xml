@@ -123,5 +123,44 @@
         from tb_order,tb_user
         where tb_order.order_receiver = tb_user.user_name
         and user_id=#{userId}
+        and order_state='已经完成'
+    </select>
+    <select id="selectOrderByStr" resultMap="BaseResultMap">
+        select *
+        from tb_order
+        where true
+        <if test="orderPurchaseType!='全体'">
+            and order_purchase_type=#{orderPurchaseType}
+        </if>
+        <if test="orderPayType!='全体'">
+            and order_pay_type=#{orderPayType}
+        </if>
+        <if test="orderState!='全体'">
+            and order_state=#{orderState}
+        </if>
+        <if test="keyword_title=='全体'">
+            and (order_receiver like CONCAT('%', #{keyword}, '%')
+            or order_payer like CONCAT('%', #{keyword}, '%')
+            )
+        </if>
+        <if test="keyword_title=='支付人'">
+            and order_receiver like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="keyword_title=='员工'">
+            and order_payer like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
+    <select id="selectCashOrder" resultType="java.lang.Integer">
+        select COUNT(*)
+        from tb_order
+        where order_pay_type='现金';
+    </select>
+    <select id="selectPhoneOrder" resultType="java.lang.Integer">
+        select COUNT(*)
+        from tb_order
+        where order_pay_type='手机支付';
     </select>
 </mapper>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("UserService")
@@ -28,6 +29,10 @@ public class UserService {
         return tbUserMapper.addUserByInfo(phone, password);
     }
 
+    public TbUser selectRowByUserId(String userId) {
+        return tbUserMapper.selectRowByUserId(userId);
+    }
+
     public List<TbUser> selectUser(String select, String Keyword) {
         switch (select) {
             case "全体":
@@ -40,6 +45,18 @@ public class UserService {
                 return tbUserMapper.selectAllByName(Keyword);
         }
         return null;
+    }
+
+    public Integer updateRowByUserId(String userId, String phone, String sex, String name, String address, String email) {
+        return tbUserMapper.updateRowByUserId(userId, phone, sex, name, address, email);
+    }
+
+    public int selectCountByName(String name) {
+        return tbUserMapper.selectCountByName(name);
+    }
+
+    public Integer selectCountByDate(String date) {
+        return tbUserMapper.selectCountByDate(date);
     }
 
     @Autowired

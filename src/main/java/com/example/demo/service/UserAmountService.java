@@ -13,8 +13,8 @@ public class UserAmountService {
     TbUserAmountMapper tbUserAmountMapper;
     TbUserMapper tbUserMapper;
 
-    public int addRowByInfo(String user_id, int amount) {
-        if (tbUserMapper.selectRowById(user_id) == 1) {
+    public int addRowByInfo(String user_id, float amount) {
+        if (tbUserMapper.selectRowById(user_id) != 1) {
             return 0;
         }
         if (tbUserAmountMapper.selectRowById(user_id) == 1) {
@@ -22,15 +22,15 @@ public class UserAmountService {
         } else {
             tbUserAmountMapper.addRowByInfo(user_id, amount);
         }
-        return 0;
+        return 1;
     }
 
     public List<TbUser> selectRowByPhone(String phone) {
         return tbUserMapper.selectRowByPhone(phone);
     }
 
-    public float selectAmountByInfo(String user_id) {
-        return tbUserAmountMapper.selectMoneyByInfo(user_id);
+    public Float selectAmountByInfo(String user_id) {
+        return tbUserAmountMapper.selectMoneyByInfo(user_id)==null?0:tbUserAmountMapper.selectMoneyByInfo(user_id);
     }
 
     public float updateMoneyByCharge(String user_id) {

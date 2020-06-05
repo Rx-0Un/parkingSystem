@@ -15,6 +15,7 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\ap
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbParkingSpaceMapper.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbRuleCommonBasic.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\controller\DataManageController.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\CouponMapperTest.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\app\ParkingSpaceData.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\DemoApplication.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\ChartBean.java
@@ -35,8 +36,10 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\control
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\BasicCharge.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\StaffTaskMapperTest.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\util\DateUtil.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\app\CarResult.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\UserAmountService.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\RulePersonService.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\ParkingInfoResult.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\RuleCustomService.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\StaffDutyService.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbOrderMapper.java
@@ -45,6 +48,7 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\RulePersonMapperTest.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\StaffMapperTest.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbMonthlyCard.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\app\CarData.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\CustomCharge.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\ParkingLotMapperTest.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbMonthlyCardMapper.java
@@ -53,6 +57,7 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\PersonCharge.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\app\OrderData.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbUserAmountMapper.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\controller\OrderController.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbStaff.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\StaffDutyMapperTest.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\controller\app\AppCouponController.java
@@ -72,6 +77,7 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\CouponService.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbRuleFixedParkingMapper.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\test\RuleCustomInterimMapperTest.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\app\InfoResult.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbOrder.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbUserAmount.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\ParkingLotSettingService.java
@@ -90,6 +96,7 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\control
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\bean\app\RegisterDate.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbParkingLot.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\BaseService.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\controller\app\AppCarController.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbRuleCustomInterimMapper.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\util\RuleUtil.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\OrderService.java
@@ -110,6 +117,7 @@ C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\service\ParkingSpaceService.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbCar.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\TbCarUserMapper.java
+C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\controller\app\AppParkingInfoController.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\rule\CustomRule.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\rule\PersonRule.java
 C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\entity\TbUserCoupon.java

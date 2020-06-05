@@ -203,7 +203,7 @@
     <select id="select24hourDate" resultType="java.lang.Integer">
         SELECT count(*)
         FROM tb_parking_record
-        where date_sub(now(), interval #{number} hour) >enter_time
+        where date_sub(#{date}, interval #{number} hour) >enter_time
         and exit_time is null
     </select>
     <select id="selectRowByCarNum" resultMap="BaseResultMap">
@@ -245,5 +245,36 @@
         select COUNT(*)
         from tb_parking_record
         where exit_time > #{date};
+    </select>
+    <select id="selectAllByInfo" resultMap="BaseResultMap">
+        select *
+        from tb_order,
+        tb_parking_record,
+        tb_car
+        where tb_order.order_id = tb_parking_record.order_id
+        and car_plate_num = car_plate_number
+        and tb_parking_record.exit_time>=#{starting_date}
+        <if test="search_car_plate_type!='全体'">
+            and tb_car.car_type=#{search_car_plate_type}
+        </if>
+        <if test="search_car_type!='全体'">
+            and tb_car.car_type_model=#{search_car_type}
+        </if>
+        <if test="search_pay_type!='全体'">
+            and order_pay_type=#{search_pay_type}
+        </if>
+        <if test="search_Keyword_title=='全体'">
+            and( car_plate_num like CONCAT('%', #{search_Keyword}, '%')
+            or order_amount like CONCAT('%', #{search_Keyword}, '%'))
+        </if>
+        <if test="search_Keyword_title=='车牌号'">
+            and car_plate_num like CONCAT('%', #{search_Keyword}, '%')
+        </if>
+        <if test="search_Keyword_title=='金额'">
+            and order_amount like CONCAT('%', #{search_Keyword}, '%')
+        </if>
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
     </select>
 </mapper>

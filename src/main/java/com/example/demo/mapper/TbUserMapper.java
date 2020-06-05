@@ -44,4 +44,12 @@ public interface TbUserMapper {
     int selectRowById(@Param("userId") String userId);
 
     List<TbUser> selectRowByPhone(@Param("phone") String phone);
+
+    TbUser selectRowByUserId(@Param("userId") String userId);
+
+    Integer updateRowByUserId(@Param("userId") String userId, @Param("phone") String phone, @Param("sex") String sex, @Param("name") String name, @Param("address") String address, @Param("email") String email);
+
+    Integer selectCountByName(String name);
+
+    Integer selectCountByDate(String date);
 }

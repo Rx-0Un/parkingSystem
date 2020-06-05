@@ -11,10 +11,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Matrix Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
-    <link href="assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet"/>
-    <link href="assets/extra-libs/calendar/calendar.css" rel="stylesheet"/>
-    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet"/>
+    <link href="/assets/extra-libs/calendar/calendar.css" rel="stylesheet"/>
+    <link href="/assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="preloader">
@@ -31,10 +31,10 @@
                         class="ti-menu ti-close"></i></a>
                 <a class="navbar-brand" href="index.html">
                     <b class="logo-icon p-l-10">
-                        <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo"/>
+                        <img src="/assets/images/logo-icon.png" alt="homepage" class="light-logo"/>
                     </b>
                     <span class="logo-text">
-                            <img src="assets/images/logo-text.png" alt="homepage" class="light-logo"/>
+                            <img src="/assets/images/logo-text.png" alt="homepage" class="light-logo"/>
                         </span>
                 </a>
                 <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
@@ -115,7 +115,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href=""
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                                src="/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated">
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
                                 Profile</a>
@@ -143,7 +143,8 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mainPager"
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/mainPager"
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
 
@@ -163,8 +164,6 @@
                                         class="mdi mdi-note-plus"></i><span class="hide-menu">订单查询 </span></a></li>
                                 <li class="sidebar-item"><a href="/index-coupon-manage" class="sidebar-link"><i
                                         class="mdi mdi-note-plus"></i><span class="hide-menu">优惠券管理 </span></a></li>
-                                <li class="sidebar-item"><a href="1" class="sidebar-link"><i
-                                        class="mdi mdi-note-plus"></i><span class="hide-menu">业务报表</span></a></li>
                             </ul>
                         </li>
                     </div>
@@ -466,7 +465,7 @@
                                                 </div>
                                                 <div class="col-md-1">
                                                     <label><font color="white">添加</font></label>
-                                                    <button type="button" class="btn btn-info btn-md" id="add">添加
+                                                    <button type="button" class="btn btn-info btn-md" id="addCar">添加
                                                     </button>
                                                 </div>
                                             </div>
@@ -474,20 +473,20 @@
                                         <div class="card-body border-top">
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
-                                                    <label>车牌类型</label>
+                                                    <label>展示数量</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true" 　id="search_plate_type">
-                                                        <option>全体</option>
-                                                        <option>固定车</option>
-                                                        <option>临时车</option>
+                                                            style="width: 100%; height:33px;"
+                                                            tabindex="-1" aria-hidden="true" id="search_pageNum">
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>车辆类型</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true" id="search_car_type">
+                                                            style="width: 100%; height:33px;"  id="search_car_type">
                                                         <option>全体</option>
                                                         <option>小车</option>
                                                         <option>大型车</option>
@@ -496,17 +495,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>关键字</label>
-                                                    <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true" 　id="search_user_keyword">
-                                                        <option>京</option>
-                                                        <option>津</option>
-                                                        <option>渝</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label><font color="white">关键字</font></label>
+                                                    <label>车牌号码</label>
                                                     <input class="form-control" placeholder=""
                                                            value=""
                                                            type="text" id="search_keyword">
@@ -547,7 +536,112 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-
+                                            <div class="card-body border-top">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <ul class="pagination">
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage-1 >=1}"
+                                                            ><a
+                                                                    aria-controls="zero_config"
+                                                                    data-dt-idx="0"
+                                                                    tabindex="0"
+                                                                    class="page-link"
+                                                                    th:onclick="|javascript : selectCarPage( [[${CarNowPage-1}]] )|"
+                                                            >上一页</a>
+                                                            </li>
+                                                            <li class="paginate_button page-item">
+                                                                <a
+                                                                        aria-controls="zero_config"
+                                                                        data-dt-idx="0"
+                                                                        tabindex="0"
+                                                                        class="page-link"
+                                                                        th:onclick="|javascript : selectCarPage( '1' )|"
+                                                                >首页</a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage-3>=1}">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage-3}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage-3}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage-2>=1}">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage-2}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage-2}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage-1>=1}">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage-1}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage-1}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item active">
+                                                                <a aria-controls="zero_config" data-dt-idx="1"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage+1 <=CarTotalPage}">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage+1}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage+1}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage+2 <=CarTotalPage}">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage+2}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage+2}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage+3 <=CarTotalPage}">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:text="${CarNowPage+3}"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarNowPage+3}]] )|"
+                                                                >
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item">
+                                                                <a aria-controls="zero_config" data-dt-idx="2"
+                                                                   tabindex="0" class="page-link"
+                                                                   th:onclick="|javascript : selectCarPage( [[${CarTotalPage}]] )|"
+                                                                >尾页
+                                                                </a>
+                                                            </li>
+                                                            <li class="paginate_button page-item"
+                                                                th:if="${CarNowPage<CarTotalPage&&CarTotalPage!=1}">
+                                                                <a
+                                                                        aria-controls="zero_config"
+                                                                        data-dt-idx="2"
+                                                                        tabindex="0"
+                                                                        class="page-link"
+                                                                        th:onclick="|javascript : selectCarPage( [[${CarNowPage+1}]] )|"
+                                                                >下一页</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -561,7 +655,7 @@
                                                     <label>展示数量</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
                                                             style="width: 100%; height:33px;" data-select2-id="1"
-                                                            tabindex="-1" aria-hidden="true" id="interim_search_number">
+                                                            tabindex="-1" aria-hidden="true" id="user_search_number">
                                                         <option value="10">10</option>
                                                         <option value="25">25</option>
                                                         <option value="50">50</option>
@@ -726,7 +820,7 @@
                                                         <label>关键字<select name="zero_config_length"
                                                                           aria-controls="zero_config"
                                                                           class="form-control form-control-sm"
-                                                                          id="parking_space_key_title">
+                                                                          id="parking_space_key_word_title">
                                                             <option value="全体">全体</option>
                                                             <option value="车位编号">车位编号</option>
                                                             <option value="车辆位置">车辆位置</option>
@@ -952,34 +1046,33 @@
 </footer>
 </div>
 </div>
-<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="dist/js/jquery.ui.touch-punch-improved.js"></script>
-<script src="dist/js/jquery-ui.min.js"></script>
-<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="assets/extra-libs/sparkline/sparkline.js"></script>
-<script src="dist/js/waves.js"></script>
-<script src="dist/js/sidebarmenu.js"></script>
-<script src="dist/js/custom.min.js"></script>
-<script src="assets/libs/moment/min/moment.min.js"></script>
-<script src="assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="dist/js/pages/calendar/cal-init.js"></script>
-<script src="assets/libs/chart/matrix.interface.js"></script>
-<script src="assets/libs/chart/excanvas.min.js"></script>
-<script src="assets/libs/flot/jquery.flot.js"></script>
-<script src="assets/libs/flot/jquery.flot.pie.js"></script>
-<script src="assets/libs/flot/jquery.flot.time.js"></script>
-<script src="assets/libs/flot/jquery.flot.stack.js"></script>
-<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
-<script src="assets/libs/chart/jquery.peity.min.js"></script>
-<script src="assets/libs/chart/matrix.charts.js"></script>
-<script src="assets/libs/chart/jquery.flot.pie.min.js"></script>
-<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<script src="assets/libs/chart/turning-series.js"></script>
-<script src="dist/js/pages/chart/chart-page-init.js"></script>
-<script src="assets/libs/chart/matrix.charts.js"></script>
-<script src="assets/libs/chart/jquery.peity.min.js"></script>
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/dist/js/jquery.ui.touch-punch-improved.js"></script>
+<script src="/dist/js/jquery-ui.min.js"></script>
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="/dist/js/waves.js"></script>
+<script src="/dist/js/sidebarmenu.js"></script>
+<script src="/dist/js/custom.min.js"></script>
+<script src="/assets/libs/moment/min/moment.min.js"></script>
+<script src="/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="/dist/js/pages/calendar/cal-init.js"></script>
+<script src="/assets/libs/chart/matrix.interface.js"></script>
+<script src="/assets/libs/chart/excanvas.min.js"></script>
+<script src="/assets/libs/flot/jquery.flot.js"></script>
+<script src="/assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="/assets/libs/flot/jquery.flot.time.js"></script>
+<script src="/assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="/assets/libs/chart/jquery.peity.min.js"></script>
+<script src="/assets/libs/chart/jquery.flot.pie.min.js"></script>
+<script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="/assets/libs/chart/turning-series.js"></script>
+<script src="/dist/js/pages/chart/chart-page-init.js"></script>
+<script src="/assets/libs/chart/matrix.charts.js"></script>
+<script src="/assets/libs/chart/jquery.peity.min.js"></script>
 <script language="JavaScript">
     //添加固定车辆
     $('#addCar').bind('click', function () {
@@ -1198,7 +1291,7 @@
             data: JSON.stringify(Data),
             dataType: "text",
             success: function (data) {
-                $(".SpaceNumberResult").html(data);
+                $(".ParkingSpaceResult").html(data);
             },
             error: function (date) {
                 alert("失败")
@@ -1226,13 +1319,201 @@
             data: JSON.stringify(Data),
             dataType: "text",
             success: function (data) {
-                $(".SpaceNumberResult").html(data);
+                $(".ParkingSpaceResult").html(data);
             },
             error: function (date) {
                 alert("失败")
             }
         })
     });
+    $("#parking_space_searchDate").bind("input propertychange", function (event) {
+        const parking_space_searchNum = $('#parking_space_searchNum').val()
+        const parking_space_searchDate = $('#parking_space_searchDate').val()
+        const parking_space_key_word = $('#parking_space_key_word').val()
+        const parking_space_key_word_title = $('#parking_space_key_word_title').val()
+        const Data = {
+            "parking_space_searchNum": parking_space_searchNum,
+            "parking_space_searchDate": parking_space_searchDate,
+            "parking_space_key_word": parking_space_key_word,
+            "parking_space_key_word_title": parking_space_key_word_title,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectParkingSpacePage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".ParkingSpaceResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+
+    $("#parking_space_key_word").bind("input propertychange", function (event) {
+        const parking_space_searchNum = $('#parking_space_searchNum').val()
+        const parking_space_searchDate = $('#parking_space_searchDate').val()
+        const parking_space_key_word = $('#parking_space_key_word').val()
+        const parking_space_key_word_title = $('#parking_space_key_word_title').val()
+        const Data = {
+            "parking_space_searchNum": parking_space_searchNum,
+            "parking_space_searchDate": parking_space_searchDate,
+            "parking_space_key_word": parking_space_key_word,
+            "parking_space_key_word_title": parking_space_key_word_title,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectParkingSpacePage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".ParkingSpaceResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    // $("#user_search_number").bind("input propertychange", function (event) {
+    //     const pageNum = $('#search_pageNum').val()
+    //     const search_keyword = $('#search_keyword').val()
+    //     const search_car_number_title = $('#search_car_number_title').val()
+    //     const search_car_type = $('#search_car_type').val()
+    //     const search = $('#search').val()
+    //     const Data = {
+    //         "pageNum": pageNum,
+    //         "search_keyword": search_keyword,
+    //         "searchTitle": search_car_number_title,
+    //         "search_car_type": search_car_type,
+    //         "searchNum": search,
+    //         "pageNum": pageNum,
+    //         "page": 1,
+    //         "random": new Date()
+    //     }
+    //     $.ajax({
+    //         type: "post",
+    //         url: "/index-data-manage/selectCarPage",
+    //         contentType: 'application/json;charset=utf-8',
+    //         data: JSON.stringify(Data),
+    //         dataType: "text",
+    //         success: function (data) {
+    //             $(".CarResult").html(data);
+    //         },
+    //         error: function (date) {
+    //             alert("失败")
+    //         }
+    //     })
+    // });
+</script>
+<script type="text/javascript">
+    $("#search_pageNum").bind("input propertychange", function (event) {
+        const pageNum = $('#search_pageNum').val()
+        const search_keyword = $('#search_keyword').val()
+        const search_car_type = $('#search_car_type').val()
+        const Data = {
+            "search_keyword": search_keyword,
+            "search_car_type": search_car_type,
+            "pageNum": pageNum,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectCarPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CarResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#search_keyword").bind("input propertychange", function (event) {
+        const pageNum = $('#search_pageNum').val()
+        const search_keyword = $('#search_keyword').val()
+        const search_car_type = $('#search_car_type').val()
+        const Data = {
+            "search_keyword": search_keyword,
+            "search_car_type": search_car_type,
+            "pageNum": pageNum,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectCarPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CarResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#search_car_type").bind("input propertychange", function (event) {
+        const pageNum = $('#search_pageNum').val()
+        const search_keyword = $('#search_keyword').val()
+        const search_car_type = $('#search_car_type').val()
+        const Data = {
+            "search_keyword": search_keyword,
+            "search_car_type": search_car_type,
+            "pageNum": pageNum,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectCarPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CarResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    function selectCarPage(page) {
+        page = Number(page)
+        const pageNum = $('#search_pageNum').val()
+        const search_keyword = $('#search_keyword').val()
+        const search_car_type = $('#search_car_type').val()
+        const Data = {
+            "search_keyword": search_keyword,
+            "search_car_type": search_car_type,
+            "pageNum": pageNum,
+            "page": page,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectCarPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".CarResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
 </script>
 </body>
 </body>

@@ -33,6 +33,12 @@ public interface TbCarMapper {
 
     int selectCarByCarPlate(String car_plate_number);
 
+    /**
+     * 查找用户没有固定车位的车辆
+     *
+     * @param userId
+     * @return
+     */
     List<TbCar> selectCarByUserId(String userId);
 
     int updateCarType(String carPlateNumber);
@@ -40,4 +46,16 @@ public interface TbCarMapper {
     List<TbCar> selectAllFixedCar();
 
     TbCar selectRowByCarNum(String carNum);
+
+    /**
+     * 查找用户的所有车辆
+     *
+     * @return
+     */
+    List<TbCar> selectAllCarByUserId(String userId);
+
+
+    int deleteCarByCarId(String carId);
+
+    List<TbCar> selectCarByStr(String search_keyword, String search_car_type, int pageNum, int page);
 }
