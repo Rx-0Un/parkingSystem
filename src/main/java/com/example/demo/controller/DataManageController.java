@@ -19,6 +19,7 @@ import java.util.Map;
 public class DataManageController {
     CarService carService;
     UserService userService;
+    ParkingRecordService parkingRecordService;
     ParkingLotSettingService parkingLotSettingService;
     ParkingSpaceService parkingSpaceService;
     RuleFixedParkingService ruleFixedParkingService;
@@ -132,6 +133,20 @@ public class DataManageController {
         return "index-data-manage::ParkingSpaceResult";
     }
 
+    @RequestMapping(value = "/selectRecordPage")
+    public String selectRecordPage(Model model, @RequestBody Map<String, String> map) {
+        String record_search__starting_time = map.get("record_search__starting_time");
+        String record_search__ending_time = map.get("record_search__ending_time");
+        String record_search_keyword_title = map.get("record_search_keyword_title");
+        String record_search__keyword = map.get("record_search__keyword");
+        Integer page = Integer.valueOf(map.get("page"));
+        Integer record_search_pageNum = Integer.valueOf(map.get("record_search_pageNum"));
+        model.addAttribute("RecordResult", parkingRecordService.selectAllByStr(record_search__starting_time, record_search__ending_time, record_search_keyword_title,record_search__keyword, record_search_pageNum, page));
+        model.addAttribute("RecordNowPage", page);
+        model.addAttribute("RecordTotalPage", (parkingRecordService.selectAllByStr(record_search__starting_time, record_search__ending_time, record_search_keyword_title,record_search__keyword, record_search_pageNum, page).size() / 10) + record_search_pageNum);
+        return "index-data-manage::RecordResult";
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -160,5 +175,10 @@ public class DataManageController {
     @Autowired
     public void setOrderService(OrderService orderService) {
         this.orderService = orderService;
+    }
+
+    @Autowired
+    public void setParkingRecordService(ParkingRecordService parkingRecordService) {
+        this.parkingRecordService = parkingRecordService;
     }
 }

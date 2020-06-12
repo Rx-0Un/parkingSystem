@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 此controller用于完成界面跳转
@@ -151,6 +153,10 @@ public class StartController {
         List list = parkingSpaceService.selectAll(0, 0);
         model.addAttribute("ParkingSpaceTotalPage", list.size() / 10);
         model.addAttribute("ParkingSpaceNowPage", 1);
+
+        model.addAttribute("RecordResult",parkingRecordService.selectAll(10,0));
+        model.addAttribute("RecordNowPage",1);
+        model.addAttribute("RecordTotalPage",(parkingRecordService.selectAll(0,0).size()/10)+1);
         return "index-data-manage";
     }
 
@@ -171,11 +177,20 @@ public class StartController {
     @RequestMapping(value = "/index-chart-statistics")
     public String chartStatistics(Model model) {
         List<TbStaffDuty> list = staffDutyService.selectAllDesc(16, 0);
-//        for (int i=0;i<list.size();i++){
-//            model.addAttribute("DutyResult"+i,list.get(i));
-//        }
+        model.addAttribute("NowPage", 1);
+        model.addAttribute("TotalPage", (staffDutyService.selectAllDesc(16, 0).size() / 16) + 1);
         model.addAttribute("DutyResult", list);
         return "index-chart-statistics";
+    }
+
+    @RequestMapping(value = "/index-chart-statistics/selectChartStatisticsPage")
+    public String selectChartStatisticsPage(Model model, @RequestBody Map<String, String> map) {
+        int page = Integer.valueOf(map.get("page"));
+        List<TbStaffDuty> list = staffDutyService.selectAllDesc(16, (page-1)*16);
+        model.addAttribute("NowPage", page);
+        model.addAttribute("TotalPage", (staffDutyService.selectAllDesc(16, 0).size() / 16) + 1);
+        model.addAttribute("DutyResult", list);
+        return "index-chart-statistics::DutyResult";
     }
 
     @RequestMapping(value = "/index-app-chart")

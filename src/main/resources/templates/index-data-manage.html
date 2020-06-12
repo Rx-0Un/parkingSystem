@@ -486,7 +486,7 @@
                                                 <div class="col-md-2">
                                                     <label>车辆类型</label>
                                                     <select class="select2 form-control custom-select select2-hidden-accessible"
-                                                            style="width: 100%; height:33px;"  id="search_car_type">
+                                                            style="width: 100%; height:33px;" id="search_car_type">
                                                         <option>全体</option>
                                                         <option>小车</option>
                                                         <option>大型车</option>
@@ -717,7 +717,7 @@
                                                     <th th:text="${stat2.userPhone}"></th>
                                                     <th th:text="${stat2.userEmail}"></th>
                                                     <th th:text="${stat2.userSex}"></th>
-                                                    <th th:text="${stat2.userRegtime}"></th>
+                                                    <th th:text="${#dates.format(stat.userRegtime, 'yyyy-MM-dd hh:mm:ss')}"></th>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -1031,6 +1031,204 @@
                                 </div>
                             </div>
                             <div class="tab-pane p-20" id="interimParking" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-1">
+                                                <label>数量</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true" id="record_search_pageNum">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label>开始时间</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="record_search__starting_time">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label>结束时间</label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="record_search__ending_time">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label>关键字</label>
+                                                <select class="select2 form-control custom-select select2-hidden-accessible"
+                                                        style="width: 100%; height:33px;" data-select2-id="1"
+                                                        tabindex="-1" aria-hidden="true"
+                                                        id="record_search_keyword_title">
+                                                    <option>全体</option>
+                                                    <option>编号</option>
+                                                    <option>车牌</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label><font color="white">关键字</font></label>
+                                                <input class="form-control" name="Keyword" placeholder="" value=""
+                                                       type="text" id="record_search__keyword">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="RecordResult" th:fragment="RecordResult">
+                                        <div class="col-lg-8">
+                                            <div class="result">
+                                                <div class="card-body">
+                                                    <table class="table table-striped table-bordered dataTable"
+                                                           role="grid"
+                                                           aria-describedby="zero_config_info">
+                                                        <thead>
+                                                        <tr role="row">
+                                                            <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                                rowspan="1"
+                                                                colspan="1"
+                                                                aria-label="Name: activate to sort column ascending">
+                                                                停车记录编号
+                                                            </th>
+                                                            <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                                rowspan="1"
+                                                                colspan="1"
+                                                                aria-label="Salary: activate to sort column ascending">
+                                                                车牌号码
+                                                            </th>
+                                                            <th class="sorting_asc" tabindex="0"
+                                                                aria-controls="zero_config" rowspan="1"
+                                                                colspan="1"
+                                                                aria-label="Position: activate to sort column descending"
+                                                                aria-sort="ascending">
+                                                                进入时间
+                                                            </th>
+                                                            <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                                rowspan="1"
+                                                                colspan="1"
+                                                                aria-label="Age: activate to sort column ascending">
+                                                                出入时间
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody th:each="stat:${RecordResult}">
+                                                        <tr role="row" class="even">
+                                                            <th th:text="${stat.parkingPlateId}"></th>
+                                                            <th th:text="${stat.carPlateNum}"></th>
+                                                            <th th:text="${#dates.format(stat.enterTime, 'yyyy-MM-dd hh:mm:ss')}" ></th>
+                                                            <th th:text="${stat.exitTime}"></th>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="card-body border-top">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <ul class="pagination">
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage-1 >=1}"
+                                                                ><a
+                                                                        aria-controls="zero_config"
+                                                                        data-dt-idx="0"
+                                                                        tabindex="0"
+                                                                        class="page-link"
+                                                                        th:onclick="|javascript : selectPage( [[${RecordNowPage-1}]] )|"
+                                                                >上一页</a>
+                                                                </li>
+                                                                <li class="paginate_button page-item">
+                                                                    <a
+                                                                            aria-controls="zero_config"
+                                                                            data-dt-idx="0"
+                                                                            tabindex="0"
+                                                                            class="page-link"
+                                                                            th:onclick="|javascript : selectPage( '1' )|"
+                                                                    >首页</a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage-3>=1}">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage-3}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage-3}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage-2>=1}">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage-2}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage-2}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage-1>=1}">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage-1}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage-1}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item active">
+                                                                    <a aria-controls="zero_config" data-dt-idx="1"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage+1 <=RecordTotalPage}">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage+1}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage+1}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage+2 <=RecordTotalPage}">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage+2}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage+2}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage+3 <=RecordTotalPage}">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:text="${RecordNowPage+3}"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordNowPage+3}]] )|"
+                                                                    >
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item">
+                                                                    <a aria-controls="zero_config" data-dt-idx="2"
+                                                                       tabindex="0" class="page-link"
+                                                                       th:onclick="|javascript : selectPage( [[${RecordTotalPage}]] )|"
+                                                                    >尾页
+                                                                    </a>
+                                                                </li>
+                                                                <li class="paginate_button page-item"
+                                                                    th:if="${RecordNowPage<RecordTotalPage&&RecordTotalPage!=1}">
+                                                                    <a
+                                                                            aria-controls="zero_config"
+                                                                            data-dt-idx="2"
+                                                                            tabindex="0"
+                                                                            class="page-link"
+                                                                            th:onclick="|javascript : selectPage( [[${RecordNowPage+1}]] )|"
+                                                                    >下一页</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1381,36 +1579,122 @@
             }
         })
     });
-    // $("#user_search_number").bind("input propertychange", function (event) {
-    //     const pageNum = $('#search_pageNum').val()
-    //     const search_keyword = $('#search_keyword').val()
-    //     const search_car_number_title = $('#search_car_number_title').val()
-    //     const search_car_type = $('#search_car_type').val()
-    //     const search = $('#search').val()
-    //     const Data = {
-    //         "pageNum": pageNum,
-    //         "search_keyword": search_keyword,
-    //         "searchTitle": search_car_number_title,
-    //         "search_car_type": search_car_type,
-    //         "searchNum": search,
-    //         "pageNum": pageNum,
-    //         "page": 1,
-    //         "random": new Date()
-    //     }
-    //     $.ajax({
-    //         type: "post",
-    //         url: "/index-data-manage/selectCarPage",
-    //         contentType: 'application/json;charset=utf-8',
-    //         data: JSON.stringify(Data),
-    //         dataType: "text",
-    //         success: function (data) {
-    //             $(".CarResult").html(data);
-    //         },
-    //         error: function (date) {
-    //             alert("失败")
-    //         }
-    //     })
-    // });
+    $("#record_search_pageNum").bind("input propertychange", function (event) {
+        const record_search_pageNum         = $('#record_search_pageNum').val()
+        const record_search__starting_time = $('#record_search__starting_time').val()
+        const record_search__ending_time    = $('#record_search__ending_time').val()
+        const record_search_keyword_title = $('#record_search_keyword_title').val()
+        const record_search__keyword =$('#record_search__keyword').val()
+        const Data = {
+            "record_search_pageNum": record_search_pageNum,
+            "record_search__starting_time": record_search__starting_time,
+            "record_search__ending_time": record_search__ending_time,
+            "record_search_keyword_title": record_search_keyword_title,
+            "record_search__keyword":record_search__keyword,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectRecordPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".RecordResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#record_search__starting_time").bind("input propertychange", function (event) {
+        const record_search_pageNum         = $('#record_search_pageNum').val()
+        const record_search__starting_time = $('#record_search__starting_time').val()
+        const record_search__ending_time    = $('#record_search__ending_time').val()
+        const record_search_keyword_title = $('#record_search_keyword_title').val()
+        const record_search__keyword =$('#record_search__keyword').val()
+        const Data = {
+            "record_search_pageNum": record_search_pageNum,
+            "record_search__starting_time": record_search__starting_time,
+            "record_search__ending_time": record_search__ending_time,
+            "record_search_keyword_title": record_search_keyword_title,
+            "record_search__keyword":record_search__keyword,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectRecordPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".RecordResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#record_search__ending_time").bind("input propertychange", function (event) {
+        const record_search_pageNum         = $('#record_search_pageNum').val()
+        const record_search__starting_time = $('#record_search__starting_time').val()
+        const record_search__ending_time    = $('#record_search__ending_time').val()
+        const record_search_keyword_title = $('#record_search_keyword_title').val()
+        const record_search__keyword =$('#record_search__keyword').val()
+        const Data = {
+            "record_search_pageNum": record_search_pageNum,
+            "record_search__starting_time": record_search__starting_time,
+            "record_search__ending_time": record_search__ending_time,
+            "record_search_keyword_title": record_search_keyword_title,
+            "record_search__keyword":record_search__keyword,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectRecordPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".RecordResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
+    $("#record_search__keyword").bind("input propertychange", function (event) {
+        const record_search_pageNum         = $('#record_search_pageNum').val()
+        const record_search__starting_time = $('#record_search__starting_time').val()
+        const record_search__ending_time    = $('#record_search__ending_time').val()
+        const record_search_keyword_title = $('#record_search_keyword_title').val()
+        const record_search__keyword =$('#record_search__keyword').val()
+        const Data = {
+            "record_search_pageNum": record_search_pageNum,
+            "record_search__starting_time": record_search__starting_time,
+            "record_search__ending_time": record_search__ending_time,
+            "record_search_keyword_title": record_search_keyword_title,
+            "record_search__keyword":record_search__keyword,
+            "page": 1,
+            "random": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-data-manage/selectRecordPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".RecordResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    });
 </script>
 <script type="text/javascript">
     $("#search_pageNum").bind("input propertychange", function (event) {
@@ -1488,6 +1772,7 @@
             }
         })
     });
+
     function selectCarPage(page) {
         page = Number(page)
         const pageNum = $('#search_pageNum').val()

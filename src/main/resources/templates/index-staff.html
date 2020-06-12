@@ -430,7 +430,6 @@
                                                 <th>缴费管理权限</th>
                                                 <th>Android管理权限</th>
                                                 <th>上次登录时间</th>
-                                                <th>修改信息</th>
                                                 <th>删除员工</th>
                                             </tr>
                                             </thead>
@@ -463,10 +462,7 @@
                                                     <div th:case="1">✔</div>
                                                     <div th:case="0">×</div>
                                                 </th>
-                                                <th th:text="${stat.lastTimeLogin}"></th>
-                                                <th>
-                                                    <button type="button" class="btn btn-info btn-sm">修改</button>
-                                                </th>
+                                                <th th:text="${#dates.format(stat.lastTimeLogin, 'yyyy-MM-dd hh:mm:ss')}"></th>
                                                 <th>
                                                     <!--                                                Spring2.0推荐传值[[${stat.staffId}]]-->
                                                     <a class="btn btn-danger btn-sm"

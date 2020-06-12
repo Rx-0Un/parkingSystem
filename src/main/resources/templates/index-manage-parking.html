@@ -696,7 +696,7 @@
                                                     </thead>
                                                     <tbody th:each="stat:${OuterResult}">
                                                     <tr role="row" class="odd">
-                                                        <th th:text="${stat.exitTime}"></th>
+                                                        <th th:text="${#dates.format(stat.exitTime, 'yyyy-MM-dd hh:mm:ss')}"></th>
                                                         <th th:text="${stat.carPlateNum}"></th>
                                                         <th th:text="${stat.tbCar.carType}"></th>
                                                         <th th:text="${stat.tbOrder.orderAmount}"></th>
@@ -740,7 +740,7 @@
                                                     </thead>
                                                     <tbody th:each="stat:${EnterResult}">
                                                     <tr>
-                                                        <th th:text="${stat.enterTime}"></th>
+                                                        <th th:text="${#dates.format(stat.enterTime, 'yyyy-MM-dd hh:mm:ss')}"></th>
                                                         <th th:text="${stat.carPlateNum}"></th>
                                                         <th th:text="${stat.tbCar.carType}"></th>
                                                     </tr>

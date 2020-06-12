@@ -110,7 +110,8 @@
     <select id="selectAllDesc" resultMap="BaseResultMap">
         select *
         from tb_staff_duty
-        group by staff_task_id desc
+        where ending_time is true
+        group by staff_duty_id desc
         <if test="pageNum!=0">
             limit #{pageNum} offset #{page};
         </if>

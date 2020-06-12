@@ -117,8 +117,8 @@ public class LoginController {
         System.out.println(page + "!" + staffId);
         List<TbStaffTask> list = staffTaskService.selectUnfinishedTask("" + staffId, 10, (Integer.parseInt(page) - 1) * 10);
         model.addAttribute("AllTask", list);
-        model.addAttribute("totalPage", list.size());
-        model.addAttribute("NowPage", Integer.parseInt(page));
+        model.addAttribute("totalPage", (list.size()/10)+1);
+        model.addAttribute("nowPage", Integer.parseInt(page));
         session.setAttribute("staffId", Integer.valueOf(staffId));
         return "index3::result";
     }
@@ -132,11 +132,6 @@ public class LoginController {
     public void setStaffTaskService(StaffTaskService staffTaskService) {
         this.staffTaskService = staffTaskService;
     }
-
-//    @Autowired
-//    public void setUserService(UserService userService) {
-//        this.userService = userService;
-//    }
 
     @Autowired
     public void setOrderService(OrderService orderService) {

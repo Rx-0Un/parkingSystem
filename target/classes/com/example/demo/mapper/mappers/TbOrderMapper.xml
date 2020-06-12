@@ -123,7 +123,7 @@
         from tb_order,tb_user
         where tb_order.order_receiver = tb_user.user_name
         and user_id=#{userId}
-        and order_state='已经完成'
+        and order_state='已完成'
     </select>
     <select id="selectOrderByStr" resultMap="BaseResultMap">
         select *

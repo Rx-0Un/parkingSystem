@@ -353,7 +353,6 @@
                                     <th scope="col">描述</th>
                                     <th scope="col">状态</th>
                                     <th scope="col">开始日期</th>
-                                    <th scope="col">动作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -361,14 +360,6 @@
                                     <td th:text="${stat.description}">打卡上班</td>
                                     <td class="text-success" th:text="${stat.status}">未开始</td>
                                     <td th:text="${#dates.format(stat.startingTime, 'yyyy-MM-dd')}">打卡上班</td>
-                                    <td>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
-                                            <i class="mdi mdi-check"></i>
-                                        </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            </i><i class="mdi mdi-close"></i>
-                                        </a>
-                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -410,7 +401,7 @@
                                                 </a>
                                             </li>
                                             <li class="paginate_button page-item"
-                                                th:if="${nowPage-1 >=1}">
+                                                th:if="${nowPage-1>=1}">
                                                 <a aria-controls="zero_config" data-dt-idx="2"
                                                    tabindex="0" class="page-link" th:text="${nowPage-1}"
                                                    th:onclick="|javascript : selectPage( [[${nowPage-1}]] )|"
@@ -488,11 +479,35 @@
                                 <td>
                                     添加职工→分配权限
                                 </td>
+                                <td>
+                                    <div th:if="${#strings.substring(session.staffType,1,2)}eq'1'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                    </div>
+                                    <div th:if="${#strings.substring(session.staffType,1,2)}eq'0'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>员工管理权限</td>
                                 <td>
                                     指定角色→分配任务→检查当班日志
+                                </td>
+                                <td>
+                                    <div th:if="${#strings.substring(session.staffType,1,2)}eq'1'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                    </div>
+                                    <div th:if="${#strings.substring(session.staffType,1,2)}eq'0'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -500,11 +515,35 @@
                                 <td>
                                     查看信息(禁止修改)
                                 </td>
+                                <td>
+                                    <div th:if="${#strings.substring(session.staffType,4,5)}eq'1'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                    </div>
+                                    <div th:if="${#strings.substring(session.staffType,4,5)}eq'0'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>车场管理权限</td>
                                 <td>
                                     点击上班→控制车辆进出(同时管理停车场内部详情)→下班
+                                </td>
+                                <td>
+                                    <div th:if="${#strings.substring(session.staffType,2,3)}eq'1'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                    </div>
+                                    <div th:if="${#strings.substring(session.staffType,2,3)}eq'0'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -512,11 +551,35 @@
                                 <td>
                                     缴费管理→修改或添加停车场规则
                                 </td>
+                                <td>
+                                    <div th:if="${#strings.substring(session.staffType,4,5)}eq'1'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                    </div>
+                                    <div th:if="${#strings.substring(session.staffType,4,5)}eq'0'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Android管理权限</td>
                                 <td>
                                     app管理
+                                </td>
+                                <td>
+                                    <div th:if="${#strings.substring(session.staffType,5,6)}eq'1'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Update">
+                                            <i class="mdi mdi-check"></i>
+                                        </a>
+                                    </div>
+                                    <div th:if="${#strings.substring(session.staffType,5,6)}eq'0'">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            </i><i class="mdi mdi-close"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -530,7 +593,7 @@
                                                     role="tab"><span class="hidden-sm-up"></span> <span
                                     class="hidden-xs-down">收费规则</span></a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"><span
-                                    class="hidden-sm-up"></span> <span class="hidden-xs-down">出场流程</span></a></li>
+                                    class="hidden-sm-up"></span> <span class="hidden-xs-down">值班流程</span></a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab"><span
                                     class="hidden-sm-up"></span> <span class="hidden-xs-down">出场流程</span></a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#count" role="tab"><span
@@ -595,7 +658,7 @@
                             </div>
                             <div class="tab-pane  p-20" id="profile" role="tabpanel">
                                 <div class="p-20">
-                                    <img src="/assets/images/background/enter.PNG" class="img-fluid">
+                                    <img src="/assets/images/background/work.PNG" class="img-fluid">
                                 </div>
                             </div>
                             <div class="tab-pane p-20" id="messages" role="tabpanel">
@@ -605,7 +668,7 @@
                             </div>
                             <div class="tab-pane p-20" id="count" role="tabpanel">
                                 <div class="p-20">
-                                    <img src="/assets/images/background/count.PNG" class="img-fluid">
+                                    <img src="/assets/images/background/charge.PNG" class="img-fluid">
                                 </div>
                             </div>
                         </div>

@@ -130,6 +130,33 @@
             limit #{pageNum} offset #{page};
         </if>
     </select>
+    <select id="selectAllByStr" resultMap="BaseResultMap">
+        select *
+        from tb_parking_record
+        where true
+
+        <if test="record_search_keyword_title=='全体'">
+            and( parking_plate_id like CONCAT('%', #{record_search__keyword}, '%')
+            or car_plate_num like CONCAT('%', #{record_search__keyword}, '%'))
+        </if>
+        <if test="record_search_keyword_title=='编号'">
+            and parking_plate_id like CONCAT('%', #{record_search__keyword}, '%')
+        </if>
+        <if test="record_search_keyword_title=='车牌号'">
+            and car_plate_num like CONCAT('%', #{record_search__keyword}, '%')
+        </if>
+        <if test="pageNum!=0">
+            limit #{pageNum} offset #{page};
+        </if>
+    </select>
+
+    <select id="selectAllAndOrder" resultMap="BaseResultMap">
+        select *
+        from tb_order,
+             tb_parking_record,tb_car
+        where tb_order.order_id = tb_parking_record.order_id
+        and tb_car.car_plate_number=tb_parking_record.car_plate_num
+    </select>
     <select id="selectCar" resultMap="BaseResultMap">
         select *
         from tb_parking_record

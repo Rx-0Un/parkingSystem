@@ -73,7 +73,8 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mainPager"
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="/mainPager"
                                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu"> 首页</span></a></li>
 
@@ -150,8 +151,9 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div class="row el-element-overlay">
-                <div class="col-lg-3 col-md-6" th:each="stat1:${DutyResult}">
+            <div class="DutyResult" th:fragment="DutyResult">
+                <div class="row el-element-overlay">
+                    <div class="col-lg-3 col-md-6" th:each="stat1:${DutyResult}">
                         <div class="card">
                             <div class="el-card-item">
                                 <div class="el-card-avatar el-overlay-1"><img src="/assets/images/big/parking_info.png"
@@ -167,11 +169,117 @@
                                 </div>
                                 <div class="el-card-content">
                                     <h4 class="m-b-0">值班记录</h4>
-                                    <h4 class="m-b-0" th:text="${#dates.format(stat1.startingTime, 'yyyy-MMM-dd HH:mm')}+'-'+${#dates.format(stat1.endingTime, 'yyyy-MMM-dd HH:mm')}"></h4>
+                                    <h4 class="m-b-0"
+                                        th:text="${#dates.format(stat1.startingTime, 'yyyy-MMM-dd HH:mm')}+'-'+${#dates.format(stat1.endingTime, 'yyyy-MMM-dd HH:mm')}"></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <ul class="pagination">
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage-1 >=1}"
+                            ><a
+                                    aria-controls="zero_config"
+                                    data-dt-idx="0"
+                                    tabindex="0"
+                                    class="page-link"
+                                    th:onclick="|javascript : selectPage( [[${NowPage-1}]] )|"
+                            >上一页</a>
+                            </li>
+                            <li class="paginate_button page-item">
+                                <a
+                                        aria-controls="zero_config"
+                                        data-dt-idx="0"
+                                        tabindex="0"
+                                        class="page-link"
+                                        th:onclick="|javascript : selectPage( '1' )|"
+                                >首页</a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage-3>=1}">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage-3}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage-3}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage-2>=1}">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage-2}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage-2}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage-1>=1}">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage-1}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage-1}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item active">
+                                <a aria-controls="zero_config" data-dt-idx="1"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage+1 <=TotalPage}">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage+1}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage+1}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage+2 <=TotalPage}">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage+2}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage+2}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage+3 <=TotalPage}">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:text="${NowPage+3}"
+                                   th:onclick="|javascript : selectPage( [[${NowPage+3}]] )|"
+                                >
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item">
+                                <a aria-controls="zero_config" data-dt-idx="2"
+                                   tabindex="0" class="page-link"
+                                   th:onclick="|javascript : selectPage( [[${TotalPage}]] )|"
+                                >尾页
+                                </a>
+                            </li>
+                            <li class="paginate_button page-item"
+                                th:if="${NowPage<TotalPage&&TotalPage!=1}">
+                                <a
+                                        aria-controls="zero_config"
+                                        data-dt-idx="2"
+                                        tabindex="0"
+                                        class="page-link"
+                                        th:onclick="|javascript : selectPage( [[${NowPage+1}]] )|"
+                                >下一页</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <footer class="footer text-center">
@@ -204,7 +312,28 @@
 <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="assets/libs/chart/turning-series.js"></script>
 <script src="dist/js/pages/chart/chart-page-init.js"></script>
-
+<script language="JavaScript" type="text/javascript">
+    function selectPage(page) {
+        page = Number(page)
+        const Data = {
+            "page": page,
+            "date": new Date()
+        }
+        $.ajax({
+            type: "post",
+            url: "/index-chart-statistics/selectChartStatisticsPage",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(Data),
+            dataType: "text",
+            success: function (data) {
+                $(".DutyResult").html(data);
+            },
+            error: function (date) {
+                alert("失败")
+            }
+        })
+    }
+</script>
 </body>
 </body>
 </html>

@@ -106,6 +106,11 @@ public class ParkingRecordService {
         return tbParkingRecordMapper.selectEnterCarByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
     }
 
+    public List<TbParkingRecord> selectAllAndOrder() {
+        return tbParkingRecordMapper.selectAllAndOrder();
+    }
+
+
     public float selectCountByDate(Date starting_time, Date ending_time) {
         List<TbParkingRecord> list = tbParkingRecordMapper.selectCountByDate(DateUtil.processDateToString(starting_time), DateUtil.processDateToString(ending_time));
         float sum = 0;
@@ -125,6 +130,10 @@ public class ParkingRecordService {
 
     public List<TbParkingRecord> selectAllByInfo(String starting_date, String search_car_plate_type, String search_car_type, String search_pay_type, String search_Keyword_title, String search_Keyword, int pageNum, int page) {
         return tbParkingRecordMapper.selectAllByInfo(starting_date, search_car_plate_type, search_car_type, search_pay_type, search_Keyword_title, search_Keyword, pageNum, page);
+    }
+
+    public List<TbParkingRecord> selectAllByStr(String record_search__starting_time, String record_search__ending_time, String record_search_keyword_title,String record_search__keyword, Integer pageNum, Integer page) {
+        return tbParkingRecordMapper.selectAllByStr(record_search__starting_time, record_search__ending_time, record_search_keyword_title,record_search__keyword, pageNum, page);
     }
 
     @Autowired
