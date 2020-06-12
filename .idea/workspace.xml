@@ -91,21 +91,21 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\template" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\pic" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\background" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\big" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\mappers" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.demo.entity" />
       <recent name="com.example.demo.mapper" />
       <recent name="com.example.demo.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\background" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\assets\images\big" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\java\com\example\demo\mapper\mappers" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\css" />
-      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\static\js" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\template" />
+      <recent name="C:\Users\admin\Desktop\finalDes\test\demo\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
@@ -403,7 +403,7 @@
       <workItem from="1591366422495" duration="8391000" />
       <workItem from="1591403373029" duration="1907000" />
       <workItem from="1591511184053" duration="3000" />
-      <workItem from="1591937269035" duration="1278000" />
+      <workItem from="1591937269035" duration="2343000" />
     </task>
     <task id="LOCAL-00001" summary="这是SpringDemo的成果,成功集成Spring+mybatis+thymeleaf+bootstrap,成功连接数据库">
       <created>1583471966863</created>
@@ -664,7 +664,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591937454724</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="系统剩余工作&#10;基本完成但还有边界和约束的问题">
+      <created>1591938570510</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1591938570510</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -788,10 +795,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="825" y="273" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590036284085" />
-    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1591937448928">
+    <state x="560" y="17" key="CommitChangelistDialog2" timestamp="1591938569755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591937448928" />
+    <state x="560" y="17" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591938569755" />
     <state x="200" y="42" width="1536" height="858" key="DiffContextDialog" timestamp="1591937500652">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -872,10 +879,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585223614505" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591937815352">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591938583571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591937815352" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591938583571" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588426355631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
